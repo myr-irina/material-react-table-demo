@@ -1,0 +1,681 @@
+[
+  {
+    "staff": "Mikhail Ovechkin",
+    "january": {
+      "hours": 136,
+      "percent": 100
+    },
+    "february": {
+      "hours": 208,
+      "percent": 164
+    },
+    "march": {
+      "hours": 264,
+      "percent": 226
+    },
+    "april": {
+      "hours": 80,
+      "percent": 50
+    },
+    "may": {
+      "hours": 80,
+      "percent": 50
+    },
+    "june": {
+      "hours": 88,
+      "percent": 52
+    },
+    "july": {
+      "hours": 88,
+      "percent": 52
+    },
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"ARCH-73\", \"ARCH-72\", \"ARCH-50\", \"ARCH-77\", \"ARCH-76\", \"ARCH-75\", \"ARCH-74\", \"HRPERSONAL-62\", \"ARCH-32\"]"
+  },
+  {
+    "staff": "Elena Ryzhkova",
+    "january": {
+      "hours": 136,
+      "percent": 131
+    },
+    "february": {
+      "hours": 150,
+      "percent": 147
+    },
+    "march": {
+      "hours": 176,
+      "percent": 100
+    },
+    "april": {
+      "hours": 160,
+      "percent": 100
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"ENGENGINEERS-216\", \"ENGENGINEERS-215\", \"ENGENGINEERS-201\", \"ENGENGINEERS-200\", \"ENGENGINEERS-197\", \"ENGENGINEERS-158\", \"ENGENGINEERS-199\", \"ENGENGINEERS-198\", \"ENGENGINEERS-196\", \"ENGENGINEERS-176\", \"ENGENGINEERS-164\"]"
+  },
+  {
+    "staff": "Mikhail Yakim",
+    "january": {
+      "hours": 136,
+      "percent": 130
+    },
+    "february": {
+      "hours": 161,
+      "percent": 143
+    },
+    "march": {
+      "hours": 176,
+      "percent": 100
+    },
+    "april": {
+      "hours": 160,
+      "percent": 100
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"ENGENGINEERS-213\", \"ENGENGINEERS-204\", \"ENGENGINEERS-207\", \"HRPERSONAL-64\", \"HRPERSONAL-361\", \"HRPERSONAL-63\", \"ENGENGINEERS-203\", \"ENGENGINEERS-202\", \"ENGENGINEERS-214\"]"
+  },
+  {
+    "staff": "Andrey Shmakov",
+    "january": {
+      "hours": 136,
+      "percent": 134
+    },
+    "february": {
+      "hours": 144,
+      "percent": 143
+    },
+    "march": {
+      "hours": 174,
+      "percent": 119
+    },
+    "april": {
+      "hours": 84,
+      "percent": 52
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"ENGENGINEERS-208\", \"HRPERSONAL-364\", \"ENGENGINEERS-218\", \"ENGENGINEERS-217\", \"ENGENGINEERS-191\", \"ENGENGINEERS-190\", \"ENGENGINEERS-189\", \"ENGENGINEERS-188\", \"ENGENGINEERS-182\", \"ENGENGINEERS-187\", \"ENGENGINEERS-186\", \"ENGENGINEERS-185\", \"ENGENGINEERS-184\", \"ENGENGINEERS-212\", \"ENGENGINEERS-209\"]"
+  },
+  {
+    "staff": "Ekaterina Sazanova",
+    "january": {
+      "hours": 290,
+      "percent": 287
+    },
+    "february": {
+      "hours": 144,
+      "percent": 111
+    },
+    "march": {
+      "hours": 292,
+      "percent": 223
+    },
+    "april": {
+      "hours": 222,
+      "percent": 190
+    },
+    "may": {
+      "hours": 92,
+      "percent": 60
+    },
+    "june": {
+      "hours": 8,
+      "percent": 4
+    },
+    "july": {
+      "hours": 8,
+      "percent": 4
+    },
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"TEAMES-47\", \"TEAMES-56\", \"TEAMES-61\", \"TEAMES-51\", \"TEAMES-58\", \"TEAMES-59\", \"TEAMES-60\", \"TEAMES-57\", \"TEAMES-46\", \"TEAMES-44\", \"TEAMES-38\", \"TEAMES-36\", \"TEAMES-40\", \"TEAMES-45\", \"TEAMES-41\", \"TEAMES-9\", \"TEAMES-50\", \"TEAMES-39\", \"TEAMES-48\", \"HRPERSONAL-362\"]"
+  },
+  {
+    "staff": "Ekaterina Biryuk",
+    "january": {
+      "hours": 136,
+      "percent": 100
+    },
+    "february": {
+      "hours": 184,
+      "percent": 171
+    },
+    "march": {
+      "hours": 244,
+      "percent": 209
+    },
+    "april": {
+      "hours": 132,
+      "percent": 103
+    },
+    "may": {
+      "hours": 132,
+      "percent": 103
+    },
+    "june": {
+      "hours": 132,
+      "percent": 101
+    },
+    "july": {
+      "hours": 132,
+      "percent": 101
+    },
+    "august": {
+      "hours": 132,
+      "percent": 97
+    },
+    "september": {
+      "hours": 56,
+      "percent": 33
+    },
+    "october": {
+      "hours": 56,
+      "percent": 31
+    },
+    "november": {
+      "hours": 56,
+      "percent": 33
+    },
+    "december": {
+      "hours": 56,
+      "percent": 33
+    },
+    "link": "https://tracker.yandex.ru/issues/?key=[\"KOMANDAAA-148\", \"KOMANDAAA-183\", \"KOMANDAAA-182\", \"KOMANDAAA-181\", \"KOMANDAAA-180\", \"KOMANDAAA-179\", \"KOMANDAAA-178\", \"KOMANDAAA-177\", \"KOMANDAAA-176\", \"KOMANDAAA-175\", \"KOMANDAAA-174\", \"KOMANDAAA-173\", \"KOMANDAAA-172\", \"KOMANDAAA-171\", \"KOMANDAAA-170\", \"KOMANDAAA-169\", \"KOMANDAAA-168\", \"KOMANDAAA-138\", \"KOMANDAAA-132\", \"HRPERSONAL-365\", \"KOMANDAAA-133\"]"
+  },
+  {
+    "staff": "Tom Nugent",
+    "january": {
+      "hours": 124,
+      "percent": 94
+    },
+    "february": {
+      "hours": 80,
+      "percent": 55
+    },
+    "march": {
+      "hours": 167,
+      "percent": 132
+    },
+    "april": {
+      "hours": 80,
+      "percent": 50
+    },
+    "may": {
+      "hours": 80,
+      "percent": 50
+    },
+    "june": {
+      "hours": 84,
+      "percent": 50
+    },
+    "july": {
+      "hours": 84,
+      "percent": 50
+    },
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"ARCH-71\", \"ARCH-66\", \"ARCH-67\", \"ARCH-29\", \"ARCH-25\", \"ARCH-70\", \"ARCH-69\", \"ARCH-68\", \"ARCH-27\"]"
+  },
+  {
+    "staff": "Maria Kolesnichenko",
+    "january": {
+      "hours": 136,
+      "percent": 114
+    },
+    "february": {
+      "hours": 144,
+      "percent": 100
+    },
+    "march": {
+      "hours": 176,
+      "percent": 100
+    },
+    "april": {
+      "hours": 126,
+      "percent": 78
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"ENGENGINEERS-211\", \"ENGENGINEERS-210\", \"ENGENGINEERS-183\", \"HRPERSONAL-65\", \"ENGENGINEERS-154\"]"
+  },
+  {
+    "staff": "Svetlana Koroleva",
+    "january": {
+      "hours": 136,
+      "percent": 100
+    },
+    "february": {
+      "hours": 144,
+      "percent": 104
+    },
+    "march": {
+      "hours": 334,
+      "percent": 265
+    },
+    "april": {
+      "hours": 84,
+      "percent": 52
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"TEAMVA-38\", \"TEAMVA-23\", \"TEAMVA-22\", \"TEAMVA-44\", \"TEAMVA-32\", \"TEAMVA-39\"]"
+  },
+  {
+    "staff": "Alexander Shimchuk",
+    "january": {
+      "hours": 136,
+      "percent": 112
+    },
+    "february": {
+      "hours": 130,
+      "percent": 128
+    },
+    "march": {
+      "hours": 216,
+      "percent": 215
+    },
+    "april": {
+      "hours": 166,
+      "percent": 159
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"LAYVERSTKA-100\", \"LAYVERSTKA-97\", \"LAYVERSTKA-64\", \"LAYVERSTKA-89\", \"LAYVERSTKA-68\", \"LAYVERSTKA-92\", \"LAYVERSTKA-91\", \"LAYVERSTKA-90\", \"LAYVERSTKA-87\", \"LAYVERSTKA-88\", \"LAYVERSTKA-85\", \"LAYVERSTKA-86\", \"LAYVERSTKA-83\", \"LAYVERSTKA-84\", \"LAYVERSTKA-11\", \"LAYVERSTKA-81\", \"LAYVERSTKA-82\", \"LAYVERSTKA-63\", \"LAYVERSTKA-65\", \"LAYVERSTKA-66\", \"LAYVERSTKA-76\", \"LAYVERSTKA-78\", \"LAYVERSTKA-79\", \"LAYVERSTKA-77\", \"LAYVERSTKA-73\", \"LAYVERSTKA-72\", \"LAYVERSTKA-70\", \"LAYVERSTKA-62\", \"LAYVERSTKA-61\", \"LAYVERSTKA-75\", \"LAYVERSTKA-74\", \"LAYVERSTKA-60\", \"LAYVERSTKA-59\", \"LAYVERSTKA-67\"]"
+  },
+  {
+    "staff": "Viktor Abinyakov",
+    "january": {
+      "hours": 136,
+      "percent": 132
+    },
+    "february": {
+      "hours": 144,
+      "percent": 132
+    },
+    "march": {
+      "hours": 176,
+      "percent": 153
+    },
+    "april": null,
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"TEAMVA-46\", \"TEAMVA-43\", \"TEAMVA-29\", \"HRPERSONAL-58\", \"TEAMVA-30\", \"TEAMVA-26\", \"TEAMVA-27\", \"TEAMVA-25\", \"TEAMVA-28\"]"
+  },
+  {
+    "staff": "Maksim Mushcherov",
+    "january": {
+      "hours": 136,
+      "percent": 125
+    },
+    "february": {
+      "hours": 144,
+      "percent": 119
+    },
+    "march": {
+      "hours": 510,
+      "percent": 441
+    },
+    "april": {
+      "hours": 84,
+      "percent": 52
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"TEAMVA-24\", \"HRPERSONAL-357\", \"TEAMVA-41\", \"TEAMVA-17\", \"TEAMVA-19\", \"TEAMVA-45\", \"TEAMVA-40\", \"TEAMVA-35\", \"TEAMVA-36\"]"
+  },
+  {
+    "staff": "Olga Golubeva",
+    "january": {
+      "hours": 136,
+      "percent": 114
+    },
+    "february": {
+      "hours": 144,
+      "percent": 128
+    },
+    "march": {
+      "hours": 168,
+      "percent": 116
+    },
+    "april": {
+      "hours": 160,
+      "percent": 130
+    },
+    "may": null,
+    "june": {
+      "hours": 80,
+      "percent": 47
+    },
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"HYPD-164\", \"HYPD-160\", \"HYPD-179\", \"HYPD-178\", \"HYPD-168\", \"HYPD-161\", \"HYPD-143\", \"HYPD-156\", \"HYPD-155\", \"HYPD-149\", \"HYPD-148\", \"HYPD-139\", \"HYPD-132\"]"
+  },
+  {
+    "staff": "Vitaliy Kotsiuk",
+    "january": {
+      "hours": 136,
+      "percent": 130
+    },
+    "february": {
+      "hours": 144,
+      "percent": 135
+    },
+    "march": {
+      "hours": 176,
+      "percent": 100
+    },
+    "april": {
+      "hours": 40,
+      "percent": 25
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"HYPD-166\", \"HYPD-140\", \"HYPD-130\", \"BIMRAZRABOTKA-22\", \"HYPD-157\", \"HYPD-150\", \"HYPD-141\", \"HYPD-128\", \"HYPD-167\"]"
+  },
+  {
+    "staff": "Alexander Nikulshin",
+    "january": {
+      "hours": 192,
+      "percent": 179
+    },
+    "february": {
+      "hours": 222,
+      "percent": 205
+    },
+    "march": {
+      "hours": 176,
+      "percent": 162
+    },
+    "april": {
+      "hours": 104,
+      "percent": 98
+    },
+    "may": {
+      "hours": 104,
+      "percent": 98
+    },
+    "june": {
+      "hours": 104,
+      "percent": 97
+    },
+    "july": {
+      "hours": 104,
+      "percent": 97
+    },
+    "august": {
+      "hours": 70,
+      "percent": 62
+    },
+    "september": {
+      "hours": 16,
+      "percent": 9
+    },
+    "october": {
+      "hours": 16,
+      "percent": 9
+    },
+    "november": {
+      "hours": 16,
+      "percent": 9
+    },
+    "december": {
+      "hours": 16,
+      "percent": 9
+    },
+    "link": "https://tracker.yandex.ru/issues/?key=[\"KOMANDAAA-151\", \"KOMANDAAA-188\", \"KOMANDAAA-189\", \"KOMANDAAA-190\", \"KOMANDAAA-191\", \"KOMANDAAA-192\", \"KOMANDAAA-193\", \"KOMANDAAA-194\", \"KOMANDAAA-195\", \"KOMANDAAA-196\", \"KOMANDAAA-187\", \"KOMANDAAA-165\", \"HRPERSONAL-61\", \"KOMANDAAA-142\", \"HRPERSONAL-60\", \"KOMANDAAA-160\", \"KOMANDAAA-158\", \"KOMANDAAA-159\", \"KOMANDAAA-161\", \"KOMANDAAA-157\", \"KOMANDAAA-149\", \"KOMANDAAA-141\", \"KOMANDAAA-162\", \"KOMANDAAA-164\", \"KOMANDAAA-156\", \"KOMANDAAA-155\", \"KOMANDAAA-154\", \"KOMANDAAA-153\", \"KOMANDAAA-152\", \"KOMANDAAA-140\", \"KOMANDAAA-150\"]"
+  },
+  {
+    "staff": "Sergey Ovsyannikov",
+    "january": {
+      "hours": 136,
+      "percent": 129
+    },
+    "february": {
+      "hours": 168,
+      "percent": 157
+    },
+    "march": {
+      "hours": 176,
+      "percent": 107
+    },
+    "april": {
+      "hours": 184,
+      "percent": 169
+    },
+    "may": {
+      "hours": 80,
+      "percent": 65
+    },
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"HYPD-176\", \"HYPD-175\", \"HYPD-177\", \"HYPD-174\", \"HYPD-173\", \"HYPD-172\", \"HYPD-171\", \"HYPD-153\", \"HYPD-146\", \"HYPD-145\", \"HYPD-142\", \"HYPD-154\", \"HYPD-138\", \"HYPD-137\", \"HYPD-134\", \"HYPD-133\", \"HYPD-147\", \"HYPD-163\", \"HYPD-162\"]"
+  },
+  {
+    "staff": "Daria Sakharova",
+    "january": {
+      "hours": 136,
+      "percent": 132
+    },
+    "february": {
+      "hours": 144,
+      "percent": 136
+    },
+    "march": {
+      "hours": 176,
+      "percent": 100
+    },
+    "april": {
+      "hours": 72,
+      "percent": 60
+    },
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"HYPD-170\", \"HYPD-169\", \"HYPD-152\", \"HYPD-144\", \"HYPD-135\", \"HYPD-131\", \"HYPD-136\", \"HYPD-129\", \"HYPD-158\"]"
+  },
+  {
+    "staff": "Tatiana Pachina",
+    "january": {
+      "hours": 136,
+      "percent": 100
+    },
+    "february": {
+      "hours": 144,
+      "percent": 100
+    },
+    "march": {
+      "hours": 176,
+      "percent": 100
+    },
+    "april": {
+      "hours": 160,
+      "percent": 100
+    },
+    "may": {
+      "hours": 160,
+      "percent": 100
+    },
+    "june": {
+      "hours": 168,
+      "percent": 100
+    },
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"KOMANDAAA-186\", \"KOMANDAAA-185\", \"KOMANDAAA-184\", \"KOMANDAAA-167\", \"KOMANDAAA-135\", \"KOMANDAAA-134\"]"
+  },
+  {
+    "staff": "Elizaveta Kovtunets",
+    "january": {
+      "hours": 136,
+      "percent": 100
+    },
+    "february": {
+      "hours": 16,
+      "percent": 11
+    },
+    "march": null,
+    "april": null,
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"TEAMES-43\", \"TEAMES-42\"]"
+  },
+  {
+    "staff": "Olga Nikonova",
+    "january": {
+      "hours": 200,
+      "percent": 166
+    },
+    "february": {
+      "hours": 212,
+      "percent": 187
+    },
+    "march": {
+      "hours": 72,
+      "percent": 40
+    },
+    "april": null,
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"HRPERSONAL-59\", \"KOMANDAAA-144\", \"KOMANDAAA-139\", \"KOMANDAAA-136\", \"KOMANDAAA-163\", \"KOMANDAAA-143\", \"KOMANDAAA-137\"]"
+  },
+  {
+    "staff": "Ivan Kotelnikov",
+    "january": {
+      "hours": 147,
+      "percent": 134
+    },
+    "february": null,
+    "march": null,
+    "april": null,
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"ENGENGINEERS-193\", \"ENGENGINEERS-192\", \"ENGENGINEERS-166\"]"
+  },
+  {
+    "staff": "Olesya Kolyada",
+    "january": {
+      "hours": 136,
+      "percent": 100
+    },
+    "february": {
+      "hours": 144,
+      "percent": 104
+    },
+    "march": {
+      "hours": 120,
+      "percent": 68
+    },
+    "april": null,
+    "may": null,
+    "june": null,
+    "july": null,
+    "august": null,
+    "september": null,
+    "october": null,
+    "november": null,
+    "december": null,
+    "link": "https://tracker.yandex.ru/issues/?key=[\"TEAMVA-20\", \"TEAMVA-21\", \"HRPERSONAL-363\", \"TEAMVA-31\"]"
+  }
+]
