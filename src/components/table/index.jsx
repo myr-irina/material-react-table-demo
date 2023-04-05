@@ -1,9 +1,21 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Typography } from '@mui/material';
-import data from './../../json/employees-general-plan.json';
+import { getWorkingHoursPlan } from '../../utils/api-requests';
 
 export default function Table() {
+  const [workingHours, setWorkingHours] = useState([]);
+
+  useEffect(() => {
+    getWorkingHoursPlan()
+      .then((data) => {
+        setWorkingHours(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const columns = useMemo(
     () => [
       {
@@ -97,13 +109,13 @@ export default function Table() {
       </Typography>
       <MaterialReactTable
         columns={columns}
-        data={data}
+        data={workingHours}
         enableRowSelection
-        enableGlobalFilter={false}
-        enableFilters={false}
-        enablePagination={false}
-        enableFullScreenToggle={false}
-        enableDensityToggle={false}
+        // enableGlobalFilter={false}
+        // enableFilters={false}
+        // enablePagination={false}
+        // enableFullScreenToggle={false}
+        // enableDensityToggle={false}
       />
     </>
   );
