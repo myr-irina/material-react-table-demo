@@ -21,7 +21,7 @@ export default function Table() {
   // }, []);
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
-    // backgroundColor: customColor,
+    backgroundColor: customColor,
     borderRadius: '0.25rem',
     color: '#fff',
     maxWidth: '9ch',
@@ -353,24 +353,6 @@ export default function Table() {
       <MaterialReactTable
         columns={columns}
         data={data}
-        // muiTableBodyProps={{
-        //   sx: {
-        //     '& tr:nth-of-type(odd)': {
-        //       backgroundColor: '#f5f5f5',
-        //     },
-        //   },
-        // }}
-        // muiTableBodyCellProps={{
-        //   sx: {
-        //     height: '50px',
-        //   },
-        // }}
-        // localization={{ noRecordsToDisplay: 'No data!!' }}
-        localization={{
-          body: {
-            emptyDataSourceMessage: <Box>Create your ad now</Box>,
-          },
-        }}
         enableStickyHeader
         initialState={{ density: 'compact' }}
       />
