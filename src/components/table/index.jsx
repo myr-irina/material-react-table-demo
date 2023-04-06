@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 import data from './../../json/employees-general-plan.json';
+import { styled } from '@mui/material';
 
 import { getWorkingHoursPlan } from '../../utils/api-requests';
 
@@ -19,6 +20,20 @@ export default function Table() {
   //     });
   // }, []);
 
+  const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
+    // backgroundColor: customColor,
+    borderRadius: '0.25rem',
+    color: '#fff',
+    maxWidth: '9ch',
+    p: '0.25rem',
+    display: 'flex',
+    flexDirection: 'column',
+  }));
+
+  const StyledBoxWithNoData = styled(Box)(({ theme }) => ({
+    backgroundColor: 'transparent',
+  }));
+
   const columns = useMemo(
     () => [
       {
@@ -34,7 +49,7 @@ export default function Table() {
 
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -43,27 +58,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -74,7 +74,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -83,27 +83,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -114,7 +99,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -123,27 +108,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -154,7 +124,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -163,27 +133,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -194,7 +149,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -203,27 +158,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -234,7 +174,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -243,27 +183,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -274,7 +199,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -283,27 +208,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -314,7 +224,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -323,27 +233,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -354,7 +249,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -363,27 +258,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -394,7 +274,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -403,27 +283,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -434,7 +299,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -443,27 +308,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
       {
@@ -474,7 +324,7 @@ export default function Table() {
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
-            <Box
+            <StyledBoxWithData
               component='span'
               sx={{
                 backgroundColor:
@@ -483,27 +333,12 @@ export default function Table() {
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
-
-                borderRadius: '0.25rem',
-                color: '#fff',
-                maxWidth: '9ch',
-                p: '0.25rem',
-                display: 'flex',
-                flexDirection: 'column',
               }}
             >
-              {console.log(cell.getValue())}
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
               <span>{cell?.getValue()?.split(' ').slice(1)}</span>
-            </Box>
-          ) : (
-            <Box
-              component='span'
-              sx={{
-                backgroundColor: 'transparent',
-              }}
-            ></Box>
-          );
+            </StyledBoxWithData>
+          ) : null;
         },
       },
     ],
