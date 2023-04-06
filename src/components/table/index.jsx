@@ -1,122 +1,544 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MaterialReactTable from 'material-react-table';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import data from './../../json/employees-general-plan.json';
+
 import { getWorkingHoursPlan } from '../../utils/api-requests';
 
 export default function Table() {
-  const [workingHours, setWorkingHours] = useState([]);
+  // const [workingHours, setWorkingHours] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    getWorkingHoursPlan()
-      .then((data) => {
-        setWorkingHours(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   getWorkingHoursPlan()
+  //     .then((data) => {
+  //       setWorkingHours(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   const columns = useMemo(
     () => [
       {
-        header: 'Staff',
+        header: 'Сотрудники',
         accessorKey: 'staff',
       },
       {
-        header: 'January',
+        header: 'Январь',
         accessorFn: (row) =>
           row.january !== null
-            ? `${row?.january?.hours} \n ${row?.january?.percent}%`
+            ? `${row?.january?.hours}ч. (${row?.january?.percent}%)`
             : '',
+
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'February',
+        header: 'Февраль',
         accessorFn: (row) =>
           row.february !== null
-            ? `${row?.february?.hours} \n ${row?.february?.percent}%`
+            ? `${row?.february?.hours}ч. (${row?.february?.percent}%)`
             : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'March',
+        header: 'Март',
         accessorFn: (row) =>
           row.march !== null
-            ? `${row?.march?.hours} \n ${row?.march?.percent}%`
+            ? `${row?.march?.hours}ч. (${row?.march?.percent}%)`
             : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'April',
+        header: 'Апрель',
         accessorFn: (row) =>
           row.april !== null
-            ? `${row?.april?.hours} \n ${row?.april?.percent}%`
+            ? `${row?.april?.hours}ч. (${row?.april?.percent}%)`
             : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'May',
+        header: 'Май',
         accessorFn: (row) =>
-          row.may !== null ? `${row?.may?.hours} \n ${row?.may?.percent}%` : '',
+          row.may !== null
+            ? `${row?.may?.hours}ч. (${row?.may?.percent}%)`
+            : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'June',
+        header: 'Июнь',
         accessorFn: (row) =>
           row.june !== null
-            ? (row) => `${row?.june?.hours} \n ${row?.june?.percent}%`
+            ? `${row?.june?.hours}ч. (${row?.june?.percent}%)`
             : '',
-      },
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
 
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
+      },
       {
-        header: 'August',
+        header: 'Июль',
+        accessorFn: (row) =>
+          row.july !== null
+            ? `${row?.july?.hours}ч. (${row?.july?.percent}%)`
+            : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
+      },
+      {
+        header: 'Август',
         accessorFn: (row) =>
           row.august !== null
-            ? `${row?.august?.hours} \n ${row?.august?.percent}%`
+            ? `${row?.august?.hours}ч. (${row?.august?.percent}%)`
             : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'September',
+        header: 'Сентябрь',
         accessorFn: (row) =>
           row.september !== null
-            ? `${row?.september?.hours} \n ${row?.september?.percent}%`
+            ? `${row?.september?.hours}ч. (${row?.september?.percent}%)`
             : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'October',
+        header: 'Октябрь',
         accessorFn: (row) =>
           row.october !== null
-            ? `${row?.october?.hours} \n ${row?.october?.percent}%`
+            ? `${row?.october?.hours}ч. (${row?.october?.percent}%)`
             : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'November',
+        header: 'Ноябрь',
         accessorFn: (row) =>
           row.november !== null
-            ? `${row?.november?.hours} \n ${row?.november?.percent}%`
+            ? `${row?.november?.hours}ч. (${row?.november?.percent}%)`
             : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
       {
-        header: 'December',
+        header: 'Декабрь',
         accessorFn: (row) =>
           row.december !== null
-            ? `${row?.december?.hours} \n ${row?.december?.percent}%`
+            ? `${row?.december?.hours}ч. (${row?.december?.percent}%)`
             : '',
+        Cell: ({ cell }) => {
+          return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor:
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
+                    ? 'orange'
+                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
+                    ? 'green'
+                    : 'red',
+
+                borderRadius: '0.25rem',
+                color: '#fff',
+                maxWidth: '9ch',
+                p: '0.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {console.log(cell.getValue())}
+              <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
+              <span>{cell?.getValue()?.split(' ').slice(1)}</span>
+            </Box>
+          ) : (
+            <Box
+              component='span'
+              sx={{
+                backgroundColor: 'transparent',
+              }}
+            ></Box>
+          );
+        },
       },
     ],
     []
   );
 
   return (
-    <>
-      <Typography variant='h4' gutterBottom sx={{ mt: '20px' }}>
+    <Box sx={{ width: '1200px', margin: '0 auto' }}>
+      <Typography variant='h4' gutterBottom sx={{ mt: '50px' }}>
         Сотрудники_общий_план
       </Typography>
       <MaterialReactTable
         columns={columns}
-        data={workingHours}
-        enableRowSelection
-        // enableGlobalFilter={false}
-        // enableFilters={false}
-        // enablePagination={false}
-        // enableFullScreenToggle={false}
-        // enableDensityToggle={false}
+        data={data}
+        // muiTableBodyProps={{
+        //   sx: {
+        //     '& tr:nth-of-type(odd)': {
+        //       backgroundColor: '#f5f5f5',
+        //     },
+        //   },
+        // }}
+        // muiTableBodyCellProps={{
+        //   sx: {
+        //     height: '50px',
+        //   },
+        // }}
+        // localization={{ noRecordsToDisplay: 'No data!!' }}
+        localization={{
+          body: {
+            emptyDataSourceMessage: <Box>Create your ad now</Box>,
+          },
+        }}
+        enableStickyHeader
+        initialState={{ density: 'compact' }}
       />
-    </>
+    </Box>
   );
 }
