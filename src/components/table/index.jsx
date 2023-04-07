@@ -23,9 +23,9 @@ export default function Table() {
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     backgroundColor: customColor,
     borderRadius: '0.25rem',
-    color: '#fff',
-    maxWidth: '9ch',
-    p: '0.25rem',
+    color: 'black',
+    maxWidth: '4.4rem',
+    padding: '0.2rem',
     display: 'flex',
     flexDirection: 'column',
   }));
@@ -38,10 +38,14 @@ export default function Table() {
     () => [
       {
         header: 'Сотрудники',
+        id: 'name',
         accessorKey: 'staff',
+        sortDescFirst: false,
       },
       {
         header: 'Январь',
+        enableColumnActions: false,
+        size: 50,
         accessorFn: (row) =>
           row.january !== null
             ? `${row?.january?.hours}ч. (${row?.january?.percent}%)`
@@ -68,6 +72,8 @@ export default function Table() {
       },
       {
         header: 'Февраль',
+        size: 50,
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.february !== null
             ? `${row?.february?.hours}ч. (${row?.february?.percent}%)`
@@ -93,6 +99,7 @@ export default function Table() {
       },
       {
         header: 'Март',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.march !== null
             ? `${row?.march?.hours}ч. (${row?.march?.percent}%)`
@@ -118,6 +125,7 @@ export default function Table() {
       },
       {
         header: 'Апрель',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.april !== null
             ? `${row?.april?.hours}ч. (${row?.april?.percent}%)`
@@ -143,6 +151,7 @@ export default function Table() {
       },
       {
         header: 'Май',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.may !== null
             ? `${row?.may?.hours}ч. (${row?.may?.percent}%)`
@@ -168,6 +177,7 @@ export default function Table() {
       },
       {
         header: 'Июнь',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.june !== null
             ? `${row?.june?.hours}ч. (${row?.june?.percent}%)`
@@ -193,6 +203,7 @@ export default function Table() {
       },
       {
         header: 'Июль',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.july !== null
             ? `${row?.july?.hours}ч. (${row?.july?.percent}%)`
@@ -218,6 +229,7 @@ export default function Table() {
       },
       {
         header: 'Август',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.august !== null
             ? `${row?.august?.hours}ч. (${row?.august?.percent}%)`
@@ -243,6 +255,7 @@ export default function Table() {
       },
       {
         header: 'Сентябрь',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.september !== null
             ? `${row?.september?.hours}ч. (${row?.september?.percent}%)`
@@ -268,6 +281,7 @@ export default function Table() {
       },
       {
         header: 'Октябрь',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.october !== null
             ? `${row?.october?.hours}ч. (${row?.october?.percent}%)`
@@ -293,6 +307,7 @@ export default function Table() {
       },
       {
         header: 'Ноябрь',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.november !== null
             ? `${row?.november?.hours}ч. (${row?.november?.percent}%)`
@@ -318,6 +333,7 @@ export default function Table() {
       },
       {
         header: 'Декабрь',
+        enableColumnActions: false,
         accessorFn: (row) =>
           row.december !== null
             ? `${row?.december?.hours}ч. (${row?.december?.percent}%)`
@@ -346,15 +362,37 @@ export default function Table() {
   );
 
   return (
-    <Box sx={{ width: '1200px', margin: '0 auto' }}>
+    <Box sx={{ width: '90%', margin: '0 auto' }}>
       <Typography variant='h4' gutterBottom sx={{ mt: '50px' }}>
-        Сотрудники_общий_план
+        Сотрудники общий план
       </Typography>
       <MaterialReactTable
         columns={columns}
         data={data}
         enableStickyHeader
-        initialState={{ density: 'compact' }}
+        initialState={{
+          density: 'compact',
+          sorting: [{ id: 'name', desc: false }],
+        }}
+        muiTablePaginationProps={{
+          rowsPerPage: 25,
+          // showFirstButton: false,
+          // showLastButton: false,
+        }}
+        muiTableProps={{
+          sx: {
+            tableLayout: 'fixed',
+          },
+        }}
+        enableColumnFilters={false}
+        enableHiding={false}
+        enableDensityToggle={false}
+
+        // enableColumnActions={false}
+
+        // renderTopToolbar={() => {
+        //   <Typography> Create New Account</Typography>;
+        // }}
       />
     </Box>
   );
