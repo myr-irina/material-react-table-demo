@@ -385,7 +385,11 @@ export default function Table() {
         enableHiding={false}
         enableDensityToggle={false}
         renderTopToolbarCustomActions={() => {
-          return <Typography variant='h4'>Сотрудники общий план</Typography>;
+          return (
+            <Typography variant='h4' mb='15px'>
+              Сотрудники общий план
+            </Typography>
+          );
         }}
 
         // enableColumnActions={false}
