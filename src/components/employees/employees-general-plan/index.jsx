@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
-import data from './../../json/employees-general-plan.json';
 import { styled } from '@mui/material';
 
-import { getWorkingHoursPlan } from '../../utils/api-requests';
+import data from '../../../json/employees-general-plan.json';
 
-export default function Table() {
+import { getWorkingHoursPlan } from '../../../utils/api-requests';
+
+export default function EmployeesGeneralPlan() {
   // const [workingHours, setWorkingHours] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,17 +22,12 @@ export default function Table() {
   // }, []);
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
-    backgroundColor: customColor,
     borderRadius: '0.25rem',
-    color: 'black',
+    color: 'white',
     maxWidth: '4.4rem',
     padding: '0.2rem',
     display: 'flex',
     flexDirection: 'column',
-  }));
-
-  const StyledBoxWithNoData = styled(Box)(({ theme }) => ({
-    backgroundColor: 'transparent',
   }));
 
   const columns = useMemo(
@@ -387,7 +383,7 @@ export default function Table() {
         renderTopToolbarCustomActions={() => {
           return (
             <Typography variant='h4' mb='15px'>
-              Сотрудники общий план
+              Сотрудники общий факт
             </Typography>
           );
         }}

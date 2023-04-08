@@ -1,9 +1,11 @@
 import React from 'react';
-import EmployeePlan from './components/table';
-import TableFact from './components/table-fact/table-fact';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
+
+import NavBar from './components/navbar';
+import EmployeesGeneralPlan from './components/employees/employees-general-plan';
+import EmployeesGeneralFact from './components/employees/employees-general-fact';
 
 export default function App() {
   return (
@@ -11,8 +13,10 @@ export default function App() {
       <CssBaseline />
       <Container maxWidth='1280px'>
         <Routes>
-          <Route path='/' element={<EmployeePlan />} />
-          {/* <Route path='/fact' element={<TableFact />} /> */}
+          <Route path='/' element={<NavBar />}>
+            <Route path='/employees-plan' element={<EmployeesGeneralPlan />} />
+            <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
+          </Route>
         </Routes>
       </Container>
     </>
