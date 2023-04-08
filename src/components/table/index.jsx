@@ -362,10 +362,7 @@ export default function Table() {
   );
 
   return (
-    <Box sx={{ width: '90%', margin: '0 auto' }}>
-      <Typography variant='h4' gutterBottom sx={{ mt: '50px' }}>
-        Сотрудники общий план
-      </Typography>
+    <Box sx={{ width: '90%', margin: '20px auto' }}>
       <MaterialReactTable
         columns={columns}
         data={data}
@@ -373,11 +370,11 @@ export default function Table() {
         initialState={{
           density: 'compact',
           sorting: [{ id: 'name', desc: false }],
+          pagination: { pageSize: 25, pageIndex: 0 },
         }}
         muiTablePaginationProps={{
-          rowsPerPage: 25,
-          // showFirstButton: false,
-          // showLastButton: false,
+          rowsPerPageOptions: [5, 10, 20, 25],
+          labelRowsPerPage: 'Количество видимых строк',
         }}
         muiTableProps={{
           sx: {
@@ -387,6 +384,9 @@ export default function Table() {
         enableColumnFilters={false}
         enableHiding={false}
         enableDensityToggle={false}
+        renderTopToolbarCustomActions={() => {
+          return <Typography variant='h4'>Сотрудники общий план</Typography>;
+        }}
 
         // enableColumnActions={false}
 

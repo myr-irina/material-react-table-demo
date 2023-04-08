@@ -11,7 +11,7 @@ export default function App() {
       <CssBaseline />
       <Container maxWidth='1280px'>
         <Routes>
-          <Route path='/plan' element={<EmployeePlan />} />
+          <Route path='/' element={<EmployeePlan />} />
           {/* <Route path='/fact' element={<TableFact />} /> */}
         </Routes>
       </Container>
