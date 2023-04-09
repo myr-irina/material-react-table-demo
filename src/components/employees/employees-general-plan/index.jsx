@@ -40,8 +40,8 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Январь',
+        id: 'january',
         enableColumnActions: false,
-        size: 50,
         accessorFn: (row) =>
           row.january !== null
             ? `${row?.january?.hours}ч. (${row?.january?.percent}%)`
@@ -68,7 +68,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Февраль',
-        size: 50,
+        id: 'february',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.february !== null
@@ -95,6 +95,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Март',
+        id: 'march',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.march !== null
@@ -121,6 +122,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Апрель',
+        id: 'april',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.april !== null
@@ -147,6 +149,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Май',
+        id: 'may',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.may !== null
@@ -173,6 +176,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Июнь',
+        id: 'june',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.june !== null
@@ -199,6 +203,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Июль',
+        id: 'july',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.july !== null
@@ -225,6 +230,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Август',
+        id: 'august',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.august !== null
@@ -251,6 +257,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Сентябрь',
+        id: 'september',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.september !== null
@@ -277,6 +284,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Октябрь',
+        id: 'october',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.october !== null
@@ -303,6 +311,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Ноябрь',
+        id: 'november',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.november !== null
@@ -329,6 +338,7 @@ export default function EmployeesGeneralPlan() {
       },
       {
         header: 'Декабрь',
+        id: 'december',
         enableColumnActions: false,
         accessorFn: (row) =>
           row.december !== null
@@ -383,7 +393,7 @@ export default function EmployeesGeneralPlan() {
         renderTopToolbarCustomActions={() => {
           return (
             <Typography variant='h4' mb='15px'>
-              Сотрудники общий факт
+              Сотрудники общий план
             </Typography>
           );
         }}

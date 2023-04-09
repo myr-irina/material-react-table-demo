@@ -18,11 +18,19 @@ function NavBar() {
         }}
       >
         <Link mr={2} component={RouterLink} to='/employees-plan'>
-          Employees general plan
+          Сотрудники общий план
         </Link>
         <br />
-        <Link component={RouterLink} to='/employees-fact'>
-          Employees fact
+        <Link mr={2} component={RouterLink} to='/employees-fact'>
+          Сотрудники общий факт
+        </Link>
+        <br />
+        <Link mr={2} component={RouterLink} to='/employees-project-plan'>
+          Сотрудники по проектам план
+        </Link>
+        <br />
+        <Link mr={2} component={RouterLink} to='/employees-project-fact'>
+          Сотрудники по проектам факт
         </Link>
         <br />
       </Box>

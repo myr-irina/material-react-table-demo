@@ -381,7 +381,7 @@ export default function EmployeesGeneralFact() {
         renderTopToolbarCustomActions={() => {
           return (
             <Typography variant='h4' mb='15px'>
-              Сотрудники общий план
+              Сотрудники общий факт
             </Typography>
           );
         }}
