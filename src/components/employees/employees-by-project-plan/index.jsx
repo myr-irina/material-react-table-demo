@@ -27,14 +27,38 @@ function EmployeesByProjectPlan() {
 
   const columns = [
     {
-      accessorFn: ({ january }) =>
-        `${january['Alexander Shimchuk']['AUK INT'].hours}ч. (${january['Alexander Shimchuk']['AUK INT'].percent}%)`,
+      // accessorFn: ({ january }) =>
+      //   `${january['Alexander Shimchuk']['AUK INT'].hours}ч. (${january['Alexander Shimchuk']['AUK INT'].percent}%)`,
       header: 'Январь',
     },
   ];
 
   return (
-    <MaterialReactTable columns={columns} data={employeesByProjectPlanData} />
+    <MaterialReactTable
+      columns={columns}
+      data={employeesByProjectPlanData}
+      renderDetailPanel={({ row }) => (
+        <Box
+          sx={{
+            display: 'grid',
+            margin: 'auto',
+            gridTemplateColumns: 'repeat(5, 1fr)',
+            width: '100%',
+          }}
+        >
+          {console.log(row.original.january)}
+          <Typography>
+            AUK INT:{' '}
+            {`${row.original.january['Alexander Shimchuk']['AUK INT'].hours}ч. (${row.original.january['Alexander Shimchuk']['AUK INT'].percent}%)`}
+          </Typography>
+          <Typography>33D: {row.original.city}</Typography>
+          <Typography>INT: {row.original.state}</Typography>
+          <Typography>LIA: {row.original.country}</Typography>
+          <Typography>amount_values: {row.original.country}</Typography>
+        </Box>
+      )}
+      positionExpandColumn='last'
+    />
   );
 }
 
