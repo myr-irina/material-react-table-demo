@@ -5,56 +5,52 @@ import { Box, Typography } from '@mui/material';
 import { employeesByProjectPlanData } from '../../../json/employees-by-project-plan';
 
 function EmployeesByProjectPlan() {
-  // console.log(data.january['Alexander Shimchuk']['AUK INT'].hours);
-  // const preparedData = Object.entries(data);
-  // console.log({ preparedData });
+  const preparedData = [];
 
-  // const array = [];
-  // for (let i = 0; i < data.length; i++) array.push(Object.values(data[i]));
-  // console.log({ array });
+  for (let key in employeesByProjectPlanData) {
+    for (let key2 in employeesByProjectPlanData[key]) {
+      preparedData.push({ [key2]: employeesByProjectPlanData[key][key2] });
+    }
+  }
 
-  const headers = employeesByProjectPlanData.map((item) => {
-    // return item.january.common_amounts;
-    return Object.keys(item.january.common_amounts);
-  });
-
-  const headers2 = [...new Set(headers)];
-  // const headers = Object.keys(
-  //   employeesByProjectPlanData.january['Alexander Shimchuk']['common_amounts']
-  // );
-
-  console.log({ headers2 });
+  console.log({ preparedData });
 
   const columns = [
     {
-      // accessorFn: ({ january }) =>
-      //   `${january['Alexander Shimchuk']['AUK INT'].hours}ч. (${january['Alexander Shimchuk']['AUK INT'].percent}%)`,
-      header: 'Январь',
+      header: 'Сотрудники',
+      // accessorFn: (row) => row.january,
     },
   ];
 
   return (
     <MaterialReactTable
       columns={columns}
-      data={employeesByProjectPlanData}
+      data={preparedData}
+      enableStickyHeader
       renderDetailPanel={({ row }) => (
         <Box
           sx={{
             display: 'grid',
             margin: 'auto',
-            gridTemplateColumns: 'repeat(5, 1fr)',
+            gridTemplateColumns: 'repeat(10, 1fr)',
             width: '100%',
           }}
         >
-          {console.log(row.original.january)}
-          <Typography>
-            AUK INT:{' '}
-            {`${row.original.january['Alexander Shimchuk']['AUK INT'].hours}ч. (${row.original.january['Alexander Shimchuk']['AUK INT'].percent}%)`}
-          </Typography>
-          <Typography>33D: {row.original.city}</Typography>
-          <Typography>INT: {row.original.state}</Typography>
-          <Typography>LIA: {row.original.country}</Typography>
-          <Typography>amount_values: {row.original.country}</Typography>
+          {Object.keys(row.original).map((key) => {
+            return <Typography>{`${key}`}</Typography>;
+          })}
+
+          {/* {console.log(
+            Object.keys(row.original).map((key) => {
+              return console.log(Object.keys(row.original[key]));
+            })
+          )} */}
+
+          {Object.keys(row.original).map((key) => {
+            return (
+              <Typography>{`${Object.keys(row.original[key])}`}</Typography>
+            );
+          })}
         </Box>
       )}
       positionExpandColumn='last'

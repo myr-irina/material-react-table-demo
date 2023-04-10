@@ -8,18 +8,18 @@ import data from '../../../json/employees-general-plan.json';
 import { getWorkingHoursPlan } from '../../../utils/api-requests';
 
 export default function EmployeesGeneralPlan() {
-  // const [workingHours, setWorkingHours] = useState([]);
+  const [workingHours, setWorkingHours] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   getWorkingHoursPlan()
-  //     .then((data) => {
-  //       setWorkingHours(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    getWorkingHoursPlan()
+      .then((data) => {
+        setWorkingHours(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
@@ -371,7 +371,7 @@ export default function EmployeesGeneralPlan() {
     <Box sx={{ margin: '20px auto' }}>
       <MaterialReactTable
         columns={columns}
-        data={data}
+        data={workingHours}
         enableStickyHeader
         initialState={{
           density: 'compact',
