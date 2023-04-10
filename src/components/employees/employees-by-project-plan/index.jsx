@@ -2,55 +2,39 @@ import React, { useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 
-import data from './../../../json/employees-by-project-plan.json';
+import { employeesByProjectPlanData } from '../../../json/employees-by-project-plan';
 
 function EmployeesByProjectPlan() {
-  console.log({ data });
-  const columns = useMemo(
-    () => [
-      {
-        header: 'Сотрудники',
-        accessorFn: (row) =>
-          row.january !== null
-            ? `${row?.january?.hours}ч. (${row?.january?.percent}%)`
-            : '',
-      },
-      {
-        accessorKey: 'firstName',
-        header: 'First Name',
-      },
-      {
-        accessorKey: 'middleName',
-        header: 'Middle Name',
-      },
-      {
-        accessorKey: 'lastName',
-        header: 'Last Name',
-      },
-    ],
-    []
-  );
+  // console.log(data.january['Alexander Shimchuk']['AUK INT'].hours);
+  // const preparedData = Object.entries(data);
+  // console.log({ preparedData });
+
+  // const array = [];
+  // for (let i = 0; i < data.length; i++) array.push(Object.values(data[i]));
+  // console.log({ array });
+
+  const headers = employeesByProjectPlanData.map((item) => {
+    // return item.january.common_amounts;
+    return Object.keys(item.january.common_amounts);
+  });
+
+  const headers2 = [...new Set(headers)];
+  // const headers = Object.keys(
+  //   employeesByProjectPlanData.january['Alexander Shimchuk']['common_amounts']
+  // );
+
+  console.log({ headers2 });
+
+  const columns = [
+    {
+      accessorFn: ({ january }) =>
+        `${january['Alexander Shimchuk']['AUK INT'].hours}ч. (${january['Alexander Shimchuk']['AUK INT'].percent}%)`,
+      header: 'Январь',
+    },
+  ];
 
   return (
-    <MaterialReactTable
-      columns={columns}
-      data={data}
-      renderDetailPanel={({ row }) => (
-        <Box
-          sx={{
-            display: 'grid',
-            margin: 'auto',
-            gridTemplateColumns: '1fr 1fr',
-            width: '100%',
-          }}
-        >
-          <Typography>Address: {row.original.address}</Typography>
-          <Typography>City: {row.original.city}</Typography>
-          <Typography>State: {row.original.state}</Typography>
-          <Typography>Country: {row.original.country}</Typography>
-        </Box>
-      )}
-    />
+    <MaterialReactTable columns={columns} data={employeesByProjectPlanData} />
   );
 }
 

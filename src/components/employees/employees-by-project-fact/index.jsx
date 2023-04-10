@@ -2,10 +2,9 @@ import React, { useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 
-import data from './../../../json/employees-by-project-plan.json';
+// import data from './../../../json/employees-by-project-plan.json';
 
 function EmployeesByProjectFact() {
-  console.log({ data });
   const columns = useMemo(
     () => [
       {
@@ -32,7 +31,7 @@ function EmployeesByProjectFact() {
   return (
     <MaterialReactTable
       columns={columns}
-      data={data}
+      // data={data}
       renderDetailPanel={({ row }) => (
         <Box
           sx={{

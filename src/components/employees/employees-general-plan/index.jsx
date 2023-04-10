@@ -368,7 +368,7 @@ export default function EmployeesGeneralPlan() {
   );
 
   return (
-    <Box sx={{ width: '90%', margin: '20px auto' }}>
+    <Box sx={{ margin: '20px auto' }}>
       <MaterialReactTable
         columns={columns}
         data={data}

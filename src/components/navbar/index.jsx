@@ -1,41 +1,60 @@
 import * as React from 'react';
 import { Link as RouterLink, Outlet } from 'react-router-dom';
 
-import { Box } from '@mui/system';
-import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
 
-function NavBar() {
+export default function NavBar() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          typography: 'body1',
-          my: '20px',
-        }}
+    <Box sx={{ width: '90%', margin: '0 auto' }}>
+      <Button
+        id='demo-positioned-button'
+        aria-controls={open ? 'demo-positioned-menu' : undefined}
+        aria-haspopup='true'
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
       >
-        <Link mr={2} component={RouterLink} to='/employees-plan'>
+        Список таблиц
+      </Button>
+      <Menu
+        id='demo-positioned-menu'
+        aria-labelledby='demo-positioned-button'
+        anchorEl={anchorEl}
+        open={open}
+        onClick={handleClose}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <MenuItem
+          onClick={handleClose}
+          component={RouterLink}
+          to={'/employees-plan'}
+        >
           Сотрудники общий план
-        </Link>
-        <br />
-        <Link mr={2} component={RouterLink} to='/employees-fact'>
+        </MenuItem>
+        <MenuItem component={RouterLink} to={'/employees-fact'}>
           Сотрудники общий факт
-        </Link>
-        <br />
-        <Link mr={2} component={RouterLink} to='/employees-project-plan'>
+        </MenuItem>
+        <MenuItem component={RouterLink} to={'/employees-project-plan'}>
           Сотрудники по проектам план
-        </Link>
-        <br />
-        <Link mr={2} component={RouterLink} to='/employees-project-fact'>
+        </MenuItem>
+        <MenuItem component={RouterLink} to={'/employees-project-fact'}>
           Сотрудники по проектам факт
-        </Link>
-        <br />
-      </Box>
+        </MenuItem>
+      </Menu>
       <Outlet />
-    </>
+    </Box>
   );
 }
-export default NavBar;
