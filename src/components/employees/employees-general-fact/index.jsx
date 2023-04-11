@@ -6,6 +6,39 @@ import { styled } from '@mui/material';
 import data from '../../../json/employees-general-fact.json';
 
 export default function EmployeesGeneralFact() {
+  console.log(
+    data.map((item) =>
+      Object.entries(item).map((item) => item[1] !== 0 && item[1])
+    )
+  );
+
+  const isObject = (item) => item instanceof Object;
+
+  console.log([
+    Object.values(data).map((item) => Object.values(item)),
+    // .reduce((a, b) => a.concat(b), []),
+  ]);
+
+  const result = Object.keys(data).map((key) => [key, data[key]]);
+  console.log(result);
+
+  //   if (
+  //     typeof yourVariable === 'object' &&
+  //     !Array.isArray(yourVariable) &&
+  //     yourVariable !== null
+  // ) {
+  //     executeSomeCode();
+  // }
+
+  // const getAllValues = (val) =>
+  //   val instanceof Object ? Object.values(val).flatMap(getAllValues) : [val];
+
+  // const valuesFromObj = getAllValues(data);
+  // console.log(
+  //   valuesFromObj.map((item) =>
+  //     item !== null && typeof item !== 'string' ? item : null
+  //   )
+  // );
   // const [workingHours, setWorkingHours] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,6 +51,21 @@ export default function EmployeesGeneralFact() {
   //       console.log(error);
   //     });
   // }, []);
+
+  function pickHex(color1, color2, weight) {
+    var w1 = weight;
+    var w2 = 1 - w1;
+    var rgb = [
+      Math.round(color1[0] * w1 + color2[0] * w2),
+      Math.round(color1[1] * w1 + color2[1] * w2),
+      Math.round(color1[2] * w1 + color2[2] * w2),
+    ];
+    return rgb;
+  }
+
+  const green = [0, 255, 0];
+  const white = [255, 255, 255];
+  const red = [255, 0, 0];
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',

@@ -13,6 +13,19 @@ import { employeesByProjectPlanData } from '../../../json/employees-by-project-p
 
 import data from './../../../json/employees-by-project-plan.json';
 
+const TABLE_HEAD = [
+  'Сотрудник',
+  'GOR',
+  'PSB-17',
+  'AUK INT',
+  '33D',
+  'INT',
+  'LIA',
+  'TEH',
+  'SRP',
+  'Domex 3D',
+  'Сумма',
+];
 function EmployeesByProjectPlan() {
   const preparedData = [];
 
@@ -21,8 +34,7 @@ function EmployeesByProjectPlan() {
       preparedData.push({ [key2]: employeesByProjectPlanData[key][key2] });
     }
   }
-
-  console.log({ preparedData });
+  console.log(Object.values(preparedData).map((item) => Object.values(item)));
 
   const columns = [
     {
@@ -38,48 +50,57 @@ function EmployeesByProjectPlan() {
       enableStickyHeader
       renderDetailPanel={({ row }) => (
         <Box>
-          {/* {console.log(
-            Object.values(row.original).map((item) =>
-              Object.values(item).reduce((acc, curr) =>
-                Object.keys(curr).map((item) => acc.push(item))
-              )
-            ),
-            []
-          )} */}
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Сотрудники</TableCell>
-                <TableCell>Сотрудники</TableCell>
+                {TABLE_HEAD.map((cell, ind) => (
+                  <TableCell key={ind}>{cell}</TableCell>
+                ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                {Object.values(row.original).map((item) =>
-                  Object.keys(item).map((item, index) => (
-                    <TableCell key={index}>{item}</TableCell>
-                  ))
-                )}
+              {Object.values(row.original).map((data) => {
+                const keys = Object.keys(data);
+                const values = Object.values(data);
+                let dataResult = [
+                  ...Array(values.length).fill([
+                    ...Array(TABLE_HEAD.length - 2).fill(''),
+                  ]),
+                ];
 
-                {Object.values(row?.original).map((item) =>
-                  Object.values(item)?.map((item) =>
-                    Object.values(item)?.map((item, index) => {
-                      return item !== null || item !== undefined ? (
-                        <TableCell key={index}>
-                          {`${Object?.values(item)[0]} ч. ${
-                            Object?.values(item)[1]
-                          } %`}
-                        </TableCell>
-                      ) : null;
-                    })
-                  )
-                )}
-              </TableRow>
+                dataResult = dataResult.map((row, i) => [keys[i], ...row]);
+                // console.log(dataResult);
+                values.forEach((projects, ind) => {
+                  Object.entries(projects).forEach(([name, val]) => {
+                    const index = TABLE_HEAD.indexOf(name);
+                    if (index !== -1) {
+                      dataResult[ind].splice(index, 1, val);
+                    }
+
+                    if (name === 'amount_values') {
+                      dataResult[ind].push(val);
+                    }
+                  });
+                });
+
+                // console.log({ dataResult });
+
+                return dataResult.map((row, ind) => (
+                  <TableRow key={ind}>
+                    {/* {console.log({ row })} */}
+                    <TableCell>{row[0]}</TableCell>
+                    {row.map((cell, ind) => (
+                      <TableCell key={ind}>{cell.hours}</TableCell>
+                    ))}
+                    <TableCell>{row[row.length - 2].hours}</TableCell>
+                  </TableRow>
+                ));
+              })}
             </TableBody>
           </Table>
         </Box>
       )}
-      positionExpandColumn='last'
+      // positionExpandColumn='last'
     />
   );
 }
