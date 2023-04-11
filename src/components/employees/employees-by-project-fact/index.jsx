@@ -17,8 +17,8 @@ function EmployeesByProjectFact() {
 
   const columns = [
     {
-      header: 'Сотрудники',
-      // accessorFn: (row) => row.january,
+      header: 'Month',
+      accessorFn: (row) => Object.keys(row),
     },
   ];
 

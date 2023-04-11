@@ -1,8 +1,17 @@
 import React, { useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
 import { employeesByProjectPlanData } from '../../../json/employees-by-project-plan';
+
+import data from './../../../json/employees-by-project-plan.json';
 
 function EmployeesByProjectPlan() {
   const preparedData = [];
@@ -17,10 +26,25 @@ function EmployeesByProjectPlan() {
 
   const columns = [
     {
-      header: 'Сотрудники',
-      // accessorFn: (row) => row.january,
+      header: 'Month',
+      accessorFn: (row) => Object.keys(row),
     },
   ];
+
+  function flatten(obj) {
+    const result = {};
+    for (const key of Object.keys(obj)) {
+      if (typeof obj[key] === 'object') {
+        const nested = flatten(obj[key]);
+        for (const nestedKey of Object.keys(nested)) {
+          result[`${key}.${nestedKey}`] = nested[nestedKey];
+        }
+      } else {
+        result[key] = obj[key];
+      }
+    }
+    return result;
+  }
 
   return (
     <MaterialReactTable
@@ -28,29 +52,22 @@ function EmployeesByProjectPlan() {
       data={preparedData}
       enableStickyHeader
       renderDetailPanel={({ row }) => (
-        <Box
-          sx={{
-            display: 'grid',
-            margin: 'auto',
-            gridTemplateColumns: 'repeat(10, 1fr)',
-            width: '100%',
-          }}
-        >
-          {Object.keys(row.original).map((key) => {
-            return <Typography>{`${key}`}</Typography>;
-          })}
-
-          {/* {console.log(
-            Object.keys(row.original).map((key) => {
-              return console.log(Object.keys(row.original[key]));
-            })
-          )} */}
-
-          {Object.keys(row.original).map((key) => {
-            return (
-              <Typography>{`${Object.keys(row.original[key])}`}</Typography>
-            );
-          })}
+        <Box>
+          {/* {console.log(Object.values(row.original))} */}
+          <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+            <TableHead>
+              <TableRow></TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                {Object.values(row.original).map((row, index) => {
+                  return Object.keys(row).map((item, index) => {
+                    return <TableCell key={index}>{item}</TableCell>;
+                  });
+                })}
+              </TableRow>
+            </TableBody>
+          </Table>
         </Box>
       )}
       positionExpandColumn='last'
