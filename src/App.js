@@ -15,7 +15,7 @@ export default function App() {
       <CssBaseline />
       <Container maxWidth='1280px'>
         <Routes>
-          <Route path='/' element={<NavBar />}>
+          <Route element={<NavBar />}>
             <Route path='/employees-plan' element={<EmployeesGeneralPlan />} />
             <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
             <Route

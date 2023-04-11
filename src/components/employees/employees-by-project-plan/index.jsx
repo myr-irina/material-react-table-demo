@@ -15,15 +15,26 @@ import data from './../../../json/employees-by-project-plan.json';
 
 const TABLE_HEAD = [
   'Сотрудник',
-  'GOR',
-  'PSB-17',
   'AUK INT',
+  'LIA',
   '33D',
   'INT',
-  'LIA',
+  'PSB-17',
   'TEH',
   'SRP',
+  'GOR',
   'Domex 3D',
+  'OSL',
+  'BRK',
+  'HYD2.1',
+  'Отпуск',
+  'REN-3',
+  'REN-2',
+  'PSB-6 Фасады ЦОД',
+  'VOL',
+  'NEG',
+  'TNK',
+  'PSB-16',
   'Сумма',
 ];
 function EmployeesByProjectPlan() {
@@ -34,7 +45,9 @@ function EmployeesByProjectPlan() {
       preparedData.push({ [key2]: employeesByProjectPlanData[key][key2] });
     }
   }
-  console.log(Object.values(preparedData).map((item) => Object.values(item)));
+  // console.log(
+  //   Object.values(preparedData).map((key) => [key, preparedData[key]])
+  // );
 
   const columns = [
     {
@@ -69,7 +82,7 @@ function EmployeesByProjectPlan() {
                 ];
 
                 dataResult = dataResult.map((row, i) => [keys[i], ...row]);
-                // console.log(dataResult);
+
                 values.forEach((projects, ind) => {
                   Object.entries(projects).forEach(([name, val]) => {
                     const index = TABLE_HEAD.indexOf(name);
@@ -83,16 +96,20 @@ function EmployeesByProjectPlan() {
                   });
                 });
 
-                // console.log({ dataResult });
-
                 return dataResult.map((row, ind) => (
                   <TableRow key={ind}>
-                    {/* {console.log({ row })} */}
                     <TableCell>{row[0]}</TableCell>
-                    {row.map((cell, ind) => (
-                      <TableCell key={ind}>{cell.hours}</TableCell>
-                    ))}
-                    <TableCell>{row[row.length - 2].hours}</TableCell>
+                    {row
+                      .splice(1)
+                      .map(
+                        (cell, ind) =>
+                          cell !== null && (
+                            <TableCell key={ind}>
+                              {cell && `${cell?.hours}ч. (${cell?.percent}%)`}
+                            </TableCell>
+                          )
+                      )}
+                    <TableCell>{row[row.length - 1].hours}</TableCell>
                   </TableRow>
                 ));
               })}
@@ -100,7 +117,7 @@ function EmployeesByProjectPlan() {
           </Table>
         </Box>
       )}
-      // positionExpandColumn='last'
+      positionExpandColumn='last'
     />
   );
 }
