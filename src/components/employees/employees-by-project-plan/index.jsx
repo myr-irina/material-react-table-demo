@@ -31,21 +31,6 @@ function EmployeesByProjectPlan() {
     },
   ];
 
-  function flatten(obj) {
-    const result = {};
-    for (const key of Object.keys(obj)) {
-      if (typeof obj[key] === 'object') {
-        const nested = flatten(obj[key]);
-        for (const nestedKey of Object.keys(nested)) {
-          result[`${key}.${nestedKey}`] = nested[nestedKey];
-        }
-      } else {
-        result[key] = obj[key];
-      }
-    }
-    return result;
-  }
-
   return (
     <MaterialReactTable
       columns={columns}
@@ -53,18 +38,42 @@ function EmployeesByProjectPlan() {
       enableStickyHeader
       renderDetailPanel={({ row }) => (
         <Box>
-          {/* {console.log(Object.values(row.original))} */}
-          <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+          {/* {console.log(
+            Object.values(row.original).map((item) =>
+              Object.values(item).reduce((acc, curr) =>
+                Object.keys(curr).map((item) => acc.push(item))
+              )
+            ),
+            []
+          )} */}
+          <Table>
             <TableHead>
-              <TableRow></TableRow>
+              <TableRow>
+                <TableCell>Сотрудники</TableCell>
+                <TableCell>Сотрудники</TableCell>
+              </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
-                {Object.values(row.original).map((row, index) => {
-                  return Object.keys(row).map((item, index) => {
-                    return <TableCell key={index}>{item}</TableCell>;
-                  });
-                })}
+                {Object.values(row.original).map((item) =>
+                  Object.keys(item).map((item, index) => (
+                    <TableCell key={index}>{item}</TableCell>
+                  ))
+                )}
+
+                {Object.values(row?.original).map((item) =>
+                  Object.values(item)?.map((item) =>
+                    Object.values(item)?.map((item, index) => {
+                      return item !== null || item !== undefined ? (
+                        <TableCell key={index}>
+                          {`${Object?.values(item)[0]} ч. ${
+                            Object?.values(item)[1]
+                          } %`}
+                        </TableCell>
+                      ) : null;
+                    })
+                  )
+                )}
               </TableRow>
             </TableBody>
           </Table>
