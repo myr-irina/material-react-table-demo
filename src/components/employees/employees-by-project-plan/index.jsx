@@ -73,6 +73,69 @@ function EmployeesByProjectPlan() {
       header: 'Month',
       accessorFn: (row) => Object.keys(row),
     },
+    {
+      header: 'AUK INT',
+    },
+    {
+      header: 'LIA',
+    },
+    {
+      header: '33D',
+    },
+    {
+      header: 'INT',
+    },
+    {
+      header: 'PSB-17',
+    },
+    {
+      header: 'TEH',
+    },
+    {
+      header: 'SRP',
+    },
+    {
+      header: 'GOR',
+    },
+    {
+      header: 'Domex 3D',
+    },
+    {
+      header: 'OSL',
+    },
+    {
+      header: 'BRK',
+    },
+    {
+      header: 'HYD2.1',
+    },
+    {
+      header: 'Отпуск',
+    },
+    {
+      header: 'REN-3',
+    },
+    {
+      header: 'REN-2',
+    },
+    {
+      header: 'PSB-6 Фасады ЦОД',
+    },
+    {
+      header: 'VOL',
+    },
+    {
+      header: 'NEG',
+    },
+    {
+      header: 'TNK',
+    },
+    {
+      header: 'PSB-16',
+    },
+    {
+      header: 'Сумма',
+    },
   ];
 
   return (
