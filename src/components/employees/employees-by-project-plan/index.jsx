@@ -61,6 +61,16 @@ function EmployeesByProjectPlan() {
       columns={columns}
       data={preparedData}
       enableStickyHeader
+      enableColumnFilters={false}
+      enableHiding={false}
+      enableDensityToggle={false}
+      renderTopToolbarCustomActions={() => {
+        return (
+          <Typography variant='h5' mb='15px'>
+            Таблица рабочего времени (план по проектам)
+          </Typography>
+        );
+      }}
       renderDetailPanel={({ row }) => (
         <Box>
           <Table>
@@ -96,19 +106,33 @@ function EmployeesByProjectPlan() {
                   });
                 });
 
+                const buz = {
+                  fog: 'stack',
+                };
+
+                function showProps(obj) {
+                  let result = '';
+                  for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                      // result += obj[key] + '\n';
+                      result = `${obj[key]}ч. ${obj[key]}%`;
+                    }
+                  }
+                  return result;
+                }
+
                 return dataResult.map((row, ind) => (
                   <TableRow key={ind}>
                     <TableCell>{row[0]}</TableCell>
-                    {row
-                      .splice(1)
-                      .map(
-                        (cell, ind) =>
-                          cell !== null && (
-                            <TableCell key={ind}>
-                              {cell && `${cell?.hours}ч. (${cell?.percent}%)`}
-                            </TableCell>
-                          )
-                      )}
+                    {row.splice(1).map(
+                      (cell, ind) =>
+                        cell !== null && (
+                          <TableCell key={ind}>
+                            {cell && `${cell?.hours}ч. (${cell?.percent}%)`}
+                            {/* {showProps(cell)} */}
+                          </TableCell>
+                        )
+                    )}
                     <TableCell>{row[row.length - 1].hours}</TableCell>
                   </TableRow>
                 ));
@@ -117,7 +141,7 @@ function EmployeesByProjectPlan() {
           </Table>
         </Box>
       )}
-      positionExpandColumn='last'
+      // positionExpandColumn='last'
     />
   );
 }

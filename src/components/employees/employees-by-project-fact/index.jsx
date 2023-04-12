@@ -46,6 +46,16 @@ function EmployeesByProjectFact() {
       columns={columns}
       data={preparedData}
       enableStickyHeader
+      enableColumnFilters={false}
+      enableHiding={false}
+      enableDensityToggle={false}
+      renderTopToolbarCustomActions={() => {
+        return (
+          <Typography variant='h5' mb='15px'>
+            Таблица рабочего времени (факт по проектам)
+          </Typography>
+        );
+      }}
       renderDetailPanel={({ row }) => (
         <Box>
           <Table>

@@ -392,8 +392,8 @@ export default function EmployeesGeneralPlan() {
         enableDensityToggle={false}
         renderTopToolbarCustomActions={() => {
           return (
-            <Typography variant='h4' mb='15px'>
-              Сотрудники общий план
+            <Typography variant='h5' mb='15px'>
+              Таблица рабочего времени (общий план)
             </Typography>
           );
         }}

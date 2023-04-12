@@ -428,8 +428,8 @@ export default function EmployeesGeneralFact() {
         enableDensityToggle={false}
         renderTopToolbarCustomActions={() => {
           return (
-            <Typography variant='h4' mb='15px'>
-              Сотрудники общий факт
+            <Typography variant='h5' mb='15px'>
+              Таблица рабочего времени (общий факт)
             </Typography>
           );
         }}
