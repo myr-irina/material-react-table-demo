@@ -4,10 +4,12 @@ import { Box, Typography } from '@mui/material';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { styled } from '@mui/material/styles';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 
 import { employeesByProjectFactData } from './../../../json/employees-by-project-fact';
 
@@ -37,6 +39,17 @@ const TABLE_HEAD = [
   'PSB-16',
   'Сумма',
 ];
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
 function EmployeesByProjectFact() {
   const [projectFactHours, setProjectFactHours] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -202,7 +215,7 @@ function EmployeesByProjectFact() {
               }
 
               return dataResult.map((row, ind) => (
-                <TableRow key={ind}>
+                <StyledTableRow key={ind}>
                   <TableCell>{row[0]}</TableCell>
                   {row
                     .splice(1)
@@ -213,7 +226,7 @@ function EmployeesByProjectFact() {
                         )
                     )}
                   <TableCell>{row[row.length - 1].hours}</TableCell>
-                </TableRow>
+                </StyledTableRow>
               ));
             })}
           </TableBody>
