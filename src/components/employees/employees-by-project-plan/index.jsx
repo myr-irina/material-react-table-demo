@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
 import { employeesByProjectPlanData } from '../../../json/employees-by-project-plan';
 
@@ -84,69 +86,113 @@ function EmployeesByProjectPlan() {
     {
       header: 'Month',
       accessorFn: (row) => Object.keys(row),
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'AUK INT',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'LIA',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: '33D',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'INT',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'PSB-17',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'TEH',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'SRP',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'GOR',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'Domex 3D',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'OSL',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'BRK',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'HYD2.1',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'Отпуск',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'REN-3',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'REN-2',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'PSB-6 Фасады ЦОД',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'VOL',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'NEG',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'TNK',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'PSB-16',
+      size: 20,
+      enableColumnActions: false,
     },
     {
       header: 'Сумма',
+      size: 20,
+      enableColumnActions: false,
     },
   ];
 
@@ -158,6 +204,7 @@ function EmployeesByProjectPlan() {
       enableColumnFilters={false}
       enableHiding={false}
       enableDensityToggle={false}
+      // enableColumnResizing
       displayColumnDefOptions={{
         'mrt-row-expand': {
           // muiTableHeadCellProps: {
@@ -176,12 +223,12 @@ function EmployeesByProjectPlan() {
         );
       }}
       renderDetailPanel={({ row }) => (
-        <Box>
-          <Table>
+        <TableContainer className='container' component={Paper}>
+          <Table sx={{ minWidth: 650 }}>
             <TableHead>
               <TableRow>
                 {TABLE_HEAD.map((cell, ind) => (
-                  <TableCell key={ind}>
+                  <TableCell align='left' key={ind}>
                     <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>
                       {cell}
                     </Typography>
@@ -243,7 +290,7 @@ function EmployeesByProjectPlan() {
               })}
             </TableBody>
           </Table>
-        </Box>
+        </TableContainer>
       )}
       // positionExpandColumn='last'
     />

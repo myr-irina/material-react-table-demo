@@ -18,7 +18,7 @@ export default function NavBar() {
   };
 
   return (
-    <Box sx={{ width: '90%', margin: '0 auto' }}>
+    <Box sx={{ width: '100%', margin: '0 auto' }}>
       <Button
         sx={{ margin: '10px auto 20px' }}
         id='demo-positioned-button'

@@ -55,3 +55,49 @@ export const getBudgetPlan = () => {
     },
   });
 };
+
+export const getBudgetFact = () => {
+  return requestUrl(`${BASE_URL}/api/v1/tables/bdr/common/fact`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const getBudgetByProjectPlan = () => {
+  return requestUrl(`${BASE_URL}/api/v1/tables/bdr/by-projects/plan`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const getBudgetByProjectFact = () => {
+  return requestUrl(`${BASE_URL}/api/v1/tables/bdr/by-projects/fact`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+//by cash flow
+export const getCashFlowPlan = () => {
+  return requestUrl(`${BASE_URL}/api/v1/tables/dds/common/plan`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const getCashFlowFact = () => {
+  return requestUrl(`${BASE_URL}/api/v1/tables/dds/common/fact`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
