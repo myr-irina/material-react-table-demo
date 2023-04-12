@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -62,7 +62,11 @@ function EmployeesByProjectFact() {
             <TableHead>
               <TableRow>
                 {TABLE_HEAD.map((cell, ind) => (
-                  <TableCell key={ind}>{cell}</TableCell>
+                  <TableCell key={ind}>
+                    <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>
+                      {cell}
+                    </Typography>
+                  </TableCell>
                 ))}
               </TableRow>
             </TableHead>
@@ -77,7 +81,7 @@ function EmployeesByProjectFact() {
                 ];
 
                 dataResult = dataResult.map((row, i) => [keys[i], ...row]);
-                // console.log(dataResult);
+
                 values.forEach((projects, ind) => {
                   Object.entries(projects).forEach(([name, val]) => {
                     const index = TABLE_HEAD.indexOf(name);
@@ -91,16 +95,28 @@ function EmployeesByProjectFact() {
                   });
                 });
 
-                // console.log({ dataResult });
+                function showProps(obj) {
+                  let result = '';
+                  for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                      result = `${obj['hours']}ч. (${obj['percent']}%)`;
+                    }
+                  }
+                  return result;
+                }
 
                 return dataResult.map((row, ind) => (
                   <TableRow key={ind}>
-                    {/* {console.log({ row })} */}
                     <TableCell>{row[0]}</TableCell>
-                    {row.map((cell, ind) => (
-                      <TableCell key={ind}>{cell.hours}</TableCell>
-                    ))}
-                    <TableCell>{row[row.length - 2].hours}</TableCell>
+                    {row
+                      .splice(1)
+                      .map(
+                        (cell, ind) =>
+                          cell !== null && (
+                            <TableCell key={ind}>{showProps(cell)}</TableCell>
+                          )
+                      )}
+                    <TableCell>{row[row.length - 1].hours}</TableCell>
                   </TableRow>
                 ));
               })}

@@ -16,3 +16,12 @@ export const getWorkingHoursPlan = () => {
     },
   });
 };
+
+export const getProjectPlanHours = () => {
+  return requestUrl(`${BASE_URL}/api/v1/tables/staff/by-projects/plan`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};

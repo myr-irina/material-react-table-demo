@@ -1,7 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import { employeesByProjectPlanData } from '../../../json/employees-by-project-plan';
 
 import data from './../../../json/employees-by-project-plan.json';
+import { getProjectPlanHours } from '../../../utils/api-requests';
 
 const TABLE_HEAD = [
   'Сотрудник',
@@ -38,16 +38,35 @@ const TABLE_HEAD = [
   'Сумма',
 ];
 function EmployeesByProjectPlan() {
-  const preparedData = [];
+  const [projectPlanHours, setprojectPlanHours] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  for (let key in employeesByProjectPlanData) {
-    for (let key2 in employeesByProjectPlanData[key]) {
-      preparedData.push({ [key2]: employeesByProjectPlanData[key][key2] });
-    }
+  useEffect(() => {
+    getProjectPlanHours()
+      .then((data) => {
+        setprojectPlanHours(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // const preparedData = [];
+
+  // for (let key in employeesByProjectPlanData) {
+  //   for (let key2 in employeesByProjectPlanData[key]) {
+  //     preparedData.push({ [key2]: employeesByProjectPlanData[key][key2] });
+  //   }
+  // }
+
+  // console.log({ preparedData });
+
+  const preparedData2 = [];
+  for (let key in projectPlanHours) {
+    preparedData2.push({ [key]: projectPlanHours[key] });
   }
-  // console.log(
-  //   Object.values(preparedData).map((key) => [key, preparedData[key]])
-  // );
+
+  console.log({ preparedData2 });
 
   const columns = [
     {
@@ -59,11 +78,21 @@ function EmployeesByProjectPlan() {
   return (
     <MaterialReactTable
       columns={columns}
-      data={preparedData}
+      data={preparedData2}
       enableStickyHeader
       enableColumnFilters={false}
       enableHiding={false}
       enableDensityToggle={false}
+      displayColumnDefOptions={{
+        'mrt-row-expand': {
+          // muiTableHeadCellProps: {
+          //   align: 'right',
+          // },
+          // muiTableBodyCellProps: {
+          //   align: 'right',
+          // },
+        },
+      }}
       renderTopToolbarCustomActions={() => {
         return (
           <Typography variant='h5' mb='15px'>
@@ -77,7 +106,11 @@ function EmployeesByProjectPlan() {
             <TableHead>
               <TableRow>
                 {TABLE_HEAD.map((cell, ind) => (
-                  <TableCell key={ind}>{cell}</TableCell>
+                  <TableCell key={ind}>
+                    <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>
+                      {cell}
+                    </Typography>
+                  </TableCell>
                 ))}
               </TableRow>
             </TableHead>
@@ -106,16 +139,11 @@ function EmployeesByProjectPlan() {
                   });
                 });
 
-                const buz = {
-                  fog: 'stack',
-                };
-
                 function showProps(obj) {
                   let result = '';
                   for (let key in obj) {
                     if (obj.hasOwnProperty(key)) {
-                      // result += obj[key] + '\n';
-                      result = `${obj[key]}ч. ${obj[key]}%`;
+                      result = `${obj['hours']}ч. (${obj['percent']}%)`;
                     }
                   }
                   return result;
@@ -124,15 +152,14 @@ function EmployeesByProjectPlan() {
                 return dataResult.map((row, ind) => (
                   <TableRow key={ind}>
                     <TableCell>{row[0]}</TableCell>
-                    {row.splice(1).map(
-                      (cell, ind) =>
-                        cell !== null && (
-                          <TableCell key={ind}>
-                            {cell && `${cell?.hours}ч. (${cell?.percent}%)`}
-                            {/* {showProps(cell)} */}
-                          </TableCell>
-                        )
-                    )}
+                    {row
+                      .splice(1)
+                      .map(
+                        (cell, ind) =>
+                          cell !== null && (
+                            <TableCell key={ind}>{showProps(cell)}</TableCell>
+                          )
+                      )}
                     <TableCell>{row[row.length - 1].hours}</TableCell>
                   </TableRow>
                 ));
