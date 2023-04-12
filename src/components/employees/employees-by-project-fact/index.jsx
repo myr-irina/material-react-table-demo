@@ -91,8 +91,6 @@ function EmployeesByProjectFact() {
             </TableHead>
             <TableBody>
               {Object.values(row.original).map((data) => {
-                // const isEmptyObj = !Object.values(data).length;
-
                 if (data === null) return;
 
                 const keys = Object.keys(data);

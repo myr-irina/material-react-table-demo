@@ -116,6 +116,8 @@ function EmployeesByProjectPlan() {
             </TableHead>
             <TableBody>
               {Object.values(row.original).map((data) => {
+                if (data === null) return;
+
                 const keys = Object.keys(data);
                 const values = Object.values(data);
                 let dataResult = [
