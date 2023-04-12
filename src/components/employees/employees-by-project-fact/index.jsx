@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 
@@ -10,6 +10,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import { employeesByProjectFactData } from './../../../json/employees-by-project-fact';
+
+import { getProjectFactHours } from '../../../utils/api-requests';
 
 const TABLE_HEAD = [
   'Сотрудник',
@@ -25,6 +27,19 @@ const TABLE_HEAD = [
   'Сумма',
 ];
 function EmployeesByProjectFact() {
+  const [projectFactHours, setProjectFactHours] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    getProjectFactHours()
+      .then((data) => {
+        setProjectFactHours(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const preparedData = [];
 
   for (let key in employeesByProjectFactData) {
@@ -32,7 +47,11 @@ function EmployeesByProjectFact() {
       preparedData.push({ [key2]: employeesByProjectFactData[key][key2] });
     }
   }
-  console.log(Object.values(preparedData).map((item) => Object.values(item)));
+
+  const preparedData2 = [];
+  for (let key in projectFactHours) {
+    preparedData2.push({ [key]: projectFactHours[key] });
+  }
 
   const columns = [
     {
@@ -44,7 +63,7 @@ function EmployeesByProjectFact() {
   return (
     <MaterialReactTable
       columns={columns}
-      data={preparedData}
+      data={preparedData2}
       enableStickyHeader
       enableColumnFilters={false}
       enableHiding={false}
@@ -72,8 +91,13 @@ function EmployeesByProjectFact() {
             </TableHead>
             <TableBody>
               {Object.values(row.original).map((data) => {
+                // const isEmptyObj = !Object.values(data).length;
+
+                if (data === null) return;
+
                 const keys = Object.keys(data);
                 const values = Object.values(data);
+
                 let dataResult = [
                   ...Array(values.length).fill([
                     ...Array(TABLE_HEAD.length - 2).fill(''),
@@ -124,7 +148,7 @@ function EmployeesByProjectFact() {
           </Table>
         </Box>
       )}
-      // positionExpandColumn='last'
+      positionExpandColumn='last'
     />
   );
 }

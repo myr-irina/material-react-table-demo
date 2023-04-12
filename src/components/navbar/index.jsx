@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
+import { bottom } from '@popperjs/core';
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,13 +20,14 @@ export default function NavBar() {
   return (
     <Box sx={{ width: '90%', margin: '0 auto' }}>
       <Button
+        sx={{ margin: '10px auto 20px' }}
         id='demo-positioned-button'
         aria-controls={open ? 'demo-positioned-menu' : undefined}
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        Список таблиц
+        Таблицы рабочего времени
       </Button>
       <Menu
         id='demo-positioned-menu'

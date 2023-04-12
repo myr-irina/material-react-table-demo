@@ -38,13 +38,13 @@ const TABLE_HEAD = [
   'Сумма',
 ];
 function EmployeesByProjectPlan() {
-  const [projectPlanHours, setprojectPlanHours] = useState([]);
+  const [projectPlanHours, setProjectPlanHours] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getProjectPlanHours()
       .then((data) => {
-        setprojectPlanHours(data);
+        setProjectPlanHours(data);
       })
       .catch((error) => {
         console.log(error);
