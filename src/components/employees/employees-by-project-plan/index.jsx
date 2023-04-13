@@ -14,6 +14,8 @@ import { employeesByProjectPlanData } from '../../../json/employees-by-project-p
 import data from './../../../json/employees-by-project-plan.json';
 import { getProjectPlanHours } from '../../../utils/api-requests';
 
+import { parseTableData } from '../../../utils/json-parser';
+
 const TABLE_HEAD = [
   'Сотрудник',
   'AUK INT',
@@ -50,35 +52,35 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function EmployeesByProjectPlan() {
-  const [projectPlanHours, setProjectPlanHours] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [projectPlanHours, setProjectPlanHours] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    getProjectPlanHours()
-      .then((data) => {
-        setProjectPlanHours(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   getProjectPlanHours()
+  //     .then((data) => {
+  //       setProjectPlanHours(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
-  // const preparedData = [];
+  const preparedData = [];
 
-  // for (let key in employeesByProjectPlanData) {
-  //   for (let key2 in employeesByProjectPlanData[key]) {
-  //     preparedData.push({ [key2]: employeesByProjectPlanData[key][key2] });
-  //   }
-  // }
-
-  // console.log({ preparedData });
-
-  const preparedData2 = [];
-  for (let key in projectPlanHours) {
-    preparedData2.push({ [key]: projectPlanHours[key] });
+  for (let key in employeesByProjectPlanData) {
+    for (let key2 in employeesByProjectPlanData[key]) {
+      preparedData.push({ [key2]: employeesByProjectPlanData[key][key2] });
+    }
   }
 
-  console.log({ preparedData2 });
+  console.log(parseTableData(preparedData));
+
+  // const preparedData2 = [];
+  // for (let key in projectPlanHours) {
+  //   preparedData2.push({ [key]: projectPlanHours[key] });
+  // }
+
+  // console.log({ preparedData2 });
 
   const columns = [
     {
@@ -153,11 +155,45 @@ function EmployeesByProjectPlan() {
   return (
     <MaterialReactTable
       columns={columns}
-      data={preparedData2}
+      data={preparedData}
       enableStickyHeader
       enableColumnFilters={false}
       enableHiding={false}
       enableDensityToggle={false}
+      enableColumnActions={false}
+      muiTablePaperProps={{
+        sx: {
+          // maxWidth: '800px',
+          m: 'auto',
+        },
+      }}
+      muiTableHeadRowProps={{
+        sx: {
+          // maxWidth: '800px',
+        },
+      }}
+      muiTableHeadCellProps={{
+        sx: (theme) => ({
+          // background: 'rgba(52, 210, 235, 0.1)',
+          // borderRight: '1px solid rgba(224,224,224,1)',
+          // color: theme.palette.text.primary,
+
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          width: '50px',
+        }),
+      }}
+      muiTableBodyRowProps={{
+        sx: {
+          width: '50px',
+        },
+      }}
+      muiTableBodyCellProps={{
+        sx: {
+          width: '50px',
+        },
+      }}
+      // layoutMode='grid'
       displayColumnDefOptions={{
         'mrt-row-expand': {
           // muiTableHeadCellProps: {
@@ -193,6 +229,8 @@ function EmployeesByProjectPlan() {
               {Object.values(row.original).map((data) => {
                 if (data === null) return;
 
+                const COMMON_AMOUNTS = 'common_amounts';
+
                 const keys = Object.keys(data);
                 const values = Object.values(data);
                 let dataResult = [
@@ -201,11 +239,16 @@ function EmployeesByProjectPlan() {
                   ]),
                 ];
 
-                dataResult = dataResult.map((row, i) => [keys[i], ...row]);
+                console.log(keys);
+                dataResult = dataResult.map((row, i) => [
+                  ...[keys[i] !== COMMON_AMOUNTS ? keys[i] : []],
+                  ...row,
+                ]);
 
                 values.forEach((projects, ind) => {
                   Object.entries(projects).forEach(([name, val]) => {
                     const index = TABLE_HEAD.indexOf(name);
+
                     if (index !== -1) {
                       dataResult[ind].splice(index, 1, val);
                     }
@@ -228,12 +271,13 @@ function EmployeesByProjectPlan() {
 
                 return dataResult.map((row, ind) => (
                   <StyledTableRow key={ind}>
+                    {/* {console.log({ row })} */}
                     <TableCell>{row[0]}</TableCell>
                     {row
                       .splice(1)
                       .map(
                         (cell, ind) =>
-                          cell !== null && (
+                          cell && (
                             <TableCell key={ind}>{showProps(cell)}</TableCell>
                           )
                       )}
@@ -241,6 +285,22 @@ function EmployeesByProjectPlan() {
                   </StyledTableRow>
                 ));
               })}
+              <StyledTableRow>
+                <TableCell>Common Amounts</TableCell>
+                {TABLE_HEAD.map((columnName) => {
+                  const commonAmountsValues = Object.values(
+                    Object.values(row.original)[0].common_amounts
+                  );
+                  const commonAmountsKeys = Object.keys(
+                    Object.values(row.original)[0].common_amounts
+                  );
+
+                  const index = commonAmountsKeys.indexOf(columnName);
+                  if (index !== -1) {
+                    return <TableCell>{commonAmountsValues[index]}</TableCell>;
+                  }
+                })}
+              </StyledTableRow>
             </TableBody>
           </Table>
         </Box>

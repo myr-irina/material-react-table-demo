@@ -155,6 +155,18 @@ function EmployeesByProjectFact() {
       enableColumnFilters={false}
       enableHiding={false}
       enableDensityToggle={false}
+      enableColumnActions={false}
+      muiTableBodyRowProps={{
+        sx: {
+          height: '10px',
+        },
+      }}
+      muiTableBodyCellProps={{
+        sx: {
+          p: '2px 16px',
+        },
+      }}
+      // layoutMode='grid'
       renderTopToolbarCustomActions={() => {
         return (
           <Typography variant='h5' mb='15px'>
@@ -163,75 +175,98 @@ function EmployeesByProjectFact() {
         );
       }}
       renderDetailPanel={({ row }) => (
-        // <Box sx={{ width: '100%' }}>
-        <Table sx={{ width: '100%' }}>
-          <TableHead>
-            <TableRow>
-              {TABLE_HEAD.map((cell, ind) => (
-                <TableCell key={ind}>
-                  <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>
-                    {cell}
-                  </Typography>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {Object.values(row.original).map((data) => {
-              if (data === null) return;
+        <Box>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {TABLE_HEAD.map((cell, ind) => (
+                  <TableCell key={ind}>
+                    <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>
+                      {cell}
+                    </Typography>
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Object.values(row.original).map((data) => {
+                if (data === null) return;
 
-              const keys = Object.keys(data);
-              const values = Object.values(data);
+                const COMMON_AMOUNTS = 'common_amounts';
 
-              let dataResult = [
-                ...Array(values.length).fill([
-                  ...Array(TABLE_HEAD.length - 2).fill(''),
-                ]),
-              ];
+                const keys = Object.keys(data);
+                const values = Object.values(data);
+                let dataResult = [
+                  ...Array(values.length).fill([
+                    ...Array(TABLE_HEAD.length - 2).fill(''),
+                  ]),
+                ];
 
-              dataResult = dataResult.map((row, i) => [keys[i], ...row]);
+                console.log(keys);
+                dataResult = dataResult.map((row, i) => [
+                  ...[keys[i] !== COMMON_AMOUNTS ? keys[i] : []],
+                  ...row,
+                ]);
 
-              values.forEach((projects, ind) => {
-                Object.entries(projects).forEach(([name, val]) => {
-                  const index = TABLE_HEAD.indexOf(name);
-                  if (index !== -1) {
-                    dataResult[ind].splice(index, 1, val);
-                  }
+                values.forEach((projects, ind) => {
+                  Object.entries(projects).forEach(([name, val]) => {
+                    const index = TABLE_HEAD.indexOf(name);
 
-                  if (name === 'amount_values') {
-                    dataResult[ind].push(val);
-                  }
+                    if (index !== -1) {
+                      dataResult[ind].splice(index, 1, val);
+                    }
+
+                    if (name === 'amount_values') {
+                      dataResult[ind].push(val);
+                    }
+                  });
                 });
-              });
 
-              function showProps(obj) {
-                let result = '';
-                for (let key in obj) {
-                  if (obj.hasOwnProperty(key)) {
-                    result = `${obj['hours']}ч. (${obj['percent']}%)`;
+                function showProps(obj) {
+                  let result = '';
+                  for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                      result = `${obj['hours']}ч. (${obj['percent']}%)`;
+                    }
                   }
+                  return result;
                 }
-                return result;
-              }
 
-              return dataResult.map((row, ind) => (
-                <StyledTableRow key={ind}>
-                  <TableCell>{row[0]}</TableCell>
-                  {row
-                    .splice(1)
-                    .map(
-                      (cell, ind) =>
-                        cell !== null && (
-                          <TableCell key={ind}>{showProps(cell)}</TableCell>
-                        )
-                    )}
-                  <TableCell>{row[row.length - 1].hours}</TableCell>
-                </StyledTableRow>
-              ));
-            })}
-          </TableBody>
-        </Table>
-        // </Box>
+                return dataResult.map((row, ind) => (
+                  <StyledTableRow key={ind}>
+                    {/* {console.log({ row })} */}
+                    <TableCell>{row[0]}</TableCell>
+                    {row
+                      .splice(1)
+                      .map(
+                        (cell, ind) =>
+                          cell && (
+                            <TableCell key={ind}>{showProps(cell)}</TableCell>
+                          )
+                      )}
+                    <TableCell>{row[row.length - 1].hours}</TableCell>
+                  </StyledTableRow>
+                ));
+              })}
+              <StyledTableRow>
+                <TableCell>Common Amounts</TableCell>
+                {TABLE_HEAD.map((columnName) => {
+                  const commonAmountsValues = Object.values(
+                    Object.values(row.original)[0].common_amounts
+                  );
+                  const commonAmountsKeys = Object.keys(
+                    Object.values(row.original)[0].common_amounts
+                  );
+
+                  const index = commonAmountsKeys.indexOf(columnName);
+                  if (index !== -1) {
+                    return <TableCell>{commonAmountsValues[index]}</TableCell>;
+                  }
+                })}
+              </StyledTableRow>
+            </TableBody>
+          </Table>
+        </Box>
       )}
       // positionExpandColumn='last'
     />
