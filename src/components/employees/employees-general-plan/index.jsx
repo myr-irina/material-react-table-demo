@@ -404,7 +404,7 @@ export default function EmployeesGeneralPlan() {
         enableDensityToggle={false}
         renderTopToolbarCustomActions={() => {
           return (
-            <Typography variant='h5' mb='15px'>
+            <Typography variant='h5' my='15px'>
               Таблица рабочего времени (общий план)
             </Typography>
           );

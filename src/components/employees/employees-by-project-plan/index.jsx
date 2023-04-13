@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import MuiTableCell from '@mui/material/TableCell';
 
 import { employeesByProjectPlanData } from '../../../json/employees-by-project-plan';
 
@@ -73,8 +74,6 @@ function EmployeesByProjectPlan() {
     }
   }
 
-  console.log(parseTableData(preparedData));
-
   // const preparedData2 = [];
   // for (let key in projectPlanHours) {
   //   preparedData2.push({ [key]: projectPlanHours[key] });
@@ -86,69 +85,91 @@ function EmployeesByProjectPlan() {
     {
       header: 'Month',
       accessorFn: (row) => Object.keys(row),
+      size: 60,
     },
     {
       header: 'AUK INT',
+      size: 50,
     },
     {
       header: 'LIA',
+      size: 50,
     },
     {
       header: '33D',
+      size: 50,
     },
     {
       header: 'INT',
+      size: 50,
     },
     {
       header: 'PSB-17',
+      size: 50,
     },
     {
       header: 'TEH',
+      size: 50,
     },
     {
       header: 'SRP',
+      size: 50,
     },
     {
       header: 'GOR',
+      size: 30,
     },
     {
       header: 'Domex 3D',
+      size: 50,
     },
     {
       header: 'OSL',
+      size: 50,
     },
     {
       header: 'BRK',
+      size: 50,
     },
     {
       header: 'HYD2.1',
+      size: 50,
     },
     {
       header: 'Отпуск',
+      size: 50,
     },
     {
       header: 'REN-3',
+      size: 50,
     },
     {
       header: 'REN-2',
+      size: 50,
     },
     {
       header: 'PSB-6 Фасады ЦОД',
+      size: 50,
     },
     {
       header: 'VOL',
+      size: 50,
     },
     {
       header: 'NEG',
+      size: 50,
     },
     {
       header: 'TNK',
+      size: 50,
     },
     {
       header: 'PSB-16',
+      size: 50,
     },
     {
       header: 'Сумма',
+      size: 50,
     },
   ];
 
@@ -161,10 +182,15 @@ function EmployeesByProjectPlan() {
       enableHiding={false}
       enableDensityToggle={false}
       enableColumnActions={false}
+      muiTableProps={{
+        sx: {
+          tableLayout: 'fixed',
+        },
+      }}
       muiTablePaperProps={{
         sx: {
           // maxWidth: '800px',
-          m: 'auto',
+          // m: 'auto',
         },
       }}
       muiTableHeadRowProps={{
@@ -212,13 +238,35 @@ function EmployeesByProjectPlan() {
         );
       }}
       renderDetailPanel={({ row }) => (
-        <Box>
-          <Table>
-            <TableHead>
+        <Box sx={{ width: '100%', display: 'table', margin: '0 auto' }}>
+          <Table
+            sx={{
+              tableLayout: 'fixed',
+              margin: '0 auto',
+              width: '100%',
+              '& .MuiTableCell-root:first-child': {
+                width: '150px',
+              },
+            }}
+          >
+            <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <TableRow>
                 {TABLE_HEAD.map((cell, ind) => (
-                  <TableCell key={ind}>
-                    <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>
+                  <TableCell
+                    sx={{
+                      minWidth: '55px',
+                    }}
+                    component='th'
+                    key={ind}
+                  >
+                    <Typography
+                      sx={{
+                        fontWeight: '700',
+                        fontSize: '14px',
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
                       {cell}
                     </Typography>
                   </TableCell>
@@ -238,17 +286,11 @@ function EmployeesByProjectPlan() {
                     ...Array(TABLE_HEAD.length - 2).fill(''),
                   ]),
                 ];
-
-                console.log(keys);
-                dataResult = dataResult.map((row, i) => [
-                  ...[keys[i] !== COMMON_AMOUNTS ? keys[i] : []],
-                  ...row,
-                ]);
+                dataResult = dataResult.map((row, i) => [keys[i], ...row]);
 
                 values.forEach((projects, ind) => {
                   Object.entries(projects).forEach(([name, val]) => {
                     const index = TABLE_HEAD.indexOf(name);
-
                     if (index !== -1) {
                       dataResult[ind].splice(index, 1, val);
                     }
@@ -263,7 +305,8 @@ function EmployeesByProjectPlan() {
                   let result = '';
                   for (let key in obj) {
                     if (obj.hasOwnProperty(key)) {
-                      result = `${obj['hours']}ч. (${obj['percent']}%)`;
+                      result = `${obj['hours']}ч.
+                       (${obj['percent']}%)`;
                     }
                   }
                   return result;
@@ -271,22 +314,44 @@ function EmployeesByProjectPlan() {
 
                 return dataResult.map((row, ind) => (
                   <StyledTableRow key={ind}>
-                    {/* {console.log({ row })} */}
-                    <TableCell>{row[0]}</TableCell>
-                    {row
-                      .splice(1)
-                      .map(
-                        (cell, ind) =>
-                          cell && (
-                            <TableCell key={ind}>{showProps(cell)}</TableCell>
-                          )
-                      )}
+                    <TableCell
+                      sx={{
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                        minWidth: '55px',
+                      }}
+                    >
+                      {row[0]}
+                    </TableCell>
+                    {row.splice(1).map(
+                      (cell, ind) =>
+                        cell !== null && (
+                          <TableCell
+                            sx={{
+                              overflow: 'hidden',
+                              whiteSpace: 'nowrap',
+                              minWidth: '55px',
+                            }}
+                            key={ind}
+                          >
+                            {showProps(cell)}
+                          </TableCell>
+                        )
+                    )}
                     <TableCell>{row[row.length - 1].hours}</TableCell>
                   </StyledTableRow>
                 ));
               })}
               <StyledTableRow>
-                <TableCell>Common Amounts</TableCell>
+                <TableCell
+                  sx={{
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    minWidth: '55px',
+                  }}
+                >
+                  Common Amounts
+                </TableCell>
                 {TABLE_HEAD.map((columnName) => {
                   const commonAmountsValues = Object.values(
                     Object.values(row.original)[0].common_amounts
