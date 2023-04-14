@@ -39,11 +39,7 @@ export default function NavBar() {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         transformOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
-        <MenuItem
-          onClick={handleClose}
-          component={RouterLink}
-          to={'/employees-plan'}
-        >
+        <MenuItem onClick={handleClose} component={RouterLink} to={'/'}>
           Сотрудники общий план
         </MenuItem>
         <MenuItem component={RouterLink} to={'/employees-fact'}>
