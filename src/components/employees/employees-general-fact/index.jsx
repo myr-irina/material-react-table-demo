@@ -70,7 +70,7 @@ export default function EmployeesGeneralFact() {
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
     color: 'white',
-    maxWidth: '4.4rem',
+    // maxWidth: '4.4rem',
     padding: '0.2rem',
     display: 'flex',
     flexDirection: 'column',
@@ -83,11 +83,11 @@ export default function EmployeesGeneralFact() {
         id: 'name',
         accessorKey: 'staff',
         sortDescFirst: false,
+        size: 100,
       },
       {
         header: 'Январь',
         enableColumnActions: false,
-        size: 50,
         accessorFn: (row) =>
           row.january !== null
             ? `${row?.january?.hours}ч. (${row?.january?.percent}%)`
@@ -114,7 +114,6 @@ export default function EmployeesGeneralFact() {
       },
       {
         header: 'Февраль',
-        size: 50,
         enableColumnActions: false,
         accessorFn: (row) =>
           row.february !== null
@@ -408,6 +407,9 @@ export default function EmployeesGeneralFact() {
       <MaterialReactTable
         columns={columns}
         data={data}
+        defaultColumn={{
+          size: 50,
+        }}
         enableStickyHeader
         initialState={{
           density: 'compact',

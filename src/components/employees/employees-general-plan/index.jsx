@@ -36,7 +36,7 @@ export default function EmployeesGeneralPlan() {
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
     color: 'white',
-    maxWidth: '4.4rem',
+    // maxWidth: '4.4rem',
     padding: '0.2rem',
     display: 'flex',
     flexDirection: 'column',
@@ -49,6 +49,7 @@ export default function EmployeesGeneralPlan() {
         id: 'name',
         accessorKey: 'staff',
         sortDescFirst: false,
+        size: 100,
       },
       {
         header: 'Январь',
@@ -66,7 +67,7 @@ export default function EmployeesGeneralPlan() {
               sx={{
                 backgroundColor:
                   cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
+                    ? 'rgba(253, 227, 167, 1)'
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
@@ -384,6 +385,10 @@ export default function EmployeesGeneralPlan() {
       <MaterialReactTable
         columns={columns}
         data={data}
+        // layoutMode='grid'
+        defaultColumn={{
+          size: 50,
+        }}
         enableStickyHeader
         initialState={{
           density: 'compact',
@@ -409,7 +414,6 @@ export default function EmployeesGeneralPlan() {
             </Typography>
           );
         }}
-
         // enableColumnActions={false}
       />
     </Box>

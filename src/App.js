@@ -16,7 +16,7 @@ export default function App() {
       <Container maxWidth='1280px'>
         <Routes>
           <Route element={<NavBar />}>
-            <Route path='/employees-plan' element={<EmployeesGeneralPlan />} />
+            <Route path='/' element={<EmployeesGeneralPlan />} />
             <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
             <Route
               path='/employees-project-plan'
