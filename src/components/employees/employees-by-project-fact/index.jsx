@@ -13,7 +13,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 
 import { employeesByProjectFactData } from './../../../json/employees-by-project-fact';
 
-import { getProjectFactHours } from '../../../utils/api-requests';
+// import { getProjectFactHours } from '../../../utils/api-requests';
 
 const TABLE_HEAD = [
   'Сотрудник',
@@ -51,18 +51,18 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function EmployeesByProjectFact() {
-  const [projectFactHours, setProjectFactHours] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [projectFactHours, setProjectFactHours] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    getProjectFactHours()
-      .then((data) => {
-        setProjectFactHours(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   getProjectFactHours()
+  //     .then((data) => {
+  //       setProjectFactHours(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   const preparedData = [];
 
@@ -72,166 +72,277 @@ function EmployeesByProjectFact() {
     }
   }
 
-  const preparedData2 = [];
-  for (let key in projectFactHours) {
-    preparedData2.push({ [key]: projectFactHours[key] });
-  }
+  // const preparedData2 = [];
+  // for (let key in projectFactHours) {
+  //   preparedData2.push({ [key]: projectFactHours[key] });
+  // }
 
   const columns = [
     {
       header: 'Month',
       accessorFn: (row) => Object.keys(row),
+      size: 100,
     },
     {
-      header: 'AUK INT',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'LIA',
+      header: ' ',
+      size: 50,
     },
     {
-      header: '33D',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'INT',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'PSB-17',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'TEH',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'SRP',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'GOR',
+      header: ' ',
+      size: 30,
     },
     {
-      header: 'Domex 3D',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'OSL',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'BRK',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'HYD2.1',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'Отпуск',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'REN-3',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'REN-2',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'PSB-6 Фасады ЦОД',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'VOL',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'NEG',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'TNK',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'PSB-16',
+      header: ' ',
+      size: 50,
     },
     {
-      header: 'Сумма',
+      header: ' ',
+      size: 50,
     },
   ];
 
   return (
     <MaterialReactTable
       columns={columns}
-      data={preparedData2}
+      data={preparedData}
       enableStickyHeader
       enableColumnFilters={false}
       enableHiding={false}
       enableDensityToggle={false}
+      enableColumnActions={false}
+      muiTableProps={{
+        sx: {
+          tableLayout: 'fixed',
+        },
+      }}
+      muiTableBodyCellProps={{
+        sx: {
+          width: '50px',
+        },
+      }}
+      initialState={{
+        density: 'compact',
+        sorting: [{ id: 'name', desc: false }],
+        pagination: { pageSize: 25, pageIndex: 0 },
+      }}
+      muiTablePaginationProps={{
+        rowsPerPageOptions: [5, 10, 20, 25],
+        labelRowsPerPage: 'Количество видимых строк',
+      }}
       renderTopToolbarCustomActions={() => {
         return (
           <Typography variant='h5' mb='15px'>
-            Таблица рабочего времени (факт по проектам)
+            Таблица рабочего времени (план по проектам)
           </Typography>
         );
       }}
       renderDetailPanel={({ row }) => (
-        // <Box sx={{ width: '100%' }}>
-        <Table sx={{ width: '100%' }}>
-          <TableHead>
-            <TableRow>
-              {TABLE_HEAD.map((cell, ind) => (
-                <TableCell key={ind}>
-                  <Typography sx={{ fontWeight: '700', fontSize: '14px' }}>
-                    {cell}
-                  </Typography>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {Object.values(row.original).map((data) => {
-              if (data === null) return;
+        <TableContainer
+          sx={{
+            width: '100%',
+            margin: '0 auto',
+            overflowX: 'initial',
+            // maxHeight: '900px',
+          }}
+        >
+          <Table
+            stickyHeader
+            sx={{
+              tableLayout: 'fixed',
+              margin: '0 auto',
+              width: '100%',
+              '& .MuiTableCell-root:first-of-type': {
+                width: '170px',
+              },
+            }}
+            size='small'
+          >
+            <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+              <TableRow>
+                {TABLE_HEAD.map((cell, ind) => (
+                  <TableCell
+                    sx={{
+                      minWidth: '55px',
+                    }}
+                    component='th'
+                    key={ind}
+                  >
+                    <Typography
+                      sx={{
+                        fontWeight: '700',
+                        fontSize: '14px',
+                        overflowX: 'hidden',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {cell}
+                    </Typography>
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Object.values(row.original).map((data) => {
+                if (data === null) return;
 
-              const keys = Object.keys(data);
-              const values = Object.values(data);
+                const COMMON_AMOUNTS = 'common_amounts';
 
-              let dataResult = [
-                ...Array(values.length).fill([
-                  ...Array(TABLE_HEAD.length - 2).fill(''),
-                ]),
-              ];
+                const keys = Object.keys(data);
+                const values = Object.values(data);
+                let dataResult = [
+                  ...Array(values.length).fill([
+                    ...Array(TABLE_HEAD.length - 2).fill(''),
+                  ]),
+                ];
+                dataResult = dataResult.map((row, i) => [keys[i], ...row]);
 
-              dataResult = dataResult.map((row, i) => [keys[i], ...row]);
+                values.forEach((projects, ind) => {
+                  Object.entries(projects).forEach(([name, val]) => {
+                    const index = TABLE_HEAD.indexOf(name);
+                    if (index !== -1) {
+                      dataResult[ind].splice(index, 1, val);
+                    }
 
-              values.forEach((projects, ind) => {
-                Object.entries(projects).forEach(([name, val]) => {
-                  const index = TABLE_HEAD.indexOf(name);
-                  if (index !== -1) {
-                    dataResult[ind].splice(index, 1, val);
-                  }
-
-                  if (name === 'amount_values') {
-                    dataResult[ind].push(val);
-                  }
+                    if (name === 'amount_values') {
+                      dataResult[ind].push(val);
+                    }
+                  });
                 });
-              });
 
-              function showProps(obj) {
-                let result = '';
-                for (let key in obj) {
-                  if (obj.hasOwnProperty(key)) {
-                    result = `${obj['hours']}ч. (${obj['percent']}%)`;
+                function showProps(obj) {
+                  let result = '';
+                  for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                      result = `${obj['hours']}ч.
+                       (${obj['percent']}%)`;
+                    }
                   }
+                  return result;
                 }
-                return result;
-              }
 
-              return dataResult.map((row, ind) => (
-                <StyledTableRow key={ind}>
-                  <TableCell>{row[0]}</TableCell>
-                  {row
-                    .splice(1)
-                    .map(
+                return dataResult.map((row, ind) => (
+                  <StyledTableRow key={ind}>
+                    <TableCell
+                      sx={{
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                        minWidth: '55px',
+                      }}
+                    >
+                      {row[0]}
+                    </TableCell>
+                    {row.splice(1).map(
                       (cell, ind) =>
                         cell !== null && (
-                          <TableCell key={ind}>{showProps(cell)}</TableCell>
+                          <TableCell
+                            sx={{
+                              overflow: 'hidden',
+
+                              minWidth: '55px',
+                            }}
+                            key={ind}
+                          >
+                            {showProps(cell)}
+                          </TableCell>
                         )
                     )}
-                  <TableCell>{row[row.length - 1].hours}</TableCell>
-                </StyledTableRow>
-              ));
-            })}
-          </TableBody>
-        </Table>
-        // </Box>
+                    <TableCell>{row[row.length - 1].hours}</TableCell>
+                  </StyledTableRow>
+                ));
+              })}
+              <StyledTableRow>
+                <TableCell
+                  sx={{
+                    minWidth: '55px',
+                  }}
+                >
+                  Common Amounts
+                </TableCell>
+                {TABLE_HEAD.map((columnName) => {
+                  const commonAmountsValues = Object.values(
+                    Object.values(row.original)[0].common_amounts
+                  );
+                  const commonAmountsKeys = Object.keys(
+                    Object.values(row.original)[0].common_amounts
+                  );
+
+                  const index = commonAmountsKeys.indexOf(columnName);
+                  if (index !== -1) {
+                    return <TableCell>{commonAmountsValues[index]}</TableCell>;
+                  }
+                })}
+              </StyledTableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
       )}
       // positionExpandColumn='last'
     />

@@ -8,23 +8,35 @@ import data from '../../../json/employees-general-plan.json';
 import { getWorkingHoursPlan } from '../../../utils/api-requests';
 
 export default function EmployeesGeneralPlan() {
-  const [workingHours, setWorkingHours] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [workingHours, setWorkingHours] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    getWorkingHoursPlan()
-      .then((data) => {
-        setWorkingHours(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   getWorkingHoursPlan()
+  //     .then((data) => {
+  //       setWorkingHours(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
+
+  // const uniqueValues = Object.values(data).map((item) =>
+  //   Object.values(item)
+  //     ?.map
+  //     item !== null || (item !== undefined && console.log({ item }))
+  //     Object.values(item)?.map((item, index) => {
+  //       return item !== null || item !== undefined ? { item } : null;
+  //     })
+  //     ()
+  // );
+
+  // console.log({ uniqueValues });
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
     color: 'white',
-    maxWidth: '4.4rem',
+    // maxWidth: '4.4rem',
     padding: '0.2rem',
     display: 'flex',
     flexDirection: 'column',
@@ -37,6 +49,7 @@ export default function EmployeesGeneralPlan() {
         id: 'name',
         accessorKey: 'staff',
         sortDescFirst: false,
+        size: 100,
       },
       {
         header: 'Январь',
@@ -54,7 +67,7 @@ export default function EmployeesGeneralPlan() {
               sx={{
                 backgroundColor:
                   cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
+                    ? 'rgba(253, 227, 167, 1)'
                     : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
                     ? 'green'
                     : 'red',
@@ -371,7 +384,11 @@ export default function EmployeesGeneralPlan() {
     <Box sx={{ margin: '20px auto' }}>
       <MaterialReactTable
         columns={columns}
-        data={workingHours}
+        data={data}
+        // layoutMode='grid'
+        defaultColumn={{
+          size: 50,
+        }}
         enableStickyHeader
         initialState={{
           density: 'compact',
@@ -392,17 +409,12 @@ export default function EmployeesGeneralPlan() {
         enableDensityToggle={false}
         renderTopToolbarCustomActions={() => {
           return (
-            <Typography variant='h5' mb='15px'>
+            <Typography variant='h5' my='15px'>
               Таблица рабочего времени (общий план)
             </Typography>
           );
         }}
-
         // enableColumnActions={false}
-
-        // renderTopToolbar={() => {
-        //   <Typography> Create New Account</Typography>;
-        // }}
       />
     </Box>
   );
