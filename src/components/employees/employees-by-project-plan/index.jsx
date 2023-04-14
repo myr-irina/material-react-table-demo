@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 import Table from '@mui/material/Table';
@@ -85,90 +85,90 @@ function EmployeesByProjectPlan() {
     {
       header: 'Month',
       accessorFn: (row) => Object.keys(row),
-      size: 60,
+      size: 100,
     },
     {
-      header: 'AUK INT',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'LIA',
+      header: ' ',
       size: 50,
     },
     {
-      header: '33D',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'INT',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'PSB-17',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'TEH',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'SRP',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'GOR',
+      header: ' ',
       size: 30,
     },
     {
-      header: 'Domex 3D',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'OSL',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'BRK',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'HYD2.1',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'Отпуск',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'REN-3',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'REN-2',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'PSB-6 Фасады ЦОД',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'VOL',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'NEG',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'TNK',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'PSB-16',
+      header: ' ',
       size: 50,
     },
     {
-      header: 'Сумма',
+      header: ' ',
       size: 50,
     },
   ];
@@ -187,48 +187,19 @@ function EmployeesByProjectPlan() {
           tableLayout: 'fixed',
         },
       }}
-      muiTablePaperProps={{
-        sx: {
-          // maxWidth: '800px',
-          // m: 'auto',
-        },
-      }}
-      muiTableHeadRowProps={{
-        sx: {
-          // maxWidth: '800px',
-        },
-      }}
-      muiTableHeadCellProps={{
-        sx: (theme) => ({
-          // background: 'rgba(52, 210, 235, 0.1)',
-          // borderRight: '1px solid rgba(224,224,224,1)',
-          // color: theme.palette.text.primary,
-
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-          width: '50px',
-        }),
-      }}
-      muiTableBodyRowProps={{
-        sx: {
-          width: '50px',
-        },
-      }}
       muiTableBodyCellProps={{
         sx: {
           width: '50px',
         },
       }}
-      // layoutMode='grid'
-      displayColumnDefOptions={{
-        'mrt-row-expand': {
-          // muiTableHeadCellProps: {
-          //   align: 'right',
-          // },
-          // muiTableBodyCellProps: {
-          //   align: 'right',
-          // },
-        },
+      initialState={{
+        density: 'compact',
+        sorting: [{ id: 'name', desc: false }],
+        pagination: { pageSize: 25, pageIndex: 0 },
+      }}
+      muiTablePaginationProps={{
+        rowsPerPageOptions: [5, 10, 20, 25],
+        labelRowsPerPage: 'Количество видимых строк',
       }}
       renderTopToolbarCustomActions={() => {
         return (
@@ -238,16 +209,25 @@ function EmployeesByProjectPlan() {
         );
       }}
       renderDetailPanel={({ row }) => (
-        <Box sx={{ width: '100%', display: 'table', margin: '0 auto' }}>
+        <TableContainer
+          sx={{
+            width: '100%',
+            margin: '0 auto',
+            overflowX: 'initial',
+            // maxHeight: '900px',
+          }}
+        >
           <Table
+            stickyHeader
             sx={{
               tableLayout: 'fixed',
               margin: '0 auto',
               width: '100%',
-              '& .MuiTableCell-root:first-child': {
-                width: '150px',
+              '& .MuiTableCell-root:first-of-type': {
+                width: '170px',
               },
             }}
+            size='small'
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <TableRow>
@@ -263,7 +243,7 @@ function EmployeesByProjectPlan() {
                       sx={{
                         fontWeight: '700',
                         fontSize: '14px',
-                        overflow: 'hidden',
+                        overflowX: 'hidden',
                         whiteSpace: 'nowrap',
                       }}
                     >
@@ -329,7 +309,7 @@ function EmployeesByProjectPlan() {
                           <TableCell
                             sx={{
                               overflow: 'hidden',
-                              whiteSpace: 'nowrap',
+
                               minWidth: '55px',
                             }}
                             key={ind}
@@ -345,8 +325,6 @@ function EmployeesByProjectPlan() {
               <StyledTableRow>
                 <TableCell
                   sx={{
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
                     minWidth: '55px',
                   }}
                 >
@@ -368,7 +346,7 @@ function EmployeesByProjectPlan() {
               </StyledTableRow>
             </TableBody>
           </Table>
-        </Box>
+        </TableContainer>
       )}
       // positionExpandColumn='last'
     />

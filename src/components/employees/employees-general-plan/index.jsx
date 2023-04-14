@@ -411,10 +411,6 @@ export default function EmployeesGeneralPlan() {
         }}
 
         // enableColumnActions={false}
-
-        // renderTopToolbar={() => {
-        //   <Typography> Create New Account</Typography>;
-        // }}
       />
     </Box>
   );
