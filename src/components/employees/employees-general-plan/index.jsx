@@ -37,7 +37,7 @@ export default function EmployeesGeneralPlan() {
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
     color: 'black',
-    // maxWidth: '4.4rem',
+    fontWeight: 600,
     padding: '0.2rem',
     display: 'flex',
     flexDirection: 'column',
@@ -48,7 +48,7 @@ export default function EmployeesGeneralPlan() {
     paleRed: '#ffbdbd',
     darkGreen: '#bdfdbd',
     lightGreen: '#e4fde4',
-    darkYellow: '#ffff7d',
+    darkYellow: '#ffff97',
     paleYellow: '#ffffca',
   };
   /* https://www.htmlcsscolor.com/hex/FF0000 */
