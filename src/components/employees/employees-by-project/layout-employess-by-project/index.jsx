@@ -9,7 +9,6 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
-import data from '../../../../json/employees-by-project-plan';
 
 const TABLE_HEAD = [
   'Сотрудник',
@@ -46,7 +45,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function LayoutEmployeesByProject(props) {
+export default function LayoutEmployeesByProject(data) {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
 
@@ -60,8 +59,6 @@ export default function LayoutEmployeesByProject(props) {
   //     });
   // }, []);
 
-  const { data } = props;
-
   const preparedData = [];
 
   for (let key in data) {
@@ -69,13 +66,6 @@ export default function LayoutEmployeesByProject(props) {
       preparedData.push({ [key2]: data[key][key2] });
     }
   }
-
-  // const preparedData2 = [];
-  // for (let key in projectPlanHours) {
-  //   preparedData2.push({ [key]: projectPlanHours[key] });
-  // }
-
-  // console.log({ preparedData2 });
 
   const columns = [
     {
@@ -227,12 +217,12 @@ export default function LayoutEmployeesByProject(props) {
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <TableRow>
-                {console.log(
+                {/* {console.log(
                   Object.values(row.original).map((item) =>
                     // Object.values(item).map((item) => Object.keys(item))
                     console.log(Object.values(item), 'bljofj')
                   )
-                )}
+                )} */}
                 {TABLE_HEAD.map((cell, ind) => (
                   <TableCell
                     sx={{
@@ -257,9 +247,13 @@ export default function LayoutEmployeesByProject(props) {
             </TableHead>
             <TableBody>
               {Object.values(row.original).map((data) => {
-                if (data === null) return;
+                console.log({ data });
+                // if (Object.keys(data).length === 0) return;
+                // if (Object.keys(data).length == 0) {
+                //   console.log('пуст');
+                // }
 
-                const COMMON_AMOUNTS = 'common_amounts';
+                // const COMMON_AMOUNTS = 'common_amounts';
 
                 const keys = Object.keys(data);
                 const values = Object.values(data);

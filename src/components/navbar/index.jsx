@@ -51,9 +51,9 @@ export default function NavBar() {
         <MenuItem component={RouterLink} to={'/employees-project-fact'}>
           Сотрудники по проектам факт
         </MenuItem>
-        <MenuItem component={RouterLink} to={'/employees-project-plan2'}>
+        {/* <MenuItem component={RouterLink} to={'/employees-project-plan2'}>
           Сотрудники по проектам план (тестовое)
-        </MenuItem>
+        </MenuItem> */}
         {/* <MenuItem component={RouterLink} to={'/employees'}>
           Сотрудники план (тестовое)
         </MenuItem>

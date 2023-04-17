@@ -25,10 +25,14 @@ export default function App() {
             <Route path='/' element={<EmployeesGeneralPlan />} />
 
             <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
-            {/* <Route
+            <Route
               path='/employees-project-plan'
               element={<EmployeesByProjectPlan />}
-            /> */}
+            />
+            <Route
+              path='/employees-project-fact'
+              element={<EmployeesByprojectFact />}
+            />
             {/* <Route
               path='/employees-project-plan2'
               element={<EmployeesByProjectPlan2 />}
