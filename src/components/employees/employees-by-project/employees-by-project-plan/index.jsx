@@ -11,7 +11,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
 import { getProjectPlanHours } from './../../../../utils/api-requests';
-import LayoutEmployeesByProject from './../layout-employess-by-project';
+import LayoutEmployeesByProject from '../layout-employees-by-project';
 import data from './../../../../json/employees-by-project-plan.json';
 import employeesByProjectPlanData from '../../../../json/employees-by-project-plan.json';
 

@@ -9,6 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
+import { parseTableData } from '../../../../utils/json-parser';
+import { getCellColor } from '../../../../utils/getCellColor';
 
 const TABLE_HEAD = [
   'Сотрудник',
@@ -66,6 +68,8 @@ export default function LayoutEmployeesByProject(data) {
       preparedData.push({ [key2]: data[key][key2] });
     }
   }
+
+  // console.log(parseTableData(preparedData), 'parsed');
 
   const columns = [
     {
@@ -219,8 +223,7 @@ export default function LayoutEmployeesByProject(data) {
               <TableRow>
                 {/* {console.log(
                   Object.values(row.original).map((item) =>
-                    // Object.values(item).map((item) => Object.keys(item))
-                    console.log(Object.values(item), 'bljofj')
+                    Object.values(item).map((item) => Object.keys(item))
                   )
                 )} */}
                 {TABLE_HEAD.map((cell, ind) => (
@@ -247,11 +250,7 @@ export default function LayoutEmployeesByProject(data) {
             </TableHead>
             <TableBody>
               {Object.values(row.original).map((data) => {
-                console.log({ data });
-                // if (Object.keys(data).length === 0) return;
-                // if (Object.keys(data).length == 0) {
-                //   console.log('пуст');
-                // }
+                if (data === null) return;
 
                 // const COMMON_AMOUNTS = 'common_amounts';
 
@@ -263,6 +262,7 @@ export default function LayoutEmployeesByProject(data) {
                   ]),
                 ];
                 dataResult = dataResult.map((row, i) => [keys[i], ...row]);
+                console.log({ dataResult });
 
                 values.forEach((projects, ind) => {
                   Object.entries(projects).forEach(([name, val]) => {
@@ -305,8 +305,8 @@ export default function LayoutEmployeesByProject(data) {
                           <TableCell
                             sx={{
                               overflow: 'hidden',
-
                               minWidth: '55px',
+                              // backgroundColor: `${getCellColor(cell.percent)}`,
                             }}
                             key={ind}
                           >
@@ -318,28 +318,33 @@ export default function LayoutEmployeesByProject(data) {
                   </StyledTableRow>
                 ));
               })}
-              <StyledTableRow>
+              {/* <StyledTableRow>
                 <TableCell
                   sx={{
                     minWidth: '55px',
+                    fontWeight: 600,
                   }}
                 >
                   Common Amounts
                 </TableCell>
                 {TABLE_HEAD.map((columnName) => {
                   const commonAmountsValues = Object.values(
-                    Object.values(row.original)[0].common_amounts
+                    Object?.values(row.original)[0]?.common_amounts
                   );
                   const commonAmountsKeys = Object.keys(
-                    Object.values(row.original)[0].common_amounts
+                    Object?.values(row.original)[0]?.common_amounts
                   );
 
                   const index = commonAmountsKeys.indexOf(columnName);
                   if (index !== -1) {
-                    return <TableCell>{commonAmountsValues[index]}</TableCell>;
+                    return (
+                      <TableCell sx={{ fontWeight: 600 }}>
+                        {commonAmountsValues[index]}
+                      </TableCell>
+                    );
                   }
                 })}
-              </StyledTableRow>
+              </StyledTableRow> */}
             </TableBody>
           </Table>
         </TableContainer>
