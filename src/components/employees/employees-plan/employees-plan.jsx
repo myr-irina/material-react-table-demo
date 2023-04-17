@@ -8,7 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import employeesRawData from '../../../json/employees-general-plan.json';
-console.log({ employeesRawData });
 
 const TABLE_HEAD2 = employeesRawData.map((item) => Object.keys(item));
 function pickHex(color1, color2, weight) {
@@ -21,6 +20,10 @@ function pickHex(color1, color2, weight) {
   ];
   return rgb;
 }
+
+/* 
+  const result = Object.keys(data).map((key) => [key, data[key]]);
+  console.log(result); */
 
 const green = [0, 255, 0];
 const white = [255, 255, 255];

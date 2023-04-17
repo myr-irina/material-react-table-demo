@@ -3,44 +3,11 @@ import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material';
 
-import data from '../../../json/employees-general-fact.json';
+// import data from '../../../json/employees-general-fact.json';
 
-export default function EmployeesGeneralFact() {
-  console.log(
-    data.map((item) =>
-      Object.entries(item).map((item) => item[1] !== 0 && item[1])
-    )
-  );
-
-  const isObject = (item) => item instanceof Object;
-
-  console.log([
-    Object.values(data).map((item) => Object.values(item)),
-    // .reduce((a, b) => a.concat(b), []),
-  ]);
-
-  const result = Object.keys(data).map((key) => [key, data[key]]);
-  console.log(result);
-
-  //   if (
-  //     typeof yourVariable === 'object' &&
-  //     !Array.isArray(yourVariable) &&
-  //     yourVariable !== null
-  // ) {
-  //     executeSomeCode();
-  // }
-
-  // const getAllValues = (val) =>
-  //   val instanceof Object ? Object.values(val).flatMap(getAllValues) : [val];
-
-  // const valuesFromObj = getAllValues(data);
-  // console.log(
-  //   valuesFromObj.map((item) =>
-  //     item !== null && typeof item !== 'string' ? item : null
-  //   )
-  // );
-  // const [workingHours, setWorkingHours] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+export default function LayoutEmployeesGeneral(props) {
+  //   const [isLoading, setIsLoading] = useState(false);
+  //   const [workingHours, setWorkingHours] = useState([]);
 
   // useEffect(() => {
   //   getWorkingHoursPlan()
@@ -51,6 +18,10 @@ export default function EmployeesGeneralFact() {
   //       console.log(error);
   //     });
   // }, []);
+
+  const { data, title } = props;
+
+  console.log(data);
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
@@ -404,16 +375,10 @@ export default function EmployeesGeneralFact() {
         renderTopToolbarCustomActions={() => {
           return (
             <Typography variant='h5' mb='15px'>
-              Таблица рабочего времени (общий факт)
+              {title}
             </Typography>
           );
         }}
-
-        // enableColumnActions={false}
-
-        // renderTopToolbar={() => {
-        //   <Typography> Create New Account</Typography>;
-        // }}
       />
     </Box>
   );
