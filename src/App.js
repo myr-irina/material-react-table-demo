@@ -8,6 +8,7 @@ import EmployeesGeneralPlan from './components/employees/employees-general-plan'
 import EmployeesGeneralFact from './components/employees/employees-general-fact';
 import EmployeesByProjectPlan from './components/employees/employees-by-project-plan';
 import EmployeesByProjectFact from './components/employees/employees-by-project-fact';
+import BasicTable from './components/employees/employees-plan/employees-plan';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
               path='/employees-project-fact'
               element={<EmployeesByProjectFact />}
             />
+            <Route path='/employees' element={<BasicTable />} />
           </Route>
         </Routes>
       </Container>

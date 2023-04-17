@@ -6,6 +6,7 @@ import { styled } from '@mui/material';
 import data from '../../../json/employees-general-plan.json';
 
 import { getWorkingHoursPlan } from '../../../utils/api-requests';
+import { getValue } from '@testing-library/user-event/dist/utils';
 
 export default function EmployeesGeneralPlan() {
   // const [workingHours, setWorkingHours] = useState([]);
@@ -35,12 +36,36 @@ export default function EmployeesGeneralPlan() {
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
-    color: 'white',
+    color: 'black',
     // maxWidth: '4.4rem',
     padding: '0.2rem',
     display: 'flex',
     flexDirection: 'column',
   }));
+
+  const colors = {
+    darkRed: '#ff7d7d',
+    paleRed: '#ffbdbd',
+    darkGreen: '#bdfdbd',
+    lightGreen: '#e4fde4',
+    darkYellow: '#ffff7d',
+    paleYellow: '#ffffca',
+  };
+  /* https://www.htmlcsscolor.com/hex/FF0000 */
+
+  const getCellColor = (value) => {
+    return value < 45
+      ? colors['paleYellow']
+      : value >= 45 && value < 90
+      ? colors['darkYellow']
+      : value >= 90 && value < 100
+      ? colors['lightGreen']
+      : value == 100
+      ? colors['darkGreen']
+      : value >= 110 && value < 130
+      ? colors['paleRed']
+      : colors['darkRed'];
+  };
 
   const columns = useMemo(
     () => [
@@ -65,12 +90,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'rgba(253, 227, 167, 1)'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -92,12 +114,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -119,12 +138,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -146,12 +162,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -173,12 +186,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -200,12 +210,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -227,12 +234,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -254,12 +258,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -281,12 +282,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -308,12 +306,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -335,12 +330,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>
@@ -362,12 +354,9 @@ export default function EmployeesGeneralPlan() {
             <StyledBoxWithData
               component='span'
               sx={{
-                backgroundColor:
-                  cell?.getValue()?.split('(')[1]?.slice(0, -2) < 100
-                    ? 'orange'
-                    : cell?.getValue()?.split('(')[1]?.slice(0, -2) == 100
-                    ? 'green'
-                    : 'red',
+                backgroundColor: `${getCellColor(
+                  cell?.getValue()?.split('(')[1]?.slice(0, -2)
+                )}`,
               }}
             >
               <span>{cell?.getValue()?.split(' ').slice(0, 1)}</span>

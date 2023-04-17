@@ -52,6 +52,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+function getHeaders(row) {
+  row.map();
+}
+
 function EmployeesByProjectPlan() {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
@@ -231,6 +235,12 @@ function EmployeesByProjectPlan() {
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <TableRow>
+                {console.log(
+                  Object.values(row.original).map((item) =>
+                    // Object.values(item).map((item) => Object.keys(item))
+                    console.log(Object.values(item), 'bljofj')
+                  )
+                )}
                 {TABLE_HEAD.map((cell, ind) => (
                   <TableCell
                     sx={{
