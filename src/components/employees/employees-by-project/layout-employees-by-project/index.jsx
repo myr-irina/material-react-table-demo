@@ -221,38 +221,58 @@ export default function LayoutEmployeesByProject(data) {
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <TableRow>
-                {/* {console.log(
-                  Object.values(row.original).map((item) =>
-                    Object.values(item).map((item) => Object.keys(item))
-                  )
-                )} */}
-                {TABLE_HEAD.map((cell, ind) => (
-                  <TableCell
+                <TableCell
+                  sx={{
+                    minWidth: '55px',
+                  }}
+                  component='th'
+                >
+                  <Typography
                     sx={{
-                      minWidth: '55px',
+                      fontWeight: '700',
+                      fontSize: '14px',
+                      overflowX: 'hidden',
+                      whiteSpace: 'nowrap',
                     }}
-                    component='th'
-                    key={ind}
                   >
-                    <Typography
+                    Сотрудники
+                  </Typography>
+                </TableCell>
+                {Object.values(row.original).map((item) => {
+                  const arr = [];
+                  Object.values(item).map((item) =>
+                    Object.keys(item).map((key) => arr.push(key))
+                  );
+
+                  const newArr = [...new Set(arr)];
+
+                  return newArr.map((cell, ind) => (
+                    <TableCell
                       sx={{
-                        fontWeight: '700',
-                        fontSize: '14px',
-                        overflowX: 'hidden',
-                        whiteSpace: 'nowrap',
+                        minWidth: '55px',
                       }}
+                      component='th'
+                      key={ind}
                     >
-                      {cell}
-                    </Typography>
-                  </TableCell>
-                ))}
+                      <Typography
+                        sx={{
+                          fontWeight: '700',
+                          fontSize: '14px',
+                          overflowX: 'hidden',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {cell}
+                      </Typography>
+                    </TableCell>
+                  ));
+                })}
               </TableRow>
             </TableHead>
             <TableBody>
               {Object.values(row.original).map((data) => {
+                console.log(row.original);
                 if (data === null) return;
-
-                // const COMMON_AMOUNTS = 'common_amounts';
 
                 const keys = Object.keys(data);
                 const values = Object.values(data);
@@ -261,8 +281,8 @@ export default function LayoutEmployeesByProject(data) {
                     ...Array(TABLE_HEAD.length - 2).fill(''),
                   ]),
                 ];
+
                 dataResult = dataResult.map((row, i) => [keys[i], ...row]);
-                console.log({ dataResult });
 
                 values.forEach((projects, ind) => {
                   Object.entries(projects).forEach(([name, val]) => {
@@ -298,6 +318,7 @@ export default function LayoutEmployeesByProject(data) {
                       }}
                     >
                       {row[0]}
+                      {/* {console.log(parseTableData(row.original))} */}
                     </TableCell>
                     {row.splice(1).map(
                       (cell, ind) =>
@@ -308,7 +329,7 @@ export default function LayoutEmployeesByProject(data) {
                               minWidth: '55px',
                               // backgroundColor: `${getCellColor(cell.percent)}`,
                             }}
-                            key={ind}
+                            // key={ind}
                           >
                             {showProps(cell)}
                           </TableCell>

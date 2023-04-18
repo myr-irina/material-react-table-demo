@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material';
 import { getCellColor } from '../../../../utils/getCellColor';
+import { Link as MuiLink } from '@mui/material';
 
 // import data from '../../../json/employees-general-fact.json';
 
@@ -39,6 +41,17 @@ export default function LayoutEmployeesGeneral(props) {
         accessorKey: 'staff',
         sortDescFirst: false,
         size: 100,
+        Cell: ({ cell, row }) => (
+          <MuiLink
+            component={Link}
+            target='_blank'
+            rel='noopener'
+            to={row.original.link ?? '#'}
+            underline='none'
+          >
+            {cell.getValue()}
+          </MuiLink>
+        ),
       },
       {
         header: 'Январь',
