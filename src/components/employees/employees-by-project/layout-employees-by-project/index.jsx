@@ -9,33 +9,12 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
-import { parseTableData } from '../../../../utils/json-parser';
-import { getCellColor } from '../../../../utils/getCellColor';
 
-const TABLE_HEAD = [
-  'Сотрудник',
-  'AUK INT',
-  'LIA',
-  '33D',
-  'INT',
-  'PSB-17',
-  'TEH',
-  'SRP',
-  'GOR',
-  'Domex 3D',
-  'OSL',
-  'BRK',
-  'HYD2.1',
-  'Отпуск',
-  'REN-3',
-  'REN-2',
-  'PSB-6 Фасады ЦОД',
-  'VOL',
-  'NEG',
-  'TNK',
-  'PSB-16',
-  'Сумма',
-];
+import {
+  parseTableData,
+  getColumnNames,
+  findProjectByName,
+} from '../../../../utils/utils';
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
@@ -61,20 +40,14 @@ export default function LayoutEmployeesByProject(data) {
   //     });
   // }, []);
 
-  const preparedData = [];
-
-  for (let key in data) {
-    for (let key2 in data[key]) {
-      preparedData.push({ [key2]: data[key][key2] });
-    }
-  }
-
-  // console.log(parseTableData(preparedData), 'parsed');
+  const TABLE_DATA = useMemo(() => parseTableData(data.data), [data.data]);
 
   const columns = [
     {
       header: 'Month',
-      accessorFn: (row) => Object.keys(row),
+      accessorFn: (data) => {
+        return data[0][0].month;
+      },
       size: 100,
     },
     {
@@ -166,7 +139,7 @@ export default function LayoutEmployeesByProject(data) {
   return (
     <MaterialReactTable
       columns={columns}
-      data={preparedData}
+      data={TABLE_DATA}
       enableStickyHeader
       enableColumnFilters={false}
       enableHiding={false}
@@ -204,7 +177,6 @@ export default function LayoutEmployeesByProject(data) {
             width: '100%',
             margin: '0 auto',
             overflowX: 'initial',
-            // maxHeight: '900px',
           }}
         >
           <Table
@@ -238,139 +210,60 @@ export default function LayoutEmployeesByProject(data) {
                     Сотрудники
                   </Typography>
                 </TableCell>
-                {Object.values(row.original).map((item) => {
-                  const arr = [];
-                  Object.values(item).map((item) =>
-                    Object.keys(item).map((key) => arr.push(key))
-                  );
-
-                  const newArr = [...new Set(arr)];
-
-                  return newArr.map((cell, ind) => (
-                    <TableCell
+                {getColumnNames(row.original).map((cell) => (
+                  <TableCell
+                    sx={{
+                      minWidth: '55px',
+                    }}
+                    component='th'
+                    key={cell}
+                  >
+                    <Typography
                       sx={{
-                        minWidth: '55px',
+                        fontWeight: '700',
+                        fontSize: '14px',
+                        overflowX: 'hidden',
+                        whiteSpace: 'nowrap',
+                        color: 'black',
                       }}
-                      component='th'
-                      key={ind}
                     >
-                      <Typography
-                        sx={{
-                          fontWeight: '700',
-                          fontSize: '14px',
-                          overflowX: 'hidden',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {cell}
-                      </Typography>
-                    </TableCell>
-                  ));
-                })}
+                      {cell}
+                    </Typography>
+                  </TableCell>
+                ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              {Object.values(row.original).map((data) => {
-                console.log(row.original);
-                if (data === null) return;
-
-                const keys = Object.keys(data);
-                const values = Object.values(data);
-                let dataResult = [
-                  ...Array(values.length).fill([
-                    ...Array(TABLE_HEAD.length - 2).fill(''),
-                  ]),
-                ];
-
-                dataResult = dataResult.map((row, i) => [keys[i], ...row]);
-
-                values.forEach((projects, ind) => {
-                  Object.entries(projects).forEach(([name, val]) => {
-                    const index = TABLE_HEAD.indexOf(name);
-                    if (index !== -1) {
-                      dataResult[ind].splice(index, 1, val);
-                    }
-
-                    if (name === 'amount_values') {
-                      dataResult[ind].push(val);
-                    }
-                  });
-                });
-
-                function showProps(obj) {
-                  let result = '';
-                  for (let key in obj) {
-                    if (obj.hasOwnProperty(key)) {
-                      result = `${obj['hours']}ч.
-                       (${obj['percent']}%)`;
-                    }
-                  }
-                  return result;
-                }
-
-                return dataResult.map((row, ind) => (
-                  <StyledTableRow key={ind}>
-                    <TableCell
-                      sx={{
-                        overflow: 'hidden',
-                        whiteSpace: 'nowrap',
-                        minWidth: '55px',
-                      }}
-                    >
-                      {row[0]}
-                      {/* {console.log(parseTableData(row.original))} */}
-                    </TableCell>
-                    {row.splice(1).map(
-                      (cell, ind) =>
-                        cell !== null && (
-                          <TableCell
-                            sx={{
-                              overflow: 'hidden',
-                              minWidth: '55px',
-                              // backgroundColor: `${getCellColor(cell.percent)}`,
-                            }}
-                            // key={ind}
-                          >
-                            {showProps(cell)}
-                          </TableCell>
-                        )
-                    )}
-                    <TableCell>{row[row.length - 1].hours}</TableCell>
-                  </StyledTableRow>
-                ));
-              })}
-              {/* <StyledTableRow>
-                <TableCell
-                  sx={{
-                    minWidth: '55px',
-                    fontWeight: 600,
-                  }}
-                >
-                  Common Amounts
-                </TableCell>
-                {TABLE_HEAD.map((columnName) => {
-                  const commonAmountsValues = Object.values(
-                    Object?.values(row.original)[0]?.common_amounts
-                  );
-                  const commonAmountsKeys = Object.keys(
-                    Object?.values(row.original)[0]?.common_amounts
-                  );
-
-                  const index = commonAmountsKeys.indexOf(columnName);
-                  if (index !== -1) {
-                    return (
-                      <TableCell sx={{ fontWeight: 600 }}>
-                        {commonAmountsValues[index]}
+              {row.original.map((rowProject) => {
+                return (
+                  <>
+                    <TableRow>
+                      <TableCell key={rowProject[0].author}>
+                        {rowProject[0].author}
                       </TableCell>
-                    );
-                  }
-                })}
-              </StyledTableRow> */}
+                      {getColumnNames(row.original).map((columnName) => {
+                        const project = findProjectByName(
+                          columnName,
+                          rowProject
+                        );
+
+                        return (
+                          <TableCell key={columnName}>
+                            {console.log({ project })}
+                            {project && project.author !== 'common_amounts'
+                              ? `${project.hours}ч. ${project.percent}%`
+                              : ''}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  </>
+                );
+              })}
             </TableBody>
           </Table>
         </TableContainer>
       )}
-      // positionExpandColumn='last'
     />
   );
 }
