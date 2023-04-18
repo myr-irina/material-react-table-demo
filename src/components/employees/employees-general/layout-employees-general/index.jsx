@@ -45,7 +45,7 @@ export default function LayoutEmployeesGeneral(props) {
           <MuiLink
             component={Link}
             target='_blank'
-            rel='noopener'
+            rel='noopener noreferrer'
             to={row.original.link ?? '#'}
             underline='none'
           >

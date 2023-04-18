@@ -1,6 +1,6 @@
 import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Container } from '@mui/material';
+import { AppBar, Container } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
 
 import NavBar from './components/navbar';
@@ -14,6 +14,8 @@ import EmployeesGeneralFact from './components/employees/employees-general/emplo
 
 import EmployeesByProjectPlan from './components/employees/employees-by-project/employees-by-project-plan';
 import EmployeesByprojectFact from './components/employees/employees-by-project/employees-by-project-fact';
+
+import IncomeCostPlan from './components/income-cost-plan';
 
 export default function App() {
   return (
@@ -33,10 +35,7 @@ export default function App() {
               path='/employees-project-fact'
               element={<EmployeesByprojectFact />}
             />
-            {/* <Route
-              path='/employees-project-plan2'
-              element={<EmployeesByProjectPlan2 />}
-            /> */}
+            <Route path='/bdr-plan' element={<IncomeCostPlan />} />
           </Route>
         </Routes>
       </Container>
