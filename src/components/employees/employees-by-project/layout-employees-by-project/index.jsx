@@ -214,11 +214,11 @@ export default function LayoutEmployeesByProject(data) {
             size='small'
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-              <TableRow>
+              <StyledTableRow>
                 <TableCell
-                  sx={{
-                    minWidth: '55px',
-                  }}
+                  // sx={{
+                  //   minWidth: '60px',
+                  // }}
                   component='th'
                 >
                   <Typography
@@ -234,9 +234,9 @@ export default function LayoutEmployeesByProject(data) {
                 </TableCell>
                 {getColumnNames(row.original).map((cell) => (
                   <TableCell
-                    sx={{
-                      minWidth: '55px',
-                    }}
+                    // sx={{
+                    //   maxWidth: '60px',
+                    // }}
                     component='th'
                     key={cell}
                   >
@@ -253,14 +253,19 @@ export default function LayoutEmployeesByProject(data) {
                     </Typography>
                   </TableCell>
                 ))}
-              </TableRow>
+              </StyledTableRow>
             </TableHead>
             <TableBody>
               {row.original.map((rowProject) => {
                 return (
                   <>
-                    <TableRow>
-                      <TableCell key={rowProject[0].author}>
+                    <StyledTableRow>
+                      <TableCell
+                        // sx={{
+                        //   maxWidth: '60px',
+                        // }}
+                        key={rowProject[0].author}
+                      >
                         {rowProject[0].author}
                       </TableCell>
                       {getColumnNames(row.original).map((columnName) => {
@@ -270,14 +275,23 @@ export default function LayoutEmployeesByProject(data) {
                         );
 
                         return (
-                          <TableCell key={columnName}>
+                          <TableCell
+                            sx={{
+                              maxWidth: '60px',
+                            }}
+                            key={columnName}
+                          >
                             {project
-                              ? `${project?.hours}ч. ${project?.percent}%`
+                              ? `${project?.hours}ч. ${
+                                  project?.percent !== null
+                                    ? `${project?.percent}%`
+                                    : ''
+                                }`
                               : ''}
                           </TableCell>
                         );
                       })}
-                    </TableRow>
+                    </StyledTableRow>
                   </>
                 );
               })}

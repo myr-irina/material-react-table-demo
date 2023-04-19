@@ -1,18 +1,36 @@
 export const parseTableData = (data) => {
-  return Object.entries(data)
+  const obj = Object.entries(data)
     .map(([month, dataAuthors]) => {
       if (!dataAuthors) return;
-      // console.log({ dataAuthors });
+
       return Object.entries(dataAuthors).map(([author, projects]) => {
+        // if (author === 'common_amounts') {
+        //   console.log({ author, projects });
+        //   const fromIndex =
+        //     Object.entries(dataAuthors).indexOf('common_amounts');
+
+        //   const item = Object.entries(dataAuthors).splice(fromIndex, 1)[0];
+
+        //   console.log(
+        //     Object.entries(dataAuthors).splice(dataAuthors.length, 1, item)
+        //   );
+
+        //   Object.entries(dataAuthors).splice(dataAuthors.length, 1, item);
+        //   console.log(Object.entries(dataAuthors));
+        //   return Object.entries(dataAuthors);
+        // }
+
         return Object.entries(projects).map(([projectName, time]) => ({
           projectName,
           author,
           month,
-          ...(typeof time === 'number' ? { hours: time } : time),
+          ...(typeof time === 'number' ? { hours: time, percent: null } : time),
         }));
       });
     })
     .filter(Boolean);
+
+  return obj;
 };
 
 export const getColumnNames = (data) => {
