@@ -1630,20 +1630,5 @@
       "december": -1872500,
       "amount": -22470000
     }
-  },
-  "incomes_before_tax": {
-    "january": -8079419,
-    "february": 37634888,
-    "march": -28748852,
-    "april": 15778853,
-    "may": 22643723,
-    "june": 25272029,
-    "july": 8233098,
-    "august": 95522192,
-    "september": -28010747,
-    "october": 7853809,
-    "november": 7386253,
-    "december": 13131382,
-    "amount": 168617209
   }
 }

@@ -29,6 +29,7 @@ export const parseTableData = (data) => {
       });
     })
     .filter(Boolean);
+  // console.log({ obj });
 
   return obj;
 };
@@ -54,11 +55,24 @@ export const getColumnNames = (data) => {
 export const findProjectByName = (projectName, projects) =>
   projects.find((project) => project.projectName === projectName);
 
+export const findProjectByName2 = (month, projects) =>
+  projects.find((project) => project.month === month);
+
 // месяц
 // [
 // Авторы
 //   [
 // Автор
+//     [[][][]]
+//     [[][][]]
+//   ]
+// ]
+
+// projectType
+// [
+// projects
+//   [
+// project
 //     [[][][]]
 //     [[][][]]
 //   ]
@@ -73,4 +87,57 @@ export const showProps = (obj) => {
     }
   }
   return result;
+};
+
+// export const parseTableData2 = (data) => {
+//   const obj = Object.entries(data).map(([projectType, projects]) => {
+//     if (!projects) return;
+
+//     return Object.entries(projects).map(([projectName, values]) => ({
+//       projectType,
+//       projectName,
+//       ...values,
+//     }));
+//   });
+
+//   return obj;
+// };
+
+export const parseTableData2 = (data) => {
+  const obj = Object.entries(data)
+    .map(([projectType, dataProject]) => {
+      // console.log([projectType, dataProject]);
+      if (!dataProject) return;
+
+      return Object.entries(dataProject).map(([projectName, projects]) => {
+        return Object.entries(projects).map(([month, value]) => ({
+          month,
+          projectName,
+          projectType,
+          value,
+        }));
+      });
+    })
+    .filter(Boolean);
+  // console.log({ obj });
+
+  return obj;
+};
+
+export const getColumnNames2 = (data) => {
+  // console.log(data, 'data');
+  const result = [];
+
+  data.forEach((row) => {
+    // console.log({ row });
+    const columns = row.reduce((acc, item) => {
+      acc.push(item.month);
+      return acc;
+    }, []);
+    result.push(...columns);
+  });
+
+  const headers = [...new Set(result)];
+  console.log({ headers });
+  return headers;
 };

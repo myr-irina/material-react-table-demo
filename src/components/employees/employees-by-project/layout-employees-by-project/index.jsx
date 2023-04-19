@@ -14,6 +14,7 @@ import {
   parseTableData,
   getColumnNames,
   findProjectByName,
+  getColumnNames2,
 } from '../../../../utils/utils';
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
