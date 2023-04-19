@@ -2,23 +2,13 @@ export const parseTableData = (data) => {
   return Object.entries(data)
     .map(([month, dataAuthors]) => {
       if (!dataAuthors) return;
+      // console.log({ dataAuthors });
       return Object.entries(dataAuthors).map(([author, projects]) => {
-        // console.log([author, projects]);
-        // if (author === 'common_amounts') {
-        //   return Object.entries(projects).map(
-        //     ([projectName, time = Object.values(projectName)]) => ({
-        //       projectName,
-        //       author,
-        //       month,
-        //       ...time,
-        //     })
-        //   );
-        // }
         return Object.entries(projects).map(([projectName, time]) => ({
           projectName,
           author,
           month,
-          ...time,
+          ...(typeof time === 'number' ? { hours: time } : time),
         }));
       });
     })

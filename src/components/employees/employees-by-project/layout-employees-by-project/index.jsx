@@ -45,6 +45,7 @@ export default function LayoutEmployeesByProject(data) {
   const columns = [
     {
       header: 'Month',
+      id: 'header1',
       accessorFn: (data) => {
         return data[0][0].month;
       },
@@ -52,87 +53,108 @@ export default function LayoutEmployeesByProject(data) {
     },
     {
       header: ' ',
+      id: 'header2',
+      size: 50,
+    },
+    {
+      header: ' ',
+      id: 'header3',
+      size: 50,
+    },
+    {
+      header: ' ',
+      id: 'header4',
+      size: 50,
+    },
+    {
+      header: ' ',
+      id: 'header5',
+      size: 50,
+    },
+    {
+      header: ' ',
+      id: 'header6',
       size: 50,
     },
     {
       header: ' ',
       size: 50,
+      id: 'header7',
     },
     {
       header: ' ',
       size: 50,
-    },
-    {
-      header: ' ',
-      size: 50,
-    },
-    {
-      header: ' ',
-      size: 50,
-    },
-    {
-      header: ' ',
-      size: 50,
-    },
-    {
-      header: ' ',
-      size: 50,
+      id: 'header8',
     },
     {
       header: ' ',
       size: 30,
+      id: 'header9',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header10',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header11',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header12',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header13',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header14',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header15',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header16',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header17',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header18',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header19',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header20',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header21',
     },
     {
       header: ' ',
       size: 50,
+      id: 'header22',
     },
   ];
 
@@ -249,9 +271,8 @@ export default function LayoutEmployeesByProject(data) {
 
                         return (
                           <TableCell key={columnName}>
-                            {console.log({ project })}
-                            {project && project.author !== 'common_amounts'
-                              ? `${project.hours}ч. ${project.percent}%`
+                            {project
+                              ? `${project?.hours}ч. ${project?.percent}%`
                               : ''}
                           </TableCell>
                         );

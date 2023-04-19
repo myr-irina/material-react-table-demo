@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import data from '../../json/income-cost-general-plan.json';
+import { TableContainer } from '@mui/material';
 
 function IncomeCostPlan() {
   const preparedData = Object.entries(data).map(([costType, value]) => ({
@@ -8,34 +9,46 @@ function IncomeCostPlan() {
     value,
   }));
 
+  console.log({ preparedData });
+
   const columns = useMemo(
     () => [
       {
-        accessorFn: (row) => console.log(row, 'row'), //accessorFn used to join multiple data into a single cell
-        id: 'name', //id is still required when using accessorFn instead of accessorKey
-        header: 'Name',
+        accessorFn: (row) => row.costType,
+        id: 'costType',
+        header: 'Название',
       },
       {
-        accessorKey: 'name.lastName',
-        header: 'Last Name',
+        header: ' ',
+        size: 50,
+        id: 'costType1',
       },
       {
-        accessorKey: 'address', //normal accessorKey
-        header: 'Address',
+        header: ' ',
+        size: 50,
+        id: 'costType2',
       },
       {
-        accessorKey: 'city',
-        header: 'City',
+        header: ' ',
+        size: 50,
+        id: 'costType3',
       },
       {
-        accessorKey: 'state',
-        header: 'State',
+        header: ' ',
+        size: 50,
+        id: 'costType4',
       },
     ],
     []
   );
 
-  return <MaterialReactTable columns={columns} data={preparedData} />;
+  return (
+    <MaterialReactTable
+      columns={columns}
+      data={preparedData}
+      renderDetailPanel={({ row }) => <TableContainer />}
+    />
+  );
 }
 
 export default IncomeCostPlan;
