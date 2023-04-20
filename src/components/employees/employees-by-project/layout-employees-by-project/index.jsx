@@ -269,6 +269,7 @@ export default function LayoutEmployeesByProject(data) {
                       >
                         {rowProject[0].author}
                       </TableCell>
+
                       {getColumnNames(row.original).map((columnName) => {
                         const project = findProjectByName(
                           columnName,
@@ -282,6 +283,7 @@ export default function LayoutEmployeesByProject(data) {
                             }}
                             key={columnName}
                           >
+                            {console.log({ columnName, rowProject })}
                             {project
                               ? `${project?.hours}ч. ${
                                   project?.percent !== null

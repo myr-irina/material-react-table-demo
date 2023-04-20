@@ -11,11 +11,14 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
+import { numberWithSpaces } from '../../utils/utils';
+
 import {
   parseTableData2,
   getColumnNames,
   getColumnNames2,
   findProjectByName,
+  findProjectByName2,
 } from '../../utils/utils';
 
 function IncomeCostPlan() {
@@ -125,7 +128,7 @@ function IncomeCostPlan() {
                         {rowProject[0].projectName}
                       </TableCell>
                       {getColumnNames2(row.original).map((columnName) => {
-                        const project = findProjectByName(
+                        const project = findProjectByName2(
                           columnName,
                           rowProject
                         );
@@ -137,14 +140,9 @@ function IncomeCostPlan() {
                             }}
                             key={columnName}
                           >
-                            {console.log({ rowProject })}
-                            {/* {project
-                              ? `${project?.hours}ч. ${
-                                  project?.percent !== null
-                                    ? `${project?.percent}%`
-                                    : ''
-                                }`
-                              : ''} */}
+                            {project && project.value !== null
+                              ? numberWithSpaces(project?.value)
+                              : ''}
                           </TableCell>
                         );
                       })}

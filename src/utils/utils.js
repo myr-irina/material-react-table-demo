@@ -52,6 +52,7 @@ export const getColumnNames = (data) => {
   return headers;
 };
 
+//columnName, rowproject[]
 export const findProjectByName = (projectName, projects) =>
   projects.find((project) => project.projectName === projectName);
 
@@ -138,6 +139,10 @@ export const getColumnNames2 = (data) => {
   });
 
   const headers = [...new Set(result)];
-  console.log({ headers });
   return headers;
+};
+
+//разбить число на разряды
+export const numberWithSpaces = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 };
