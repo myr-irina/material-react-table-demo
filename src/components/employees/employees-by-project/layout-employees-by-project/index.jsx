@@ -283,7 +283,6 @@ export default function LayoutEmployeesByProject(data) {
                             }}
                             key={columnName}
                           >
-                            {console.log({ columnName, rowProject })}
                             {project
                               ? `${project?.hours}ч. ${
                                   project?.percent !== null

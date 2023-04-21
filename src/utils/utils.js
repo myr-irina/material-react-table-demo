@@ -3,23 +3,13 @@ export const parseTableData = (data) => {
     .map(([month, dataAuthors]) => {
       if (!dataAuthors) return;
 
-      return Object.entries(dataAuthors).map(([author, projects]) => {
-        // if (author === 'common_amounts') {
-        //   console.log({ author, projects });
-        //   const fromIndex =
-        //     Object.entries(dataAuthors).indexOf('common_amounts');
+      const dataAuthorsMutated = Object.entries(dataAuthors)
+        .sort((a) => {
+          return a[0] === 'common_amounts' ? 1 : -1;
+        })
+        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 
-        //   const item = Object.entries(dataAuthors).splice(fromIndex, 1)[0];
-
-        //   console.log(
-        //     Object.entries(dataAuthors).splice(dataAuthors.length, 1, item)
-        //   );
-
-        //   Object.entries(dataAuthors).splice(dataAuthors.length, 1, item);
-        //   console.log(Object.entries(dataAuthors));
-        //   return Object.entries(dataAuthors);
-        // }
-
+      return Object.entries(dataAuthorsMutated).map(([author, projects]) => {
         return Object.entries(projects).map(([projectName, time]) => ({
           projectName,
           author,
@@ -29,7 +19,6 @@ export const parseTableData = (data) => {
       });
     })
     .filter(Boolean);
-  // console.log({ obj });
 
   return obj;
 };
@@ -69,16 +58,6 @@ export const findProjectByName2 = (month, projects) =>
 //   ]
 // ]
 
-// projectType
-// [
-// projects
-//   [
-// project
-//     [[][][]]
-//     [[][][]]
-//   ]
-// ]
-
 export const showProps = (obj) => {
   let result = '';
   for (let key in obj) {
@@ -89,20 +68,6 @@ export const showProps = (obj) => {
   }
   return result;
 };
-
-// export const parseTableData2 = (data) => {
-//   const obj = Object.entries(data).map(([projectType, projects]) => {
-//     if (!projects) return;
-
-//     return Object.entries(projects).map(([projectName, values]) => ({
-//       projectType,
-//       projectName,
-//       ...values,
-//     }));
-//   });
-
-//   return obj;
-// };
 
 export const parseTableData2 = (data) => {
   const obj = Object.entries(data)
@@ -126,11 +91,10 @@ export const parseTableData2 = (data) => {
 };
 
 export const getColumnNames2 = (data) => {
-  // console.log(data, 'data');
+  console.log(data);
   const result = [];
 
   data.forEach((row) => {
-    // console.log({ row });
     const columns = row.reduce((acc, item) => {
       acc.push(item.month);
       return acc;

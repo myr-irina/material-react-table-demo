@@ -15,7 +15,8 @@ import EmployeesGeneralFact from './components/employees/employees-general/emplo
 import EmployeesByProjectPlan from './components/employees/employees-by-project/employees-by-project-plan';
 import EmployeesByprojectFact from './components/employees/employees-by-project/employees-by-project-fact';
 
-import IncomeCostPlan from './components/income-cost-plan';
+import IncomeCostPlan from './components/income-cost/income-cost-plan';
+import IncomeCostPlanGeneral from './components/income-cost/income-cost-plan-general';
 
 export default function App() {
   return (
@@ -36,6 +37,10 @@ export default function App() {
               element={<EmployeesByprojectFact />}
             />
             <Route path='/bdr-plan' element={<IncomeCostPlan />} />
+            <Route
+              path='/bdr-plan-general'
+              element={<IncomeCostPlanGeneral />}
+            />
           </Route>
         </Routes>
       </Container>

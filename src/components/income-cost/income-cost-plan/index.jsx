@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import MaterialReactTable from 'material-react-table';
-import data from '../../json/income-cost-general-plan.json';
+import data from '../../../json/income-cost-general-plan.json';
 import { TableContainer } from '@mui/material';
 import { Box, Typography } from '@mui/material';
 import Table from '@mui/material/Table';
@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
-import { numberWithSpaces } from '../../utils/utils';
+import { numberWithSpaces } from '../../../utils/utils';
 
 import {
   parseTableData2,
@@ -19,14 +19,9 @@ import {
   getColumnNames2,
   findProjectByName,
   findProjectByName2,
-} from '../../utils/utils';
+} from '../../../utils/utils';
 
 function IncomeCostPlan() {
-  const preparedData = Object.entries(data).map(([costType, value]) => ({
-    costType,
-    value,
-  }));
-
   const TABLE_DATA = useMemo(() => parseTableData2(data), []);
 
   const columns = useMemo(
@@ -112,7 +107,6 @@ function IncomeCostPlan() {
                         color: 'black',
                       }}
                     >
-                      {/* {console.log(cell, 'cell')} */}
                       {cell}
                     </Typography>
                   </TableCell>
