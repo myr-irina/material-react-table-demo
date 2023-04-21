@@ -12,6 +12,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
 import { numberWithSpaces } from '../../../utils/utils';
+import { StyledTableRow } from '../../../utils/constants';
 
 import {
   parseTableData2,
@@ -80,7 +81,7 @@ function IncomeCostPlan() {
             size='small'
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-              <TableRow>
+              <StyledTableRow>
                 <TableCell component='th'>
                   <Typography
                     sx={{
@@ -109,37 +110,35 @@ function IncomeCostPlan() {
                     </Typography>
                   </TableCell>
                 ))}
-              </TableRow>
+              </StyledTableRow>
             </TableHead>
             <TableBody>
               {row.original.map((rowProject) => {
                 return (
-                  <>
-                    <TableRow>
-                      <TableCell key={rowProject[0].projectName}>
-                        {rowProject[0].projectName}
-                      </TableCell>
-                      {getColumnNames2(row.original).map((columnName) => {
-                        const project = findProjectByName2(
-                          columnName,
-                          rowProject
-                        );
+                  <StyledTableRow>
+                    <TableCell key={rowProject[0].projectName}>
+                      {rowProject[0].projectName}
+                    </TableCell>
+                    {getColumnNames2(row.original).map((columnName) => {
+                      const project = findProjectByName2(
+                        columnName,
+                        rowProject
+                      );
 
-                        return (
-                          <TableCell
-                            sx={{
-                              maxWidth: '60px',
-                            }}
-                            key={columnName}
-                          >
-                            {project && project.value !== null
-                              ? numberWithSpaces(project?.value)
-                              : ''}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  </>
+                      return (
+                        <TableCell
+                          sx={{
+                            maxWidth: '60px',
+                          }}
+                          key={columnName}
+                        >
+                          {project && project.value !== null
+                            ? numberWithSpaces(project?.value)
+                            : ''}
+                        </TableCell>
+                      );
+                    })}
+                  </StyledTableRow>
                 );
               })}
             </TableBody>

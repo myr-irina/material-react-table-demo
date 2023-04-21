@@ -11,23 +11,37 @@ import { Typography } from '@mui/material';
 
 import {
   parseTableData2,
+  numberWithSpaces,
   getColumnNames,
   getColumnNames2,
   findProjectByName,
   findProjectByName2,
 } from '../../../utils/utils';
 
-import data from '../../../json/income-cost-general-plan.json';
+import data from '../../../json/income-cost-general-fact.json';
 
 function IncomeCostPlanGeneral() {
-  const TABLE_DATA = useMemo(() => parseTableData2(data), []);
-  console.log({ TABLE_DATA });
+  const parseTableData = (data) => {
+    const obj = Object.entries(data)
+      .map(([category, rowData]) => {
+        if (!rowData) return;
 
-  const months = TABLE_DATA.map((projectType) =>
-    projectType.map((item) => Object.values(item)[0])
-  );
+        return Object.entries(rowData).map((item) => {
+          if (item[0] === 'amounts') {
+            return Object.entries(item[1]).map(([month, sum]) => ({
+              category,
+              month,
+              sum,
+            }));
+          }
+        });
+      })
+      .filter(Boolean);
+    console.log({ obj });
+    return obj;
+  };
 
-  console.log(months);
+  const parsedData = parseTableData(data);
 
   return (
     <TableContainer
@@ -60,56 +74,21 @@ function IncomeCostPlanGeneral() {
                   whiteSpace: 'nowrap',
                 }}
               >
-                Сотрудники
+                Название
               </Typography>
             </TableCell>
-
-            {getColumnNames2(TABLE_DATA).map((cell) => (
-              <TableCell component='th' key={cell}>
-                <Typography
-                  sx={{
-                    fontWeight: '700',
-                    fontSize: '14px',
-                    overflowX: 'hidden',
-                    whiteSpace: 'nowrap',
-                    color: 'black',
-                  }}
-                >
-                  {console.log(cell, 'cell')}
-                  {cell}
-                </Typography>
-              </TableCell>
+            {Object.keys(parsedData[1]).map((item) => (
+              <TableCell>{item}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {TABLE_DATA.map((rowProject) => {
-            return (
-              <>
-                <TableRow>
-                  {/* <TableCell key={rowProject[0].projectName}>
-                    {rowProject[0].projectName}
-                  </TableCell>
-                  {getColumnNames2(data.original).map((columnName) => {
-                    const project = findProjectByName2(columnName, rowProject);
-
-                    return (
-                      <TableCell
-                        sx={{
-                          maxWidth: '60px',
-                        }}
-                        key={columnName}
-                      >
-                        {project && project.value !== null
-                          ? numberWithSpaces(project?.value)
-                          : ''}
-                      </TableCell>
-                    );
-                  })} */}
-                </TableRow>
-              </>
-            );
-          })}
+          <TableRow>
+            <TableCell>{parsedData[0]}</TableCell>
+            {Object.values(parsedData[1]).map((item) => (
+              <TableCell>{item}</TableCell>
+            ))}
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>

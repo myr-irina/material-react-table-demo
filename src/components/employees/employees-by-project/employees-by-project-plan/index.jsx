@@ -11,14 +11,13 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
 import { getProjectPlanHours } from './../../../../utils/api-requests';
-import LayoutEmployeesByProject from '../layout-employees-by-project';
+
+import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collapsed-table-employees';
 import employeesByProjectPlanData from '../../../../json/employees-by-project-plan.json';
 
 function EmployeesByProjectPlan() {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
-
-  // console.log({ projectPlanHours });
 
   // useEffect(() => {
   //   getProjectPlanHours()
@@ -30,7 +29,12 @@ function EmployeesByProjectPlan() {
   //     });
   // }, []);
 
-  return <LayoutEmployeesByProject data={employeesByProjectPlanData} />;
+  return (
+    <LayoutCollapsedTableEmployees
+      header='Сотрудники'
+      data={employeesByProjectPlanData}
+    />
+  );
 }
 
 export default EmployeesByProjectPlan;

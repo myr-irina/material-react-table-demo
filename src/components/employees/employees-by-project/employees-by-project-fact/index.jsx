@@ -11,8 +11,9 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
 import { getProjectPlanHours } from './../../../../utils/api-requests';
-import LayoutEmployeesByProject from '../layout-employees-by-project';
+
 import employeesByProjectFactData from './../../../../json/employees-by-project-fact.json';
+import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collapsed-table-employees';
 
 function EmployeesByProjectFact() {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
@@ -30,7 +31,12 @@ function EmployeesByProjectFact() {
   //     });
   // }, []);
 
-  return <LayoutEmployeesByProject data={employeesByProjectFactData} />;
+  return (
+    <LayoutCollapsedTableEmployees
+      header='Сотрудники'
+      data={employeesByProjectFactData}
+    />
+  );
 }
 
 export default EmployeesByProjectFact;

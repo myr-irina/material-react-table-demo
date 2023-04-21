@@ -9,25 +9,16 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
+import { StyledTableRow } from '../../../utils/constants';
 
 import {
   parseTableData,
   getColumnNames,
   findProjectByName,
   getColumnNames2,
-} from '../../../../utils/utils';
+} from '../../../utils/utils';
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
-
-export default function LayoutEmployeesByProject(data) {
+export default function LayoutCollapsedTableEmployees(data) {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
 
@@ -45,7 +36,7 @@ export default function LayoutEmployeesByProject(data) {
 
   const columns = [
     {
-      header: 'Month',
+      header: data.header,
       id: 'header1',
       accessorFn: (data) => {
         return data[0][0].month;
@@ -259,42 +250,37 @@ export default function LayoutEmployeesByProject(data) {
             <TableBody>
               {row.original.map((rowProject) => {
                 return (
-                  <>
-                    <StyledTableRow>
-                      <TableCell
-                        // sx={{
-                        //   maxWidth: '60px',
-                        // }}
-                        key={rowProject[0].author}
-                      >
-                        {rowProject[0].author}
-                      </TableCell>
+                  <StyledTableRow key={rowProject[0].author}>
+                    <TableCell
+                      // sx={{
+                      //   maxWidth: '60px',
+                      // }}
+                      key={rowProject[0].author}
+                    >
+                      {rowProject[0].author}
+                    </TableCell>
 
-                      {getColumnNames(row.original).map((columnName) => {
-                        const project = findProjectByName(
-                          columnName,
-                          rowProject
-                        );
+                    {getColumnNames(row.original).map((columnName) => {
+                      const project = findProjectByName(columnName, rowProject);
 
-                        return (
-                          <TableCell
-                            sx={{
-                              maxWidth: '60px',
-                            }}
-                            key={columnName}
-                          >
-                            {project
-                              ? `${project?.hours}ч. ${
-                                  project?.percent !== null
-                                    ? `${project?.percent}%`
-                                    : ''
-                                }`
-                              : ''}
-                          </TableCell>
-                        );
-                      })}
-                    </StyledTableRow>
-                  </>
+                      return (
+                        <TableCell
+                          sx={{
+                            maxWidth: '60px',
+                          }}
+                          key={columnName}
+                        >
+                          {project
+                            ? `${project?.hours}ч. ${
+                                project?.percent !== null
+                                  ? `${project?.percent}%`
+                                  : ''
+                              }`
+                            : ''}
+                        </TableCell>
+                      );
+                    })}
+                  </StyledTableRow>
                 );
               })}
             </TableBody>

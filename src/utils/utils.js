@@ -23,6 +23,33 @@ export const parseTableData = (data) => {
   return obj;
 };
 
+export const parseTableData2 = (data) => {
+  const obj = Object.entries(data)
+    .map(([projectType, dataProject]) => {
+      if (!dataProject) return;
+
+      const dataAuthorsMutated = Object.entries(dataProject)
+        .sort((a) => {
+          return a[0] === 'amounts' ? 1 : -1;
+        })
+        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+      return Object.entries(dataAuthorsMutated).map(
+        ([projectName, projects]) => {
+          return Object.entries(projects).map(([month, value]) => ({
+            month,
+            projectName,
+            projectType,
+            value,
+          }));
+        }
+      );
+    })
+    .filter(Boolean);
+
+  return obj;
+};
+
 export const getColumnNames = (data) => {
   const result = [];
 
@@ -69,29 +96,7 @@ export const showProps = (obj) => {
   return result;
 };
 
-export const parseTableData2 = (data) => {
-  const obj = Object.entries(data)
-    .map(([projectType, dataProject]) => {
-      // console.log([projectType, dataProject]);
-      if (!dataProject) return;
-
-      return Object.entries(dataProject).map(([projectName, projects]) => {
-        return Object.entries(projects).map(([month, value]) => ({
-          month,
-          projectName,
-          projectType,
-          value,
-        }));
-      });
-    })
-    .filter(Boolean);
-  // console.log({ obj });
-
-  return obj;
-};
-
 export const getColumnNames2 = (data) => {
-  console.log(data);
   const result = [];
 
   data.forEach((row) => {

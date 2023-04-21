@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import MaterialReactTable from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material';
-import { getCellColor } from '../../../../utils/getCellColor';
+import { getCellColor } from '../../../utils/getCellColor';
 import { Link as MuiLink } from '@mui/material';
 
 // import data from '../../../json/employees-general-fact.json';
 
-export default function LayoutEmployeesGeneral(props) {
+export default function LayoutPlainTable(props) {
   //   const [isLoading, setIsLoading] = useState(false);
   //   const [workingHours, setWorkingHours] = useState([]);
 
@@ -22,7 +22,9 @@ export default function LayoutEmployeesGeneral(props) {
   //     });
   // }, []);
 
-  const { data, title } = props;
+  const { data, title, header } = props;
+
+  console.log({ header });
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
@@ -36,7 +38,7 @@ export default function LayoutEmployeesGeneral(props) {
   const columns = useMemo(
     () => [
       {
-        header: 'Сотрудники',
+        header: header,
         id: 'name',
         accessorKey: 'staff',
         sortDescFirst: false,
