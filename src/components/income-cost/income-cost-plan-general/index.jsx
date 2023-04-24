@@ -19,7 +19,7 @@ import {
 } from '../../../utils/utils';
 
 import data from '../../../json/income-cost-general-fact.json';
-console.log({ data });
+// console.log(getColumnNames(data));
 
 function IncomeCostPlanGeneral() {
   const columnNames = (data) => {
@@ -35,7 +35,7 @@ function IncomeCostPlanGeneral() {
   };
 
   const parseTableData = (data) => {
-    const obj = Object.entries(data).map(([category, rowData]) => {
+    return Object.entries(data).map(([category, rowData]) => {
       if (!rowData) return;
 
       return Object.entries(rowData)
@@ -52,13 +52,12 @@ function IncomeCostPlanGeneral() {
           ...monthData,
         }));
     });
-
-    console.log({ obj });
   };
 
-  console.log(parseTableData(data));
+  const parsedColumns = columnNames(data);
 
-  const parsedData = columnNames(data);
+  const parsedData = parseTableData(data);
+  console.log(parsedData, 'parsed data');
 
   return (
     <TableContainer
@@ -94,15 +93,50 @@ function IncomeCostPlanGeneral() {
                 Название
               </Typography>
             </TableCell>
-            {Object.keys(parsedData[1][1].monthData).map((item) => (
+            {Object.keys(parsedColumns[1][1].monthData).map((item) => (
               <TableCell>{item}</TableCell>
             ))}
+            {/* {getColumnNames2(parsedData).map((cell) => (
+              <TableCell component='th'>
+                <Typography
+                  sx={{
+                    fontWeight: '700',
+                    fontSize: '14px',
+                    overflowX: 'hidden',
+                    whiteSpace: 'nowrap',
+                    color: 'black',
+                  }}
+                >
+                  {console.log(cell)}
+                  {cell}
+                </Typography>
+              </TableCell>
+            ))} */}
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* <TableRow>
-        
-          </TableRow> */}
+          <TableRow>
+            {/* <TableCell
+                  
+                    >
+                      {rowProject[0].author}
+                    </TableCell>
+
+                    {getColumnNames(row.original).map((columnName) => {
+                      const project = findProjectByName(columnName, rowProject);
+
+                      return (
+                        <TableCell
+                          sx={{
+                            maxWidth: '60px',
+                          }}
+                          key={columnName}
+                        >
+                         
+                        </TableCell>
+                      );
+                    })} */}
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>

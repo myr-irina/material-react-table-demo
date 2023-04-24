@@ -225,13 +225,7 @@ export default function LayoutCollapsedTableEmployees(data) {
                   </Typography>
                 </TableCell>
                 {getColumnNames(row.original).map((cell) => (
-                  <TableCell
-                    // sx={{
-                    //   maxWidth: '60px',
-                    // }}
-                    component='th'
-                    key={cell}
-                  >
+                  <TableCell component='th' key={cell}>
                     <Typography
                       sx={{
                         fontWeight: '700',

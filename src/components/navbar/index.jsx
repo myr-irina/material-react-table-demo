@@ -53,11 +53,21 @@ export default function NavBar() {
         </MenuItem>
 
         <MenuItem component={RouterLink} to={'/bdr-plan'}>
-          БДР План по проектам
+          БДР План
+        </MenuItem>
+        <MenuItem component={RouterLink} to={'/bdr-fact'}>
+          БДР Факт
         </MenuItem>
 
         <MenuItem component={RouterLink} to={'/bdr-plan-general'}>
           БДР План по проектам - общие данные
+        </MenuItem>
+
+        <MenuItem component={RouterLink} to={'/dds-plan'}>
+          ДДС План
+        </MenuItem>
+        <MenuItem component={RouterLink} to={'/dds-fact'}>
+          ДДС Факт
         </MenuItem>
       </Menu>
       <Outlet />

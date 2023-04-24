@@ -47,10 +47,13 @@ export const parseTableData2 = (data) => {
     })
     .filter(Boolean);
 
+  // console.log({ obj });
+
   return obj;
 };
 
 export const getColumnNames = (data) => {
+  // console.log(data, 'data');
   const result = [];
 
   data.forEach((row) => {

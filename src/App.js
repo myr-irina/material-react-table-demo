@@ -15,8 +15,11 @@ import EmployeesGeneralFact from './components/employees/employees-general/emplo
 import EmployeesByProjectPlan from './components/employees/employees-by-project/employees-by-project-plan';
 import EmployeesByprojectFact from './components/employees/employees-by-project/employees-by-project-fact';
 
-import IncomeCostPlan from './components/income-cost/income-cost-plan';
 import IncomeCostPlanGeneral from './components/income-cost/income-cost-plan-general';
+import IncomeCostPlan from './components/cash-flow/cash-flow-plan';
+import IncomeCostFact from './components/income-cost/income-cost-fact';
+import CashFlowPlan from './components/cash-flow/cash-flow-plan';
+import CashFlowFact from './components/cash-flow/cash-flow-fact';
 
 export default function App() {
   return (
@@ -26,8 +29,8 @@ export default function App() {
         <Routes>
           <Route element={<NavBar />}>
             <Route path='/' element={<EmployeesGeneralPlan />} />
-
             <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
+
             <Route
               path='/employees-project-plan'
               element={<EmployeesByProjectPlan />}
@@ -36,11 +39,16 @@ export default function App() {
               path='/employees-project-fact'
               element={<EmployeesByprojectFact />}
             />
+
             <Route path='/bdr-plan' element={<IncomeCostPlan />} />
+            <Route path='/bdr-fact' element={<IncomeCostFact />} />
             <Route
               path='/bdr-plan-general'
               element={<IncomeCostPlanGeneral />}
             />
+
+            <Route path='/dds-plan' element={<CashFlowPlan />} />
+            <Route path='/dds-fact' element={<CashFlowFact />} />
           </Route>
         </Routes>
       </Container>

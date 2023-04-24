@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import MaterialReactTable from 'material-react-table';
-import data from '../../../json/income-cost-general-plan.json';
+
 import { TableContainer } from '@mui/material';
 import { Box, Typography } from '@mui/material';
 import Table from '@mui/material/Table';
@@ -12,7 +12,6 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
 import { numberWithSpaces } from '../../../utils/utils';
-import { StyledTableRow } from '../../../utils/constants';
 
 import {
   parseTableData2,
@@ -20,14 +19,16 @@ import {
   findProjectByName2,
 } from '../../../utils/utils';
 
-function IncomeCostPlan() {
-  const TABLE_DATA = useMemo(() => parseTableData2(data), []);
+function LayoutCollapsedTableBdr(data) {
+  const TABLE_DATA = useMemo(() => parseTableData2(data.data), [data]);
+  console.log(TABLE_DATA[0][0]);
 
   const columns = useMemo(
     () => [
       {
         accessorFn: (data) => {
           return data[0][0].projectType;
+          // return data.projectType;
         },
         id: 'costType',
         header: 'Название',
@@ -81,7 +82,7 @@ function IncomeCostPlan() {
             size='small'
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-              <StyledTableRow>
+              <TableRow>
                 <TableCell component='th'>
                   <Typography
                     sx={{
@@ -110,35 +111,37 @@ function IncomeCostPlan() {
                     </Typography>
                   </TableCell>
                 ))}
-              </StyledTableRow>
+              </TableRow>
             </TableHead>
             <TableBody>
               {row.original.map((rowProject) => {
                 return (
-                  <StyledTableRow>
-                    <TableCell key={rowProject[0].projectName}>
-                      {rowProject[0].projectName}
-                    </TableCell>
-                    {getColumnNames2(row.original).map((columnName) => {
-                      const project = findProjectByName2(
-                        columnName,
-                        rowProject
-                      );
+                  <>
+                    <TableRow>
+                      <TableCell key={rowProject[0].projectName}>
+                        {rowProject[0].projectName}
+                      </TableCell>
+                      {getColumnNames2(row.original).map((columnName) => {
+                        const project = findProjectByName2(
+                          columnName,
+                          rowProject
+                        );
 
-                      return (
-                        <TableCell
-                          sx={{
-                            maxWidth: '60px',
-                          }}
-                          key={columnName}
-                        >
-                          {project && project.value !== null
-                            ? numberWithSpaces(project?.value)
-                            : ''}
-                        </TableCell>
-                      );
-                    })}
-                  </StyledTableRow>
+                        return (
+                          <TableCell
+                            sx={{
+                              maxWidth: '60px',
+                            }}
+                            key={columnName}
+                          >
+                            {project && project.value !== null
+                              ? numberWithSpaces(project?.value)
+                              : ''}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  </>
                 );
               })}
             </TableBody>
@@ -149,4 +152,4 @@ function IncomeCostPlan() {
   );
 }
 
-export default IncomeCostPlan;
+export default LayoutCollapsedTableBdr;
