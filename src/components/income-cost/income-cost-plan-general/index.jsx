@@ -19,29 +19,46 @@ import {
 } from '../../../utils/utils';
 
 import data from '../../../json/income-cost-general-fact.json';
+console.log({ data });
 
 function IncomeCostPlanGeneral() {
-  const parseTableData = (data) => {
-    const obj = Object.entries(data)
-      .map(([category, rowData]) => {
-        if (!rowData) return;
+  const columnNames = (data) => {
+    return Object.entries(data).map(([category, rowData]) => {
+      if (!rowData) return;
 
-        return Object.entries(rowData).map((item) => {
-          if (item[0] === 'amounts') {
-            return Object.entries(item[1]).map(([month, sum]) => ({
-              category,
-              month,
-              sum,
-            }));
-          }
-        });
-      })
-      .filter(Boolean);
-    console.log({ obj });
-    return obj;
+      return Object.entries(rowData).map(([project, monthData]) => ({
+        category,
+        project,
+        monthData,
+      }));
+    });
   };
 
-  const parsedData = parseTableData(data);
+  const parseTableData = (data) => {
+    const obj = Object.entries(data).map(([category, rowData]) => {
+      if (!rowData) return;
+
+      return Object.entries(rowData)
+        .map(([project, monthData]) => ({
+          category,
+          project,
+          monthData,
+        }))
+        .filter((element) => element.project === 'amounts')
+        .map((data) => Object.values(data))
+        .map(([project, category, monthData]) => ({
+          project,
+          category,
+          ...monthData,
+        }));
+    });
+
+    console.log({ obj });
+  };
+
+  console.log(parseTableData(data));
+
+  const parsedData = columnNames(data);
 
   return (
     <TableContainer
@@ -77,18 +94,15 @@ function IncomeCostPlanGeneral() {
                 Название
               </Typography>
             </TableCell>
-            {Object.keys(parsedData[1]).map((item) => (
+            {Object.keys(parsedData[1][1].monthData).map((item) => (
               <TableCell>{item}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell>{parsedData[0]}</TableCell>
-            {Object.values(parsedData[1]).map((item) => (
-              <TableCell>{item}</TableCell>
-            ))}
-          </TableRow>
+          {/* <TableRow>
+        
+          </TableRow> */}
         </TableBody>
       </Table>
     </TableContainer>
