@@ -27,7 +27,7 @@ export default function NavBar() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        Таблицы рабочего времени
+        Список таблиц
       </Button>
       <Menu
         id='demo-positioned-menu'
@@ -60,7 +60,7 @@ export default function NavBar() {
         </MenuItem>
 
         <MenuItem component={RouterLink} to={'/bdr-plan-general'}>
-          БДР План по проектам - общие данные
+          БДР - общие данные
         </MenuItem>
 
         <MenuItem component={RouterLink} to={'/dds-plan'}>

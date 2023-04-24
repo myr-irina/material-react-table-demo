@@ -53,7 +53,6 @@ export const parseTableData2 = (data) => {
 };
 
 export const getColumnNames = (data) => {
-  // console.log(data, 'data');
   const result = [];
 
   data.forEach((row) => {
@@ -103,12 +102,15 @@ export const getColumnNames2 = (data) => {
   const result = [];
 
   data.forEach((row) => {
+    console.log({ row });
     const columns = row.reduce((acc, item) => {
       acc.push(item.month);
       return acc;
     }, []);
     result.push(...columns);
   });
+
+  console.log({ result });
 
   const headers = [...new Set(result)];
   return headers;

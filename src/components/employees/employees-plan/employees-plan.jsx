@@ -21,10 +21,6 @@ function pickHex(color1, color2, weight) {
   return rgb;
 }
 
-/* 
-  const result = Object.keys(data).map((key) => [key, data[key]]);
-  console.log(result); */
-
 const green = [0, 255, 0];
 const white = [255, 255, 255];
 const red = [255, 0, 0];
@@ -54,7 +50,6 @@ export default function BasicTable() {
                   backgroundColor = pickHex(white, green, ratio);
                 }
                 backgroundColor = `rgba(${backgroundColor.join(',')})`;
-                console.log({ backgroundColor });
 
                 return typeof item === 'object' && item !== null ? (
                   <TableCell

@@ -13,13 +13,12 @@ import {
   parseTableData2,
   numberWithSpaces,
   getColumnNames,
-  getColumnNames2,
+  // getColumnNames2,
   findProjectByName,
   findProjectByName2,
 } from '../../../utils/utils';
 
 import data from '../../../json/income-cost-general-fact.json';
-// console.log(getColumnNames(data));
 
 function IncomeCostPlanGeneral() {
   const columnNames = (data) => {
@@ -38,26 +37,44 @@ function IncomeCostPlanGeneral() {
     return Object.entries(data).map(([category, rowData]) => {
       if (!rowData) return;
 
-      return Object.entries(rowData)
-        .map(([project, monthData]) => ({
-          category,
+      return Object.entries(rowData).map(([project, monthData]) =>
+        Object.entries(monthData).map(([month, value]) => ({
           project,
-          monthData,
+          month,
+          ...value,
         }))
-        .filter((element) => element.project === 'amounts')
-        .map((data) => Object.values(data))
-        .map(([project, category, monthData]) => ({
-          project,
-          category,
-          ...monthData,
-        }));
+      );
+      // .filter((element) => element.project === 'amounts');
+      // .map(([project, category, monthData]) => ({
+      //   project,
+      //   category,
+      //   ...monthData,
+      // }));
     });
   };
 
-  const parsedColumns = columnNames(data);
+  const filteredData = parseTableData2(data).map((projectType) =>
+    projectType.filter((item) =>
+      Object.values(item).some((item) => item.projectName === 'amounts')
+    )
+  );
 
-  const parsedData = parseTableData(data);
-  console.log(parsedData, 'parsed data');
+  console.log({ filteredData });
+
+  const getColumnNames2 = (data) => {
+    const result = [];
+
+    data[0].forEach((row) => {
+      const columns = row.reduce((acc, item) => {
+        acc.push(item.month);
+        return acc;
+      }, []);
+      result.push(...columns);
+    });
+
+    const headers = [...new Set(result)];
+    return headers;
+  };
 
   return (
     <TableContainer
@@ -93,10 +110,8 @@ function IncomeCostPlanGeneral() {
                 Название
               </Typography>
             </TableCell>
-            {Object.keys(parsedColumns[1][1].monthData).map((item) => (
-              <TableCell>{item}</TableCell>
-            ))}
-            {/* {getColumnNames2(parsedData).map((cell) => (
+
+            {getColumnNames2(filteredData).map((cell) => (
               <TableCell component='th'>
                 <Typography
                   sx={{
@@ -111,32 +126,39 @@ function IncomeCostPlanGeneral() {
                   {cell}
                 </Typography>
               </TableCell>
-            ))} */}
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            {/* <TableCell
-                  
-                    >
-                      {rowProject[0].author}
-                    </TableCell>
+          {filteredData.map((rowProject) => {
+            return (
+              <>
+                <TableRow>
+                  <TableCell
+                    sx={{
+                      maxWidth: '60px',
+                    }}
+                  >
+                    {filteredData[0].projectName}
+                  </TableCell>
+                  {getColumnNames2(filteredData).map((columnName) => {
+                    console.log({ rowProject });
+                    const project = findProjectByName2(columnName, rowProject);
 
-                    {getColumnNames(row.original).map((columnName) => {
-                      const project = findProjectByName(columnName, rowProject);
-
-                      return (
-                        <TableCell
-                          sx={{
-                            maxWidth: '60px',
-                          }}
-                          key={columnName}
-                        >
-                         
-                        </TableCell>
-                      );
-                    })} */}
-          </TableRow>
+                    return (
+                      <TableCell
+                        sx={{
+                          maxWidth: '60px',
+                        }}
+                      >
+                        {console.log({ project })}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              </>
+            );
+          })}
         </TableBody>
       </Table>
     </TableContainer>
