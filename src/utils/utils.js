@@ -47,8 +47,6 @@ export const parseTableData2 = (data) => {
     })
     .filter(Boolean);
 
-  // console.log({ obj });
-
   return obj;
 };
 

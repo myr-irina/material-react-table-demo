@@ -18,48 +18,14 @@ import {
   findProjectByName2,
 } from '../../../utils/utils';
 
-import data from '../../../json/income-cost-general-fact.json';
+import data from '../../../json/income-cost-general-plan copy.json';
 
 function IncomeCostPlanGeneral() {
-  const columnNames = (data) => {
-    return Object.entries(data).map(([category, rowData]) => {
-      if (!rowData) return;
-
-      return Object.entries(rowData).map(([project, monthData]) => ({
-        category,
-        project,
-        monthData,
-      }));
-    });
-  };
-
-  const parseTableData = (data) => {
-    return Object.entries(data).map(([category, rowData]) => {
-      if (!rowData) return;
-
-      return Object.entries(rowData).map(([project, monthData]) =>
-        Object.entries(monthData).map(([month, value]) => ({
-          project,
-          month,
-          ...value,
-        }))
-      );
-      // .filter((element) => element.project === 'amounts');
-      // .map(([project, category, monthData]) => ({
-      //   project,
-      //   category,
-      //   ...monthData,
-      // }));
-    });
-  };
-
   const filteredData = parseTableData2(data).map((projectType) =>
     projectType.filter((item) =>
       Object.values(item).some((item) => item.projectName === 'amounts')
     )
   );
-
-  console.log({ filteredData });
 
   const getColumnNames2 = (data) => {
     const result = [];
@@ -122,7 +88,6 @@ function IncomeCostPlanGeneral() {
                     color: 'black',
                   }}
                 >
-                  {console.log(cell)}
                   {cell}
                 </Typography>
               </TableCell>
@@ -139,11 +104,13 @@ function IncomeCostPlanGeneral() {
                       maxWidth: '60px',
                     }}
                   >
-                    {filteredData[0].projectName}
+                    {rowProject[0][0].projectType}
                   </TableCell>
                   {getColumnNames2(filteredData).map((columnName) => {
-                    console.log({ rowProject });
-                    const project = findProjectByName2(columnName, rowProject);
+                    const project = findProjectByName2(
+                      columnName,
+                      rowProject[0]
+                    );
 
                     return (
                       <TableCell
@@ -151,7 +118,7 @@ function IncomeCostPlanGeneral() {
                           maxWidth: '60px',
                         }}
                       >
-                        {console.log({ project })}
+                        {project.value}
                       </TableCell>
                     );
                   })}
