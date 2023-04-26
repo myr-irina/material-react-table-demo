@@ -32,6 +32,7 @@ function EmployeesByProjectPlan() {
   return (
     <LayoutCollapsedTableEmployees
       header='Сотрудники'
+      title='Таблица рабочего времени (план по проектам)'
       data={employeesByProjectPlanData}
     />
   );

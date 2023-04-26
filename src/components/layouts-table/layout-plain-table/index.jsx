@@ -337,7 +337,7 @@ export default function LayoutPlainTable(props) {
   );
 
   return (
-    <Box sx={{ margin: '20px auto' }}>
+    <Box>
       <MaterialReactTable
         columns={columns}
         data={data}

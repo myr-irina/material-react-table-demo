@@ -34,6 +34,7 @@ function EmployeesByProjectFact() {
   return (
     <LayoutCollapsedTableEmployees
       header='Сотрудники'
+      title='Таблица рабочего времени (факт по проектам)'
       data={employeesByProjectFactData}
     />
   );

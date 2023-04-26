@@ -21,7 +21,6 @@ import {
 
 function LayoutCollapsedTableBdr(data) {
   const TABLE_DATA = useMemo(() => parseTableData2(data.data), [data]);
-  console.log(TABLE_DATA[0][0]);
 
   const columns = useMemo(
     () => [

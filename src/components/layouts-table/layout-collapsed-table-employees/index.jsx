@@ -187,7 +187,7 @@ export default function LayoutCollapsedTableEmployees(data) {
       renderTopToolbarCustomActions={() => {
         return (
           <Typography variant='h5' mb='15px'>
-            Таблица рабочего времени (план по проектам)
+            {data.title}
           </Typography>
         );
       }}

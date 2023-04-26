@@ -50,6 +50,48 @@ export const parseTableData2 = (data) => {
   return obj;
 };
 
+export const parseTableData3 = (data) => {
+  const obj = Object.entries(data)
+    .map(([projectType, dataProject]) => {
+      if (!dataProject) return;
+
+      const dataAuthorsMutated = Object.entries(dataProject)
+        .sort((a) => {
+          return a[0] === 'amounts' ? 1 : -1;
+        })
+        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+      const abc = Object.entries(dataAuthorsMutated);
+      const value = abc[0][1];
+
+      if (typeof value !== 'object') {
+        const res = abc.map(([key, val]) => {
+          return {
+            month: key,
+            projectName: projectType,
+            projectType: projectType,
+            value: val,
+          };
+        });
+        return [res];
+      }
+
+      return abc.map(([projectName, projects]) => {
+        // console.log(projectName, projects);
+
+        return Object.entries(projects).map(([month, value]) => ({
+          month,
+          projectName,
+          projectType,
+          value,
+        }));
+      });
+    })
+    .filter(Boolean);
+
+  return obj;
+};
+
 export const getColumnNames = (data) => {
   const result = [];
 

@@ -8,22 +8,50 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 import { TableContainer } from '@mui/material';
 import { Typography } from '@mui/material';
+import Paper from '@mui/material/Paper';
 
 import {
-  parseTableData2,
   numberWithSpaces,
-  getColumnNames,
-  // getColumnNames2,
-  findProjectByName,
   findProjectByName2,
+  parseTableData3,
 } from '../../../utils/utils';
 
-import data from '../../../json/income-cost-general-plan copy.json';
+import data from '../../../json/income-cost-general-plan.json';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+  '&:last-child td': {
+    backgroundColor: 'lightGrey',
+    fontWeight: 600,
+  },
+}));
 
 function IncomeCostPlanGeneral() {
-  const filteredData = parseTableData2(data).map((projectType) =>
+  const filteredData = parseTableData3(data).map((projectType) =>
     projectType.filter((item) =>
-      Object.values(item).some((item) => item.projectName === 'amounts')
+      Object.values(item).some(
+        (item) =>
+          item.projectName === 'amounts' ||
+          item.projectName === 'incomes_before_tax'
+      )
     )
   );
 
@@ -44,6 +72,7 @@ function IncomeCostPlanGeneral() {
 
   return (
     <TableContainer
+      component={Paper}
       sx={{
         width: '100%',
         margin: '0 auto',
@@ -64,7 +93,7 @@ function IncomeCostPlanGeneral() {
       >
         <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
           <TableRow>
-            <TableCell component='th'>
+            <StyledTableCell component='th'>
               <Typography
                 sx={{
                   fontWeight: '700',
@@ -75,22 +104,21 @@ function IncomeCostPlanGeneral() {
               >
                 Название
               </Typography>
-            </TableCell>
+            </StyledTableCell>
 
             {getColumnNames2(filteredData).map((cell) => (
-              <TableCell component='th'>
+              <StyledTableCell component='th'>
                 <Typography
                   sx={{
                     fontWeight: '700',
                     fontSize: '14px',
                     overflowX: 'hidden',
                     whiteSpace: 'nowrap',
-                    color: 'black',
                   }}
                 >
                   {cell}
                 </Typography>
-              </TableCell>
+              </StyledTableCell>
             ))}
           </TableRow>
         </TableHead>
@@ -98,14 +126,14 @@ function IncomeCostPlanGeneral() {
           {filteredData.map((rowProject) => {
             return (
               <>
-                <TableRow>
-                  <TableCell
+                <StyledTableRow hover>
+                  <StyledTableCell
                     sx={{
                       maxWidth: '60px',
                     }}
                   >
                     {rowProject[0][0].projectType}
-                  </TableCell>
+                  </StyledTableCell>
                   {getColumnNames2(filteredData).map((columnName) => {
                     const project = findProjectByName2(
                       columnName,
@@ -113,7 +141,7 @@ function IncomeCostPlanGeneral() {
                     );
 
                     return (
-                      <TableCell
+                      <StyledTableCell
                         sx={{
                           maxWidth: '60px',
                         }}
@@ -121,10 +149,10 @@ function IncomeCostPlanGeneral() {
                         {project && project.value !== null
                           ? `${numberWithSpaces(project?.value)} р.`
                           : ''}
-                      </TableCell>
+                      </StyledTableCell>
                     );
                   })}
-                </TableRow>
+                </StyledTableRow>
               </>
             );
           })}
