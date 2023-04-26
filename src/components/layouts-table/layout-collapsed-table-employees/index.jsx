@@ -18,6 +18,8 @@ import {
   getColumnNames2,
 } from '../../../utils/utils';
 
+import data2 from '../../../json/bdr-by-project-plan.json';
+
 export default function LayoutCollapsedTableEmployees(data) {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +33,8 @@ export default function LayoutCollapsedTableEmployees(data) {
   //       console.log(error);
   //     });
   // }, []);
+
+  console.log({ data2 });
 
   const TABLE_DATA = useMemo(() => parseTableData(data.data), [data.data]);
 
@@ -159,6 +163,7 @@ export default function LayoutCollapsedTableEmployees(data) {
       enableHiding={false}
       enableDensityToggle={false}
       enableColumnActions={false}
+      enableExpanding
       muiTableProps={{
         sx: {
           tableLayout: 'fixed',
@@ -173,6 +178,7 @@ export default function LayoutCollapsedTableEmployees(data) {
         density: 'compact',
         sorting: [{ id: 'name', desc: false }],
         pagination: { pageSize: 25, pageIndex: 0 },
+        expanded: true,
       }}
       muiTablePaginationProps={{
         rowsPerPageOptions: [5, 10, 20, 25],

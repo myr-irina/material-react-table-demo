@@ -135,7 +135,7 @@ function LayoutCollapsedTableBdr(data) {
                             key={columnName}
                           >
                             {project && project.value !== null
-                              ? numberWithSpaces(project?.value)
+                              ? `${numberWithSpaces(project?.value)} р.`
                               : ''}
                           </TableCell>
                         );

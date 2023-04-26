@@ -118,7 +118,9 @@ function IncomeCostPlanGeneral() {
                           maxWidth: '60px',
                         }}
                       >
-                        {project.value}
+                        {project && project.value !== null
+                          ? `${numberWithSpaces(project?.value)} р.`
+                          : ''}
                       </TableCell>
                     );
                   })}
