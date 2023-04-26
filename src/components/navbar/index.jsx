@@ -10,12 +10,32 @@ import AppBar from '@mui/material/AppBar';
 
 export default function NavBar() {
   const [anchorElEmployees, setAnchorElEmployees] = React.useState(null);
-  const open = Boolean(anchorElEmployees);
-  const handleClick = (event) => {
+  const [anchorBDR, setAnchorBDR] = React.useState(null);
+  const [anchorDDS, setAnchorDDS] = React.useState(null);
+
+  const openEmployees = Boolean(anchorElEmployees);
+  const openBDR = Boolean(anchorBDR);
+  const openDDS = Boolean(anchorDDS);
+
+  const handleOpenEmployees = (event) => {
     setAnchorElEmployees(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleCloseEmployees = () => {
     setAnchorElEmployees(null);
+  };
+
+  const handleOpenBDR = (event) => {
+    setAnchorBDR(event.currentTarget);
+  };
+  const handleCloseBDR = () => {
+    setAnchorBDR(null);
+  };
+
+  const handleOpenDDS = (event) => {
+    setAnchorDDS(event.currentTarget);
+  };
+  const handleCloseDDS = () => {
+    setAnchorDDS(null);
   };
 
   return (
@@ -39,11 +59,11 @@ export default function NavBar() {
               color: 'white',
               fontSize: '1.2rem',
             }}
-            id='demo-positioned-button'
-            aria-controls={open ? 'demo-positioned-menu' : undefined}
+            id='demo-positioned-button1'
+            aria-controls={openEmployees ? 'demo-positioned-menu1' : undefined}
             aria-haspopup='true'
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
+            aria-expanded={openEmployees ? 'true' : undefined}
+            onClick={handleOpenEmployees}
           >
             Сотрудники
           </Button>
@@ -53,11 +73,11 @@ export default function NavBar() {
               color: 'white',
               fontSize: '1.2rem',
             }}
-            id='demo-positioned-button'
-            aria-controls={open ? 'demo-positioned-menu' : undefined}
+            id='demo-positioned-button2'
+            aria-controls={openBDR ? 'demo-positioned-menu2' : undefined}
             aria-haspopup='true'
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
+            aria-expanded={openBDR ? 'true' : undefined}
+            onClick={handleOpenBDR}
           >
             Бюджет доходов и расходов
           </Button>
@@ -67,25 +87,29 @@ export default function NavBar() {
               color: 'white',
               fontSize: '1.2rem',
             }}
-            id='demo-positioned-button'
-            aria-controls={open ? 'demo-positioned-menu' : undefined}
+            id='demo-positioned-button3'
+            aria-controls={openDDS ? 'demo-positioned-menu3' : undefined}
             aria-haspopup='true'
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
+            aria-expanded={openDDS ? 'true' : undefined}
+            onClick={handleOpenDDS}
           >
             Движение денежных средств
           </Button>
           <Menu
-            id='demo-positioned-menu'
-            aria-labelledby='demo-positioned-button'
+            id='demo-positioned-menu1'
+            aria-labelledby='demo-positioned-button1'
             anchorEl={anchorElEmployees}
-            open={open}
-            onClick={handleClose}
-            onClose={handleClose}
+            open={openEmployees}
+            onClick={handleCloseEmployees}
+            onClose={handleCloseEmployees}
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             transformOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
-            <MenuItem onClick={handleClose} component={RouterLink} to={'/'}>
+            <MenuItem
+              onClick={handleCloseEmployees}
+              component={RouterLink}
+              to={'/'}
+            >
               Сотрудники общий план
             </MenuItem>
             <MenuItem component={RouterLink} to={'/employees-fact'}>
@@ -97,7 +121,18 @@ export default function NavBar() {
             <MenuItem component={RouterLink} to={'/employees-project-fact'}>
               Сотрудники по проектам факт
             </MenuItem>
+          </Menu>
 
+          <Menu
+            id='demo-positioned-menu2'
+            aria-labelledby='demo-positioned-button2'
+            anchorEl={anchorBDR}
+            open={openBDR}
+            onClick={handleCloseBDR}
+            onClose={handleCloseBDR}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+          >
             <MenuItem component={RouterLink} to={'/bdr-plan'}>
               БДР План
             </MenuItem>
@@ -108,7 +143,17 @@ export default function NavBar() {
             <MenuItem component={RouterLink} to={'/bdr-plan-general'}>
               БДР - общие данные
             </MenuItem>
-
+          </Menu>
+          <Menu
+            id='demo-positioned-menu3'
+            aria-labelledby='demo-positioned-button3'
+            anchorEl={anchorDDS}
+            open={openDDS}
+            onClick={handleCloseDDS}
+            onClose={handleCloseDDS}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+          >
             <MenuItem component={RouterLink} to={'/dds-plan'}>
               ДДС План
             </MenuItem>
