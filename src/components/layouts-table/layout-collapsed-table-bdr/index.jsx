@@ -60,6 +60,7 @@ function LayoutCollapsedTableBdr(data) {
     <MaterialReactTable
       columns={columns}
       data={TABLE_DATA}
+      enableStickyHeader
       renderDetailPanel={({ row }) => (
         <TableContainer
           sx={{
