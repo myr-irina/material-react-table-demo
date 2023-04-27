@@ -133,15 +133,14 @@ export default function NavBar() {
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             transformOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
+            <MenuItem component={RouterLink} to={'/bdr-plan-general'}>
+              БДР - общие данные
+            </MenuItem>
             <MenuItem component={RouterLink} to={'/bdr-plan'}>
               БДР План
             </MenuItem>
             <MenuItem component={RouterLink} to={'/bdr-fact'}>
               БДР Факт
-            </MenuItem>
-
-            <MenuItem component={RouterLink} to={'/bdr-plan-general'}>
-              БДР - общие данные
             </MenuItem>
           </Menu>
           <Menu

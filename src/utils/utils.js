@@ -26,7 +26,9 @@ export const parseTableData = (data) => {
 export const parseTableData2 = (data) => {
   const obj = Object.entries(data)
     .map(([projectType, dataProject]) => {
-      if (!dataProject) return;
+      if (dataProject === 'null' || dataProject === 'undefined') {
+        return;
+      }
 
       const dataAuthorsMutated = Object.entries(dataProject)
         .sort((a) => {
@@ -54,18 +56,17 @@ export const parseTableData3 = (data) => {
   const obj = Object.entries(data)
     .map(([projectType, dataProject]) => {
       if (!dataProject) return;
+      // console.log({ projectType, dataProject });
 
-      const dataAuthorsMutated = Object.entries(dataProject)
-        .sort((a) => {
-          return a[0] === 'amounts' ? 1 : -1;
-        })
-        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+      const arr = Object.entries(dataProject);
 
-      const abc = Object.entries(dataAuthorsMutated);
-      const value = abc[0][1];
+      console.log({ arr });
+
+      const value = arr[0][1];
+      console.log(arr, 'ddd');
 
       if (typeof value !== 'object') {
-        const res = abc.map(([key, val]) => {
+        const res = arr.map(([key, val]) => {
           return {
             month: key,
             projectName: projectType,
@@ -76,9 +77,7 @@ export const parseTableData3 = (data) => {
         return [res];
       }
 
-      return abc.map(([projectName, projects]) => {
-        // console.log(projectName, projects);
-
+      return arr.map(([projectName, projects]) => {
         return Object.entries(projects).map(([month, value]) => ({
           month,
           projectName,

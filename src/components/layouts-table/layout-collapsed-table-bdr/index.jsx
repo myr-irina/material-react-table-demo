@@ -14,13 +14,24 @@ import MuiTableCell from '@mui/material/TableCell';
 import { numberWithSpaces } from '../../../utils/utils';
 
 import {
-  parseTableData2,
+  parseTableData3,
   getColumnNames2,
   findProjectByName2,
 } from '../../../utils/utils';
 
 function LayoutCollapsedTableBdr(data) {
-  const TABLE_DATA = useMemo(() => parseTableData2(data.data), [data]);
+  const TABLE_DATA = useMemo(() => parseTableData3(data.data), [data]);
+
+  // const TABLE_DATA = parseTableData3(data).map((projectType) =>
+  //   projectType.filter((item) =>
+  //     Object.values(item).some(
+  //       (item) =>
+  //         item.projectName === 'amounts' ||
+  //         item.projectName === 'incomes_before_tax' ||
+  //         item.projectName === 'interest_on_loans'
+  //     )
+  //   )
+  // );
 
   const columns = useMemo(
     () => [
