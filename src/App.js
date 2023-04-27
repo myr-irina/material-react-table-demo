@@ -20,6 +20,7 @@ import IncomeCostPlan from './components/cash-flow/cash-flow-plan';
 import IncomeCostFact from './components/income-cost/income-cost-fact';
 import CashFlowPlan from './components/cash-flow/cash-flow-plan';
 import CashFlowFact from './components/cash-flow/cash-flow-fact';
+import CashFlowTotalsPlan from './components/cash-flow/cash-flow-totals-plan';
 
 export default function App() {
   return (
@@ -49,6 +50,7 @@ export default function App() {
 
             <Route path='/dds-plan' element={<CashFlowPlan />} />
             <Route path='/dds-fact' element={<CashFlowFact />} />
+            <Route path='/dds-totals-plan' element={<CashFlowTotalsPlan />} />
           </Route>
         </Routes>
       </Container>
