@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import LayoutCollapsedTableBdr from '../../layouts-table/layout-collapsed-table-bdr/index';
-import data from '../../../json/cash-flow-general-plan.json';
-import { getBudgetPlan } from '../../../utils/api-requests';
+import LayoutCollapsedTableBdr from '../../../layouts-table/layout-collapsed-table-bdr';
+import data from './../../../../json/cash-flow-general-plan.json';
+
+import { getBudgetPlan } from '../../../../utils/api-requests';
 
 function CashFlowTotalsPlanSplit() {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
@@ -16,8 +17,6 @@ function CashFlowTotalsPlanSplit() {
   //       console.log(error);
   //     });
   // }, []);
-
-  // console.log({ projectPlanHours });
 
   return <LayoutCollapsedTableBdr data={data} />;
 }

@@ -56,7 +56,6 @@ export const parseTableData3 = (data) => {
   const obj = Object.entries(data)
     .map(([projectType, dataProject]) => {
       if (!dataProject) return;
-      // console.log({ projectType, dataProject });
 
       const dataAuthorsMutated = Object.entries(dataProject)
         .sort((a) => {
@@ -66,10 +65,7 @@ export const parseTableData3 = (data) => {
 
       const arr = Object.entries(dataAuthorsMutated);
 
-      console.log({ arr });
-
       const value = arr[0][1];
-      console.log(arr, 'ddd');
 
       if (typeof value !== 'object') {
         const res = arr.map(([key, val]) => {
@@ -122,15 +118,16 @@ export const findProjectByName = (projectName, projects) =>
 export const findProjectByName2 = (month, projects) =>
   projects.find((project) => project.month === month);
 
-// месяц
-// [
-// Авторы
+// {месяц
+//
+// Проект/Автор
 //   [
-// Автор
+// Проекты/Авторы
 //     [[][][]]
 //     [[][][]]
 //   ]
 // ]
+//}
 
 export const showProps = (obj) => {
   let result = '';

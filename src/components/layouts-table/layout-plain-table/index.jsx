@@ -24,8 +24,6 @@ export default function LayoutPlainTable(props) {
 
   const { data, title, header } = props;
 
-  console.log({ header });
-
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
     color: 'black',

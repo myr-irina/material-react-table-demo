@@ -34,8 +34,6 @@ export default function LayoutCollapsedTableEmployees(data) {
   //     });
   // }, []);
 
-  console.log({ data2 });
-
   const TABLE_DATA = useMemo(() => parseTableData(data.data), [data.data]);
 
   const columns = [

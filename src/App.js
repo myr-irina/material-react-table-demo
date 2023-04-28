@@ -4,10 +4,6 @@ import { AppBar, Container } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
 
 import NavBar from './components/navbar';
-// import EmployeesGeneralPlan from './components/employees/employees-general/employees-general-plan';
-// import EmployeesGeneralFact from './components/employees/employees-general/employees-general-fact';
-// import EmployeesByProjectPlan from './components/employees/employees-by-project-plan';
-// import BasicTable from './components/employees/employees-plan/employees-plan';
 
 import EmployeesGeneralPlan from './components/employees/employees-general/employees-general-plan';
 import EmployeesGeneralFact from './components/employees/employees-general/employees-general-fact';
@@ -15,13 +11,13 @@ import EmployeesGeneralFact from './components/employees/employees-general/emplo
 import EmployeesByProjectPlan from './components/employees/employees-by-project/employees-by-project-plan';
 import EmployeesByprojectFact from './components/employees/employees-by-project/employees-by-project-fact';
 
-import IncomeCostPlanGeneral from './components/income-cost/income-cost-plan-general';
-import IncomeCostPlan from './components/cash-flow/cash-flow-totals-plan-split';
-import IncomeCostFact from './components/income-cost/income-cost-fact';
+import IncomeCostTotalsPlan from './components/income-cost/income-cost-totals-plan';
+import IncomeCostTotalsPlanSplit from './components/income-cost/income-cost-totals-plan-split';
+import IncomeCostTotalsFactSplit from './components/income-cost/income-cost-totals-fact-split';
 
-import CashFlowTotalsPlan from './components/cash-flow/cash-flow-totals-plan';
-import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-totals-plan-split';
-import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-totals-fact-split';
+import CashFlowTotalsPlan from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan';
+import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan-split';
+import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
 
 export default function App() {
   return (
@@ -42,11 +38,14 @@ export default function App() {
               element={<EmployeesByprojectFact />}
             />
 
-            <Route path='/bdr-plan' element={<IncomeCostPlan />} />
-            <Route path='/bdr-fact' element={<IncomeCostFact />} />
+            <Route path='/bdr-totals-plan' element={<IncomeCostTotalsPlan />} />
             <Route
-              path='/bdr-totals-plan'
-              element={<IncomeCostPlanGeneral />}
+              path='/bdr-totals-plan-split'
+              element={<IncomeCostTotalsPlanSplit />}
+            />
+            <Route
+              path='/bdr-totals-fact-split'
+              element={<IncomeCostTotalsFactSplit />}
             />
 
             <Route path='/dds-totals-plan' element={<CashFlowTotalsPlan />} />

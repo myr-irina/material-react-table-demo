@@ -15,8 +15,8 @@ import data from '../../../json/income-cost-general-plan.json';
 
 import LayoutCollapsedTableBdr from '../../layouts-table/layout-collapsed-table-bdr';
 
-function IncomeCostPlan() {
+function IncomeCostTotalsPlanSplit() {
   return <LayoutCollapsedTableBdr data={data} />;
 }
 
-export default IncomeCostPlan;
+export default IncomeCostTotalsPlanSplit;

@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
-import { numberWithSpaces } from '../../../utils/utils';
+import { numberWithSpaces, parseTableData2 } from '../../../utils/utils';
 
 import {
   parseTableData3,
@@ -22,23 +22,11 @@ import {
 function LayoutCollapsedTableBdr(data) {
   const TABLE_DATA = useMemo(() => parseTableData3(data.data), [data]);
 
-  // const TABLE_DATA = parseTableData3(data).map((projectType) =>
-  //   projectType.filter((item) =>
-  //     Object.values(item).some(
-  //       (item) =>
-  //         item.projectName === 'amounts' ||
-  //         item.projectName === 'incomes_before_tax' ||
-  //         item.projectName === 'interest_on_loans'
-  //     )
-  //   )
-  // );
-
   const columns = useMemo(
     () => [
       {
         accessorFn: (data) => {
           return data[0][0].projectType;
-          // return data.projectType;
         },
         id: 'costType',
         header: 'Название',

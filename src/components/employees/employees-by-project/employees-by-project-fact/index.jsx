@@ -19,8 +19,6 @@ function EmployeesByProjectFact() {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
 
-  // console.log({ projectPlanHours });
-
   // useEffect(() => {
   //   getProjectPlanHours()
   //     .then((data) => {
