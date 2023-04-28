@@ -103,7 +103,7 @@ function LayoutCollapsedTableBdr(data) {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    Сотрудники
+                    Название
                   </Typography>
                 </TableCell>
 

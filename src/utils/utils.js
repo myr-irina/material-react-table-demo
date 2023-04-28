@@ -58,7 +58,13 @@ export const parseTableData3 = (data) => {
       if (!dataProject) return;
       // console.log({ projectType, dataProject });
 
-      const arr = Object.entries(dataProject);
+      const dataAuthorsMutated = Object.entries(dataProject)
+        .sort((a) => {
+          return a[0] === 'amounts' ? 1 : -1;
+        })
+        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+      const arr = Object.entries(dataAuthorsMutated);
 
       console.log({ arr });
 

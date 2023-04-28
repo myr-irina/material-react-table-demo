@@ -133,7 +133,7 @@ export default function NavBar() {
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             transformOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
-            <MenuItem component={RouterLink} to={'/bdr-plan-general'}>
+            <MenuItem component={RouterLink} to={'/bdr-totals-plan'}>
               БДР - общие данные
             </MenuItem>
             <MenuItem component={RouterLink} to={'/bdr-plan'}>
@@ -156,7 +156,7 @@ export default function NavBar() {
             <MenuItem component={RouterLink} to={'/dds-totals-plan'}>
               ДДС План - общий
             </MenuItem>
-            <MenuItem component={RouterLink} to={'/dds-plan'}>
+            <MenuItem component={RouterLink} to={'/dds-totals-plan-split'}>
               ДДС План
             </MenuItem>
             <MenuItem component={RouterLink} to={'/dds-fact'}>
