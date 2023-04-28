@@ -10,30 +10,33 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
-import { getProjectPlanHours } from './../../../../utils/api-requests';
+// import { getProjectPlanHours } from './../../../../utils/api-requests';
+import { getProjectFactHours } from './../../../../utils/api-requests';
 
 import employeesByProjectFactData from './../../../../json/employees-by-project-fact.json';
 import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collapsed-table-employees';
 
 function EmployeesByProjectFact() {
-  // const [projectPlanHours, setProjectPlanHours] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [projectPlanHours, setProjectPlanHours] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   getProjectPlanHours()
-  //     .then((data) => {
-  //       setProjectPlanHours(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    getProjectFactHours()
+      .then((data) => {
+        setProjectPlanHours(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  console.log({ projectPlanHours });
 
   return (
     <LayoutCollapsedTableEmployees
       header='Сотрудники'
       title='Таблица рабочего времени (факт по проектам)'
-      data={employeesByProjectFactData}
+      data={projectPlanHours}
     />
   );
 }
