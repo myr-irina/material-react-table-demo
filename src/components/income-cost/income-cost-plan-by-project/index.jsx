@@ -8,13 +8,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import { parseTableData2 } from '../../../utils/utils';
+import { parseTableData4 } from '../../../utils/utils';
 
-import data from '../../../json/bdr-by-project-plan.json';
+import data from '../../../json/bdr-by-project-plan copy.json';
+import AmountsTable from './amounts-table';
+import PersonalTable from './personal-table';
 
 function IncomeCostPlanByProject() {
-  const TABLE_DATA = useMemo(() => parseTableData2(data), []);
-  // console.log({ TABLE_DATA });
+  const TABLE_DATA = useMemo(() => parseTableData4(data), []);
+  console.log({ TABLE_DATA });
 
   const columns = useMemo(
     () => [
@@ -62,7 +64,10 @@ function IncomeCostPlanByProject() {
           }}
         >
           {row.original.map((row) => {
-            if (row[0].projectName === 'amounts') return;
+            if (row[0].projectName === 'personal')
+              return <PersonalTable data={row} />;
+            if (row[0].projectName === 'amounts')
+              return <AmountsTable data={row} />;
             return (
               <Table
                 stickyHeader

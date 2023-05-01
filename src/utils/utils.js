@@ -93,22 +93,23 @@ export const parseTableData3 = (data) => {
   return obj;
 };
 
-export const getColumnNames = (data) => {
-  const result = [];
+export const parseTableData4 = (data) => {
+  const obj = Object.entries(data)
+    .map(([projectType, dataProject]) => {
+      if (!dataProject) return;
 
-  data.forEach((row) => {
-    const columns = row.reduce((acc, item) => {
-      if (item.author !== 'common_amounts') acc.push(item.projectName);
-      return acc;
-    }, []);
-    result.push(...columns);
-  });
+      return Object.entries(dataProject).map(([projectName, projects]) => {
+        return Object.entries(projects).map(([month, value]) => ({
+          month,
+          projectName,
+          projectType,
+          value,
+        }));
+      });
+    })
+    .filter(Boolean);
 
-  const headers = [...new Set(result)];
-  const fromIndex = headers.indexOf('amount_values');
-  const item = headers.splice(fromIndex, 1)[0];
-  headers.splice(headers.length, 1, item);
-  return headers;
+  return obj;
 };
 
 //columnName, rowproject[]
@@ -138,6 +139,24 @@ export const showProps = (obj) => {
     }
   }
   return result;
+};
+
+export const getColumnNames = (data) => {
+  const result = [];
+
+  data.forEach((row) => {
+    const columns = row.reduce((acc, item) => {
+      if (item.author !== 'common_amounts') acc.push(item.projectName);
+      return acc;
+    }, []);
+    result.push(...columns);
+  });
+
+  const headers = [...new Set(result)];
+  const fromIndex = headers.indexOf('amount_values');
+  const item = headers.splice(fromIndex, 1)[0];
+  headers.splice(headers.length, 1, item);
+  return headers;
 };
 
 export const getColumnNames2 = (data) => {
