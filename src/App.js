@@ -18,7 +18,7 @@ import IncomeCostTotalsFactSplit from './components/income-cost/income-cost-tota
 import IncomeCostPlanByProject from './components/income-cost/income-cost-plan-by-project';
 import IncomeCostFactByProject from './components/income-cost/income-cost-fact-by-project';
 
-import CashFlowTotalsPlan from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan';
+import CashFlowByProjectPlanPage from './pages/cash-flow-totals-plan';
 import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan-split';
 import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
 
@@ -66,7 +66,10 @@ export default function App() {
               element={<IncomeCostFactByProject />}
             />
 
-            <Route path='/dds-totals-plan' element={<CashFlowTotalsPlan />} />
+            <Route
+              path='/dds-totals-plan'
+              element={<CashFlowByProjectPlanPage />}
+            />
             <Route
               path='/dds-totals-plan-split'
               element={<CashFlowTotalsPlanSplit />}

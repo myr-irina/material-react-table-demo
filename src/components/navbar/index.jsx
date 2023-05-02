@@ -160,10 +160,7 @@ export default function NavBar() {
             transformOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
             <MenuItem component={RouterLink} to={'/dds-totals-plan'}>
-              ДДС План - общий
-            </MenuItem>
-            <MenuItem component={RouterLink} to={'/dds-totals-plan-split'}>
-              ДДС План детальный
+              Таблица ДДС (План)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/dds-totals-fact-split'}>
               ДДС Факт детальный

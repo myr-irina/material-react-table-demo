@@ -30,6 +30,7 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
     overflow: 'hidden',
     whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
   },
 }));
 

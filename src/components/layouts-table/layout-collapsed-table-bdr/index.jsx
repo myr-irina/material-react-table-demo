@@ -24,6 +24,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
     overflow: 'hidden',
     whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
   },
 }));
 
@@ -115,6 +116,7 @@ function LayoutCollapsedTableBdr(data) {
                       fontSize: '14px',
                       overflowX: 'hidden',
                       whiteSpace: 'nowrap',
+                      textOverflow: 'ellipsis',
                     }}
                   >
                     Название

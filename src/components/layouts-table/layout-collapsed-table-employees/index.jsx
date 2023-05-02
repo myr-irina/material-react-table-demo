@@ -207,6 +207,7 @@ export default function LayoutCollapsedTableEmployees(data) {
                       fontSize: '14px',
                       overflowX: 'hidden',
                       whiteSpace: 'nowrap',
+                      textOverflow: 'ellipsis',
                     }}
                   >
                     Сотрудники

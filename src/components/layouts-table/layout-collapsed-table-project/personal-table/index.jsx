@@ -36,6 +36,7 @@ const PersonalTable = ({ data }) => {
                 fontSize: '14px',
                 overflowX: 'hidden',
                 whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
               }}
             >
               {data[0].projectName}

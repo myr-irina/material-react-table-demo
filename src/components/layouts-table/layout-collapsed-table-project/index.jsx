@@ -94,6 +94,7 @@ function LayoutCollapsedTableProject({ data }) {
                           fontSize: '14px',
                           overflowX: 'hidden',
                           whiteSpace: 'nowrap',
+                          textOverflow: 'ellipsis',
                         }}
                       >
                         {row[0].projectName}
