@@ -11,7 +11,8 @@ import EmployeesGeneralFact from './components/employees/employees-general/emplo
 import EmployeesByProjectPlan from './components/employees/employees-by-project/employees-by-project-plan';
 import EmployeesByprojectFact from './components/employees/employees-by-project/employees-by-project-fact';
 
-import IncomeCostTotalsPlan from './components/income-cost/income-cost-totals-plan';
+import IncomeCostByProjectPlanPage from './pages/income-cost-totals-plan';
+import IncomeCostByProjectFactPage from './pages/income-cost-totals-fact';
 import IncomeCostTotalsPlanSplit from './components/income-cost/income-cost-totals-plan-split';
 import IncomeCostTotalsFactSplit from './components/income-cost/income-cost-totals-fact-split';
 import IncomeCostPlanByProject from './components/income-cost/income-cost-plan-by-project';
@@ -19,8 +20,6 @@ import IncomeCostPlanByProject from './components/income-cost/income-cost-plan-b
 import CashFlowTotalsPlan from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan';
 import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan-split';
 import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
-
-import IncomeCostDraft from './pages/index';
 
 export default function App() {
   return (
@@ -41,8 +40,14 @@ export default function App() {
               element={<EmployeesByprojectFact />}
             />
 
-            {/* <Route path='/bdr-totals-plan' element={<IncomeCostTotalsPlan />} /> */}
-            <Route path='/bdr-totals-plan' element={<IncomeCostDraft />} />
+            <Route
+              path='/bdr-totals-plan'
+              element={<IncomeCostByProjectPlanPage />}
+            />
+            <Route
+              path='/bdr-totals-fact'
+              element={<IncomeCostByProjectFactPage />}
+            />
             <Route
               path='/bdr-totals-plan-split'
               element={<IncomeCostTotalsPlanSplit />}
