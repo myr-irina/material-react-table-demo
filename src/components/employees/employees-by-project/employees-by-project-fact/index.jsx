@@ -18,7 +18,7 @@ import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collaps
 
 function EmployeesByProjectFact() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getProjectFactHours()

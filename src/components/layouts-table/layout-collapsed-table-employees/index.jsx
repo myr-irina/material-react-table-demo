@@ -20,6 +20,8 @@ import {
 
 import data2 from '../../../json/bdr-by-project-plan.json';
 
+import { StyledTableCell, StyledTableRow2 } from '../../../utils/constants';
+
 export default function LayoutCollapsedTableEmployees(data) {
   // const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
@@ -210,13 +212,8 @@ export default function LayoutCollapsedTableEmployees(data) {
             size='small'
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-              <StyledTableRow>
-                <TableCell
-                  // sx={{
-                  //   minWidth: '60px',
-                  // }}
-                  component='th'
-                >
+              <StyledTableRow2>
+                <TableCell component='th'>
                   <Typography
                     sx={{
                       fontWeight: '700',
@@ -243,26 +240,21 @@ export default function LayoutCollapsedTableEmployees(data) {
                     </Typography>
                   </TableCell>
                 ))}
-              </StyledTableRow>
+              </StyledTableRow2>
             </TableHead>
             <TableBody>
               {row.original.map((rowProject) => {
                 return (
-                  <StyledTableRow key={rowProject[0].author}>
-                    <TableCell
-                      // sx={{
-                      //   maxWidth: '60px',
-                      // }}
-                      key={rowProject[0].author}
-                    >
+                  <StyledTableRow2 key={rowProject[0].author}>
+                    <StyledTableCell key={rowProject[0].author}>
                       {rowProject[0].author}
-                    </TableCell>
+                    </StyledTableCell>
 
                     {getColumnNames(row.original).map((columnName) => {
                       const project = findProjectByName(columnName, rowProject);
 
                       return (
-                        <TableCell
+                        <StyledTableCell
                           sx={{
                             maxWidth: '60px',
                           }}
@@ -271,14 +263,14 @@ export default function LayoutCollapsedTableEmployees(data) {
                           {project
                             ? `${project?.hours}ч. ${
                                 project?.percent !== null
-                                  ? `${project?.percent}%`
+                                  ? `(${project?.percent}%)`
                                   : ''
                               }`
                             : ''}
-                        </TableCell>
+                        </StyledTableCell>
                       );
                     })}
-                  </StyledTableRow>
+                  </StyledTableRow2>
                 );
               })}
             </TableBody>

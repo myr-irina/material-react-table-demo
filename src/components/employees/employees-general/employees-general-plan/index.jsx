@@ -5,22 +5,22 @@ import data from '../../../../json/employees-general-plan.json';
 import { getWorkingHoursPlan } from '../../../../utils/api-requests';
 
 function EmployeesGeneralPlan() {
-  // const [projectPlanHours, setProjectPlanHours] = useState([]);
+  const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   getWorkingHoursPlan()
-  //     .then((data) => {
-  //       setProjectPlanHours(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    getWorkingHoursPlan()
+      .then((data) => {
+        setProjectPlanHours(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <LayoutPlainTable
-      data={data}
+      data={projectPlanHours}
       title='Таблица рабочего времени (общий план)'
       header='Сотрудники'
     />

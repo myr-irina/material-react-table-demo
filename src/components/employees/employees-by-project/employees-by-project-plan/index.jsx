@@ -10,30 +10,30 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
-import { getProjectPlanHours } from './../../../../utils/api-requests';
+import { getProjectPlanHours } from '../../../../utils/api-requests';
 
 import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collapsed-table-employees';
 import employeesByProjectPlanData from '../../../../json/employees-by-project-plan.json';
 
 function EmployeesByProjectPlan() {
-  // const [projectPlanHours, setProjectPlanHours] = useState([]);
+  const [projectPlanHours, setProjectPlanHours] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   getProjectPlanHours()
-  //     .then((data) => {
-  //       setProjectPlanHours(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    getProjectPlanHours()
+      .then((data) => {
+        setProjectPlanHours(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <LayoutCollapsedTableEmployees
       header='Сотрудники'
       title='Таблица рабочего времени (план по проектам)'
-      data={employeesByProjectPlanData}
+      data={projectPlanHours}
     />
   );
 }
