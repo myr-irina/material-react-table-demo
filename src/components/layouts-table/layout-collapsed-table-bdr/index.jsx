@@ -19,6 +19,28 @@ import {
   findProjectByName2,
 } from '../../../utils/utils';
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+  '&:last-child td': {
+    backgroundColor: 'lightGrey',
+    fontWeight: 600,
+  },
+}));
+
 function LayoutCollapsedTableBdr(data) {
   const TABLE_DATA = useMemo(() => parseTableData3(data.data), [data]);
 
@@ -116,10 +138,10 @@ function LayoutCollapsedTableBdr(data) {
               {row.original.map((rowProject) => {
                 return (
                   <>
-                    <TableRow>
-                      <TableCell key={rowProject[0].projectName}>
+                    <StyledTableRow>
+                      <StyledTableCell key={rowProject[0].projectName}>
                         {rowProject[0].projectName}
-                      </TableCell>
+                      </StyledTableCell>
                       {getColumnNames2(row.original).map((columnName) => {
                         const project = findProjectByName2(
                           columnName,
@@ -127,7 +149,7 @@ function LayoutCollapsedTableBdr(data) {
                         );
 
                         return (
-                          <TableCell
+                          <StyledTableCell
                             sx={{
                               maxWidth: '60px',
                             }}
@@ -136,10 +158,10 @@ function LayoutCollapsedTableBdr(data) {
                             {project && project.value !== null
                               ? `${numberWithSpaces(project?.value)} р.`
                               : ''}
-                          </TableCell>
+                          </StyledTableCell>
                         );
                       })}
-                    </TableRow>
+                    </StyledTableRow>
                   </>
                 );
               })}
