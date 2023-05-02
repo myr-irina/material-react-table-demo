@@ -20,6 +20,8 @@ import CashFlowTotalsPlan from './components/cash-flow/cash-flow-plan/cash-flow-
 import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan-split';
 import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
 
+import IncomeCostDraft from './pages/index';
+
 export default function App() {
   return (
     <>
@@ -39,7 +41,8 @@ export default function App() {
               element={<EmployeesByprojectFact />}
             />
 
-            <Route path='/bdr-totals-plan' element={<IncomeCostTotalsPlan />} />
+            {/* <Route path='/bdr-totals-plan' element={<IncomeCostTotalsPlan />} /> */}
+            <Route path='/bdr-totals-plan' element={<IncomeCostDraft />} />
             <Route
               path='/bdr-totals-plan-split'
               element={<IncomeCostTotalsPlanSplit />}

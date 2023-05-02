@@ -142,6 +142,9 @@ export default function NavBar() {
             <MenuItem component={RouterLink} to={'/bdr-totals-fact-split'}>
               БДР Факт детальный
             </MenuItem>
+            <MenuItem component={RouterLink} to={'/bdr-plan-by-project'}>
+              БДР План по проектам
+            </MenuItem>
           </Menu>
           <Menu
             id='demo-positioned-menu3'

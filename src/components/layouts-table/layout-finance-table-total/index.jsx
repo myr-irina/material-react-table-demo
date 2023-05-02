@@ -75,7 +75,7 @@ function LayoutFinanceTableTotal({ data }) {
       component={Paper}
       sx={{
         width: '100%',
-        margin: '0 auto',
+        margin: '2rem auto',
         overflowX: 'initial',
       }}
     >
