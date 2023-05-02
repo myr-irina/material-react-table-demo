@@ -21,6 +21,7 @@ import IncomeCostFactByProject from './components/income-cost/income-cost-fact-b
 import CashFlowByProjectPlanPage from './pages/cash-flow-totals-plan';
 import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan-split';
 import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
+import CashFlowByProjectFactPage from './pages/cash-flow-totals-fact/index';
 
 export default function App() {
   return (
@@ -71,13 +72,17 @@ export default function App() {
               element={<CashFlowByProjectPlanPage />}
             />
             <Route
+              path='/dds-totals-fact'
+              element={<CashFlowByProjectFactPage />}
+            />
+            {/* <Route
               path='/dds-totals-plan-split'
               element={<CashFlowTotalsPlanSplit />}
             />
             <Route
               path='/dds-totals-fact-split'
               element={<CashFlowTotalsFactSplit />}
-            />
+            /> */}
           </Route>
         </Routes>
       </Container>

@@ -1,7 +1,10 @@
 import React from 'react';
+import LayoutFinanceTableTotal from '../../../layouts-table/layout-finance-table-total';
 
-function index() {
-  return <div>index</div>;
+import data from '../../../../json/cash-flow-general-fact copy.json';
+
+function CashFlowTotalsFact() {
+  return <LayoutFinanceTableTotal data={data} />;
 }
 
-export default index;
+export default CashFlowTotalsFact;
