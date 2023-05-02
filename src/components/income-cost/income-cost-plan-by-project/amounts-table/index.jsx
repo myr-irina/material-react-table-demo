@@ -6,6 +6,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
 
+import { numberWithSpaces } from '../../../../utils/utils';
+
 const AmountsTable = ({ data }) => {
   return (
     <Table
@@ -55,7 +57,7 @@ const AmountsTable = ({ data }) => {
         <TableRow>
           <TableCell></TableCell>
           {data.map((cell) => (
-            <TableCell>{cell.value}</TableCell>
+            <TableCell>{`${numberWithSpaces(cell.value)} р.`}</TableCell>
           ))}
         </TableRow>
       </TableBody>

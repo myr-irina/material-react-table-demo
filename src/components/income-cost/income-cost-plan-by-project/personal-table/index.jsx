@@ -5,9 +5,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
+import { numberWithSpaces } from '../../../../utils/utils';
 
 const PersonalTable = ({ data }) => {
-  const monthes = [
+  const months = [
     ...Object.keys(data.find((row) => row.month === 'amounts').value),
     'amount_salary',
   ].filter((key) => key !== 'amount');
@@ -40,7 +41,7 @@ const PersonalTable = ({ data }) => {
               {data[0].projectName}
             </Typography>
           </TableCell>
-          {monthes.map((cell) => (
+          {months.map((cell) => (
             <TableCell component='th' key={cell}>
               <Typography
                 sx={{
@@ -64,12 +65,14 @@ const PersonalTable = ({ data }) => {
           return (
             <TableRow>
               <TableCell>{row.month}</TableCell>
-              {monthes.map((month) => {
+              {months.map((month) => {
                 const val = rowData.find(([monthKey]) => monthKey === month);
                 if (!val) return <TableCell></TableCell>;
                 return (
                   <TableCell>
-                    {typeof val[1] === 'object' ? val[1].hours : val[1]}
+                    {typeof val[1] === 'object'
+                      ? `${val[1].hours} ч.`
+                      : `${numberWithSpaces(Math.trunc(val[1]))} р.`}
                   </TableCell>
                 );
               })}
@@ -78,21 +81,17 @@ const PersonalTable = ({ data }) => {
         })}
         <TableRow>
           <TableCell>amounts</TableCell>
-          {monthes.map((month) => {
+          {months.map((month) => {
             const val = Object.entries(amountsRow.value).find(
               ([monthKey]) => monthKey === month
             );
 
             if (!val) return <TableCell></TableCell>;
-            return <TableCell>{val[1]}</TableCell>;
+            return (
+              <TableCell>{numberWithSpaces(Math.trunc(val[1]))}</TableCell>
+            );
           })}
         </TableRow>
-        {/* <TableRow>
-          <TableCell></TableCell>
-          {data.map((cell) => (
-            <TableCell>{cell.value}</TableCell>
-          ))}
-        </TableRow> */}
       </TableBody>
     </Table>
   );

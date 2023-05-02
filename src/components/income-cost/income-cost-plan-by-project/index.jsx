@@ -13,10 +13,10 @@ import { parseTableData4 } from '../../../utils/utils';
 import data from '../../../json/bdr-by-project-plan copy.json';
 import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
+import { numberWithSpaces } from '../../../utils/utils';
 
 function IncomeCostPlanByProject() {
   const TABLE_DATA = useMemo(() => parseTableData4(data), []);
-  console.log({ TABLE_DATA });
 
   const columns = useMemo(
     () => [
@@ -118,7 +118,9 @@ function IncomeCostPlanByProject() {
                       <TableRow>
                         <TableCell>{tableRow.month}</TableCell>
                         {Object.values(tableRow.value).map((val) => (
-                          <TableCell>{val}</TableCell>
+                          <TableCell>
+                            {val ? `${numberWithSpaces(val)} р.` : ''}
+                          </TableCell>
                         ))}
                       </TableRow>
                     );
