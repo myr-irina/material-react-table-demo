@@ -110,16 +110,16 @@ export default function NavBar() {
               component={RouterLink}
               to={'/'}
             >
-              Сотрудники общий план
+              Таблица рабочего времени (Общий план)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/employees-fact'}>
-              Сотрудники общий факт
+              Таблица рабочего времени (Общий факт)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/employees-project-plan'}>
-              Сотрудники по проектам план
+              Таблица рабочего времени план
             </MenuItem>
             <MenuItem component={RouterLink} to={'/employees-project-fact'}>
-              Сотрудники по проектам факт
+              Таблица рабочего времени факт
             </MenuItem>
           </Menu>
 
@@ -134,16 +134,16 @@ export default function NavBar() {
             transformOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
             <MenuItem component={RouterLink} to={'/bdr-totals-plan'}>
-              БДР План - общий
+              Таблица БДР (План)
             </MenuItem>
-            <MenuItem component={RouterLink} to={'/bdr-totals-plan-split'}>
+            {/* <MenuItem component={RouterLink} to={'/bdr-totals-plan-split'}>
               БДР План детальный
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem component={RouterLink} to={'/bdr-totals-fact-split'}>
               БДР Факт детальный
             </MenuItem>
             <MenuItem component={RouterLink} to={'/bdr-plan-by-project'}>
-              БДР План по проектам
+              Таблица БДР (План по проектам)
             </MenuItem>
           </Menu>
           <Menu

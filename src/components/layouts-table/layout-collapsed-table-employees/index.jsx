@@ -23,19 +23,6 @@ import data2 from '../../../json/bdr-by-project-plan.json';
 import { StyledTableCell, StyledTableRow2 } from '../../../utils/constants';
 
 export default function LayoutCollapsedTableEmployees(data) {
-  // const [projectPlanHours, setProjectPlanHours] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   getProjectPlanHours()
-  //     .then((data) => {
-  //       setProjectPlanHours(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
-
   const TABLE_DATA = useMemo(() => parseTableData(data.data), [data.data]);
 
   const columns = [

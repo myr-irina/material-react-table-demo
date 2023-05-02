@@ -8,7 +8,7 @@ function requestUrl(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 
-//general
+//general employees
 export const getWorkingHoursPlan = () => {
   return requestUrl(`${BASE_URL}/api/v1/tables/staff/common/plan`, {
     method: 'GET',
@@ -27,7 +27,7 @@ export const getWorkingHoursFact = () => {
   });
 };
 
-//by project
+//by project employees
 export const getProjectPlanHours = () => {
   return requestUrl(`${BASE_URL}/api/v1/tables/staff/by-projects/plan`, {
     method: 'GET',

@@ -9,19 +9,6 @@ import { Link as MuiLink } from '@mui/material';
 // import data from '../../../json/employees-general-fact.json';
 
 export default function LayoutPlainTable(props) {
-  //   const [isLoading, setIsLoading] = useState(false);
-  //   const [workingHours, setWorkingHours] = useState([]);
-
-  // useEffect(() => {
-  //   getWorkingHoursPlan()
-  //     .then((data) => {
-  //       setWorkingHours(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
-
   const { data, title, header } = props;
 
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({

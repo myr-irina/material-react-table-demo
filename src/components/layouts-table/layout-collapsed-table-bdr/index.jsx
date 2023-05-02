@@ -82,6 +82,10 @@ function LayoutCollapsedTableBdr(data) {
       columns={columns}
       data={TABLE_DATA}
       enableStickyHeader
+      initialState={{
+        expanded: true,
+      }}
+      enableExpanding
       renderDetailPanel={({ row }) => (
         <TableContainer
           sx={{
