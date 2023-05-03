@@ -165,6 +165,13 @@ export default function NavBar() {
             <MenuItem component={RouterLink} to={'/dds-totals-fact'}>
               Таблица ДДС (Факт)
             </MenuItem>
+            <MenuItem component={RouterLink} to={'/dds-plan-by-project'}>
+              Таблица ДДС (План по проектам)
+            </MenuItem>
+
+            <MenuItem component={RouterLink} to={'/dds-fact-by-project'}>
+              Таблица ДДС (Факт по проектам)
+            </MenuItem>
           </Menu>
         </Box>
       </AppBar>

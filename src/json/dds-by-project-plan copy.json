@@ -1,0 +1,177 @@
+{
+  "PSB-16": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": 3754862,
+        "april": null,
+        "may": 25187226,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 28942088
+      },
+      "Оплата за PSB16 || Смирновка ": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": 25187226,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 25187226
+      },
+      "Аванс_Смирновка ": {
+        "january": null,
+        "february": null,
+        "march": 3754862,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 3754862
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": -750972,
+        "april": -928176,
+        "may": -1369756,
+        "june": -1369756,
+        "july": -1369756,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -5788416
+      },
+      "Непредвиденные расходы (смартех:обучение)": {
+        "january": null,
+        "february": null,
+        "march": -750972,
+        "april": -928176,
+        "may": -1369756,
+        "june": -1369756,
+        "july": -1369756,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -5788416
+      }
+    },
+    "amounts": {
+      "may": 23817470,
+      "amount": 23153672,
+      "april": -928176,
+      "march": 3003890,
+      "june": -1369756,
+      "july": -1369756
+    }
+  },
+  "TEH": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": 2066145,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 2066145
+      },
+      "Доплата за Концепцию || Корпуса B || 2": {
+        "january": null,
+        "february": 2066145,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 2066145
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": -519560,
+        "march": -768684,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -1288244
+      },
+      "Непредвиденные расходы_ ИП Мамедов_ Корпуса В": {
+        "january": null,
+        "february": null,
+        "march": -638794,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -638794
+      },
+      "TEH Непредвиденные расходы_ИП Мамедов К1": {
+        "january": null,
+        "february": -519560,
+        "march": -129890,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -649450
+      }
+    },
+    "amounts": {
+      "march": -768684,
+      "amount": 777901,
+      "february": 1546585
+    }
+  }
+}
