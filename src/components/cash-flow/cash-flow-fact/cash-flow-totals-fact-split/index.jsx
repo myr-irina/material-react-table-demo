@@ -1,6 +1,6 @@
 import React from 'react';
 import LayoutCollapsedTableBdr from '../../../layouts-table/layout-collapsed-table-bdr';
-import data from '../../../../json/cash-flow-general-fact copy.json';
+import data from '../../../../json/cash-flow-general-fact.json';
 
 function CashFlowTotalsFactSplit() {
   return <LayoutCollapsedTableBdr data={data} />;
