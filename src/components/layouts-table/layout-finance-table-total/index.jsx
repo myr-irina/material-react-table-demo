@@ -15,8 +15,6 @@ import {
   parseTableData3,
 } from '../../../utils/utils';
 
-// import data from '../../../json/income-cost-general-plan.json';
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -44,7 +42,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function LayoutFinanceTableTotal({ data }) {
+function LayoutFinanceTableTotal({ data, isLoading }) {
   const filteredData = parseTableData3(data).map((projectType) =>
     projectType.filter((item) =>
       Object.values(item).some(
@@ -54,6 +52,10 @@ function LayoutFinanceTableTotal({ data }) {
       )
     )
   );
+
+  if (isLoading) {
+    return <p>Идет загрузка...</p>;
+  }
 
   const getColumnNames2 = (data) => {
     const result = [];

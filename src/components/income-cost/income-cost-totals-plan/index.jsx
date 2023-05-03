@@ -10,24 +10,27 @@ function IncomeCostTotalsPlan() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // setIsLoading(true);
+    let isMounted = true;
     getBudgetPlan()
       .then((data) => {
-        console.log({ data });
-        // setBudgetPlan(data);
-        // setIsLoading(false);
+        setIsLoading(true);
+        if (isMounted) {
+          setBudgetPlan(data);
+        }
+        setIsLoading(false);
       })
       .catch((error) => {
+        setIsLoading(false);
         console.log(error);
       })
       .finally(() => setIsLoading(false));
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  // if (!budgetPlan) return;
-
-  // console.log({ budgetPlan });
-
-  return <LayoutFinanceTableTotal data={data} />;
+  return <LayoutFinanceTableTotal isLoading={isLoading} data={data} />;
 }
 
 export default IncomeCostTotalsPlan;

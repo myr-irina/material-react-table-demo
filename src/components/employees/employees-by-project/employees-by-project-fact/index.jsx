@@ -30,8 +30,6 @@ function EmployeesByProjectFact() {
       });
   }, []);
 
-  console.log({ projectPlanHours });
-
   return (
     <LayoutCollapsedTableEmployees
       header='Сотрудники'

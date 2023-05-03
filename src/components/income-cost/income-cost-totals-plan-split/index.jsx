@@ -14,9 +14,29 @@ import MuiTableCell from '@mui/material/TableCell';
 import data from '../../../json/income-cost-general-plan.json';
 
 import LayoutCollapsedTableBdr from '../../layouts-table/layout-collapsed-table-bdr';
+import { getBudgetByProjectPlan } from '../../../utils/api-requests';
 
 function IncomeCostTotalsPlanSplit() {
-  return <LayoutCollapsedTableBdr data={data} />;
+  const [planSplitData, setPlanSplitData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getBudgetByProjectPlan()
+      .then((data) => {
+        console.log({ data });
+        setPlanSplitData(data);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  console.log({ planSplitData });
+
+  return <LayoutCollapsedTableBdr isLoading={isLoading} data={data} />;
 }
 
 export default IncomeCostTotalsPlanSplit;

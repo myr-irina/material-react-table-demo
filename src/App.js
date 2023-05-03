@@ -85,14 +85,6 @@ export default function App() {
               path='/dds-fact-by-project'
               element={<CashFlowFactByProject />}
             />
-            {/* <Route
-              path='/dds-totals-plan-split'
-              element={<CashFlowTotalsPlanSplit />}
-            />
-            <Route
-              path='/dds-totals-fact-split'
-              element={<CashFlowTotalsFactSplit />}
-            /> */}
           </Route>
         </Routes>
       </Container>
