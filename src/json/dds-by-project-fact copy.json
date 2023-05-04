@@ -173,5 +173,10 @@
       "amount": 777901,
       "march": -649450
     }
+  },
+  "MTS": {
+    "incomes": {},
+    "expenses": {},
+    "amounts": null
   }
 }
