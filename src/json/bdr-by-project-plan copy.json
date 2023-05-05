@@ -750,5 +750,2857 @@
       "february": 643089,
       "january": -343260
     }
+  },
+  "PSB-16": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": 27985807,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 27985807
+      },
+      "PSB-16 | Выручка за ДС16 | 2022-2023 год ": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": 27985807,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 27985807
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": -5597161,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -5597161
+      },
+      "PSB-16 Непредвиденные расходы": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": -5597161,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -5597161
+      }
+    },
+    "personal": {
+      "amounts": {
+        "march": -1001954.3277999999,
+        "amount": -1801048.3721000003,
+        "april": -233739.42949999997,
+        "february": -347887.0892,
+        "january": -217467.5256
+      },
+      "Ekaterina Sazanova": {
+        "march": {
+          "hours": 158,
+          "salary": -247132.6506
+        },
+        "amount_hours": 464,
+        "amount_salary": -825914.3706,
+        "february": {
+          "hours": 108,
+          "salary": -206465.2524
+        },
+        "january": {
+          "hours": 108,
+          "salary": -217467.5256
+        },
+        "april": {
+          "hours": 90,
+          "salary": -154848.94199999998
+        }
+      },
+      "Alexander Shimchuk": {
+        "april": {
+          "hours": 17,
+          "salary": -10260.9875
+        },
+        "amount_hours": 38,
+        "amount_salary": -22271.769,
+        "march": {
+          "hours": 17,
+          "salary": -9328.1703
+        },
+        "february": {
+          "hours": 4,
+          "salary": -2682.6112
+        }
+      },
+      "Sergey Ovsyannikov": {
+        "april": {
+          "hours": 40,
+          "salary": -44015.5
+        },
+        "amount_hours": 199,
+        "amount_salary": -203071.5157,
+        "march": {
+          "hours": 159,
+          "salary": -159056.0157
+        }
+      },
+      "Daria Sakharova": {
+        "april": {
+          "hours": 32,
+          "salary": -24614
+        },
+        "amount_hours": 328,
+        "amount_salary": -250242.3424,
+        "february": {
+          "hours": 120,
+          "salary": -102558.336
+        },
+        "march": {
+          "hours": 176,
+          "salary": -123070.0064
+        }
+      },
+      "Alexander Nikulshin": {
+        "march": {
+          "hours": 88,
+          "salary": -137739.5008
+        },
+        "amount_hours": 88,
+        "amount_salary": -137739.5008
+      },
+      "Svetlana Koroleva": {
+        "february": {
+          "hours": 16,
+          "salary": -18090.4448
+        },
+        "amount_hours": 192,
+        "amount_salary": -180904.4368,
+        "march": {
+          "hours": 176,
+          "salary": -162813.992
+        }
+      },
+      "Maksim Mushcherov": {
+        "march": {
+          "hours": 176,
+          "salary": -162813.992
+        },
+        "amount_hours": 176,
+        "amount_salary": -162813.992
+      },
+      "Olesya Kolyada": {
+        "february": {
+          "hours": 16,
+          "salary": -18090.4448
+        },
+        "amount_hours": 16,
+        "amount_salary": -18090.4448
+      }
+    },
+    "amounts": {
+      "march": -1001954,
+      "amount": 20587597,
+      "april": -5830900,
+      "may": 27985807,
+      "february": -347887,
+      "january": -217467
+    }
+  },
+  "HYD2.1": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": 34280429,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 34280429
+      },
+      "HYD 2.1 Стадия П | Выручка за Этап": {
+        "january": null,
+        "february": 34280429,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 34280429
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": -25205856,
+        "april": null,
+        "may": -150000,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -25355856
+      },
+      "HYD_П, ООО \"Инэкс\"": {
+        "january": null,
+        "february": null,
+        "march": -10000000,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -10000000
+      },
+      "HYD_П, ООО  \"ЭсТиДжи ИТ\"": {
+        "january": null,
+        "february": null,
+        "march": -5803353,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -5803353
+      },
+      "HYD_П, Юрченко": {
+        "january": null,
+        "february": null,
+        "march": -1800000,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -1800000
+      },
+      "HYD_П, ООО \"Синтез\"": {
+        "january": null,
+        "february": null,
+        "march": -616667,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -616667
+      },
+      "HYD_П, Шарапов ТХ": {
+        "january": null,
+        "february": null,
+        "march": -64000,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -64000
+      },
+      "HYD_П, Рыбакова ТХ": {
+        "january": null,
+        "february": null,
+        "march": -64000,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -64000
+      },
+      "HYD_П, Непредвиденные расходы по проекту (СК-68) ": {
+        "january": null,
+        "february": null,
+        "march": -6856086,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -6856086
+      },
+      "HYD BIM- поддержка": {
+        "january": null,
+        "february": null,
+        "march": -1750,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -1750
+      },
+      "HYD_Командировки": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": -150000,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -150000
+      }
+    },
+    "personal": {
+      "amounts": {
+        "march": -236704,
+        "amount": -1911911.3886000002,
+        "february": -718087.1814,
+        "january": -957120.2072
+      },
+      "Ekaterina Biryuk": {
+        "march": {
+          "hours": 80,
+          "salary": -73970
+        },
+        "amount_hours": 360,
+        "amount_salary": -398035.996,
+        "january": {
+          "hours": 136,
+          "salary": -161331.9992
+        },
+        "february": {
+          "hours": 144,
+          "salary": -162733.9968
+        }
+      },
+      "Tatiana Pachina": {
+        "march": {
+          "hours": 176,
+          "salary": -162734
+        },
+        "amount_hours": 456,
+        "amount_salary": -486801.00239999994,
+        "february": {
+          "hours": 144,
+          "salary": -162733.9968
+        },
+        "january": {
+          "hours": 136,
+          "salary": -161333.00559999997
+        }
+      },
+      "Olga Nikonova": {
+        "february": {
+          "hours": 48,
+          "salary": -41003.3328
+        },
+        "amount_hours": 176,
+        "amount_salary": -156777.4512,
+        "january": {
+          "hours": 128,
+          "salary": -115774.1184
+        }
+      },
+      "Alexander Nikulshin": {
+        "february": {
+          "hours": 54,
+          "salary": -103304.6244
+        },
+        "amount_hours": 102,
+        "amount_salary": -195671.802,
+        "january": {
+          "hours": 48,
+          "salary": -92367.1776
+        }
+      },
+      "Elena Ryzhkova": {
+        "february": {
+          "hours": 8,
+          "salary": -6101.2224
+        },
+        "amount_hours": 96,
+        "amount_salary": -76255.3416,
+        "january": {
+          "hours": 88,
+          "salary": -70154.1192
+        }
+      },
+      "Andrey Shmakov": {
+        "february": {
+          "hours": 113,
+          "salary": -242210.00819999998
+        },
+        "amount_hours": 237,
+        "amount_salary": -522354.2678,
+        "january": {
+          "hours": 124,
+          "salary": -280144.2596
+        }
+      },
+      "Maria Kolesnichenko": {
+        "january": {
+          "hours": 56,
+          "salary": -52278.4696
+        },
+        "amount_hours": 56,
+        "amount_salary": -52278.4696
+      },
+      "Mikhail Yakim": {
+        "january": {
+          "hours": 20,
+          "salary": -23737.058
+        },
+        "amount_hours": 20,
+        "amount_salary": -23737.058
+      }
+    },
+    "amounts": {
+      "march": -25442560,
+      "amount": 7012661,
+      "february": 33562341,
+      "january": -957120,
+      "may": -150000
+    }
+  },
+  "NEG": {
+    "incomes": {
+      "amounts": {
+        "january": 375000,
+        "february": 375000,
+        "march": 375000,
+        "april": 375000,
+        "may": 375000,
+        "june": 375000,
+        "july": 375000,
+        "august": 108871,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 2733871
+      },
+      "NEG Авторский надзор ": {
+        "january": 375000,
+        "february": 375000,
+        "march": 375000,
+        "april": 375000,
+        "may": 375000,
+        "june": 375000,
+        "july": 375000,
+        "august": 108871,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 2733871
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": -50000,
+        "february": -50000,
+        "march": -50000,
+        "april": -50000,
+        "may": -50000,
+        "june": -50000,
+        "july": -50000,
+        "august": -50000,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -400000
+      },
+      "NEG Турбина ": {
+        "january": -50000,
+        "february": -50000,
+        "march": -50000,
+        "april": -50000,
+        "may": -50000,
+        "june": -50000,
+        "july": -50000,
+        "august": -50000,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -400000
+      }
+    },
+    "personal": {
+      "amounts": {
+        "august": -100153.9234,
+        "amount": -1328241.2858,
+        "july": -165444.10080000001,
+        "june": -165444.10080000001,
+        "may": -173716.3028,
+        "april": -173716.3028,
+        "march": -208246.1856,
+        "january": -172884.64880000002,
+        "february": -168635.7208
+      },
+      "Ekaterina Biryuk": {
+        "august": {
+          "hours": 76,
+          "salary": -67216.2164
+        },
+        "amount_hours": 456,
+        "amount_salary": -439320.546,
+        "july": {
+          "hours": 76,
+          "salary": -73617.7648
+        },
+        "june": {
+          "hours": 76,
+          "salary": -73617.7648
+        },
+        "may": {
+          "hours": 76,
+          "salary": -77298.65
+        },
+        "april": {
+          "hours": 76,
+          "salary": -77298.65
+        },
+        "march": {
+          "hours": 76,
+          "salary": -70271.5
+        }
+      },
+      "Olga Nikonova": {
+        "march": {
+          "hours": 72,
+          "salary": -50322.276
+        },
+        "amount_hours": 216,
+        "amount_salary": -176950.2168,
+        "january": {
+          "hours": 72,
+          "salary": -65122.941600000006
+        },
+        "february": {
+          "hours": 72,
+          "salary": -61504.9992
+        }
+      },
+      "Alexander Nikulshin": {
+        "june": {
+          "hours": 56,
+          "salary": -91826.33600000001
+        },
+        "amount_hours": 414,
+        "amount_salary": -711970.5230000002,
+        "april": {
+          "hours": 56,
+          "salary": -96417.6528
+        },
+        "may": {
+          "hours": 56,
+          "salary": -96417.6528
+        },
+        "july": {
+          "hours": 56,
+          "salary": -91826.33600000001
+        },
+        "march": {
+          "hours": 56,
+          "salary": -87652.4096
+        },
+        "february": {
+          "hours": 56,
+          "salary": -107130.7216
+        },
+        "january": {
+          "hours": 56,
+          "salary": -107761.7072
+        },
+        "august": {
+          "hours": 22,
+          "salary": -32937.707
+        }
+      }
+    },
+    "amounts": {
+      "march": 116753,
+      "amount": 1005629,
+      "august": -41282,
+      "july": 159555,
+      "june": 159555,
+      "may": 151283,
+      "april": 151283,
+      "february": 156364,
+      "january": 152115
+    }
+  },
+  "INT": {
+    "expenses": {
+      "amounts": {
+        "january": -2351103,
+        "february": -2604939,
+        "march": -2628170,
+        "april": -2501748,
+        "may": -2516748,
+        "june": -2501748,
+        "july": -2634748,
+        "august": -2501748,
+        "september": -2609748,
+        "october": -2501748,
+        "november": -2614748,
+        "december": -2501748,
+        "amount": -30468944
+      },
+      "Калашников Клим": {
+        "january": null,
+        "february": -50000,
+        "march": -25624,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -106382
+      },
+      "Кутузов Артем": {
+        "january": null,
+        "february": -53191,
+        "march": -53191,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -106382
+      },
+      "Распределённые расходы УК текущие": {
+        "january": -1872500,
+        "february": -1872500,
+        "march": -1872500,
+        "april": -1872500,
+        "may": -1872500,
+        "june": -1872500,
+        "july": -1872500,
+        "august": -1872500,
+        "september": -1872500,
+        "october": -1872500,
+        "november": -1872500,
+        "december": -1872500,
+        "amount": -22470000
+      },
+      "СРО ГАП": {
+        "january": -12500,
+        "february": -12500,
+        "march": -12500,
+        "april": -12500,
+        "may": -12500,
+        "june": -12500,
+        "july": -12500,
+        "august": -12500,
+        "september": -12500,
+        "october": -12500,
+        "november": -12500,
+        "december": -12500,
+        "amount": -150000
+      },
+      "СРО МРИ": {
+        "january": -12500,
+        "february": -12500,
+        "march": -12500,
+        "april": -12500,
+        "may": -12500,
+        "june": -12500,
+        "july": -12500,
+        "august": -12500,
+        "september": -12500,
+        "october": -12500,
+        "november": -12500,
+        "december": -12500,
+        "amount": -150000
+      },
+      "СРО МОСС": {
+        "january": -15583,
+        "february": -15583,
+        "march": -15583,
+        "april": -15583,
+        "may": -15583,
+        "june": -15583,
+        "july": -15583,
+        "august": -15583,
+        "september": -15583,
+        "october": -15583,
+        "november": -15583,
+        "december": -15583,
+        "amount": -186996
+      },
+      "Донских (сро)": {
+        "january": null,
+        "february": null,
+        "march": -15000,
+        "april": null,
+        "may": -15000,
+        "june": null,
+        "july": -133000,
+        "august": null,
+        "september": -108000,
+        "october": null,
+        "november": -113000,
+        "december": null,
+        "amount": -384000
+      },
+      "Амортизация ": {
+        "january": -200000,
+        "february": -200000,
+        "march": -200000,
+        "april": -200000,
+        "may": -200000,
+        "june": -200000,
+        "july": -200000,
+        "august": -200000,
+        "september": -200000,
+        "october": -200000,
+        "november": -200000,
+        "december": -200000,
+        "amount": -2400000
+      },
+      "Трекер": {
+        "january": -6020,
+        "february": -6665,
+        "march": -8514,
+        "april": -6665,
+        "may": -6665,
+        "june": -6665,
+        "july": -6665,
+        "august": -6665,
+        "september": -6665,
+        "october": -6665,
+        "november": -6665,
+        "december": -6665,
+        "amount": -81184
+      },
+      "Аутсорсинг (бухи)": {
+        "january": -132000,
+        "february": -132000,
+        "march": -132000,
+        "april": -132000,
+        "may": -132000,
+        "june": -132000,
+        "july": -132000,
+        "august": -132000,
+        "september": -132000,
+        "october": -132000,
+        "november": -132000,
+        "december": -132000,
+        "amount": -1584000
+      },
+      "РКО": {
+        "january": -100000,
+        "february": -100000,
+        "march": -100000,
+        "april": -100000,
+        "may": -100000,
+        "june": -100000,
+        "july": -100000,
+        "august": -100000,
+        "september": -100000,
+        "october": -100000,
+        "november": -100000,
+        "december": -100000,
+        "amount": -1200000
+      },
+      "Прочие мелкие расходы": {
+        "january": null,
+        "february": -150000,
+        "march": -150000,
+        "april": -150000,
+        "may": -150000,
+        "june": -150000,
+        "july": -150000,
+        "august": -150000,
+        "september": -150000,
+        "october": -150000,
+        "november": -150000,
+        "december": -150000,
+        "amount": -1650000
+      }
+    },
+    "personal": {
+      "amounts": {
+        "february": -116403.54400000001,
+        "amount": -289229.66240000003,
+        "january": -172826.1184
+      },
+      "Alexander Shimchuk": {
+        "february": {
+          "hours": 21,
+          "salary": -14083.7088
+        },
+        "amount_hours": 38,
+        "amount_salary": -25980.208499999993,
+        "january": {
+          "hours": 17,
+          "salary": -11896.499699999998
+        }
+      },
+      "Sergey Ovsyannikov": {
+        "february": {
+          "hours": 8,
+          "salary": -9781.2224
+        },
+        "amount_hours": 8,
+        "amount_salary": -9781.2224
+      },
+      "Olga Golubeva": {
+        "february": {
+          "hours": 32,
+          "salary": -30292.8896
+        },
+        "amount_hours": 32,
+        "amount_salary": -30292.8896
+      },
+      "Vitaliy Kotsiuk": {
+        "february": {
+          "hours": 28,
+          "salary": -31658.278400000003
+        },
+        "amount_hours": 51,
+        "amount_salary": -58955.8951,
+        "january": {
+          "hours": 23,
+          "salary": -27297.616700000002
+        }
+      },
+      "Ekaterina Sazanova": {
+        "february": {
+          "hours": 16,
+          "salary": -30587.4448
+        },
+        "amount_hours": 16,
+        "amount_salary": -30587.4448
+      },
+      "Ivan Kotelnikov": {
+        "january": {
+          "hours": 68,
+          "salary": -133632.002
+        },
+        "amount_hours": 68,
+        "amount_salary": -133632.002
+      }
+    },
+    "amounts": {
+      "march": -2628170,
+      "amount": -30758173,
+      "june": -2501748,
+      "october": -2501748,
+      "september": -2609748,
+      "november": -2614748,
+      "august": -2501748,
+      "february": -2721342,
+      "april": -2501748,
+      "july": -2634748,
+      "may": -2516748,
+      "december": -2501748,
+      "january": -2523929
+    }
+  },
+  "MSI": {
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": -102000,
+        "march": -102000,
+        "april": -102000,
+        "may": -102000,
+        "june": -102000,
+        "july": -102000,
+        "august": -102000,
+        "september": -102000,
+        "october": -51000,
+        "november": null,
+        "december": null,
+        "amount": -867000
+      },
+      "MSI_ИП  Лесниченко (англ.яз)": {
+        "january": null,
+        "february": -102000,
+        "march": -102000,
+        "april": -102000,
+        "may": -102000,
+        "june": -102000,
+        "july": -102000,
+        "august": -102000,
+        "september": -102000,
+        "october": -51000,
+        "november": null,
+        "december": null,
+        "amount": -867000
+      }
+    },
+    "amounts": {
+      "march": -102000,
+      "amount": -867000,
+      "october": -51000,
+      "february": -102000,
+      "april": -102000,
+      "september": -102000,
+      "july": -102000,
+      "june": -102000,
+      "may": -102000,
+      "august": -102000
+    }
+  },
+  "PSB-7": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": 13932019,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 13932019
+      },
+      "PSB-7 Дизайн солюшенз": {
+        "january": null,
+        "february": null,
+        "march": 13932019,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 13932019
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": -12583333,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -12583333
+      },
+      "PSB-7 Дизайн солюшенз": {
+        "january": null,
+        "february": null,
+        "march": -12583333,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -12583333
+      }
+    },
+    "amounts": {
+      "march": 1348686,
+      "amount": 1348686
+    }
+  },
+  "TEH": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": 8608786,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 8608786
+      },
+      "TEH | Концепция Корпусов B | Выручка 2022-2023": {
+        "january": null,
+        "february": 8608786,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 8608786
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": -768684,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -768684
+      },
+      "TEH 12 Непредвиденные расходы (ИП Мамедов)": {
+        "january": null,
+        "february": -638794,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -638794
+      },
+      "TEH Непредвиденные расходы (ИП Мамедов)": {
+        "january": null,
+        "february": -129890,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -129890
+      }
+    },
+    "personal": {
+      "amounts": {
+        "march": -42407.318400000004,
+        "amount": -897341.8377999999,
+        "april": -199279.9625,
+        "february": -266304.4254,
+        "january": -389350.1315
+      },
+      "Alexander Shimchuk": {
+        "march": {
+          "hours": 35,
+          "salary": -19205.056500000002
+        },
+        "amount_hours": 75,
+        "amount_salary": -43683.88300000001,
+        "april": {
+          "hours": 35,
+          "salary": -21125.5625
+        },
+        "february": {
+          "hours": 5,
+          "salary": -3353.264
+        }
+      },
+      "Sergey Ovsyannikov": {
+        "april": {
+          "hours": 72,
+          "salary": -79227.9
+        },
+        "amount_hours": 186,
+        "amount_salary": -218589.5366,
+        "february": {
+          "hours": 36,
+          "salary": -44015.5008
+        },
+        "january": {
+          "hours": 61,
+          "salary": -78340.1467
+        },
+        "march": {
+          "hours": 17,
+          "salary": -17005.9891
+        }
+      },
+      "Daria Sakharova": {
+        "april": {
+          "hours": 40,
+          "salary": -30767.5
+        },
+        "amount_hours": 136,
+        "amount_salary": -115691.6344,
+        "february": {
+          "hours": 24,
+          "salary": -20511.6672
+        },
+        "january": {
+          "hours": 72,
+          "salary": -64412.4672
+        }
+      },
+      "Olga Golubeva": {
+        "april": {
+          "hours": 80,
+          "salary": -68159
+        },
+        "amount_hours": 224,
+        "amount_salary": -206820.9348,
+        "march": {
+          "hours": 8,
+          "salary": -6196.2728
+        },
+        "february": {
+          "hours": 54,
+          "salary": -51119.2512
+        },
+        "january": {
+          "hours": 82,
+          "salary": -81346.4108
+        }
+      },
+      "Viktor Abinyakov": {
+        "february": {
+          "hours": 77,
+          "salary": -147304.7422
+        },
+        "amount_hours": 159,
+        "amount_salary": -312555.84900000005,
+        "january": {
+          "hours": 82,
+          "salary": -165251.1068
+        }
+      }
+    },
+    "amounts": {
+      "february": 7573797,
+      "amount": 6942760,
+      "march": -42407,
+      "april": -199279,
+      "january": -389350
+    }
+  },
+  "APM INT": {
+    "personal": {
+      "amounts": {
+        "march": -548.7159,
+        "amount": -548.7159
+      },
+      "Alexander Shimchuk": {
+        "march": {
+          "hours": 1,
+          "salary": -548.7159
+        },
+        "amount_hours": 1,
+        "amount_salary": -548.7159
+      }
+    },
+    "amounts": {
+      "march": -548,
+      "amount": -548
+    }
+  },
+  "Domex 3D": {
+    "personal": {
+      "amounts": {
+        "march": -233049.6272,
+        "amount": -587391.5181,
+        "april": -93819.2,
+        "february": -131155.7248,
+        "january": -129366.9661
+      },
+      "Alexander Shimchuk": {
+        "march": {
+          "hours": 128,
+          "salary": -70235.6352
+        },
+        "amount_hours": 216,
+        "amount_salary": -123351.3352,
+        "april": {
+          "hours": 88,
+          "salary": -53115.7
+        }
+      },
+      "Vitaliy Kotsiuk": {
+        "march": {
+          "hours": 176,
+          "salary": -162813.992
+        },
+        "amount_hours": 441,
+        "amount_salary": -464040.1829,
+        "february": {
+          "hours": 116,
+          "salary": -131155.7248
+        },
+        "january": {
+          "hours": 109,
+          "salary": -129366.9661
+        },
+        "april": {
+          "hours": 40,
+          "salary": -40703.5
+        }
+      }
+    },
+    "amounts": {
+      "march": -233049,
+      "amount": -587391,
+      "april": -93819,
+      "february": -131155,
+      "january": -129366
+    }
+  },
+  "SRP": {
+    "personal": {
+      "amounts": {
+        "march": -81391.52320000001,
+        "amount": -383491.4072,
+        "february": -130991.09800000001,
+        "january": -171108.786
+      },
+      "Viktor Abinyakov": {
+        "march": {
+          "hours": 52,
+          "salary": -81391.52320000001
+        },
+        "amount_hours": 131,
+        "amount_salary": -236712.9234,
+        "february": {
+          "hours": 38,
+          "salary": -72695.8468
+        },
+        "january": {
+          "hours": 41,
+          "salary": -82625.5534
+        }
+      },
+      "Alexander Shimchuk": {
+        "february": {
+          "hours": 6,
+          "salary": -4023.9168
+        },
+        "amount_hours": 6,
+        "amount_salary": -4023.9168
+      },
+      "Maksim Mushcherov": {
+        "february": {
+          "hours": 48,
+          "salary": -54271.33440000001
+        },
+        "amount_hours": 88,
+        "amount_salary": -101745.4504,
+        "january": {
+          "hours": 40,
+          "salary": -47474.116
+        }
+      },
+      "Daria Sakharova": {
+        "january": {
+          "hours": 20,
+          "salary": -17892.352
+        },
+        "amount_hours": 20,
+        "amount_salary": -17892.352
+      },
+      "Sergey Ovsyannikov": {
+        "january": {
+          "hours": 18,
+          "salary": -23116.7646
+        },
+        "amount_hours": 18,
+        "amount_salary": -23116.7646
+      }
+    },
+    "amounts": {
+      "march": -81391,
+      "amount": -383491,
+      "february": -130991,
+      "january": -171108
+    }
+  },
+  "VOL": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": 25000000,
+        "may": null,
+        "june": 10000000,
+        "july": null,
+        "august": 87500000,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 122500000
+      },
+      "VOL ДС": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": 10000000,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 10000000
+      },
+      "VOL Сметная документация": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": 5833333,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 5833333
+      },
+      "VOL Проектная документация": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": 81666667,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 81666667
+      },
+      "VOL Архитектурная концепция": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": 25000000,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 25000000
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": -15000000,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": -35000000,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -50000000
+      },
+      "VOL Подрядчики": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": -35000000,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -35000000
+      },
+      "VOL Аукетт Сванке": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": -15000000,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -15000000
+      }
+    },
+    "personal": {
+      "amounts": {
+        "march": -579356.6924,
+        "amount": -730455.1316000001,
+        "april": -112174.5,
+        "january": -32217.4112,
+        "february": -6706.527999999999
+      },
+      "Viktor Abinyakov": {
+        "march": {
+          "hours": 124,
+          "salary": -194087.47840000002
+        },
+        "amount_hours": 124,
+        "amount_salary": -194087.47840000002
+      },
+      "Olga Golubeva": {
+        "march": {
+          "hours": 120,
+          "salary": -92944.09199999999
+        },
+        "amount_hours": 200,
+        "amount_salary": -161103.092,
+        "april": {
+          "hours": 80,
+          "salary": -68159
+        }
+      },
+      "Sergey Ovsyannikov": {
+        "april": {
+          "hours": 40,
+          "salary": -44015.5
+        },
+        "amount_hours": 40,
+        "amount_salary": -44015.5
+      },
+      "Ekaterina Sazanova": {
+        "january": {
+          "hours": 16,
+          "salary": -32217.4112
+        },
+        "amount_hours": 16,
+        "amount_salary": -32217.4112
+      },
+      "Maksim Mushcherov": {
+        "march": {
+          "hours": 158,
+          "salary": -146162.56100000002
+        },
+        "amount_hours": 158,
+        "amount_salary": -146162.56100000002
+      },
+      "Svetlana Koroleva": {
+        "march": {
+          "hours": 158,
+          "salary": -146162.56100000002
+        },
+        "amount_hours": 158,
+        "amount_salary": -146162.56100000002
+      },
+      "Alexander Shimchuk": {
+        "february": {
+          "hours": 10,
+          "salary": -6706.527999999999
+        },
+        "amount_hours": 10,
+        "amount_salary": -6706.527999999999
+      }
+    },
+    "amounts": {
+      "march": -579356,
+      "amount": 71769544,
+      "september": -35000000,
+      "june": 10000000,
+      "august": 87500000,
+      "april": 9887825,
+      "january": -32217,
+      "february": -6706
+    }
+  },
+  "GOR": {
+    "personal": {
+      "amounts": {
+        "february": -379899.3408,
+        "amount": -911416.8234999999,
+        "january": -531517.4827
+      },
+      "Maksim Mushcherov": {
+        "february": {
+          "hours": 80,
+          "salary": -90452.224
+        },
+        "amount_hours": 176,
+        "amount_salary": -204390.10240000003,
+        "january": {
+          "hours": 96,
+          "salary": -113937.87840000002
+        }
+      },
+      "Svetlana Koroleva": {
+        "february": {
+          "hours": 128,
+          "salary": -144723.5584
+        },
+        "amount_hours": 264,
+        "amount_salary": -306135.55280000006,
+        "january": {
+          "hours": 136,
+          "salary": -161411.99440000003
+        }
+      },
+      "Daria Sakharova": {
+        "january": {
+          "hours": 32,
+          "salary": -28627.7632
+        },
+        "amount_hours": 32,
+        "amount_salary": -28627.7632
+      },
+      "Vitaliy Kotsiuk": {
+        "january": {
+          "hours": 3,
+          "salary": -3560.5587000000005
+        },
+        "amount_hours": 3,
+        "amount_salary": -3560.5587000000005
+      },
+      "Sergey Ovsyannikov": {
+        "january": {
+          "hours": 24,
+          "salary": -30822.3528
+        },
+        "amount_hours": 24,
+        "amount_salary": -30822.3528
+      },
+      "Olga Golubeva": {
+        "january": {
+          "hours": 32,
+          "salary": -31744.9408
+        },
+        "amount_hours": 32,
+        "amount_salary": -31744.9408
+      },
+      "Olesya Kolyada": {
+        "january": {
+          "hours": 136,
+          "salary": -161411.99440000003
+        },
+        "amount_hours": 264,
+        "amount_salary": -306135.55280000006,
+        "february": {
+          "hours": 128,
+          "salary": -144723.5584
+        }
+      }
+    },
+    "amounts": {
+      "february": -379899,
+      "amount": -911416,
+      "january": -531517
+    }
+  },
+  "TNK": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": 376900,
+        "march": 376900,
+        "april": 376900,
+        "may": 376900,
+        "june": 376900,
+        "july": 376900,
+        "august": 376900,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 2638300
+      },
+      "TNK Авторский надзор": {
+        "january": null,
+        "february": 376900,
+        "march": 376900,
+        "april": 376900,
+        "may": 376900,
+        "june": 376900,
+        "july": 376900,
+        "august": 376900,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 2638300
+      }
+    },
+    "personal": {
+      "amounts": {
+        "march": -50087.0912,
+        "amount": -476471.8668,
+        "february": -101761.27799999999,
+        "august": -47909.392,
+        "july": -52472.192,
+        "june": -52472.192,
+        "may": -55095.8016,
+        "april": -55095.8016,
+        "january": -61578.1184
+      },
+      "Alexander Nikulshin": {
+        "march": {
+          "hours": 32,
+          "salary": -50087.0912
+        },
+        "amount_hours": 256,
+        "amount_salary": -435928.144,
+        "august": {
+          "hours": 32,
+          "salary": -47909.392
+        },
+        "july": {
+          "hours": 32,
+          "salary": -52472.192
+        },
+        "june": {
+          "hours": 32,
+          "salary": -52472.192
+        },
+        "may": {
+          "hours": 32,
+          "salary": -55095.8016
+        },
+        "april": {
+          "hours": 32,
+          "salary": -55095.8016
+        },
+        "january": {
+          "hours": 32,
+          "salary": -61578.1184
+        },
+        "february": {
+          "hours": 32,
+          "salary": -61217.5552
+        }
+      },
+      "Sergey Ovsyannikov": {
+        "february": {
+          "hours": 12,
+          "salary": -14671.833600000002
+        },
+        "amount_hours": 12,
+        "amount_salary": -14671.833600000002
+      },
+      "Olga Golubeva": {
+        "february": {
+          "hours": 8,
+          "salary": -7573.2224
+        },
+        "amount_hours": 8,
+        "amount_salary": -7573.2224
+      },
+      "Olga Nikonova": {
+        "february": {
+          "hours": 12,
+          "salary": -10250.8332
+        },
+        "amount_hours": 12,
+        "amount_salary": -10250.8332
+      },
+      "Alexander Shimchuk": {
+        "february": {
+          "hours": 12,
+          "salary": -8047.8336
+        },
+        "amount_hours": 12,
+        "amount_salary": -8047.8336
+      }
+    },
+    "amounts": {
+      "march": 326812,
+      "amount": 2161828,
+      "february": 275138,
+      "august": 328990,
+      "july": 324427,
+      "june": 324427,
+      "may": 321804,
+      "april": 321804,
+      "january": -61578
+    }
+  },
+  "MTR": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": 13888889,
+        "september": null,
+        "october": 13888889,
+        "november": null,
+        "december": 13888889,
+        "amount": 41666667
+      },
+      "MTR Музей транспорта": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": 13888889,
+        "september": null,
+        "october": 13888889,
+        "november": null,
+        "december": 13888889,
+        "amount": 41666667
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": -600000,
+        "july": -600000,
+        "august": -600000,
+        "september": -600000,
+        "october": -600000,
+        "november": -600000,
+        "december": null,
+        "amount": -3600000
+      },
+      "MTR Музей транспорта (2 чел)": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": -600000,
+        "july": -600000,
+        "august": -600000,
+        "september": -600000,
+        "october": -600000,
+        "november": -600000,
+        "december": null,
+        "amount": -3600000
+      }
+    },
+    "personal": {
+      "amounts": {
+        "february": -17147.6112,
+        "amount": -17147.6112
+      },
+      "Andrey Shmakov": {
+        "february": {
+          "hours": 8,
+          "salary": -17147.6112
+        },
+        "amount_hours": 8,
+        "amount_salary": -17147.6112
+      }
+    },
+    "amounts": {
+      "november": -600000,
+      "amount": 38049519,
+      "october": 13288889,
+      "september": -600000,
+      "august": 13288889,
+      "july": -600000,
+      "june": -600000,
+      "december": 13888889,
+      "february": -17147
+    }
+  },
+  "ACQ": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": 13333333,
+        "august": null,
+        "september": 13333333,
+        "october": null,
+        "november": 13333333,
+        "december": null,
+        "amount": 39999999
+      },
+      "TEH Концепция корпусов В (2023г)": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": 13333333,
+        "august": null,
+        "september": 13333333,
+        "october": null,
+        "november": 13333333,
+        "december": null,
+        "amount": 39999999
+      }
+    },
+    "amounts": {
+      "november": 13333333,
+      "amount": 39999999,
+      "september": 13333333,
+      "july": 13333333
+    }
+  },
+  "NOR АН": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": 465500,
+        "april": 465500,
+        "may": 465500,
+        "june": 465500,
+        "july": 465500,
+        "august": 465500,
+        "september": 465500,
+        "october": 465500,
+        "november": 465500,
+        "december": 465500,
+        "amount": 4655000
+      },
+      "NOR Авторский надзор": {
+        "january": null,
+        "february": null,
+        "march": 465500,
+        "april": 465500,
+        "may": 465500,
+        "june": 465500,
+        "july": 465500,
+        "august": 465500,
+        "september": 465500,
+        "october": 465500,
+        "november": 465500,
+        "december": 465500,
+        "amount": 4655000
+      }
+    },
+    "personal": {
+      "amounts": {
+        "april": -84504.8008,
+        "amount": -773497.4055999999,
+        "may": -84504.8008,
+        "june": -80480.7648,
+        "july": -80480.7648,
+        "august": -73482.4344,
+        "september": -80480.7648,
+        "october": -76822.5456,
+        "november": -80480.7648,
+        "december": -80480.7648,
+        "march": -51779
+      },
+      "Alexander Nikulshin": {
+        "april": {
+          "hours": 16,
+          "salary": -27547.9008
+        },
+        "amount_hours": 144,
+        "amount_salary": -235274.5232,
+        "may": {
+          "hours": 16,
+          "salary": -27547.9008
+        },
+        "june": {
+          "hours": 16,
+          "salary": -26236.096
+        },
+        "july": {
+          "hours": 16,
+          "salary": -26236.096
+        },
+        "august": {
+          "hours": 16,
+          "salary": -23954.696
+        },
+        "september": {
+          "hours": 16,
+          "salary": -26236.096
+        },
+        "october": {
+          "hours": 16,
+          "salary": -25043.5456
+        },
+        "november": {
+          "hours": 16,
+          "salary": -26236.096
+        },
+        "december": {
+          "hours": 16,
+          "salary": -26236.096
+        }
+      },
+      "Ekaterina Biryuk": {
+        "december": {
+          "hours": 56,
+          "salary": -54244.6688
+        },
+        "amount_hours": 560,
+        "amount_salary": -538222.8824,
+        "november": {
+          "hours": 56,
+          "salary": -54244.6688
+        },
+        "october": {
+          "hours": 56,
+          "salary": -51779
+        },
+        "september": {
+          "hours": 56,
+          "salary": -54244.6688
+        },
+        "august": {
+          "hours": 56,
+          "salary": -49527.7384
+        },
+        "july": {
+          "hours": 56,
+          "salary": -54244.6688
+        },
+        "june": {
+          "hours": 56,
+          "salary": -54244.6688
+        },
+        "may": {
+          "hours": 56,
+          "salary": -56956.9
+        },
+        "april": {
+          "hours": 56,
+          "salary": -56956.9
+        },
+        "march": {
+          "hours": 56,
+          "salary": -51779
+        }
+      }
+    },
+    "amounts": {
+      "december": 385019,
+      "amount": 3881502,
+      "november": 385019,
+      "october": 388677,
+      "september": 385019,
+      "august": 392017,
+      "july": 385019,
+      "june": 385019,
+      "may": 380995,
+      "april": 380995,
+      "march": 413721
+    }
+  },
+  "HYD 2.2": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": 7300000,
+        "may": null,
+        "june": 60198225,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 67498225
+      },
+      "HYD 2.2 Стадия Р | Вертолетная площадка": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": 8777580,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 8777580
+      },
+      "HYD 2.2 Стадия Р | Изыскания": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": 7300000,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 7300000
+      },
+      "HYD 2.2 Стадия Р | Выручка за Этап": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": 51420645,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 51420645
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": -46847294,
+        "july": -150000,
+        "august": null,
+        "september": -150000,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -47147294
+      },
+      "HYD_Р, ООО \"Инэкс\"": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": -27858136,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -27858136
+      },
+      "HYD_Р, ООО  \"ЭсТиДжи ИТ\"": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": -8705029,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -8705029
+      },
+      "HYD_Р, Непредвиденные расходы по проекту (СК-68) ": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": -10284129,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -10284129
+      },
+      "HYD_Командировки": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": -150000,
+        "august": null,
+        "september": -150000,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -300000
+      }
+    },
+    "personal": {
+      "amounts": {
+        "june": -162734.0064,
+        "amount": -488202.0064,
+        "may": -162734,
+        "april": -162734
+      },
+      "Tatiana Pachina": {
+        "june": {
+          "hours": 168,
+          "salary": -162734.0064
+        },
+        "amount_hours": 488,
+        "amount_salary": -488202.0064,
+        "may": {
+          "hours": 160,
+          "salary": -162734
+        },
+        "april": {
+          "hours": 160,
+          "salary": -162734
+        }
+      }
+    },
+    "amounts": {
+      "june": 13188196,
+      "amount": 19862728,
+      "april": 7137266,
+      "may": -162734,
+      "september": -150000,
+      "july": -150000
+    }
+  },
+  "SOT": {
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": -222600,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -222600
+      },
+      "SOT Непредвиденные расходы (ИП Мамедов)": {
+        "january": null,
+        "february": -222600,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": -222600
+      }
+    },
+    "amounts": {
+      "february": -222600,
+      "amount": -222600
+    }
+  },
+  "PSB-17 ": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": 821958,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 821958
+      },
+      "PSB-17 Цоколь. Выручка за ДС17": {
+        "january": null,
+        "february": 821958,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 821958
+      }
+    },
+    "personal": {
+      "amounts": {
+        "february": -99467.64,
+        "amount": -549788.5861,
+        "january": -450320.94610000006
+      },
+      "Mikhail Yakim": {
+        "february": {
+          "hours": 65,
+          "salary": -73492.432
+        },
+        "amount_hours": 181,
+        "amount_salary": -211167.3684,
+        "january": {
+          "hours": 116,
+          "salary": -137674.9364
+        }
+      },
+      "Elizaveta Kovtunets": {
+        "february": {
+          "hours": 16,
+          "salary": -19111.3328
+        },
+        "amount_hours": 152,
+        "amount_salary": -180523.32720000003,
+        "january": {
+          "hours": 136,
+          "salary": -161411.99440000003
+        }
+      },
+      "Elena Ryzhkova": {
+        "february": {
+          "hours": 9,
+          "salary": -6863.8751999999995
+        },
+        "amount_hours": 25,
+        "amount_salary": -19619.1696,
+        "january": {
+          "hours": 16,
+          "salary": -12755.2944
+        }
+      },
+      "Daria Sakharova": {
+        "january": {
+          "hours": 12,
+          "salary": -10735.4112
+        },
+        "amount_hours": 12,
+        "amount_salary": -10735.4112
+      },
+      "Ivan Kotelnikov": {
+        "january": {
+          "hours": 47,
+          "salary": -92363.29550000001
+        },
+        "amount_hours": 47,
+        "amount_salary": -92363.29550000001
+      },
+      "Olga Golubeva": {
+        "january": {
+          "hours": 22,
+          "salary": -21824.6468
+        },
+        "amount_hours": 22,
+        "amount_salary": -21824.6468
+      },
+      "Andrey Shmakov": {
+        "january": {
+          "hours": 6,
+          "salary": -13555.3674
+        },
+        "amount_hours": 6,
+        "amount_salary": -13555.3674
+      }
+    },
+    "amounts": {
+      "february": 722490,
+      "amount": 272169,
+      "january": -450320
+    }
+  },
+  "МТС_Тесла": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": 500000,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 500000
+      },
+      "МТС (конкурс)": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": 500000,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": null,
+        "amount": 500000
+      }
+    },
+    "personal": {
+      "amounts": {
+        "march": -1646.1477,
+        "amount": -279327.06450000004,
+        "february": -277680.9168
+      },
+      "Alexander Shimchuk": {
+        "march": {
+          "hours": 3,
+          "salary": -1646.1477
+        },
+        "amount_hours": 13,
+        "amount_salary": -8352.6757,
+        "february": {
+          "hours": 10,
+          "salary": -6706.527999999999
+        }
+      },
+      "Ekaterina Biryuk": {
+        "february": {
+          "hours": 40,
+          "salary": -45203.888
+        },
+        "amount_hours": 40,
+        "amount_salary": -45203.888
+      },
+      "Sergey Ovsyannikov": {
+        "february": {
+          "hours": 72,
+          "salary": -88031.0016
+        },
+        "amount_hours": 72,
+        "amount_salary": -88031.0016
+      },
+      "Alexander Nikulshin": {
+        "february": {
+          "hours": 72,
+          "salary": -137739.49920000002
+        },
+        "amount_hours": 72,
+        "amount_salary": -137739.49920000002
+      }
+    },
+    "amounts": {
+      "april": 500000,
+      "amount": 220672,
+      "march": -1646,
+      "february": -277680
+    }
+  },
+  "Rupp": {
+    "personal": {
+      "amounts": {
+        "march": -30981.363999999998,
+        "amount": -30981.363999999998
+      },
+      "Olga Golubeva": {
+        "march": {
+          "hours": 40,
+          "salary": -30981.363999999998
+        },
+        "amount_hours": 40,
+        "amount_salary": -30981.363999999998
+      }
+    },
+    "amounts": {
+      "march": -30981,
+      "amount": -30981
+    }
+  },
+  "PSB-6 Фасады ЦОД": {
+    "personal": {
+      "amounts": {
+        "march": -12513.0456,
+        "amount": -105308.8452,
+        "may": -13764.3504,
+        "june": -13108.9048,
+        "july": -13108.9048,
+        "april": -13764.3504,
+        "february": -22940.5836,
+        "january": -16108.7056
+      },
+      "Ekaterina Sazanova": {
+        "march": {
+          "hours": 8,
+          "salary": -12513.0456
+        },
+        "amount_hours": 60,
+        "amount_salary": -105308.8452,
+        "may": {
+          "hours": 8,
+          "salary": -13764.3504
+        },
+        "june": {
+          "hours": 8,
+          "salary": -13108.9048
+        },
+        "july": {
+          "hours": 8,
+          "salary": -13108.9048
+        },
+        "april": {
+          "hours": 8,
+          "salary": -13764.3504
+        },
+        "february": {
+          "hours": 12,
+          "salary": -22940.5836
+        },
+        "january": {
+          "hours": 8,
+          "salary": -16108.7056
+        }
+      }
+    },
+    "amounts": {
+      "march": -12513,
+      "amount": -105308,
+      "may": -13764,
+      "june": -13108,
+      "july": -13108,
+      "april": -13764,
+      "february": -22940,
+      "january": -16108
+    }
+  },
+  "AUK INT": {
+    "personal": {
+      "amounts": {
+        "march": -4938.4431,
+        "amount": -74664.3639,
+        "april": -5432.287499999999,
+        "january": -62281.6749,
+        "february": -2011.9584
+      },
+      "Alexander Shimchuk": {
+        "march": {
+          "hours": 9,
+          "salary": -4938.4431
+        },
+        "amount_hours": 110,
+        "amount_salary": -74664.3639,
+        "april": {
+          "hours": 9,
+          "salary": -5432.287499999999
+        },
+        "january": {
+          "hours": 89,
+          "salary": -62281.6749
+        },
+        "february": {
+          "hours": 3,
+          "salary": -2011.9584
+        }
+      }
+    },
+    "amounts": {
+      "march": -4938,
+      "amount": -74664,
+      "april": -5432,
+      "january": -62281,
+      "february": -2011
+    }
+  },
+  "Нousebook": {
+    "personal": {
+      "amounts": {
+        "march": -3292.2954,
+        "amount": -7316.2122,
+        "february": -4023.9168
+      },
+      "Alexander Shimchuk": {
+        "march": {
+          "hours": 6,
+          "salary": -3292.2954
+        },
+        "amount_hours": 12,
+        "amount_salary": -7316.2122,
+        "february": {
+          "hours": 6,
+          "salary": -4023.9168
+        }
+      }
+    },
+    "amounts": {
+      "march": -3292,
+      "amount": -7316,
+      "february": -4023
+    }
+  },
+  "ALX": {
+    "personal": {
+      "amounts": {
+        "february": -216861.3216,
+        "amount": -216861.3216
+      },
+      "Maria Kolesnichenko": {
+        "february": {
+          "hours": 144,
+          "salary": -142884
+        },
+        "amount_hours": 144,
+        "amount_salary": -142884
+      },
+      "Elena Ryzhkova": {
+        "february": {
+          "hours": 97,
+          "salary": -73977.3216
+        },
+        "amount_hours": 97,
+        "amount_salary": -73977.3216
+      }
+    },
+    "amounts": {
+      "february": -216861,
+      "amount": -216861
+    }
+  },
+  "REN-3": {
+    "personal": {
+      "amounts": {
+        "february": -24869.631800000003,
+        "amount": -51067.978,
+        "january": -26198.3462
+      },
+      "Viktor Abinyakov": {
+        "february": {
+          "hours": 13,
+          "salary": -24869.631800000003
+        },
+        "amount_hours": 26,
+        "amount_salary": -51067.978,
+        "january": {
+          "hours": 13,
+          "salary": -26198.3462
+        }
+      }
+    },
+    "amounts": {
+      "february": -24869,
+      "amount": -51067,
+      "january": -26198
+    }
+  },
+  "REN-2": {
+    "personal": {
+      "amounts": {
+        "february": -41015.1392,
+        "amount": -53770.4336,
+        "january": -12755.2944
+      },
+      "Ekaterina Sazanova": {
+        "february": {
+          "hours": 8,
+          "salary": -15293.7224
+        },
+        "amount_hours": 8,
+        "amount_salary": -15293.7224
+      },
+      "Andrey Shmakov": {
+        "february": {
+          "hours": 12,
+          "salary": -25721.4168
+        },
+        "amount_hours": 12,
+        "amount_salary": -25721.4168
+      },
+      "Elena Ryzhkova": {
+        "january": {
+          "hours": 16,
+          "salary": -12755.2944
+        },
+        "amount_hours": 16,
+        "amount_salary": -12755.2944
+      }
+    },
+    "amounts": {
+      "february": -41015,
+      "amount": -53770,
+      "january": -12755
+    }
+  },
+  "33D": {
+    "personal": {
+      "amounts": {
+        "january": -19594.2348,
+        "amount": -45749.693999999996,
+        "february": -26155.459199999998
+      },
+      "Alexander Shimchuk": {
+        "january": {
+          "hours": 28,
+          "salary": -19594.2348
+        },
+        "amount_hours": 67,
+        "amount_salary": -45749.693999999996,
+        "february": {
+          "hours": 39,
+          "salary": -26155.459199999998
+        }
+      }
+    },
+    "amounts": {
+      "january": -19594,
+      "amount": -45749,
+      "february": -26155
+    }
+  },
+  "OSL": {
+    "personal": {
+      "amounts": {
+        "january": -1186.8529,
+        "amount": -1186.8529
+      },
+      "Vitaliy Kotsiuk": {
+        "january": {
+          "hours": 1,
+          "salary": -1186.8529
+        },
+        "amount_hours": 1,
+        "amount_salary": -1186.8529
+      }
+    },
+    "amounts": {
+      "january": -1186,
+      "amount": -1186
+    }
+  },
+  "ALR": {
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": -150000,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": -150000,
+        "july": null,
+        "august": null,
+        "september": -150000,
+        "october": null,
+        "november": null,
+        "december": -150000,
+        "amount": -600000
+      },
+      "ALR_Командировки": {
+        "january": null,
+        "february": -150000,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": -150000,
+        "july": null,
+        "august": null,
+        "september": -150000,
+        "october": null,
+        "november": null,
+        "december": -150000,
+        "amount": -600000
+      }
+    },
+    "amounts": {
+      "june": -150000,
+      "amount": -600000,
+      "december": -150000,
+      "september": -150000,
+      "february": -150000
+    }
+  },
+  "HYD 3": {
+    "incomes": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": 366388,
+        "october": 366388,
+        "november": 366388,
+        "december": 366388,
+        "amount": 1465552
+      },
+      "HYD 3.0 Авторский выручка ": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": 366388,
+        "october": 366388,
+        "november": 366388,
+        "december": 366388,
+        "amount": 1465552
+      }
+    },
+    "expenses": {
+      "amounts": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": -150000,
+        "amount": -150000
+      },
+      "HYD_Командировки": {
+        "january": null,
+        "february": null,
+        "march": null,
+        "april": null,
+        "may": null,
+        "june": null,
+        "july": null,
+        "august": null,
+        "september": null,
+        "october": null,
+        "november": null,
+        "december": -150000,
+        "amount": -150000
+      }
+    },
+    "amounts": {
+      "december": 216388,
+      "amount": 1315552,
+      "november": 366388,
+      "october": 366388,
+      "september": 366388
+    }
   }
 }

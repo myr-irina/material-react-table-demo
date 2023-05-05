@@ -15,7 +15,7 @@ import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
 import { numberWithSpaces } from '../../../utils/utils';
 
-function LayoutCollapsedTableProject({ data }) {
+function LayoutCollapsedTableProject({ data, title }) {
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
 
   const columns = useMemo(
@@ -25,7 +25,7 @@ function LayoutCollapsedTableProject({ data }) {
           return data[0][0].projectType;
         },
         id: 'costType',
-        header: 'Название',
+        header: title,
       },
       {
         header: ' ',
@@ -56,9 +56,9 @@ function LayoutCollapsedTableProject({ data }) {
       columns={columns}
       data={TABLE_DATA}
       enableExpanding
-      initialState={{
-        expanded: true,
-      }}
+      // initialState={{
+      //   expanded: true,
+      // }}
       renderDetailPanel={({ row }) => (
         <TableContainer
           sx={{
@@ -83,9 +83,23 @@ function LayoutCollapsedTableProject({ data }) {
                     width: '170px',
                   },
                 }}
-                size='small'
+                // size='small'
               >
                 <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                  {/* <TableRow>
+                    <Typography
+                      sx={{
+                        fontWeight: '700',
+                        fontSize: '18px',
+                        overflowX: 'hidden',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                        padding: '6px 16px 0',
+                      }}
+                    >
+                      Доходы
+                    </Typography>
+                  </TableRow> */}
                   <TableRow>
                     <TableCell>
                       <Typography
@@ -111,6 +125,7 @@ function LayoutCollapsedTableProject({ data }) {
                             color: 'black',
                           }}
                         >
+                          {console.log({ row })}
                           {cell}
                         </Typography>
                       </TableCell>

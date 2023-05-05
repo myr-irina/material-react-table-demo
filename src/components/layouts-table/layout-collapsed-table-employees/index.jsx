@@ -196,7 +196,7 @@ export default function LayoutCollapsedTableEmployees(data) {
                 width: '170px',
               },
             }}
-            size='small'
+            // size='small'
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <StyledTableRow2>

@@ -20,7 +20,7 @@ const AmountsTable = ({ data }) => {
           width: '170px',
         },
       }}
-      size='small'
+      // size='small'
     >
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <TableRow>

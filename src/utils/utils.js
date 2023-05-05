@@ -98,26 +98,26 @@ export const parseTableData3 = (data) => {
 };
 
 export const parseTableData4 = (data) => {
-  const obj = Object.entries(data).map(([projectType, dataProject]) =>
-    Object.entries(dataProject).reduce(
-      (acc, [k, v]) => (v ? { ...acc, [k]: v } : acc),
-      {}
-    )
-  );
-  // .map(([projectType, dataProject]) => {
-  //   if (!dataProject) return;
+  const obj = Object.entries(data)
+    //   Object.entries(dataProject).reduce(
+    //     (acc, [k, v]) => (v ? { ...acc, [k]: v } : acc),
+    //     {}
+    //   )
+    // );
+    .map(([projectType, dataProject]) => {
+      if (!dataProject) return;
 
-  //   return Object.entries(dataProject).map(([projectName, projects]) => {
-  //     return Object.entries(projects).map(([month, value]) => ({
-  //       month,
-  //       projectName,
-  //       projectType,
-  //       value,
-  //     }));
-  //   });
-  // })
-  // .filter(Boolean);
-  console.log({ obj });
+      return Object.entries(dataProject).map(([projectName, projects]) => {
+        if (projects === null) return;
+        return Object.entries(projects).map(([month, value]) => ({
+          month,
+          projectName,
+          projectType,
+          value,
+        }));
+      });
+    })
+    .filter(Boolean);
 
   return obj;
 };
