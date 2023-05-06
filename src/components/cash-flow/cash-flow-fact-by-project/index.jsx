@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import data from '../../../json/dds-by-project-fact copy.json';
+import data from '../../../json/dds-by-project-fact.json';
 import LayoutCollapsedTableProject from '../../layouts-table/layout-collapsed-table-project';
 
 function CashFlowFactByProject() {

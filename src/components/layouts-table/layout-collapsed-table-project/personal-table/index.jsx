@@ -68,6 +68,7 @@ const PersonalTable = ({ data }) => {
 
   const months = [
     ...Object.keys(data.find((row) => row.month === 'amounts').value),
+    'amount_salary',
   ].filter((key) => key !== 'amount');
 
   const amountsRow = data.find(({ month }) => month === 'amounts');
@@ -136,7 +137,7 @@ const PersonalTable = ({ data }) => {
               <TableCell>{row.month}</TableCell>
               {months.map((month) => {
                 const val = rowData.find(([monthKey]) => monthKey === month);
-                console.log({ val });
+
                 if (!val) return <TableCell></TableCell>;
                 return (
                   <TableCell>
@@ -160,7 +161,7 @@ const PersonalTable = ({ data }) => {
             return (
               <TableCell>
                 <Typography sx={{ fontWeight: 'bold' }}>
-                  {numberWithSpaces(Math.trunc(val[1]))}
+                  {`${numberWithSpaces(Math.trunc(val[1]))} р.`}
                 </Typography>
               </TableCell>
             );

@@ -28,15 +28,18 @@ const AmountsTable = ({ data }) => {
             <Typography
               sx={{
                 fontWeight: '700',
-                fontSize: '14px',
+                fontSize: '18px',
                 overflowX: 'hidden',
                 whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis',
+
+                padding: '6px 16px 0',
               }}
             >
-              {data[0].projectName}
+              Общая сумма
             </Typography>
           </TableCell>
+        </TableRow>
+        <TableRow>
           {data.map((cell) => (
             <TableCell component='th' key={cell}>
               <Typography

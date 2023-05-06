@@ -10,7 +10,6 @@ import TableRow from '@mui/material/TableRow';
 
 import { parseTableData4 } from '../../../utils/utils';
 
-import data from '../../../json/bdr-by-project-plan copy.json';
 import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
 import { numberWithSpaces } from '../../../utils/utils';
@@ -22,31 +21,31 @@ function LayoutCollapsedTableProject({ data, title }) {
     () => [
       {
         accessorFn: (data) => {
-          return data[0][0].projectType;
+          return data?.[0]?.[0].projectType;
         },
         id: 'costType',
         header: title,
       },
-      {
-        header: ' ',
-        size: 50,
-        id: 'costType1',
-      },
-      {
-        header: ' ',
-        size: 50,
-        id: 'costType2',
-      },
-      {
-        header: ' ',
-        size: 50,
-        id: 'costType3',
-      },
-      {
-        header: ' ',
-        size: 50,
-        id: 'costType4',
-      },
+      // {
+      //   header: ' ',
+      //   size: 50,
+      //   id: 'costType1',
+      // },
+      // {
+      //   header: ' ',
+      //   size: 50,
+      //   id: 'costType2',
+      // },
+      // {
+      //   header: ' ',
+      //   size: 50,
+      //   id: 'costType3',
+      // },
+      // {
+      //   header: ' ',
+      //   size: 50,
+      //   id: 'costType4',
+      // },
     ],
     []
   );
@@ -68,6 +67,8 @@ function LayoutCollapsedTableProject({ data, title }) {
           }}
         >
           {row.original.map((row) => {
+            if (!row) return;
+            console.log({ row });
             if (row[0].projectName === 'personal')
               return <PersonalTable data={row} />;
             if (row[0].projectName === 'amounts')
@@ -86,20 +87,6 @@ function LayoutCollapsedTableProject({ data, title }) {
                 // size='small'
               >
                 <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                  {/* <TableRow>
-                    <Typography
-                      sx={{
-                        fontWeight: '700',
-                        fontSize: '18px',
-                        overflowX: 'hidden',
-                        whiteSpace: 'nowrap',
-                        textOverflow: 'ellipsis',
-                        padding: '6px 16px 0',
-                      }}
-                    >
-                      Доходы
-                    </Typography>
-                  </TableRow> */}
                   <TableRow>
                     <TableCell>
                       <Typography
@@ -125,7 +112,6 @@ function LayoutCollapsedTableProject({ data, title }) {
                             color: 'black',
                           }}
                         >
-                          {console.log({ row })}
                           {cell}
                         </Typography>
                       </TableCell>

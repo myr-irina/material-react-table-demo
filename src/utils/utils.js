@@ -97,18 +97,27 @@ export const parseTableData3 = (data) => {
   return obj;
 };
 
-export const parseTableData4 = (data) => {
-  const obj = Object.entries(data)
-    //   Object.entries(dataProject).reduce(
-    //     (acc, [k, v]) => (v ? { ...acc, [k]: v } : acc),
-    //     {}
-    //   )
-    // );
-    .map(([projectType, dataProject]) => {
-      if (!dataProject) return;
+function clearEmpties(o) {
+  for (let k in o) {
+    if (!o[k] || typeof o[k] !== 'object') {
+      continue; // If null or not an object, skip to the next iteration
+    }
+    // The property is an object
+    clearEmpties(o[k]); // <-- Make a recursive call on the nested object
+    if (Object.keys(o[k]).length === 0) {
+      delete o[k]; // The object had no properties, so delete that property
+    }
+  }
+  return o;
+}
 
+export const parseTableData4 = (data) => {
+  const clearedObj = clearEmpties(data);
+
+  const obj = Object.entries(data)
+    .map(([projectType, dataProject]) => {
       return Object.entries(dataProject).map(([projectName, projects]) => {
-        if (projects === null) return;
+        if (projects === null || projects === undefined) return;
         return Object.entries(projects).map(([month, value]) => ({
           month,
           projectName,
