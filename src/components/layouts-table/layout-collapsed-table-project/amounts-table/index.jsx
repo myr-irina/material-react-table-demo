@@ -5,6 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { numberWithSpaces } from '../../../../utils/utils';
 
@@ -17,29 +18,27 @@ const AmountsTable = ({ data }) => {
         margin: '0 auto',
         width: '100%',
         '& .MuiTableCell-root:first-of-type': {
-          width: '170px',
+          width: '250px',
         },
       }}
       // size='small'
     >
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <TableRow>
-          <TableCell>
-            <Typography
-              sx={{
-                fontWeight: '700',
-                fontSize: '18px',
-                overflowX: 'hidden',
-                whiteSpace: 'nowrap',
-
-                padding: '6px 16px 0',
-              }}
-            >
-              Общая сумма
-            </Typography>
-          </TableCell>
+          <Typography
+            sx={{
+              fontWeight: '700',
+              fontSize: '18px',
+              overflowX: 'hidden',
+              whiteSpace: 'nowrap',
+              padding: '6px 16px 0',
+            }}
+          >
+            Общая сумма
+          </Typography>
         </TableRow>
         <TableRow>
+          <TableCell></TableCell>
           {data.map((cell) => (
             <TableCell component='th' key={cell}>
               <Typography

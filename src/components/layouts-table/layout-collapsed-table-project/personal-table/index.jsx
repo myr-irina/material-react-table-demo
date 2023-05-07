@@ -68,8 +68,12 @@ const PersonalTable = ({ data }) => {
 
   const months = [
     ...Object.keys(data.find((row) => row.month === 'amounts').value),
-    'amount_salary',
   ].filter((key) => key !== 'amount');
+  /* .filter((key) => key !== 'amount'); */
+
+  console.log({ months });
+
+  const totals = ['amount_hours', 'amount_salary'];
 
   const amountsRow = data.find(({ month }) => month === 'amounts');
 
@@ -81,7 +85,7 @@ const PersonalTable = ({ data }) => {
         margin: '0 auto',
         width: '100%',
         '& .MuiTableCell-root:first-of-type': {
-          width: '170px',
+          width: '250px',
         },
       }}
       // size='small'
@@ -126,6 +130,7 @@ const PersonalTable = ({ data }) => {
               </Typography>
             </TableCell>
           ))}
+          <TableCell sx={{ fontWeight: 'bold' }}>Итого</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -137,8 +142,9 @@ const PersonalTable = ({ data }) => {
               <TableCell>{row.month}</TableCell>
               {months.map((month) => {
                 const val = rowData.find(([monthKey]) => monthKey === month);
-
+                console.log({ val });
                 if (!val) return <TableCell></TableCell>;
+
                 return (
                   <TableCell>
                     {typeof val[1] === 'object' && checked
@@ -147,9 +153,25 @@ const PersonalTable = ({ data }) => {
                   </TableCell>
                 );
               })}
+              {totals.map((sum) => {
+                const val = rowData.find(([monthKey]) => monthKey === sum);
+
+                if (!val) return <TableCell></TableCell>;
+                return (
+                  <TableCell>
+                    {val[0] === 'amount_hours' && checked
+                      ? `${val[1]} ч.`
+                      : val[0] === 'amount_salary' && !checked
+                      ? `${numberWithSpaces(Math.trunc(val[1]))} р.`
+                      : ''}
+                  </TableCell>
+                );
+              })}
+              <TableCell></TableCell>
             </TableRow>
           );
         })}
+
         <TableRow>
           <TableCell></TableCell>
           {months.map((month) => {

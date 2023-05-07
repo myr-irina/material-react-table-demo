@@ -21,7 +21,7 @@ function LayoutCollapsedTableProject({ data, title }) {
     () => [
       {
         accessorFn: (data) => {
-          return data?.[0]?.[0].projectType;
+          return data[3]?.[0].projectType;
         },
         id: 'costType',
         header: title,
@@ -68,7 +68,7 @@ function LayoutCollapsedTableProject({ data, title }) {
         >
           {row.original.map((row) => {
             if (!row) return;
-            console.log({ row });
+
             if (row[0].projectName === 'personal')
               return <PersonalTable data={row} />;
             if (row[0].projectName === 'amounts')
@@ -81,7 +81,7 @@ function LayoutCollapsedTableProject({ data, title }) {
                   margin: '0 auto',
                   width: '100%',
                   '& .MuiTableCell-root:first-of-type': {
-                    width: '170px',
+                    width: '250px',
                   },
                 }}
                 // size='small'
