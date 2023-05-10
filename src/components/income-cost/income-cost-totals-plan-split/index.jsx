@@ -20,18 +20,20 @@ function IncomeCostTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
-    getBudgetByProjectPlan()
-      .then((data) => {
-        setPlanSplitData(data);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.log(error);
-      })
-      .finally(() => setIsLoading(false));
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   getBudgetByProjectPlan()
+  //     .then((data) => {
+  //       setPlanSplitData(data);
+  //     })
+  //     .catch((error) => {
+  //       setIsLoading(false);
+  //       console.log(error);
+  //     })
+  //     .finally(() => setIsLoading(false));
+  // }, []);
+
+  // if (planSplitData.length === 0) return;
 
   return <LayoutCollapsedTableBdr isLoading={isLoading} data={data} />;
 }
