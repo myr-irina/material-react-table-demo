@@ -197,3 +197,19 @@ export const getColumnNames2 = (data) => {
 export const numberWithSpaces = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 };
+
+export const MONTHS = [
+  'january',
+  'february',
+  'march',
+  'april',
+  'may',
+  'june',
+  'july',
+  'august',
+  'september',
+  'october',
+  'november',
+  'december',
+  'amount',
+];

@@ -10,7 +10,7 @@ import { Box } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 
-import { numberWithSpaces } from '../../../../utils/utils';
+import { numberWithSpaces, MONTHS } from '../../../../utils/utils';
 
 const CustomSwitch = styled((props) => (
   <Switch focusVisibleClassName='.Mui-focusVisible' disableRipple {...props} />
@@ -65,13 +65,11 @@ const CustomSwitch = styled((props) => (
 
 const PersonalTable = ({ data }) => {
   const [checked, setChecked] = useState(true);
+  const MONTHS_ARRAY = MONTHS.filter((month) => month !== 'amount');
 
   const months = [
     ...Object.keys(data.find((row) => row.month === 'amounts').value),
   ].filter((key) => key !== 'amount');
-  /* .filter((key) => key !== 'amount'); */
-
-  console.log({ months });
 
   const totals = ['amount_hours', 'amount_salary'];
 
@@ -80,14 +78,14 @@ const PersonalTable = ({ data }) => {
   return (
     <Table
       stickyHeader
-      sx={{
-        tableLayout: 'fixed',
-        margin: '0 auto',
-        width: '100%',
-        '& .MuiTableCell-root:first-of-type': {
-          width: '250px',
-        },
-      }}
+      // sx={{
+      //   tableLayout: 'fixed',
+      //   margin: '0 auto',
+      //   width: '100%',
+      //   '& .MuiTableCell-root:first-of-type': {
+      //     width: '250px',
+      //   },
+      // }}
       // size='small'
     >
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
@@ -115,7 +113,7 @@ const PersonalTable = ({ data }) => {
         </TableRow>
         <TableRow>
           <TableCell></TableCell>
-          {months.map((cell) => (
+          {MONTHS_ARRAY.map((cell) => (
             <TableCell component='th' key={cell}>
               <Typography
                 sx={{
@@ -140,9 +138,9 @@ const PersonalTable = ({ data }) => {
           return (
             <TableRow>
               <TableCell>{row.month}</TableCell>
-              {months.map((month) => {
+              {MONTHS_ARRAY.map((month) => {
                 const val = rowData.find(([monthKey]) => monthKey === month);
-                console.log({ val });
+
                 if (!val) return <TableCell></TableCell>;
 
                 return (
@@ -174,16 +172,16 @@ const PersonalTable = ({ data }) => {
 
         <TableRow>
           <TableCell></TableCell>
-          {months.map((month) => {
-            const val = Object.entries(amountsRow.value).find(
-              ([monthKey]) => monthKey === month
-            );
+          {MONTHS_ARRAY.map((month) => {
+            const val = amountsRow.value[month];
 
             if (!val) return <TableCell></TableCell>;
             return (
               <TableCell>
                 <Typography sx={{ fontWeight: 'bold' }}>
-                  {`${numberWithSpaces(Math.trunc(val[1]))} р.`}
+                  {val && val !== null
+                    ? `${numberWithSpaces(Math.trunc(val))} р.`
+                    : ''}
                 </Typography>
               </TableCell>
             );

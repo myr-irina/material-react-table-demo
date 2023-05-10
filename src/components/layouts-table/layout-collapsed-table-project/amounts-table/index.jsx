@@ -7,7 +7,11 @@ import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/material';
 
-import { numberWithSpaces } from '../../../../utils/utils';
+import {
+  numberWithSpaces,
+  MONTHS,
+  findProjectByName2,
+} from '../../../../utils/utils';
 
 const AmountsTable = ({ data }) => {
   return (
@@ -39,7 +43,7 @@ const AmountsTable = ({ data }) => {
         </TableRow>
         <TableRow>
           <TableCell></TableCell>
-          {data.map((cell) => (
+          {MONTHS.map((cell) => (
             <TableCell component='th' key={cell}>
               <Typography
                 sx={{
@@ -50,7 +54,7 @@ const AmountsTable = ({ data }) => {
                   color: 'black',
                 }}
               >
-                {cell.month}
+                {/* {cell} */}
               </Typography>
             </TableCell>
           ))}
@@ -59,9 +63,16 @@ const AmountsTable = ({ data }) => {
       <TableBody>
         <TableRow>
           <TableCell></TableCell>
-          {data.map((cell) => (
-            <TableCell>{`${numberWithSpaces(cell.value)} р.`}</TableCell>
-          ))}
+          {MONTHS.map((cell) => {
+            const val = findProjectByName2(cell, data);
+            return (
+              <TableCell>
+                {val && val.value !== null
+                  ? `${numberWithSpaces(val.value)} р.`
+                  : ''}
+              </TableCell>
+            );
+          })}
         </TableRow>
       </TableBody>
     </Table>

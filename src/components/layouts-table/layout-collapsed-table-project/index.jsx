@@ -12,7 +12,7 @@ import { parseTableData4 } from '../../../utils/utils';
 
 import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
-import { numberWithSpaces } from '../../../utils/utils';
+import { numberWithSpaces, MONTHS } from '../../../utils/utils';
 
 function LayoutCollapsedTableProject({ data, title }) {
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
@@ -21,10 +21,13 @@ function LayoutCollapsedTableProject({ data, title }) {
     () => [
       {
         accessorFn: (data) => {
-          return data[3]?.[0].projectType;
+          return data?.[3]?.[0].projectType;
         },
         id: 'costType',
         header: title,
+        muiTableHeadCellProps: {
+          align: 'left',
+        },
       },
       // {
       //   header: ' ',
@@ -55,15 +58,32 @@ function LayoutCollapsedTableProject({ data, title }) {
       columns={columns}
       data={TABLE_DATA}
       enableExpanding
-      // initialState={{
-      //   expanded: true,
-      // }}
+      initialState={{
+        expanded: {
+          0: true,
+        },
+      }}
       renderDetailPanel={({ row }) => (
         <TableContainer
           sx={{
             width: '100%',
             margin: '0 auto',
             overflowX: 'initial',
+            // '&.MuiTable-root': {
+            //   width: 0,
+            // },
+          }}
+          muiTableHeadCellProps={{
+            sx: {
+              alignItems: 'center',
+              '& .Mui-TableHeadCell-Content-Labels': {
+                padding: '0px',
+              },
+              '& .MuiBox-root': {
+                padding: '0px',
+              },
+              backgroundColor: 'white',
+            },
           }}
         >
           {row.original.map((row) => {
@@ -101,7 +121,7 @@ function LayoutCollapsedTableProject({ data, title }) {
                         {row[0].projectName}
                       </Typography>
                     </TableCell>
-                    {Object.keys(row[0].value).map((cell) => (
+                    {MONTHS.map((cell) => (
                       <TableCell component='th' key={cell}>
                         <Typography
                           sx={{
@@ -123,11 +143,14 @@ function LayoutCollapsedTableProject({ data, title }) {
                     return (
                       <TableRow>
                         <TableCell>{tableRow.month}</TableCell>
-                        {Object.values(tableRow.value).map((val) => (
-                          <TableCell>
-                            {val ? `${numberWithSpaces(val)} р.` : ''}
-                          </TableCell>
-                        ))}
+                        {MONTHS.map((month) => {
+                          const val = tableRow.value[month];
+                          return (
+                            <TableCell>
+                              {val ? `${numberWithSpaces(val)} р.` : ''}
+                            </TableCell>
+                          );
+                        })}
                       </TableRow>
                     );
                   })}
