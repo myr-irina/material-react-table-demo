@@ -29,26 +29,6 @@ function LayoutCollapsedTableProject({ data, title }) {
           align: 'left',
         },
       },
-      // {
-      //   header: ' ',
-      //   size: 50,
-      //   id: 'costType1',
-      // },
-      // {
-      //   header: ' ',
-      //   size: 50,
-      //   id: 'costType2',
-      // },
-      // {
-      //   header: ' ',
-      //   size: 50,
-      //   id: 'costType3',
-      // },
-      // {
-      //   header: ' ',
-      //   size: 50,
-      //   id: 'costType4',
-      // },
     ],
     []
   );
@@ -56,7 +36,9 @@ function LayoutCollapsedTableProject({ data, title }) {
   return (
     <MaterialReactTable
       columns={columns}
-      data={TABLE_DATA}
+      data={TABLE_DATA ?? []}
+      // state={{ isLoading: true }}
+      // state={{ showProgressBars: true }}
       enableExpanding
       initialState={{
         expanded: {
