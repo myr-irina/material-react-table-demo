@@ -112,12 +112,14 @@ function clearEmpties(o) {
 }
 
 export const parseTableData4 = (data) => {
-  const clearedObj = clearEmpties(data);
+  // const clearedObj = clearEmpties(data);
 
   const obj = Object.entries(data)
     .map(([projectType, dataProject]) => {
+      console.log({ dataProject });
       return Object.entries(dataProject).map(([projectName, projects]) => {
         if (projects === null || projects === undefined) return;
+
         return Object.entries(projects).map(([month, value]) => ({
           month,
           projectName,
@@ -130,6 +132,35 @@ export const parseTableData4 = (data) => {
 
   return obj;
 };
+
+/* 
+ const obj = Object.entries(data)
+    .map(([projectType, dataProject]) => {
+      if (dataProject === 'null' || dataProject === 'undefined') {
+        return;
+      }
+
+      const dataAuthorsMutated = Object.entries(dataProject)
+        .sort((a) => {
+          return a[0] === 'amounts' ? 1 : -1;
+        })
+        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+      return Object.entries(dataAuthorsMutated).map(
+        ([projectName, projects]) => {
+          return Object.entries(projects).map(([month, value]) => ({
+            month,
+            projectName,
+            projectType,
+            value,
+          }));
+        }
+      );
+    })
+    .filter(Boolean);
+
+  return obj;
+*/
 
 //columnName, rowproject[]
 export const findProjectByName = (projectName, projects) =>
@@ -212,4 +243,19 @@ export const MONTHS = [
   'november',
   'december',
   'amount',
+];
+
+export const HEADER_MONTHS = [
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
 ];

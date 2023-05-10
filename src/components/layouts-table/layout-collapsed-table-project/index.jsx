@@ -1,27 +1,28 @@
 import React, { useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
-import { Typography } from '@mui/material';
+import { Tab, Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { Box } from '@mui/material';
 
 import { parseTableData4 } from '../../../utils/utils';
 
 import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
-import { numberWithSpaces, MONTHS } from '../../../utils/utils';
+import { numberWithSpaces, MONTHS, HEADER_MONTHS } from '../../../utils/utils';
 
-function LayoutCollapsedTableProject({ data, title }) {
+function LayoutCollapsedTableProject({ data, title, isLoading }) {
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
 
   const columns = useMemo(
     () => [
       {
         accessorFn: (data) => {
-          return data?.[3]?.[0].projectType;
+          return data?.[3]?.[0]?.projectType;
         },
         id: 'costType',
         header: title,
@@ -37,7 +38,7 @@ function LayoutCollapsedTableProject({ data, title }) {
     <MaterialReactTable
       columns={columns}
       data={TABLE_DATA ?? []}
-      // state={{ isLoading: true }}
+      state={{ isLoading }}
       // state={{ showProgressBars: true }}
       enableExpanding
       initialState={{
@@ -69,6 +70,8 @@ function LayoutCollapsedTableProject({ data, title }) {
           }}
         >
           {row.original.map((row) => {
+            const amountsRow = row?.find(({ month }) => month === 'amounts');
+
             if (!row) return;
 
             if (row[0].projectName === 'personal')
@@ -90,28 +93,36 @@ function LayoutCollapsedTableProject({ data, title }) {
               >
                 <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
                   <TableRow>
+                    {/* {HEADER_MONTHS.map((month) => (
+                      <TableCell>{month}</TableCell>
+                    ))} */}
+                  </TableRow>
+                  <TableRow>
                     <TableCell>
                       <Typography
                         sx={{
                           fontWeight: '700',
-                          fontSize: '14px',
+                          fontSize: '18px',
                           overflowX: 'hidden',
                           whiteSpace: 'nowrap',
                           textOverflow: 'ellipsis',
+                          padding: '6px 16px 0',
                         }}
                       >
                         {row[0].projectName}
                       </Typography>
                     </TableCell>
+
                     {MONTHS.map((cell) => (
                       <TableCell component='th' key={cell}>
                         <Typography
                           sx={{
                             fontWeight: '700',
-                            fontSize: '14px',
+                            fontSize: '18px',
                             overflowX: 'hidden',
                             whiteSpace: 'nowrap',
-                            color: 'black',
+                            textOverflow: 'ellipsis',
+                            padding: '6px 16px 0',
                           }}
                         >
                           {cell}
@@ -122,9 +133,11 @@ function LayoutCollapsedTableProject({ data, title }) {
                 </TableHead>
                 <TableBody>
                   {row.map((tableRow) => {
+                    if (tableRow.month === 'amounts') return;
                     return (
                       <TableRow>
                         <TableCell>{tableRow.month}</TableCell>
+
                         {MONTHS.map((month) => {
                           const val = tableRow.value[month];
                           return (
@@ -136,6 +149,26 @@ function LayoutCollapsedTableProject({ data, title }) {
                       </TableRow>
                     );
                   })}
+
+                  <TableRow>
+                    <TableCell></TableCell>
+                    {MONTHS.map((month) => {
+                      const val = amountsRow.value[month];
+
+                      if (!val) return <TableCell></TableCell>;
+                      return (
+                        <TableCell>
+                          <Typography
+                            sx={{ fontWeight: 'bold', fontSize: '14px' }}
+                          >
+                            {val && val !== null
+                              ? `${numberWithSpaces(Math.trunc(val))} р.`
+                              : ''}
+                          </Typography>
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
                 </TableBody>
               </Table>
             );

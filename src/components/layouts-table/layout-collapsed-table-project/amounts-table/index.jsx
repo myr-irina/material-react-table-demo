@@ -25,7 +25,6 @@ const AmountsTable = ({ data }) => {
           width: '250px',
         },
       }}
-      // size='small'
     >
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <TableRow>
@@ -54,7 +53,7 @@ const AmountsTable = ({ data }) => {
                   color: 'black',
                 }}
               >
-                {/* {cell} */}
+                {cell}
               </Typography>
             </TableCell>
           ))}
@@ -67,9 +66,11 @@ const AmountsTable = ({ data }) => {
             const val = findProjectByName2(cell, data);
             return (
               <TableCell>
-                {val && val.value !== null
-                  ? `${numberWithSpaces(val.value)} р.`
-                  : ''}
+                <Typography sx={{ fontWeight: 'bold', fontSize: '14px' }}>
+                  {val && val.value !== null
+                    ? `${numberWithSpaces(val.value)} р.`
+                    : ''}
+                </Typography>
               </TableCell>
             );
           })}

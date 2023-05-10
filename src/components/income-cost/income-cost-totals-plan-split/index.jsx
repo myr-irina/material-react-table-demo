@@ -24,7 +24,6 @@ function IncomeCostTotalsPlanSplit() {
     setIsLoading(true);
     getBudgetByProjectPlan()
       .then((data) => {
-        console.log({ data });
         setPlanSplitData(data);
       })
       .catch((error) => {
@@ -33,8 +32,6 @@ function IncomeCostTotalsPlanSplit() {
       })
       .finally(() => setIsLoading(false));
   }, []);
-
-  console.log({ planSplitData });
 
   return <LayoutCollapsedTableBdr isLoading={isLoading} data={data} />;
 }

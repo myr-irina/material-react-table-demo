@@ -9,18 +9,26 @@ function IncomeCostPlanByProject() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getBudgetByProjectPlan()
       .then((data) => {
         setBudgetPlanByProject(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
-      });
+        setIsLoading(false);
+      })
+      .finally(setIsLoading(false));
   }, []);
 
   return (
     budgetPlanByProject && (
-      <LayoutCollapsedTableProject title='Проекты' data={budgetPlanByProject} />
+      <LayoutCollapsedTableProject
+        title='Проекты'
+        isLoading={isLoading}
+        data={budgetPlanByProject}
+      />
     )
   );
 }

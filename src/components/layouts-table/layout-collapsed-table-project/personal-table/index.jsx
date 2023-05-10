@@ -89,14 +89,17 @@ const PersonalTable = ({ data }) => {
       // size='small'
     >
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <CustomSwitch
+            sx={{ m: 1 }}
+            checked={!checked}
+            onChange={() => setChecked(!checked)}
+            inputProps={{ 'aria-label': 'controlled' }}
+          />
+        </Box>
+
         <TableRow>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <CustomSwitch
-              sx={{ m: 1 }}
-              checked={!checked}
-              onChange={() => setChecked(!checked)}
-              inputProps={{ 'aria-label': 'controlled' }}
-            />
+          <TableCell>
             <Typography
               sx={{
                 fontWeight: '700',
@@ -104,16 +107,14 @@ const PersonalTable = ({ data }) => {
                 overflowX: 'hidden',
                 whiteSpace: 'nowrap',
                 textOverflow: 'ellipsis',
-                padding: '6px 16px 0',
+                padding: '16px',
               }}
             >
               Сотрудники
             </Typography>
-          </Box>
-        </TableRow>
-        <TableRow>
-          <TableCell></TableCell>
-          {MONTHS_ARRAY.map((cell) => (
+          </TableCell>
+
+          {MONTHS.map((cell) => (
             <TableCell component='th' key={cell}>
               <Typography
                 sx={{
@@ -128,7 +129,7 @@ const PersonalTable = ({ data }) => {
               </Typography>
             </TableCell>
           ))}
-          <TableCell sx={{ fontWeight: 'bold' }}>Итого</TableCell>
+          {/* <TableCell sx={{ fontWeight: 'bold' }}>Итого</TableCell> */}
         </TableRow>
       </TableHead>
       <TableBody>
@@ -138,7 +139,7 @@ const PersonalTable = ({ data }) => {
           return (
             <TableRow>
               <TableCell>{row.month}</TableCell>
-              {MONTHS_ARRAY.map((month) => {
+              {MONTHS.map((month) => {
                 const val = rowData.find(([monthKey]) => monthKey === month);
 
                 if (!val) return <TableCell></TableCell>;
@@ -151,7 +152,7 @@ const PersonalTable = ({ data }) => {
                   </TableCell>
                 );
               })}
-              {totals.map((sum) => {
+              {/* {totals.map((sum) => {
                 const val = rowData.find(([monthKey]) => monthKey === sum);
 
                 if (!val) return <TableCell></TableCell>;
@@ -164,21 +165,20 @@ const PersonalTable = ({ data }) => {
                       : ''}
                   </TableCell>
                 );
-              })}
-              <TableCell></TableCell>
+              })} */}
             </TableRow>
           );
         })}
 
         <TableRow>
           <TableCell></TableCell>
-          {MONTHS_ARRAY.map((month) => {
+          {MONTHS.map((month) => {
             const val = amountsRow.value[month];
 
             if (!val) return <TableCell></TableCell>;
             return (
               <TableCell>
-                <Typography sx={{ fontWeight: 'bold' }}>
+                <Typography sx={{ fontWeight: 'bold', fontSize: '14px' }}>
                   {val && val !== null
                     ? `${numberWithSpaces(Math.trunc(val))} р.`
                     : ''}
