@@ -40,6 +40,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading }) {
       data={TABLE_DATA ?? []}
       state={{ isLoading }}
       // state={{ showProgressBars: true }}
+      // enableStickyHeader
       enableExpanding
       initialState={{
         expanded: {
@@ -52,32 +53,30 @@ function LayoutCollapsedTableProject({ data, title, isLoading }) {
             width: '100%',
             margin: '0 auto',
             overflowX: 'initial',
-            // '&.MuiTable-root': {
-            //   width: 0,
-            // },
           }}
-          muiTableHeadCellProps={{
-            sx: {
-              alignItems: 'center',
-              '& .Mui-TableHeadCell-Content-Labels': {
-                padding: '0px',
-              },
-              '& .MuiBox-root': {
-                padding: '0px',
-              },
-              backgroundColor: 'white',
-            },
-          }}
+          // muiTableHeadCellProps={{
+          //   sx: {
+          //     alignItems: 'center',
+          //     '& .Mui-TableHeadCell-Content-Labels': {
+          //       padding: '0px',
+          //     },
+          //     '& .MuiBox-root': {
+          //       padding: '0px',
+          //     },
+          //     backgroundColor: 'white',
+          //   },
+          // }}
         >
           {row.original.map((row) => {
             const amountsRow = row?.find(({ month }) => month === 'amounts');
+            console.log({ row });
 
             if (!row) return;
-
-            if (row[0].projectName === 'personal')
+            if (row[0]?.projectName === 'personal')
               return <PersonalTable data={row} />;
-            if (row[0].projectName === 'amounts')
+            if (row[0]?.projectName === 'amounts')
               return <AmountsTable data={row} />;
+
             return (
               <Table
                 stickyHeader
@@ -89,13 +88,25 @@ function LayoutCollapsedTableProject({ data, title, isLoading }) {
                     width: '250px',
                   },
                 }}
-                // size='small'
               >
                 <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
                   <TableRow>
-                    {/* {HEADER_MONTHS.map((month) => (
-                      <TableCell>{month}</TableCell>
-                    ))} */}
+                    <TableCell></TableCell>
+                    {HEADER_MONTHS.map((month) => (
+                      <TableCell>
+                        <Typography
+                          sx={{
+                            fontWeight: '700',
+                            fontSize: '18px',
+                            overflowX: 'hidden',
+                            whiteSpace: 'nowrap',
+                            textOverflow: 'ellipsis',
+                          }}
+                        >
+                          {month}
+                        </Typography>
+                      </TableCell>
+                    ))}
                   </TableRow>
                   <TableRow>
                     <TableCell>
@@ -106,10 +117,9 @@ function LayoutCollapsedTableProject({ data, title, isLoading }) {
                           overflowX: 'hidden',
                           whiteSpace: 'nowrap',
                           textOverflow: 'ellipsis',
-                          padding: '6px 16px 0',
                         }}
                       >
-                        {row[0].projectName}
+                        {row[0]?.projectName}
                       </Typography>
                     </TableCell>
 
@@ -118,19 +128,19 @@ function LayoutCollapsedTableProject({ data, title, isLoading }) {
                         <Typography
                           sx={{
                             fontWeight: '700',
-                            fontSize: '18px',
+                            fontSize: '14px',
                             overflowX: 'hidden',
                             whiteSpace: 'nowrap',
                             textOverflow: 'ellipsis',
-                            padding: '6px 16px 0',
                           }}
                         >
-                          {cell}
+                          {/* {cell} */}
                         </Typography>
                       </TableCell>
                     ))}
                   </TableRow>
                 </TableHead>
+
                 <TableBody>
                   {row.map((tableRow) => {
                     if (tableRow.month === 'amounts') return;

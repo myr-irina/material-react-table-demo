@@ -77,21 +77,19 @@ const PersonalTable = ({ data }) => {
 
   return (
     <Table
-      stickyHeader
-      // sx={{
-      //   tableLayout: 'fixed',
-      //   margin: '0 auto',
-      //   width: '100%',
-      //   '& .MuiTableCell-root:first-of-type': {
-      //     width: '250px',
-      //   },
-      // }}
-      // size='small'
+      sx={{
+        tableLayout: 'fixed',
+        margin: '0 auto',
+        width: '100%',
+        '& .MuiTableCell-root:first-child': {
+          width: '250px',
+        },
+      }}
     >
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <CustomSwitch
-            sx={{ m: 1 }}
+            sx={{ m: 2 }}
             checked={!checked}
             onChange={() => setChecked(!checked)}
             inputProps={{ 'aria-label': 'controlled' }}
@@ -107,7 +105,6 @@ const PersonalTable = ({ data }) => {
                 overflowX: 'hidden',
                 whiteSpace: 'nowrap',
                 textOverflow: 'ellipsis',
-                padding: '16px',
               }}
             >
               Сотрудники
@@ -122,7 +119,7 @@ const PersonalTable = ({ data }) => {
                   fontSize: '14px',
                   overflowX: 'hidden',
                   whiteSpace: 'nowrap',
-                  color: 'black',
+                  color: 'transparent',
                 }}
               >
                 {cell}
