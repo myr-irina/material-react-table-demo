@@ -6,14 +6,14 @@ import data from '../../../../json/cash-flow-general-fact.json';
 import { getCashFlowFact } from '../../../../utils/api-requests';
 
 function CashFlowTotalsFact() {
-  const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
+  const [totalData, setTotalData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   // useEffect(() => {
   //   setIsLoading(true);
-  //   getBudgetByProjectPlan()
+  //   getCashFlowFact()
   //     .then((data) => {
-  //       setBudgetPlanByProject(data);
+  //       setTotalData(data);
   //       setIsLoading(false);
   //     })
   //     .catch((error) => {

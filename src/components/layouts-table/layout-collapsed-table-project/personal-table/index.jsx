@@ -15,7 +15,7 @@ import { numberWithSpaces, MONTHS } from '../../../../utils/utils';
 const CustomSwitch = styled((props) => (
   <Switch focusVisibleClassName='.Mui-focusVisible' disableRipple {...props} />
 ))(({ theme }) => ({
-  width: 42,
+  width: 80,
   height: 26,
   padding: 0,
   '& .MuiSwitch-switchBase': {
@@ -65,6 +65,7 @@ const CustomSwitch = styled((props) => (
 
 const PersonalTable = ({ data }) => {
   const [checked, setChecked] = useState(true);
+  console.log({ MONTHS });
   const MONTHS_ARRAY = MONTHS.filter((month) => month !== 'amount');
 
   const months = [

@@ -133,7 +133,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                             textOverflow: 'ellipsis',
                           }}
                         >
-                          {/* {cell} */}
+                          {cell}
                         </Typography>
                       </TableCell>
                     ))}
