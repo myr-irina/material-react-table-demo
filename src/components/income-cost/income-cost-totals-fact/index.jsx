@@ -6,24 +6,30 @@ import LayoutFinanceTableTotal from '../../layouts-table/layout-finance-table-to
 import { getBudgetFact } from '../../../utils/api-requests';
 
 function IncomeCostTotalsFact() {
-  // const [budgetFact, setBudgetFact] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [budgetFact, setBudgetFact] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   getBudgetFact()
-  //     .then((data) => {
-  //       console.log({ data });
-  //       setBudgetFact(data);
-  //     })
-  //     .catch((error) => {
-  //       setIsLoading(false);
-  //       console.log(error);
-  //     })
-  //     .finally(() => setIsLoading(false));
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    getBudgetFact()
+      .then((data) => {
+        setBudgetFact(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
 
-  return <LayoutFinanceTableTotal data={data} />;
+  if (budgetFact.length === 0) return;
+
+  return (
+    budgetFact && (
+      <LayoutFinanceTableTotal isLoading={isLoading} data={budgetFact} />
+    )
+  );
 }
 
 export default IncomeCostTotalsFact;

@@ -5,22 +5,22 @@ import LayoutCollapsedTableProject from '../../layouts-table/layout-collapsed-ta
 import { getBudgetByProjectPlan } from '../../../utils/api-requests';
 
 function IncomeCostPlanByProject() {
-  // const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   getBudgetByProjectPlan()
-  //     .then((data) => {
-  //       setBudgetPlanByProject(data);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       setIsLoading(false);
-  //     })
-  //     .finally(setIsLoading(false));
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    getBudgetByProjectPlan()
+      .then((data) => {
+        setBudgetPlanByProject(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+      })
+      .finally(setIsLoading(false));
+  }, []);
 
   const columns = useMemo(
     () => [
@@ -39,12 +39,14 @@ function IncomeCostPlanByProject() {
   );
 
   return (
-    <LayoutCollapsedTableProject
-      title='Проекты'
-      // isLoading={isLoading}
-      data={data}
-      columns={columns}
-    />
+    budgetPlanByProject && (
+      <LayoutCollapsedTableProject
+        title='Проекты'
+        isLoading={isLoading}
+        data={budgetPlanByProject}
+        columns={columns}
+      />
+    )
   );
 }
 

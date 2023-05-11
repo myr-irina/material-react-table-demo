@@ -43,6 +43,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function LayoutFinanceTableTotal({ data, isLoading }) {
+  console.log({ data });
   const filteredData = parseTableData3(data).map((projectType) =>
     projectType.filter((item) =>
       Object.values(item).some(

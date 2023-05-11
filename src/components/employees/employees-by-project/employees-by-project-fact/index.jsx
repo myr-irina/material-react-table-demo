@@ -10,7 +10,6 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
 
-// import { getProjectPlanHours } from './../../../../utils/api-requests';
 import { getProjectFactHours } from './../../../../utils/api-requests';
 
 import employeesByProjectFactData from './../../../../json/employees-by-project-fact.json';
@@ -31,11 +30,13 @@ function EmployeesByProjectFact() {
   }, []);
 
   return (
-    <LayoutCollapsedTableEmployees
-      header='Сотрудники'
-      title='Таблица рабочего времени (факт по проектам)'
-      data={projectPlanHours}
-    />
+    projectPlanHours && (
+      <LayoutCollapsedTableEmployees
+        header='Сотрудники'
+        title='Таблица рабочего времени (факт по проектам)'
+        data={projectPlanHours}
+      />
+    )
   );
 }
 
