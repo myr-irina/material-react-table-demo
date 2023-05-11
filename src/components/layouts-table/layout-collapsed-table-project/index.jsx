@@ -15,24 +15,24 @@ import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
 import { numberWithSpaces, MONTHS, HEADER_MONTHS } from '../../../utils/utils';
 
-function LayoutCollapsedTableProject({ data, title, isLoading }) {
+function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
 
-  const columns = useMemo(
-    () => [
-      {
-        accessorFn: (data) => {
-          return data?.[3]?.[0]?.projectType;
-        },
-        id: 'costType',
-        header: title,
-        muiTableHeadCellProps: {
-          align: 'left',
-        },
-      },
-    ],
-    []
-  );
+  // const columns = useMemo(
+  //   () => [
+  //     {
+  //       accessorFn: (data) => {
+  //         return data?.[3]?.[0]?.projectType;
+  //       },
+  //       id: 'costType',
+  //       header: title,
+  //       muiTableHeadCellProps: {
+  //         align: 'left',
+  //       },
+  //     },
+  //   ],
+  //   []
+  // );
 
   return (
     <MaterialReactTable
@@ -69,7 +69,6 @@ function LayoutCollapsedTableProject({ data, title, isLoading }) {
         >
           {row.original.map((row) => {
             const amountsRow = row?.find(({ month }) => month === 'amounts');
-            console.log({ row });
 
             if (!row) return;
             if (row[0]?.projectName === 'personal')
@@ -163,7 +162,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading }) {
                   <TableRow>
                     <TableCell></TableCell>
                     {MONTHS.map((month) => {
-                      const val = amountsRow.value[month];
+                      const val = amountsRow?.value[month];
 
                       if (!val) return <TableCell></TableCell>;
                       return (

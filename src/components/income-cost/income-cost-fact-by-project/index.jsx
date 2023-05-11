@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import data from '../../../json/bdr-by-project-fact.json';
 import LayoutCollapsedTableProject from '../../layouts-table/layout-collapsed-table-project';
@@ -6,30 +6,46 @@ import LayoutCollapsedTableProject from '../../layouts-table/layout-collapsed-ta
 import { getBudgetByProjectFact } from '../../../utils/api-requests';
 
 function IncomeCostFactByProject() {
-  const [budgetFactByProject, setBudgetFactByProject] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [budgetFactByProject, setBudgetFactByProject] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
-    getBudgetByProjectFact()
-      .then((data) => {
-        setBudgetFactByProject(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsLoading(false);
-      })
-      .finally(setIsLoading(false));
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   getBudgetByProjectFact()
+  //     .then((data) => {
+  //       setBudgetFactByProject(data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setIsLoading(false);
+  //     })
+  //     .finally(setIsLoading(false));
+  // }, []);
+
+  const columns = useMemo(
+    () => [
+      {
+        accessorFn: (data) => {
+          return data?.[3]?.[0]?.projectType;
+        },
+        id: 'costType',
+        header: 'Проекты',
+        muiTableHeadCellProps: {
+          align: 'left',
+        },
+      },
+    ],
+    []
+  );
+
   return (
-    budgetFactByProject && (
-      <LayoutCollapsedTableProject
-        title='Проекты'
-        isLoading={isLoading}
-        data={budgetFactByProject}
-      />
-    )
+    <LayoutCollapsedTableProject
+      title='Проекты'
+      // isLoading={isLoading}
+      data={data}
+      columns={columns}
+    />
   );
 }
 
