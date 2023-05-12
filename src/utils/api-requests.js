@@ -102,3 +102,21 @@ export const getCashFlowFact = () => {
     },
   });
 };
+
+export const getCashFlowByProjectPlan = () => {
+  return requestUrl(`${BASE_URL}/api/v1/tables/dds/by-projects/plan`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const getCashFlowByProjectFact = () => {
+  return requestUrl(`${BASE_URL}/api/v1/tables/dds/by-projects/fact`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};

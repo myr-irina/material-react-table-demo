@@ -2,23 +2,28 @@ import React, { useState, useEffect } from 'react';
 import LayoutCollapsedTableBdr from '../../../layouts-table/layout-collapsed-table-bdr';
 import data from './../../../../json/cash-flow-general-plan.json';
 
-import { getBudgetPlan } from '../../../../utils/api-requests';
+import { getCashFlowPlan } from '../../../../utils/api-requests';
 
 function CashFlowTotalsPlanSplit() {
-  // const [projectPlanHours, setProjectPlanHours] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [planSplitData, setPlanSplitData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   getBudgetPlan()
-  //     .then((data) => {
-  //       setProjectPlanHours(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    getCashFlowPlan()
+      .then((data) => {
+        setPlanSplitData(data);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
 
-  return <LayoutCollapsedTableBdr data={data} />;
+  if (planSplitData.length === 0) return;
+
+  return <LayoutCollapsedTableBdr isLoading={isLoading} data={planSplitData} />;
 }
 
 export default CashFlowTotalsPlanSplit;
