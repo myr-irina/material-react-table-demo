@@ -56,7 +56,6 @@ function LayoutCollapsedTableProjectDDS({ data, title, isLoading }) {
           }}
         >
           {row.original.map((row) => {
-            console.log({ row });
             const amountsRow = row?.find(({ month }) => month === 'amounts');
 
             if (!row) return;

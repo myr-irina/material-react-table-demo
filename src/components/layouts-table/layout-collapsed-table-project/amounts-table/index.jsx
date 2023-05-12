@@ -29,7 +29,7 @@ const AmountsTable = ({ data }) => {
             <Typography
               sx={{
                 fontWeight: '700',
-                fontSize: '18px',
+                fontSize: '16px',
                 overflowX: 'hidden',
                 whiteSpace: 'nowrap',
                 // padding: '6px 16px 0',

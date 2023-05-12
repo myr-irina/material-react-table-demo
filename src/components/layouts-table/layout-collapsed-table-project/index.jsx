@@ -40,11 +40,11 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
       data={TABLE_DATA ?? []}
       state={{ isLoading }}
       // state={{ showProgressBars: true }}
-      // enableStickyHeader
+      enableStickyHeader
       enableExpanding
       initialState={{
         expanded: {
-          0: true,
+          1: true,
         },
       }}
       renderDetailPanel={({ row }) => (
@@ -81,15 +81,15 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                 stickyHeader
                 sx={{
                   tableLayout: 'fixed',
-                  margin: '0 auto',
                   width: '100%',
+                  margin: '0 auto',
                   '& .MuiTableCell-root:first-of-type': {
                     width: '250px',
                   },
                 }}
               >
                 <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                  <TableRow>
+                  {/* <TableRow>
                     <TableCell></TableCell>
                     {HEADER_MONTHS.map((month) => (
                       <TableCell>
@@ -106,13 +106,13 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                         </Typography>
                       </TableCell>
                     ))}
-                  </TableRow>
+                  </TableRow> */}
                   <TableRow>
                     <TableCell>
                       <Typography
                         sx={{
                           fontWeight: '700',
-                          fontSize: '18px',
+                          fontSize: '16px',
                           overflowX: 'hidden',
                           whiteSpace: 'nowrap',
                           textOverflow: 'ellipsis',
@@ -127,7 +127,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                         <Typography
                           sx={{
                             fontWeight: '700',
-                            fontSize: '14px',
+                            fontSize: '16px',
                             overflowX: 'hidden',
                             whiteSpace: 'nowrap',
                             textOverflow: 'ellipsis',
@@ -145,7 +145,15 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                     if (tableRow.month === 'amounts') return;
                     return (
                       <TableRow>
-                        <TableCell>{tableRow.month}</TableCell>
+                        <TableCell
+                          sx={{
+                            overflow: 'hidden',
+                            whiteSpace: 'nowrap',
+                            textOverflow: 'ellipsis',
+                          }}
+                        >
+                          {tableRow.month}
+                        </TableCell>
 
                         {MONTHS.map((month) => {
                           const val = tableRow.value[month];

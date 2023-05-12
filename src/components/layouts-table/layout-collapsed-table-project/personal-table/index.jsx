@@ -15,7 +15,7 @@ import { numberWithSpaces, MONTHS } from '../../../../utils/utils';
 const CustomSwitch = styled((props) => (
   <Switch focusVisibleClassName='.Mui-focusVisible' disableRipple {...props} />
 ))(({ theme }) => ({
-  width: 80,
+  width: 42,
   height: 26,
   padding: 0,
   '& .MuiSwitch-switchBase': {
@@ -65,7 +65,7 @@ const CustomSwitch = styled((props) => (
 
 const PersonalTable = ({ data }) => {
   const [checked, setChecked] = useState(true);
-  console.log({ MONTHS });
+
   const MONTHS_ARRAY = MONTHS.filter((month) => month !== 'amount');
 
   const months = [
@@ -77,116 +77,141 @@ const PersonalTable = ({ data }) => {
   const amountsRow = data.find(({ month }) => month === 'amounts');
 
   return (
-    <Table
+    <TableContainer
       sx={{
-        tableLayout: 'fixed',
-        margin: '0 auto',
         width: '100%',
-        '& .MuiTableCell-root:first-child': {
-          width: '250px',
-        },
+        margin: '0 auto',
+        overflowX: 'initial',
       }}
     >
-      <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Table
+        stickyHeader
+        sx={{
+          // tableLayout: 'fixed',
+          width: '100%',
+          margin: '0 auto',
+          '& .MuiTableCell-root:first-child': {
+            width: '250px !important',
+          },
+        }}
+      >
+        <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
           <CustomSwitch
             sx={{ m: 2 }}
             checked={!checked}
             onChange={() => setChecked(!checked)}
             inputProps={{ 'aria-label': 'controlled' }}
           />
-        </Box>
 
-        <TableRow>
-          <TableCell>
-            <Typography
-              sx={{
-                fontWeight: '700',
-                fontSize: '18px',
-                overflowX: 'hidden',
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              Сотрудники
-            </Typography>
-          </TableCell>
-
-          {MONTHS.map((cell) => (
-            <TableCell component='th' key={cell}>
+          <TableRow>
+            <TableCell sx={{ width: '250px' }} component='th'>
               <Typography
                 sx={{
                   fontWeight: '700',
-                  fontSize: '14px',
+                  fontSize: '16px',
                   overflowX: 'hidden',
                   whiteSpace: 'nowrap',
-                  color: 'transparent',
+                  textOverflow: 'ellipsis',
                 }}
               >
-                {cell}
+                Сотрудники
               </Typography>
             </TableCell>
-          ))}
-          {/* <TableCell sx={{ fontWeight: 'bold' }}>Итого</TableCell> */}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data.map((row) => {
-          if (row.month === 'amounts') return;
-          const rowData = Object.entries(row.value);
-          return (
-            <TableRow>
-              <TableCell>{row.month}</TableCell>
-              {MONTHS.map((month) => {
-                const val = rowData.find(([monthKey]) => monthKey === month);
 
-                if (!val) return <TableCell></TableCell>;
-
-                return (
-                  <TableCell>
-                    {typeof val[1] === 'object' && checked
-                      ? `${val[1].hours} ч.`
-                      : `${numberWithSpaces(Math.trunc(val[1].salary))} р.`}
-                  </TableCell>
-                );
-              })}
-              {/* {totals.map((sum) => {
-                const val = rowData.find(([monthKey]) => monthKey === sum);
-
-                if (!val) return <TableCell></TableCell>;
-                return (
-                  <TableCell>
-                    {val[0] === 'amount_hours' && checked
-                      ? `${val[1]} ч.`
-                      : val[0] === 'amount_salary' && !checked
-                      ? `${numberWithSpaces(Math.trunc(val[1]))} р.`
-                      : ''}
-                  </TableCell>
-                );
-              })} */}
-            </TableRow>
-          );
-        })}
-
-        <TableRow>
-          <TableCell></TableCell>
-          {MONTHS.map((month) => {
-            const val = amountsRow.value[month];
-
-            if (!val) return <TableCell></TableCell>;
-            return (
-              <TableCell>
-                <Typography sx={{ fontWeight: 'bold', fontSize: '14px' }}>
-                  {val && val !== null
-                    ? `${numberWithSpaces(Math.trunc(val))} р.`
-                    : ''}
+            {MONTHS.map((cell) => (
+              <TableCell component='th' key={cell}>
+                <Typography
+                  sx={{
+                    fontWeight: '700',
+                    fontSize: '16px',
+                    overflowX: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                    // color: 'transparent',
+                  }}
+                >
+                  {cell}
                 </Typography>
               </TableCell>
+            ))}
+            {/* <TableCell sx={{ fontWeight: 'bold' }}>Итого</TableCell> */}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((row) => {
+            if (row.month === 'amounts') return;
+            const rowData = Object.entries(row.value);
+
+            console.log({ rowData });
+            return (
+              <TableRow>
+                <TableCell
+                  sx={{
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                    width: '250px',
+                  }}
+                >
+                  {row.month}
+                </TableCell>
+                {MONTHS.map((month) => {
+                  const val = rowData.find(([monthKey]) => monthKey === month);
+
+                  if (!val) return <TableCell></TableCell>;
+
+                  return (
+                    <TableCell>
+                      {typeof val[1] === 'object' && checked
+                        ? `${val[1].hours} ч.`
+                        : `${numberWithSpaces(Math.trunc(val[1].salary))} р.`}
+                    </TableCell>
+                  );
+                })}
+                {/* {totals.map((sum) => {
+                  const val = rowData.find(([monthKey]) => monthKey === sum);
+
+                  if (!val) return;
+                  return (
+                    <TableCell>
+                      {val[0] === 'amount_hours' && checked
+                        ? `${val[1]} ч.`
+                        : val[0] === 'amount_salary' && !checked
+                        ? `${numberWithSpaces(Math.trunc(val[1]))} р.`
+                        : ''}
+                    </TableCell>
+                  );
+                })} */}
+              </TableRow>
             );
           })}
-        </TableRow>
-      </TableBody>
-    </Table>
+
+          <TableRow>
+            <TableCell
+              sx={{
+                minWidth: '250px',
+                maxWidth: '250px',
+                width: '250px',
+              }}
+            ></TableCell>
+            {MONTHS.map((month) => {
+              const val = amountsRow.value[month];
+
+              if (!val) return <TableCell></TableCell>;
+              return (
+                <TableCell>
+                  <Typography sx={{ fontWeight: 'bold', fontSize: '14px' }}>
+                    {val && val !== null
+                      ? `${numberWithSpaces(Math.trunc(val))} р.`
+                      : ''}
+                  </Typography>
+                </TableCell>
+              );
+            })}
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
