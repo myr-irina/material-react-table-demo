@@ -44,7 +44,7 @@ function IncomeCostFactByProject() {
       <LayoutCollapsedTableProject
         title='Проекты'
         isLoading={isLoading}
-        data={data}
+        data={budgetFactByProject}
         columns={columns}
       />
     )
