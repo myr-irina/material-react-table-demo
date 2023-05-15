@@ -91,7 +91,8 @@ const PersonalTable = ({ data }) => {
           width: '100%',
           margin: '0 auto',
           '& .MuiTableCell-root:first-child': {
-            width: '250px !important',
+            // bgcolor: 'pink',
+            minWidth: '250px',
           },
         }}
       >
@@ -104,7 +105,14 @@ const PersonalTable = ({ data }) => {
           />
 
           <TableRow>
-            <TableCell sx={{ width: '250px' }} component='th'>
+            <TableCell
+              sx={{
+                '& .MuiTableCell-root:first-child': {
+                  width: '250px !important',
+                },
+              }}
+              component='th'
+            >
               <Typography
                 sx={{
                   fontWeight: '700',

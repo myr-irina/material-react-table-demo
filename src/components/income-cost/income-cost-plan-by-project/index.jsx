@@ -32,6 +32,7 @@ function IncomeCostPlanByProject() {
         header: 'Проекты',
         muiTableHeadCellProps: {
           align: 'left',
+          fontSize: 18,
         },
       },
     ],
@@ -43,7 +44,7 @@ function IncomeCostPlanByProject() {
       <LayoutCollapsedTableProject
         title='Проекты'
         isLoading={isLoading}
-        data={budgetPlanByProject}
+        data={data}
         columns={columns}
       />
     )

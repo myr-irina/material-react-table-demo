@@ -33,6 +33,7 @@ function CashFlowFactByProject() {
         header: 'Проекты',
         muiTableHeadCellProps: {
           align: 'left',
+          fontSize: '18px',
         },
       },
     ],
