@@ -23,7 +23,6 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
       columns={columns}
       data={TABLE_DATA ?? []}
       state={{ isLoading }}
-      // state={{ showProgressBars: true }}
       enableStickyHeader
       enableExpanding
       initialState={{
@@ -31,17 +30,17 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
           1: true,
         },
       }}
-      displayColumnDefOptions={{
-        'mrt-row-expand': {
-          muiTableHeadCellProps: {
-            align: 'left',
-            fontSize: '18px',
-          },
-          muiTableBodyCellProps: {
-            align: 'left',
-          },
-        },
-      }}
+      // displayColumnDefOptions={{
+      //   'mrt-row-expand': {
+      //     muiTableHeadCellProps: {
+      //       align: 'left',
+      //       fontSize: '18px',
+      //     },
+      //     muiTableBodyCellProps: {
+      //       align: 'left',
+      //     },
+      //   },
+      // }}
       renderDetailPanel={({ row }) => (
         <TableContainer
           sx={{
@@ -49,23 +48,23 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
             margin: '0 auto',
             overflowX: 'initial',
           }}
-          muiTableHeadCellProps={{
-            sx: {
-              '& .Mui-TableHeadCell-Content-Labels': {
-                padding: '0px',
-                fontSize: '18px',
-              },
-              '& .MuiBox-root': {
-                padding: '0px',
-                fontSize: '18px',
-              },
-              '& .Mui-TableHeadCell-Content-Wrapper': {
-                fontSize: '18px',
-              },
-              fontWeight: 'bold',
-              fontSize: '18px',
-            },
-          }}
+          // muiTableHeadCellProps={{
+          //   sx: {
+          //     '& .Mui-TableHeadCell-Content-Labels': {
+          //       padding: '0px',
+          //       fontSize: '18px',
+          //     },
+          //     '& .MuiBox-root': {
+          //       padding: '0px',
+          //       fontSize: '18px',
+          //     },
+          //     '& .Mui-TableHeadCell-Content-Wrapper': {
+          //       fontSize: '18px',
+          //     },
+          //     fontWeight: 'bold',
+          //     fontSize: '18px',
+          //   },
+          // }}
         >
           {row.original.map((row) => {
             const amountsRow = row?.find(({ month }) => month === 'amounts');
@@ -79,6 +78,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
             return (
               <Table
                 stickyHeader
+                size='medium'
                 sx={{
                   tableLayout: 'fixed',
                   width: '100%',
@@ -92,7 +92,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                   <TableRow>
                     <TableCell></TableCell>
                     {HEADER_MONTHS.map((month) => (
-                      <TableCell>
+                      <TableCell key={month}>
                         <Typography
                           sx={{
                             fontWeight: '700',
@@ -107,8 +107,8 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                       </TableCell>
                     ))}
                   </TableRow>
-                  {/* <TableRow>
-                    <TableCell>
+                  <TableRow>
+                    <TableCell key={row[0]?.projectName}>
                       <Typography
                         sx={{
                           fontWeight: '700',
@@ -131,13 +131,14 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                             overflowX: 'hidden',
                             whiteSpace: 'nowrap',
                             textOverflow: 'ellipsis',
+                            color: 'transparent',
                           }}
                         >
                           {cell}
                         </Typography>
                       </TableCell>
                     ))}
-                  </TableRow> */}
+                  </TableRow>
                 </TableHead>
 
                 <TableBody>
@@ -146,6 +147,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                     return (
                       <TableRow>
                         <TableCell
+                          key={tableRow.month}
                           sx={{
                             overflow: 'hidden',
                             whiteSpace: 'nowrap',
@@ -158,7 +160,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                         {MONTHS.map((month) => {
                           const val = tableRow.value[month];
                           return (
-                            <TableCell>
+                            <TableCell key={month}>
                               {val ? `${numberWithSpaces(val)} р.` : ''}
                             </TableCell>
                           );
@@ -174,7 +176,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
 
                       if (!val) return <TableCell></TableCell>;
                       return (
-                        <TableCell>
+                        <TableCell key={month}>
                           <Typography
                             sx={{ fontWeight: 'bold', fontSize: '14px' }}
                           >

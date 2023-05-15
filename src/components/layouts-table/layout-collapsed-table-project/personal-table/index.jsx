@@ -90,7 +90,7 @@ const PersonalTable = ({ data }) => {
           // tableLayout: 'fixed',
           width: '100%',
           margin: '0 auto',
-          '& .MuiTableCell-root:first-child': {
+          '& .MuiTableCell-root:first-of-type': {
             // bgcolor: 'pink',
             minWidth: '250px',
           },
@@ -107,7 +107,7 @@ const PersonalTable = ({ data }) => {
           <TableRow>
             <TableCell
               sx={{
-                '& .MuiTableCell-root:first-child': {
+                '& .MuiTableCell-root:first-of-type': {
                   width: '250px !important',
                 },
               }}
@@ -150,7 +150,6 @@ const PersonalTable = ({ data }) => {
             if (row.month === 'amounts') return;
             const rowData = Object.entries(row.value);
 
-            console.log({ rowData });
             return (
               <TableRow>
                 <TableCell

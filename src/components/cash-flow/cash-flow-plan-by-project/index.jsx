@@ -30,10 +30,6 @@ function CashFlowPlanByProject() {
         },
         id: 'costType',
         header: 'Проекты',
-        muiTableHeadCellProps: {
-          align: 'left',
-          fontSize: '18px',
-        },
       },
     ],
     []

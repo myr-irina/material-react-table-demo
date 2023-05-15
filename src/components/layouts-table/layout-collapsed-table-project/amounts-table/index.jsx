@@ -18,7 +18,7 @@ const AmountsTable = ({ data }) => {
     <Table
       sx={{
         tableLayout: 'fixed',
-        '& .MuiTableCell-root:first-child': {
+        '& .MuiTableCell-root:first-of-type': {
           width: '250px',
         },
       }}

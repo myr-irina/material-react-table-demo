@@ -21,6 +21,8 @@ function CashFlowTotalsFactSplit() {
       .finally(() => setIsLoading(false));
   }, []);
 
+  console.log({ isLoading });
+
   if (factSplitData.length === 0) return;
   return <LayoutCollapsedTableBdr isLoading={isLoading} data={factSplitData} />;
 }

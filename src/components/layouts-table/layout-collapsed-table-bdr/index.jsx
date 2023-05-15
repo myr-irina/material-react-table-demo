@@ -47,8 +47,6 @@ function LayoutCollapsedTableBdr(data) {
 
   const { isLoading } = data;
 
-  console.log({ isLoading });
-
   const columns = useMemo(
     () => [
       {
