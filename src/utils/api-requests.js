@@ -39,12 +39,15 @@ export const getProjectPlanHours = () => {
 };
 
 export const getProjectFactHours = () => {
-  return requestUrl(`${BASE_URL}/api/v1/tables/staff/by-projects/fact`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  return requestUrl(
+    `${BASE_URL}/api/v1/tables/staff/by-projects/fact?year=2023`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 };
 
 //by income & cost budget
@@ -67,21 +70,27 @@ export const getBudgetFact = () => {
 };
 
 export const getBudgetByProjectPlan = () => {
-  return requestUrl(`${BASE_URL}/api/v1/tables/bdr/by-projects/plan`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  return requestUrl(
+    `${BASE_URL}/api/v1/tables/bdr/by-projects/plan?year=2023`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 };
 
 export const getBudgetByProjectFact = () => {
-  return requestUrl(`${BASE_URL}/api/v1/tables/bdr/by-projects/fact`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  return requestUrl(
+    `${BASE_URL}/api/v1/tables/bdr/by-projects/fact?year=2023`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 };
 
 //by cash flow

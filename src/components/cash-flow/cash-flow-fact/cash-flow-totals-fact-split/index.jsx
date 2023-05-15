@@ -6,17 +6,17 @@ import { getCashFlowFact } from '../../../../utils/api-requests';
 
 function CashFlowTotalsFactSplit() {
   const [factSplitData, setFactSplitData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getCashFlowFact()
       .then((data) => {
         setFactSplitData(data);
+        setIsLoading(false);
       })
       .catch((error) => {
-        setIsLoading(false);
         console.log(error);
+        setIsLoading(false);
       })
       .finally(() => setIsLoading(false));
   }, []);

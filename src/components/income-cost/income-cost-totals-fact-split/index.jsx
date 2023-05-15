@@ -6,24 +6,24 @@ import { getBudgetFact } from '../../../utils/api-requests';
 
 function IncomeCostTotalsFactSplit() {
   const [factSplitData, setFactSplitData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getBudgetFact()
       .then((data) => {
         setFactSplitData(data);
+        setIsLoading(false);
       })
       .catch((error) => {
-        setIsLoading(false);
         console.log(error);
+        setIsLoading(false);
       })
       .finally(() => setIsLoading(false));
   }, []);
 
   if (factSplitData.length === 0) return;
 
-  return <LayoutCollapsedTableBdr data={factSplitData} />;
+  return <LayoutCollapsedTableBdr isLoading={isLoading} data={factSplitData} />;
 }
 
 export default IncomeCostTotalsFactSplit;

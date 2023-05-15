@@ -7,10 +7,9 @@ import { getBudgetPlan } from '../../../utils/api-requests';
 
 function IncomeCostTotalsPlan() {
   const [budgetPlan, setBudgetPlan] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getBudgetPlan()
       .then((data) => {
         setBudgetPlan(data);

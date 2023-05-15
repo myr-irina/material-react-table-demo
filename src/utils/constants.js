@@ -28,9 +28,9 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
+    // overflow: 'hidden',
+    // whiteSpace: 'nowrap',
+    // textOverflow: 'ellipsis',
   },
 }));
 

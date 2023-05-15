@@ -6,18 +6,17 @@ import { getBudgetByProjectPlan } from '../../../utils/api-requests';
 
 function IncomeCostPlanByProject() {
   const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getBudgetByProjectPlan()
       .then((data) => {
         setBudgetPlanByProject(data);
         setIsLoading(false);
       })
       .catch((error) => {
-        setIsLoading(false);
         console.log(error);
+        setIsLoading(false);
       })
       .finally(setIsLoading(false));
   }, []);

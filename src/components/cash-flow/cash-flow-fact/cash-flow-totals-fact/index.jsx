@@ -7,10 +7,9 @@ import { getCashFlowFact } from '../../../../utils/api-requests';
 
 function CashFlowTotalsFact() {
   const [totalData, setTotalData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getCashFlowFact()
       .then((data) => {
         setTotalData(data);
@@ -25,7 +24,11 @@ function CashFlowTotalsFact() {
 
   if (totalData.length === 0) return;
 
-  return totalData && <LayoutFinanceTableTotal data={totalData} />;
+  return (
+    totalData && (
+      <LayoutFinanceTableTotal isLoading={isLoading} data={totalData} />
+    )
+  );
 }
 
 export default CashFlowTotalsFact;

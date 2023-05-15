@@ -135,7 +135,7 @@ const PersonalTable = ({ data }) => {
                     overflowX: 'hidden',
                     whiteSpace: 'nowrap',
                     textOverflow: 'ellipsis',
-                    // color: 'transparent',
+                    color: 'transparent',
                   }}
                 >
                   {cell}

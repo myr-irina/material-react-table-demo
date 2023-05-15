@@ -17,16 +17,19 @@ import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collaps
 
 function EmployeesByProjectFact() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getProjectFactHours()
       .then((data) => {
         setProjectPlanHours(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
-      });
+        setIsLoading(false);
+      })
+      .finally(setIsLoading(false));
   }, []);
 
   return (
@@ -34,6 +37,7 @@ function EmployeesByProjectFact() {
       <LayoutCollapsedTableEmployees
         header='Сотрудники'
         title='Таблица рабочего времени (факт по проектам)'
+        isLoading={isLoading}
         data={projectPlanHours}
       />
     )

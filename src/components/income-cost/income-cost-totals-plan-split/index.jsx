@@ -7,17 +7,17 @@ import { getBudgetPlan } from '../../../utils/api-requests';
 
 function IncomeCostTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getBudgetPlan()
       .then((data) => {
         setPlanSplitData(data);
+        setIsLoading(false);
       })
       .catch((error) => {
-        setIsLoading(false);
         console.log(error);
+        setIsLoading(false);
       })
       .finally(() => setIsLoading(false));
   }, []);

@@ -7,10 +7,9 @@ import { getCashFlowByProjectFact } from '../../../utils/api-requests';
 
 function CashFlowFactByProject() {
   const [budgetFactByProject, setBudgetFactByProject] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getCashFlowByProjectFact()
       .then((data) => {
         setBudgetFactByProject(data);

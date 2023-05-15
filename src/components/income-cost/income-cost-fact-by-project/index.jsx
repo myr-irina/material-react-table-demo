@@ -7,10 +7,9 @@ import { getBudgetByProjectFact } from '../../../utils/api-requests';
 
 function IncomeCostFactByProject() {
   const [budgetFactByProject, setBudgetFactByProject] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getBudgetByProjectFact()
       .then((data) => {
         setBudgetFactByProject(data);

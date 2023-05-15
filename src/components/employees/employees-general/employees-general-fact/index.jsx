@@ -6,21 +6,25 @@ import { getWorkingHoursFact } from '../../../../utils/api-requests';
 
 function EmployeesGeneralFact() {
   const [projectFactHours, setProjectFactHours] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getWorkingHoursFact()
       .then((data) => {
         setProjectFactHours(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
-      });
+        setIsLoading(false);
+      })
+      .finally(setIsLoading(false));
   }, []);
 
   return (
     <LayoutPlainTable
       data={projectFactHours}
+      isLoading={isLoading}
       title='Таблица рабочего времени (общий факт)'
       header='Сотрудники'
     />

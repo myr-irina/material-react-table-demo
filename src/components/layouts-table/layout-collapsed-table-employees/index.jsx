@@ -9,6 +9,9 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import MuiTableCell from '@mui/material/TableCell';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+
+import { ExportToCsv } from 'export-to-csv';
 import { StyledTableRow } from '../../../utils/constants';
 
 import {
@@ -25,6 +28,8 @@ import { StyledTableCell, StyledTableRow2 } from '../../../utils/constants';
 export default function LayoutCollapsedTableEmployees(data) {
   const TABLE_DATA = useMemo(() => parseTableData(data.data), [data.data]);
 
+  const { isLoading } = data;
+
   const columns = [
     {
       header: data.header,
@@ -34,111 +39,111 @@ export default function LayoutCollapsedTableEmployees(data) {
       },
       size: 100,
     },
-    {
-      header: ' ',
-      id: 'header2',
-      size: 50,
-    },
-    {
-      header: ' ',
-      id: 'header3',
-      size: 50,
-    },
-    {
-      header: ' ',
-      id: 'header4',
-      size: 50,
-    },
-    {
-      header: ' ',
-      id: 'header5',
-      size: 50,
-    },
-    {
-      header: ' ',
-      id: 'header6',
-      size: 50,
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header7',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header8',
-    },
-    {
-      header: ' ',
-      size: 30,
-      id: 'header9',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header10',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header11',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header12',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header13',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header14',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header15',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header16',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header17',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header18',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header19',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header20',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header21',
-    },
-    {
-      header: ' ',
-      size: 50,
-      id: 'header22',
-    },
+    // {
+    //   header: ' ',
+    //   id: 'header2',
+    //   size: 50,
+    // },
+    // {
+    //   header: ' ',
+    //   id: 'header3',
+    //   size: 50,
+    // },
+    // {
+    //   header: ' ',
+    //   id: 'header4',
+    //   size: 50,
+    // },
+    // {
+    //   header: ' ',
+    //   id: 'header5',
+    //   size: 50,
+    // },
+    // {
+    //   header: ' ',
+    //   id: 'header6',
+    //   size: 50,
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header7',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header8',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 30,
+    //   id: 'header9',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header10',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header11',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header12',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header13',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header14',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header15',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header16',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header17',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header18',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header19',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header20',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header21',
+    // },
+    // {
+    //   header: ' ',
+    //   size: 50,
+    //   id: 'header22',
+    // },
   ];
 
   return (
@@ -167,6 +172,7 @@ export default function LayoutCollapsedTableEmployees(data) {
         pagination: { pageSize: 25, pageIndex: 0 },
         expanded: true,
       }}
+      state={{ isLoading }}
       muiTablePaginationProps={{
         rowsPerPageOptions: [5, 10, 20, 25],
         labelRowsPerPage: 'Количество видимых строк',
@@ -249,11 +255,12 @@ export default function LayoutCollapsedTableEmployees(data) {
                           key={columnName}
                         >
                           {project
-                            ? `${project?.hours}ч. ${
-                                project?.percent !== null
-                                  ? `(${project?.percent}%)`
-                                  : ''
-                              }`
+                            ? `${project?.hours}ч. 
+                            ${
+                              project?.percent !== null
+                                ? `(${project?.percent}%)`
+                                : ''
+                            }`
                             : ''}
                         </StyledTableCell>
                       );

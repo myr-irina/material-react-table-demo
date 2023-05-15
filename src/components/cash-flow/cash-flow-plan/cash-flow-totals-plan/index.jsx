@@ -7,10 +7,9 @@ import { getCashFlowPlan } from '../../../../utils/api-requests';
 
 function CashFlowTotalsPlan() {
   const [totalPalnData, setTotalPlanData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getCashFlowPlan()
       .then((data) => {
         setTotalPlanData(data);

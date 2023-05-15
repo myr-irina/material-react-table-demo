@@ -9,14 +9,14 @@ function CashFlowTotalsPlanSplit() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     getCashFlowPlan()
       .then((data) => {
         setPlanSplitData(data);
+        setIsLoading(false);
       })
       .catch((error) => {
-        setIsLoading(false);
         console.log(error);
+        setIsLoading(false);
       })
       .finally(() => setIsLoading(false));
   }, []);

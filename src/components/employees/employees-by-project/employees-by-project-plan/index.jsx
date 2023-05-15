@@ -17,22 +17,26 @@ import employeesByProjectPlanData from '../../../../json/employees-by-project-pl
 
 function EmployeesByProjectPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getProjectPlanHours()
       .then((data) => {
         setProjectPlanHours(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
-      });
+        setIsLoading(false);
+      })
+      .finally(setIsLoading(false));
   }, []);
 
   return (
     <LayoutCollapsedTableEmployees
       header='Сотрудники'
       title='Таблица рабочего времени (план по проектам)'
+      isLoading={isLoading}
       data={projectPlanHours}
     />
   );

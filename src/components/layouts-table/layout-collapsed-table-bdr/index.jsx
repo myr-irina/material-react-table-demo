@@ -45,6 +45,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 function LayoutCollapsedTableBdr(data) {
   const TABLE_DATA = useMemo(() => parseTableData3(data.data), [data]);
 
+  const { isLoading } = data;
+
+  console.log({ isLoading });
+
   const columns = useMemo(
     () => [
       {
@@ -87,6 +91,7 @@ function LayoutCollapsedTableBdr(data) {
       initialState={{
         expanded: true,
       }}
+      state={{ isLoading }}
       renderDetailPanel={({ row }) => (
         <TableContainer
           sx={{

@@ -8,6 +8,9 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { TableContainer } from '@mui/material';
 import { Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
+import LinearProgress from '@mui/material/LinearProgress';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 import {
   numberWithSpaces,
@@ -53,10 +56,6 @@ function LayoutFinanceTableTotal({ data, isLoading }) {
     )
   );
 
-  if (isLoading) {
-    return <p>Идет загрузка...</p>;
-  }
-
   const getColumnNames2 = (data) => {
     const result = [];
 
@@ -72,7 +71,11 @@ function LayoutFinanceTableTotal({ data, isLoading }) {
     return headers;
   };
 
-  return (
+  return isLoading ? (
+    <Box sx={{ display: 'flex' }}>
+      <CircularProgress size={24} color='inherit' />
+    </Box>
+  ) : (
     <TableContainer
       component={Paper}
       sx={{

@@ -7,10 +7,9 @@ import { getCashFlowByProjectPlan } from '../../../utils/api-requests';
 
 function CashFlowPlanByProject() {
   const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     getCashFlowByProjectPlan()
       .then((data) => {
         setBudgetPlanByProject(data);
@@ -43,7 +42,11 @@ function CashFlowPlanByProject() {
   if (budgetPlanByProject.length === 0) return;
 
   return (
-    <LayoutCollapsedTableProject columns={columns} data={budgetPlanByProject} />
+    <LayoutCollapsedTableProject
+      isLoading={isLoading}
+      columns={columns}
+      data={budgetPlanByProject}
+    />
   );
 }
 

@@ -62,6 +62,8 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
               '& .Mui-TableHeadCell-Content-Wrapper': {
                 fontSize: '18px',
               },
+              fontWeight: 'bold',
+              fontSize: '18px',
             },
           }}
         >
