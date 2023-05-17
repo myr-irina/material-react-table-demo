@@ -87,46 +87,62 @@ const PersonalTable = ({ data }) => {
       <Table
         stickyHeader
         sx={{
-          // tableLayout: 'fixed',
+          tableLayout: 'fixed',
           width: '100%',
           margin: '0 auto',
           '& .MuiTableCell-root:first-of-type': {
-            // bgcolor: 'pink',
-            minWidth: '250px',
+            // backgroundColor: 'pink',
+            // minWidth: '250px',
           },
+          // '& .MuiTableCell-head:first-of-type': {
+          //   width: '250px',
+          //   backgroundColor: 'pink',
+          // },
+          // '& .MuiTableCell-body:first-of-type': {
+          //   width: '250px',
+          //   backgroundColor: 'pink',
+          // },
         }}
       >
         <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-          <CustomSwitch
-            sx={{ m: 2 }}
-            checked={!checked}
-            onChange={() => setChecked(!checked)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-
-          <TableRow>
+          <TableRow
+            sx={{ '&:first-child td, &:first-child th': { width: '250px' } }}
+          >
             <TableCell
               sx={{
-                '& .MuiTableCell-root:first-of-type': {
-                  width: '250px !important',
-                },
+                width: '250px',
               }}
               component='th'
             >
-              <Typography
+              <Box
                 sx={{
-                  fontWeight: '700',
-                  fontSize: '16px',
-                  overflowX: 'hidden',
-                  whiteSpace: 'nowrap',
-                  textOverflow: 'ellipsis',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flexStart',
                 }}
               >
-                Сотрудники
-              </Typography>
+                <CustomSwitch
+                  sx={{ m: 2 }}
+                  checked={!checked}
+                  onChange={() => setChecked(!checked)}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />
+
+                <Typography
+                  sx={{
+                    fontWeight: '700',
+                    fontSize: '16px',
+                    overflowX: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                  }}
+                >
+                  Сотрудники
+                </Typography>
+              </Box>
             </TableCell>
 
-            {MONTHS.map((cell) => (
+            {MONTHS.map((cell, index) => (
               <TableCell component='th' key={cell}>
                 <Typography
                   sx={{
@@ -159,6 +175,7 @@ const PersonalTable = ({ data }) => {
                     textOverflow: 'ellipsis',
                     width: '250px',
                   }}
+                  key={row.month}
                 >
                   {row.month}
                 </TableCell>
@@ -168,7 +185,7 @@ const PersonalTable = ({ data }) => {
                   if (!val) return <TableCell></TableCell>;
 
                   return (
-                    <TableCell>
+                    <TableCell key={val}>
                       {typeof val[1] === 'object' && checked
                         ? `${val[1].hours} ч.`
                         : `${numberWithSpaces(Math.trunc(val[1].salary))} р.`}
@@ -206,7 +223,7 @@ const PersonalTable = ({ data }) => {
 
               if (!val) return <TableCell></TableCell>;
               return (
-                <TableCell>
+                <TableCell key={month}>
                   <Typography sx={{ fontWeight: 'bold', fontSize: '14px' }}>
                     {val && val !== null
                       ? `${numberWithSpaces(Math.trunc(val))} р.`

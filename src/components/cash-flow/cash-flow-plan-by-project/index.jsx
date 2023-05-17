@@ -1,6 +1,8 @@
 import React, { useMemo, useEffect, useState } from 'react';
 
 import data from '../../../json/dds-by-project-plan.json';
+
+import data2 from '../../../json/plan_dds (1).json';
 import LayoutCollapsedTableProject from '../../layouts-table/layout-collapsed-table-project';
 
 import { getCashFlowByProjectPlan } from '../../../utils/api-requests';

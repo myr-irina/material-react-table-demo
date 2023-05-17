@@ -17,6 +17,7 @@ import { numberWithSpaces, MONTHS, HEADER_MONTHS } from '../../../utils/utils';
 
 function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
+  console.log({ TABLE_DATA });
 
   return (
     <MaterialReactTable
@@ -43,11 +44,13 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
       // }}
       renderDetailPanel={({ row }) => (
         <TableContainer
-          sx={{
-            width: '100%',
-            margin: '0 auto',
-            overflowX: 'initial',
-          }}
+          sx={
+            {
+              // width: '100%',
+              // margin: '0 auto',
+              // overflowX: 'initial',
+            }
+          }
           // muiTableHeadCellProps={{
           //   sx: {
           //     '& .Mui-TableHeadCell-Content-Labels': {
@@ -89,7 +92,13 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                 }}
               >
                 <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                  <TableRow>
+                  <TableRow
+                    sx={{
+                      '&:last-child td, &:last-child th': {
+                        backgroundColor: 'pink',
+                      },
+                    }}
+                  >
                     <TableCell></TableCell>
                     {HEADER_MONTHS.map((month) => (
                       <TableCell key={month}>
@@ -100,6 +109,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                             overflowX: 'hidden',
                             whiteSpace: 'nowrap',
                             textOverflow: 'ellipsis',
+                            '&:last-child td': { color: 'transparent' },
                           }}
                         >
                           {month}
@@ -158,7 +168,7 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                         </TableCell>
 
                         {MONTHS.map((month) => {
-                          const val = tableRow.value[month];
+                          const val = tableRow?.value?.[month];
                           return (
                             <TableCell key={month}>
                               {val ? `${numberWithSpaces(val)} р.` : ''}
