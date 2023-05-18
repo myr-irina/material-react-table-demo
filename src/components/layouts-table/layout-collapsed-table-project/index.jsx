@@ -17,7 +17,6 @@ import { numberWithSpaces, MONTHS, HEADER_MONTHS } from '../../../utils/utils';
 
 function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
-  console.log({ TABLE_DATA });
 
   return (
     <MaterialReactTable
@@ -44,96 +43,90 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
       // }}
       renderDetailPanel={({ row }) => (
         <TableContainer
-          sx={
-            {
-              // width: '100%',
-              // margin: '0 auto',
-              // overflowX: 'initial',
-            }
-          }
-          // muiTableHeadCellProps={{
-          //   sx: {
-          //     '& .Mui-TableHeadCell-Content-Labels': {
-          //       padding: '0px',
-          //       fontSize: '18px',
-          //     },
-          //     '& .MuiBox-root': {
-          //       padding: '0px',
-          //       fontSize: '18px',
-          //     },
-          //     '& .Mui-TableHeadCell-Content-Wrapper': {
-          //       fontSize: '18px',
-          //     },
-          //     fontWeight: 'bold',
-          //     fontSize: '18px',
-          //   },
-          // }}
+          sx={{
+            width: '100%',
+            margin: '0 auto',
+            overflowX: 'initial',
+          }}
         >
-          {row.original.map((row) => {
-            const amountsRow = row?.find(({ month }) => month === 'amounts');
+          <Table
+            stickyHeader
+            size='medium'
+            sx={{
+              tableLayout: 'fixed',
+              width: '100%',
+              margin: '0 auto',
+              '& .MuiTableCell-root:first-of-type': {
+                width: '250px',
+              },
+            }}
+          >
+            <TableHead>
+              <TableRow sx={{ width: '100%' }}>
+                <TableCell></TableCell>
+                {HEADER_MONTHS.map((month) => (
+                  <TableCell key={month}>
+                    <Typography
+                      sx={{
+                        fontWeight: '700',
+                        fontSize: '16px',
+                        overflowX: 'hidden',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                        '&:last-child td': { color: 'transparent' },
+                      }}
+                    >
+                      {month}
+                    </Typography>
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            {row.original.map((row) => {
+              const amountsRow = row?.find(({ month }) => month === 'amounts');
 
-            if (!row) return;
-            if (row[0]?.projectName === 'personal')
-              return <PersonalTable data={row} />;
-            if (row[0]?.projectName === 'amounts')
-              return <AmountsTable data={row} />;
+              if (!row) return;
+              if (row[0]?.projectName === 'personal')
+                return <PersonalTable data={row} />;
+              if (row[0]?.projectName === 'amounts')
+                return <AmountsTable data={row} />;
 
-            return (
-              <Table
-                stickyHeader
-                size='medium'
-                sx={{
-                  tableLayout: 'fixed',
-                  width: '100%',
-                  margin: '0 auto',
-                  '& .MuiTableCell-root:first-of-type': {
-                    width: '250px',
-                  },
-                }}
-              >
-                <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                  <TableRow
-                    sx={{
-                      '&:last-child td, &:last-child th': {
-                        backgroundColor: 'pink',
-                      },
-                    }}
-                  >
-                    <TableCell></TableCell>
-                    {HEADER_MONTHS.map((month) => (
-                      <TableCell key={month}>
-                        <Typography
-                          sx={{
-                            fontWeight: '700',
-                            fontSize: '18px',
-                            overflowX: 'hidden',
-                            whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis',
-                            '&:last-child td': { color: 'transparent' },
-                          }}
-                        >
-                          {month}
-                        </Typography>
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                  <TableRow>
-                    <TableCell key={row[0]?.projectName}>
-                      <Typography
-                        sx={{
-                          fontWeight: '700',
-                          fontSize: '16px',
-                          overflowX: 'hidden',
-                          whiteSpace: 'nowrap',
-                          textOverflow: 'ellipsis',
-                        }}
-                      >
-                        {row[0]?.projectName}
-                      </Typography>
-                    </TableCell>
-
-                    {MONTHS.map((cell) => (
-                      <TableCell component='th' key={cell}>
+              return (
+                // <Table
+                //   stickyHeader
+                //   size='medium'
+                //   sx={{
+                //     tableLayout: 'fixed',
+                //     width: '100%',
+                //     margin: '0 auto',
+                //     '& .MuiTableCell-root:first-of-type': {
+                //       width: '250px',
+                //     },
+                //   }}
+                // >
+                <>
+                  <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                    <TableRow>
+                      {/* <TableCell></TableCell>
+                      {HEADER_MONTHS.map((month) => (
+                        <TableCell key={month}>
+                          <Typography
+                            sx={{
+                              fontWeight: '700',
+                              fontSize: '18px',
+                              overflowX: 'hidden',
+                              whiteSpace: 'nowrap',
+                              textOverflow: 'ellipsis',
+                              '&:last-child td': { color: 'transparent' },
+                            }}
+                          >
+                            {month}
+                          </Typography>
+                        </TableCell>
+                      ))} */}
+                    </TableRow>
+                    <TableRow>
+                      <TableCell key={row[0]?.projectName}>
                         <Typography
                           sx={{
                             fontWeight: '700',
@@ -141,67 +134,84 @@ function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
                             overflowX: 'hidden',
                             whiteSpace: 'nowrap',
                             textOverflow: 'ellipsis',
-                            color: 'transparent',
                           }}
                         >
-                          {cell}
+                          {row[0]?.projectName}
                         </Typography>
                       </TableCell>
-                    ))}
-                  </TableRow>
-                </TableHead>
 
-                <TableBody>
-                  {row.map((tableRow) => {
-                    if (tableRow.month === 'amounts') return;
-                    return (
-                      <TableRow>
-                        <TableCell
-                          key={tableRow.month}
-                          sx={{
-                            overflow: 'hidden',
-                            whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis',
-                          }}
-                        >
-                          {tableRow.month}
-                        </TableCell>
-
-                        {MONTHS.map((month) => {
-                          const val = tableRow?.value?.[month];
-                          return (
-                            <TableCell key={month}>
-                              {val ? `${numberWithSpaces(val)} р.` : ''}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-
-                  <TableRow>
-                    <TableCell></TableCell>
-                    {MONTHS.map((month) => {
-                      const val = amountsRow?.value[month];
-
-                      if (!val) return <TableCell></TableCell>;
-                      return (
-                        <TableCell key={month}>
+                      {MONTHS.map((cell) => (
+                        <TableCell component='th' key={cell}>
                           <Typography
-                            sx={{ fontWeight: 'bold', fontSize: '14px' }}
+                            sx={{
+                              fontWeight: '700',
+                              fontSize: '16px',
+                              overflowX: 'hidden',
+                              whiteSpace: 'nowrap',
+                              textOverflow: 'ellipsis',
+                              color: 'transparent',
+                            }}
                           >
-                            {val && val !== null
-                              ? `${numberWithSpaces(Math.trunc(val))} р.`
-                              : ''}
+                            {cell}
                           </Typography>
                         </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+
+                  <TableBody>
+                    {row.map((tableRow) => {
+                      if (tableRow.month === 'amounts') return;
+                      return (
+                        <TableRow>
+                          <TableCell
+                            key={tableRow.month}
+                            sx={{
+                              overflow: 'hidden',
+                              whiteSpace: 'nowrap',
+                              textOverflow: 'ellipsis',
+                            }}
+                          >
+                            {tableRow.month}
+                          </TableCell>
+
+                          {MONTHS.map((month) => {
+                            const val = tableRow?.value?.[month];
+                            return (
+                              <TableCell key={month}>
+                                {val ? `${numberWithSpaces(val)} р.` : ''}
+                              </TableCell>
+                            );
+                          })}
+                        </TableRow>
                       );
                     })}
-                  </TableRow>
-                </TableBody>
-              </Table>
-            );
-          })}
+
+                    <TableRow>
+                      <TableCell></TableCell>
+                      {MONTHS.map((month) => {
+                        const val = amountsRow?.value[month];
+
+                        if (!val) return <TableCell></TableCell>;
+                        return (
+                          <TableCell key={month}>
+                            <Typography
+                              sx={{ fontWeight: 'bold', fontSize: '14px' }}
+                            >
+                              {val && val !== null
+                                ? `${numberWithSpaces(Math.trunc(val))} р.`
+                                : ''}
+                            </Typography>
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  </TableBody>
+                </>
+                // </Table>
+              );
+            })}
+          </Table>
         </TableContainer>
       )}
     />

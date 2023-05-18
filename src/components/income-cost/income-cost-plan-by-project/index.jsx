@@ -39,7 +39,7 @@ function IncomeCostPlanByProject() {
       <LayoutCollapsedTableProject
         title='Проекты'
         isLoading={isLoading}
-        data={data}
+        data={budgetPlanByProject}
         columns={columns}
       />
     )

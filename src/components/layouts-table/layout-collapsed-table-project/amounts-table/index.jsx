@@ -15,14 +15,15 @@ import {
 
 const AmountsTable = ({ data }) => {
   return (
-    <Table
-      sx={{
-        tableLayout: 'fixed',
-        '& .MuiTableCell-root:first-of-type': {
-          width: '250px',
-        },
-      }}
-    >
+    // <Table
+    //   sx={{
+    //     tableLayout: 'fixed',
+    //     '& .MuiTableCell-root:first-of-type': {
+    //       width: '250px',
+    //     },
+    //   }}
+    // >
+    <>
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <TableRow>
           <TableCell>
@@ -32,7 +33,6 @@ const AmountsTable = ({ data }) => {
                 fontSize: '16px',
                 overflowX: 'hidden',
                 whiteSpace: 'nowrap',
-                // padding: '6px 16px 0',
               }}
             >
               Общая сумма
@@ -81,7 +81,8 @@ const AmountsTable = ({ data }) => {
           })}
         </TableRow>
       </TableBody>
-    </Table>
+    </>
+    // </Table>
   );
 };
 

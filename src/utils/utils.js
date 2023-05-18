@@ -213,6 +213,7 @@ export const MONTHS = [
   'november',
   'december',
   'amount',
+  // 'total',
 ];
 
 export const HEADER_MONTHS = [

@@ -11,19 +11,26 @@ import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 
 import { numberWithSpaces, MONTHS } from '../../../../utils/utils';
+import RoubleIcon from '../../../../images/ruble-currency-sign.png';
+import RoubleIcon2 from '../../../../images/Ruble_sign.svg';
+import RoubleIcon3 from '../../../../images/ruble-svgrepo-com.svg';
 
 const CustomSwitch = styled((props) => (
   <Switch focusVisibleClassName='.Mui-focusVisible' disableRipple {...props} />
 ))(({ theme }) => ({
-  width: 42,
+  width: 52,
   height: 26,
   padding: 0,
+  '& .MuiSwitch-root': {
+    padding: 0,
+    margin: 0,
+  },
   '& .MuiSwitch-switchBase': {
     padding: 0,
     margin: 2,
     transitionDuration: '300ms',
     '&.Mui-checked': {
-      transform: 'translateX(16px)',
+      transform: 'translateX(26px)',
       color: '#fff',
       '& + .MuiSwitch-track': {
         backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#65C466',
@@ -52,6 +59,18 @@ const CustomSwitch = styled((props) => (
     boxSizing: 'border-box',
     width: 22,
     height: 22,
+    // backgroundImage: `url(${RoubleIcon3})`,
+    '&:before': {
+      content: "''",
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      left: 0,
+      top: 0,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      // backgroundImage: `url(${RoubleIcon3})`,
+    },
   },
   '& .MuiSwitch-track': {
     borderRadius: 26 / 2,
@@ -77,165 +96,148 @@ const PersonalTable = ({ data }) => {
   const amountsRow = data.find(({ month }) => month === 'amounts');
 
   return (
-    <TableContainer
-      sx={{
-        width: '100%',
-        margin: '0 auto',
-        overflowX: 'initial',
-      }}
-    >
-      <Table
-        stickyHeader
-        sx={{
-          tableLayout: 'fixed',
-          width: '100%',
-          margin: '0 auto',
-          '& .MuiTableCell-root:first-of-type': {
-            // backgroundColor: 'pink',
-            // minWidth: '250px',
-          },
-          // '& .MuiTableCell-head:first-of-type': {
-          //   width: '250px',
-          //   backgroundColor: 'pink',
-          // },
-          // '& .MuiTableCell-body:first-of-type': {
-          //   width: '250px',
-          //   backgroundColor: 'pink',
-          // },
-        }}
-      >
-        <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-          <TableRow
-            sx={{ '&:first-child td, &:first-child th': { width: '250px' } }}
+    // <Table
+    //   stickyHeader
+    //   sx={{
+    //     tableLayout: 'fixed',
+    //     width: '100%',
+    //     margin: '0 auto',
+    //   }}
+    // >
+    <>
+      <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+        <TableRow
+        // sx={{ '&:first-child td, &:first-child th': { width: '250px' } }}
+        >
+          <TableCell
+            sx={{
+              width: '250px',
+            }}
+            component='th'
           >
-            <TableCell
+            <Box
               sx={{
-                width: '250px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flexStart',
               }}
-              component='th'
             >
-              <Box
+              <CustomSwitch
+                sx={{ m: 2 }}
+                checked={!checked}
+                onChange={() => setChecked(!checked)}
+                inputProps={{ 'aria-label': 'controlled' }}
+              />
+
+              <Typography
                 sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flexStart',
+                  fontWeight: '700',
+                  fontSize: '16px',
+                  overflowX: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
                 }}
               >
-                <CustomSwitch
-                  sx={{ m: 2 }}
-                  checked={!checked}
-                  onChange={() => setChecked(!checked)}
-                  inputProps={{ 'aria-label': 'controlled' }}
-                />
+                Сотрудники
+              </Typography>
+            </Box>
+          </TableCell>
 
-                <Typography
-                  sx={{
-                    fontWeight: '700',
-                    fontSize: '16px',
-                    overflowX: 'hidden',
-                    whiteSpace: 'nowrap',
-                    textOverflow: 'ellipsis',
-                  }}
-                >
-                  Сотрудники
-                </Typography>
-              </Box>
+          {MONTHS.map((cell, index) => (
+            <TableCell component='th' key={cell}>
+              <Typography
+                sx={{
+                  fontWeight: '700',
+                  fontSize: '16px',
+                  overflowX: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  color: 'transparent',
+                }}
+              >
+                {cell}
+              </Typography>
             </TableCell>
+          ))}
+          {/* <TableCell sx={{ fontWeight: 'bold' }}>Итого</TableCell> */}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {data.map((row) => {
+          if (row.month === 'amounts') return;
+          const rowData = Object.entries(row.value);
 
-            {MONTHS.map((cell, index) => (
-              <TableCell component='th' key={cell}>
-                <Typography
-                  sx={{
-                    fontWeight: '700',
-                    fontSize: '16px',
-                    overflowX: 'hidden',
-                    whiteSpace: 'nowrap',
-                    textOverflow: 'ellipsis',
-                    color: 'transparent',
-                  }}
-                >
-                  {cell}
+          return (
+            <TableRow>
+              <TableCell
+                sx={{
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  width: '250px',
+                }}
+                key={row.month}
+              >
+                {row.month}
+              </TableCell>
+              {MONTHS.map((month) => {
+                const val = rowData.find(([monthKey]) => monthKey === month);
+                console.log({ month, val });
+
+                if (!val) return <TableCell></TableCell>;
+
+                return (
+                  <TableCell key={val}>
+                    {typeof val[1] === 'object' && checked
+                      ? `${val[1].hours} ч.`
+                      : `${numberWithSpaces(Math.trunc(val[1].salary))} р.`}
+                  </TableCell>
+                );
+              })}
+              {totals.map((sum) => {
+                const val = rowData.find(([monthKey]) => monthKey === sum);
+
+                if (!val) return;
+                return (
+                  <TableCell>
+                    {val[0] === 'amount_hours' && checked
+                      ? `${val[1]} ч.`
+                      : val[0] === 'amount_salary' && !checked
+                      ? `${numberWithSpaces(Math.trunc(val[1]))} р.`
+                      : ''}
+                  </TableCell>
+                );
+              })}
+            </TableRow>
+          );
+        })}
+
+        <TableRow>
+          <TableCell
+            sx={{
+              minWidth: '250px',
+              maxWidth: '250px',
+              width: '250px',
+            }}
+          ></TableCell>
+          {MONTHS.map((month) => {
+            const val = amountsRow.value[month];
+
+            if (!val) return <TableCell></TableCell>;
+            return (
+              <TableCell key={month}>
+                <Typography sx={{ fontWeight: 'bold', fontSize: '14px' }}>
+                  {val && val !== null
+                    ? `${numberWithSpaces(Math.trunc(val))} р.`
+                    : ''}
                 </Typography>
               </TableCell>
-            ))}
-            {/* <TableCell sx={{ fontWeight: 'bold' }}>Итого</TableCell> */}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row) => {
-            if (row.month === 'amounts') return;
-            const rowData = Object.entries(row.value);
-
-            return (
-              <TableRow>
-                <TableCell
-                  sx={{
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                    textOverflow: 'ellipsis',
-                    width: '250px',
-                  }}
-                  key={row.month}
-                >
-                  {row.month}
-                </TableCell>
-                {MONTHS.map((month) => {
-                  const val = rowData.find(([monthKey]) => monthKey === month);
-
-                  if (!val) return <TableCell></TableCell>;
-
-                  return (
-                    <TableCell key={val}>
-                      {typeof val[1] === 'object' && checked
-                        ? `${val[1].hours} ч.`
-                        : `${numberWithSpaces(Math.trunc(val[1].salary))} р.`}
-                    </TableCell>
-                  );
-                })}
-                {/* {totals.map((sum) => {
-                  const val = rowData.find(([monthKey]) => monthKey === sum);
-
-                  if (!val) return;
-                  return (
-                    <TableCell>
-                      {val[0] === 'amount_hours' && checked
-                        ? `${val[1]} ч.`
-                        : val[0] === 'amount_salary' && !checked
-                        ? `${numberWithSpaces(Math.trunc(val[1]))} р.`
-                        : ''}
-                    </TableCell>
-                  );
-                })} */}
-              </TableRow>
             );
           })}
-
-          <TableRow>
-            <TableCell
-              sx={{
-                minWidth: '250px',
-                maxWidth: '250px',
-                width: '250px',
-              }}
-            ></TableCell>
-            {MONTHS.map((month) => {
-              const val = amountsRow.value[month];
-
-              if (!val) return <TableCell></TableCell>;
-              return (
-                <TableCell key={month}>
-                  <Typography sx={{ fontWeight: 'bold', fontSize: '14px' }}>
-                    {val && val !== null
-                      ? `${numberWithSpaces(Math.trunc(val))} р.`
-                      : ''}
-                  </Typography>
-                </TableCell>
-              );
-            })}
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+        </TableRow>
+      </TableBody>
+    </>
+    // </Table>
   );
 };
 
