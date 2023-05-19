@@ -77,6 +77,16 @@ export const months = [
 export const categories = [
   { value: 'incomes', label: 'Доходы' },
   { value: 'direct_contractors', label: 'Прямые подрядчики' },
+  { value: 'fot_pp', label: 'Зарплата персонала' },
+  { value: 'fot_aup', label: 'Зарплата руководства' },
+  { value: 'other_expenses', label: 'Прочие расходы' },
+  { value: 'management_company', label: 'Услуги УК' },
+  { value: 'incomes_before_tax', label: 'Прибыль (Убыток) до налогообложения' },
+];
+
+export const categoriesDDS = [
+  { value: 'incomes', label: 'Доходы' },
+  { value: 'direct_contractors', label: 'Прямые подрядчики' },
   { value: 'agency_payments', label: 'Агентские платежи' },
   { value: 'salaries', label: 'Зарплата' },
   { value: 'bonus_fund', label: 'Бонусный фонд' },

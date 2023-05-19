@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import CustomSelect from '../../custom-select';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import Paper from '@mui/material/Paper';
 
 import employeesByProjectPlanData from '../../../json/employees-by-project-plan.json';
 import {
@@ -73,92 +74,98 @@ export default function LayoutFinanceTableDetailed(data) {
       {TABLE_DATA.filter((value) => {
         return value[0][0].projectType === category;
       }).map((rowEntry) => (
-        <TableContainer
-          sx={{
-            width: '100%',
-            margin: '0 auto',
-            overflowX: 'initial',
-          }}
-        >
-          <Table
-            stickyHeader
+        <Paper elevation={2}>
+          <TableContainer
             sx={{
-              tableLayout: 'fixed',
-              margin: '0 auto',
               width: '100%',
+              margin: '0 auto',
+              overflowX: 'initial',
+              marginBottom: '50px',
+              tableLayout: 'fixed',
               '& .MuiTableCell-root:first-of-type': {
-                width: '170px',
+                width: '250px',
               },
             }}
-            size='small'
           >
-            <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-              <TableRow>
-                <TableCell component='th'>
-                  <Typography
-                    sx={{
-                      fontWeight: '700',
-                      fontSize: '14px',
-                      overflowX: 'hidden',
-                      whiteSpace: 'nowrap',
-                      textOverflow: 'ellipsis',
-                    }}
-                  >
-                    Название
-                  </Typography>
-                </TableCell>
-
-                {getColumnNames2(rowEntry).map((cell) => (
-                  <TableCell component='th' key={cell}>
+            <Table
+              stickyHeader
+              sx={{
+                tableLayout: 'fixed',
+                margin: '0 auto',
+                width: '100%',
+              }}
+              // size='small'
+            >
+              <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                <TableRow>
+                  <TableCell component='th'>
                     <Typography
                       sx={{
                         fontWeight: '700',
                         fontSize: '14px',
                         overflowX: 'hidden',
                         whiteSpace: 'nowrap',
-                        color: 'black',
+                        textOverflow: 'ellipsis',
                       }}
                     >
-                      {cell}
+                      Название
                     </Typography>
                   </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rowEntry.map((rowProject) => {
-                return (
-                  <>
-                    <StyledTableRow>
-                      <StyledTableCell key={rowProject[0].projectName}>
-                        {rowProject[0].projectName}
-                      </StyledTableCell>
-                      {getColumnNames2(rowEntry).map((columnName) => {
-                        const project = findProjectByName2(
-                          columnName,
-                          rowProject
-                        );
 
-                        return (
-                          <StyledTableCell
-                            sx={{
-                              maxWidth: '60px',
-                            }}
-                            key={columnName}
-                          >
-                            {project && project.value !== null
-                              ? `${numberWithSpaces(project?.value)} р.`
-                              : ''}
-                          </StyledTableCell>
-                        );
-                      })}
-                    </StyledTableRow>
-                  </>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                  {getColumnNames2(rowEntry).map((cell) => (
+                    <TableCell component='th' key={cell}>
+                      <Typography
+                        sx={{
+                          fontWeight: '700',
+                          fontSize: '14px',
+                          overflowX: 'hidden',
+                          whiteSpace: 'nowrap',
+                          color: 'black',
+                        }}
+                      >
+                        {cell}
+                      </Typography>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rowEntry.map((rowProject) => {
+                  return (
+                    <>
+                      <StyledTableRow>
+                        <StyledTableCell
+                          key={rowProject[0].projectName}
+                          sx={{
+                            '&:first-of-type': {
+                              textAlign: 'right',
+                            },
+                          }}
+                        >
+                          {rowProject[0].projectName}
+                        </StyledTableCell>
+                        {getColumnNames2(rowEntry).map((columnName) => {
+                          const project = findProjectByName2(
+                            columnName,
+                            rowProject
+                          );
+
+                          return (
+                            <StyledTableCell key={columnName}>
+                              {project && project.value !== null
+                                ? `${numberWithSpaces(project?.value)} р.`
+                                : ''}
+                            </StyledTableCell>
+                          );
+                        })}
+                      </StyledTableRow>
+                    </>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
       ))}
     </>
   );

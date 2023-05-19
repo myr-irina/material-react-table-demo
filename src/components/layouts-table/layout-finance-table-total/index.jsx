@@ -91,7 +91,7 @@ function LayoutFinanceTableTotal({ data, isLoading }) {
           margin: '0 auto',
           width: '100%',
           '& .MuiTableCell-root:first-of-type': {
-            width: '170px',
+            width: '250px',
           },
         }}
         size='small'
@@ -135,7 +135,9 @@ function LayoutFinanceTableTotal({ data, isLoading }) {
                 <StyledTableRow hover>
                   <StyledTableCell
                     sx={{
-                      maxWidth: '60px',
+                      '&:first-of-type': {
+                        textAlign: 'right',
+                      },
                     }}
                   >
                     {rowProject[0][0].projectType}
