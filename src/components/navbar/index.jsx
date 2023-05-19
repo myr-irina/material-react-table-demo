@@ -121,6 +121,18 @@ export default function NavBar() {
             <MenuItem component={RouterLink} to={'/employees-project-fact'}>
               Таблица рабочего времени факт
             </MenuItem>
+            <MenuItem
+              component={RouterLink}
+              to={'/employees-project-plan-test'}
+            >
+              Таблица рабочего времени план (Тест)
+            </MenuItem>
+            <MenuItem
+              component={RouterLink}
+              to={'/employees-project-fact-test'}
+            >
+              Таблица рабочего времени факт (Тест)
+            </MenuItem>
           </Menu>
 
           <Menu

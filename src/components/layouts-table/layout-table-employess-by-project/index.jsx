@@ -16,8 +16,9 @@ import {
 } from '../../../utils/utils';
 
 import { months } from '../../../utils/constants';
+import { StyledTableRow3 } from '../../../utils/constants';
 
-export default function LayoutEmployeesByProjectTest(props) {
+export default function LayoutEmployeesByProject(props) {
   const { data } = props;
 
   const TABLE_DATA = parseTableData(data);
@@ -40,29 +41,13 @@ export default function LayoutEmployeesByProjectTest(props) {
     setYear(event.target.value);
   };
 
-  // const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  //   '&:nth-of-type(even)': {
-  //     backgroundColor: '#e3e2e2',
-  //   },
-  //   '&:nth-of-type(odd)': {
-  //     backgroundColor: 'lightgrey',
-  //   },
-  //   // hide last border
-  //   '&:last-child': {
-  //     borderBottom: '5px solid black',
-  //   },
-  //   '&:first-child': {
-  //     borderTop: '5px solid black',
-  //   },
-  // }));
-
   return (
     <>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'flex-end',
+          justifyContent: 'flex-start',
           width: '100%',
         }}
       >
@@ -97,29 +82,17 @@ export default function LayoutEmployeesByProjectTest(props) {
               margin: '0 auto',
               width: '100%',
               '& .MuiTableCell-root:first-of-type': {
-                width: '170px',
+                width: '250px',
               },
             }}
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <TableRow>
-                <TableCell sx={{ border: 'none' }}>
-                  {rowEntry[0]?.[0]?.month}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell
-                  sx={{
-                    '&:first-of-type': {
-                      textAlign: 'right',
-                    },
-                  }}
-                  component='th'
-                >
+                <TableCell component='th' sx={{ width: '250px' }}>
                   <Typography
                     sx={{
                       fontWeight: '700',
-                      fontSize: '14px',
+                      fontSize: '16px',
                       overflowX: 'hidden',
                       whiteSpace: 'nowrap',
                     }}
@@ -132,7 +105,7 @@ export default function LayoutEmployeesByProjectTest(props) {
                     <Typography
                       sx={{
                         fontWeight: '700',
-                        fontSize: '14px',
+                        fontSize: '16px',
                         overflowX: 'hidden',
                         whiteSpace: 'nowrap',
                         color: 'black',
@@ -148,8 +121,9 @@ export default function LayoutEmployeesByProjectTest(props) {
               {rowEntry.map((rowProject) => {
                 return (
                   <>
-                    <TableRow>
+                    <StyledTableRow3>
                       <TableCell
+                        key={rowProject}
                         sx={{
                           '&:first-of-type': {
                             textAlign: 'right',
@@ -158,13 +132,13 @@ export default function LayoutEmployeesByProjectTest(props) {
                       >
                         {rowProject[0].author}
                       </TableCell>
-                      {getColumnNames(rowEntry).map((columnName) => {
+                      {getColumnNames(rowEntry).map((columnName, index) => {
                         const project = findProjectByName(
                           columnName,
                           rowProject
                         );
                         return (
-                          <TableCell>
+                          <TableCell key={index}>
                             {project
                               ? `${project?.hours}ч. ${
                                   project?.percent !== null
@@ -175,7 +149,7 @@ export default function LayoutEmployeesByProjectTest(props) {
                           </TableCell>
                         );
                       })}
-                    </TableRow>
+                    </StyledTableRow3>
                   </>
                 );
               })}

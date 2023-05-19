@@ -12,12 +12,13 @@ import MuiTableCell from '@mui/material/TableCell';
 
 import { getProjectPlanHours } from '../../../../utils/api-requests';
 
-import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collapsed-table-employees';
+// import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collapsed-table-employees';
 import employeesByProjectPlanData from '../../../../json/employees-by-project-plan.json';
 
-import LayoutEmployeesByProjectTest from '../../../layouts-table/layout-table-employess-test';
+// import LayoutEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
+import LayoutTableEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
 
-function EmployeesByProjectPlanTest() {
+function EmployeesByProjectPlan2() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,11 +36,11 @@ function EmployeesByProjectPlanTest() {
   }, []);
 
   return (
-    <LayoutEmployeesByProjectTest
+    <LayoutTableEmployeesByProject
       isLoading={isLoading}
       data={projectPlanHours}
     />
   );
 }
 
-export default EmployeesByProjectPlanTest;
+export default EmployeesByProjectPlan2;

@@ -10,7 +10,8 @@ import EmployeesGeneralFact from './components/employees/employees-general/emplo
 
 import EmployeesByProjectPlan from './components/employees/employees-by-project/employees-by-project-plan';
 import EmployeesByprojectFact from './components/employees/employees-by-project/employees-by-project-fact';
-import EmployeesByProjectPlanTest from './components/employees/employees-by-project/employees-by-project-plan-test';
+import EmployeesByProjectPlan2 from './components/employees/employees-by-project/employees-by-project-plan-test';
+import EmployeesByProjectFact2 from './components/employees/employees-by-project/employees-by-project-fact-test';
 
 import IncomeCostByProjectPlanPage from './pages/income-cost-totals-plan';
 import IncomeCostByProjectFactPage from './pages/income-cost-totals-fact';
@@ -41,12 +42,16 @@ export default function App() {
               element={<EmployeesByProjectPlan />}
             />
             <Route
-              path='/employees-project-plan-test'
-              element={<EmployeesByProjectPlanTest />}
-            />
-            <Route
               path='/employees-project-fact'
               element={<EmployeesByprojectFact />}
+            />
+            <Route
+              path='/employees-project-plan-test'
+              element={<EmployeesByProjectPlan2 />}
+            />
+            <Route
+              path='/employees-project-fact-test'
+              element={<EmployeesByProjectFact2 />}
             />
 
             <Route
