@@ -125,13 +125,13 @@ export default function NavBar() {
               component={RouterLink}
               to={'/employees-project-plan-test'}
             >
-              Таблица рабочего времени план (Тест)
+              !!!ТЕСТ Таблица рабочего времени план
             </MenuItem>
             <MenuItem
               component={RouterLink}
               to={'/employees-project-fact-test'}
             >
-              Таблица рабочего времени факт (Тест)
+              !!!ТЕСТ Таблица рабочего времени факт
             </MenuItem>
           </Menu>
 
@@ -159,6 +159,10 @@ export default function NavBar() {
 
             <MenuItem component={RouterLink} to={'/bdr-fact-by-project'}>
               Таблица БДР (Факт по проектам)
+            </MenuItem>
+
+            <MenuItem component={RouterLink} to={'/bdr-totals-plan-split-test'}>
+              !!!ТЕСТ Таблица БДР (План)
             </MenuItem>
           </Menu>
           <Menu

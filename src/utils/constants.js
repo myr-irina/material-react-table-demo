@@ -73,3 +73,21 @@ export const months = [
   { value: 'november', label: 'Ноябрь' },
   { value: 'december', label: 'Декабрь' },
 ];
+
+export const categories = [
+  { value: 'incomes', label: 'Доходы' },
+  { value: 'direct_contractors', label: 'Прямые подрядчики' },
+  { value: 'agency_payments', label: 'Агентские платежи' },
+  { value: 'salaries', label: 'Зарплата' },
+  { value: 'bonus_fund', label: 'Бонусный фонд' },
+  { value: 'tax_ndfl', label: 'Налог НДФЛ / Соцстрах' },
+  { value: 'tax_nds', label: 'Налог НДС' },
+  { value: 'tax_income', label: 'Налог на прибыль' },
+  { value: 'management_company', label: 'Услуги УК' },
+  { value: 'other_expenses', label: 'Прочие расходы' },
+  { value: 'judicial_penalties', label: 'Судебные взыскания / Штрафы' },
+  { value: 'old_contractors', label: 'Старые подрядчики' },
+  { value: 'loans_shareholders', label: 'Займы акционеров' },
+  { value: 'interest_on_loans', label: 'Процент по займам' },
+  { value: 'incomes_before_tax', label: 'Прибыль (Убыток) до налогообложения' },
+];

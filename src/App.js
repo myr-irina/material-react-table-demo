@@ -19,6 +19,7 @@ import IncomeCostTotalsPlanSplit from './components/income-cost/income-cost-tota
 import IncomeCostTotalsFactSplit from './components/income-cost/income-cost-totals-fact-split';
 import IncomeCostPlanByProject from './components/income-cost/income-cost-plan-by-project';
 import IncomeCostFactByProject from './components/income-cost/income-cost-fact-by-project';
+import IncomeCostTotalsPlanSplit2 from './components/income-cost/income-cost-totals-plan-split-test';
 
 import CashFlowByProjectPlanPage from './pages/cash-flow-totals-plan';
 import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan-split';
@@ -34,6 +35,7 @@ export default function App() {
       <Container maxWidth='1280px'>
         <Routes>
           <Route element={<NavBar />}>
+            
             <Route path='/' element={<EmployeesGeneralPlan />} />
             <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
 
@@ -77,6 +79,10 @@ export default function App() {
             <Route
               path='/bdr-fact-by-project'
               element={<IncomeCostFactByProject />}
+            />
+            <Route
+              path='/bdr-totals-plan-split-test'
+              element={<IncomeCostTotalsPlanSplit2 />}
             />
 
             <Route
