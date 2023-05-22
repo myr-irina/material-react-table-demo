@@ -203,6 +203,12 @@ export default function NavBar() {
             <MenuItem component={RouterLink} to={'/dds-totals-fact-split-test'}>
               !!!ТЕСТ Таблица ДДС (Факт)
             </MenuItem>
+            <MenuItem component={RouterLink} to={'/dds-plan-by-project-test'}>
+              !!!ТЕСТ Таблица ДДС (План по проектам)
+            </MenuItem>
+            <MenuItem component={RouterLink} to={'/dds-fact-by-project-test'}>
+              !!!ТЕСТ Таблица ДДС (Факт по проектам)
+            </MenuItem>
           </Menu>
         </Box>
       </AppBar>

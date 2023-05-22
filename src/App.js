@@ -32,6 +32,8 @@ import CashFlowPlanByProject from './components/cash-flow/cash-flow-plan-by-proj
 import CashFlowFactByProject from './components/cash-flow/cash-flow-fact-by-project';
 import CashFlowTotalsPlanSplit2 from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan-split-test';
 import CashFlowTotalsFactSplit2 from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split-test';
+import CashFlowPlanByProject2 from './components/cash-flow/cash-flow-plan-by-project-test';
+import CashFlowFactByProject2 from './components/cash-flow/cash-flow-fact-by-project-test';
 
 export default function App() {
   return (
@@ -124,6 +126,14 @@ export default function App() {
             <Route
               path='/dds-totals-fact-split-test'
               element={<CashFlowTotalsFactSplit2 />}
+            />
+            <Route
+              path='/dds-plan-by-project-test'
+              element={<CashFlowPlanByProject2 />}
+            />
+            <Route
+              path='/dds-fact-by-project-test'
+              element={<CashFlowFactByProject2 />}
             />
           </Route>
         </Routes>
