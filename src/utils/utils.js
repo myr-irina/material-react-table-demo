@@ -63,6 +63,7 @@ export const parseTableData3 = (data) => {
     .map(([projectType, dataProject]) => {
       const dataAuthorsMutated = Object.entries(dataProject)
         .sort((a) => {
+          if (a[0] !== 'amounts') return;
           return a[0] === 'amounts' ? 1 : -1;
         })
         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});

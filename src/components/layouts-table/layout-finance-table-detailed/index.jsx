@@ -72,7 +72,7 @@ export default function LayoutFinanceTableDetailed(data) {
       </Box>
 
       {TABLE_DATA.filter((value) => {
-        return value[0][0].projectType === category;
+        return value[0][0].projectName === category;
       }).map((rowEntry) => (
         <Paper elevation={2}>
           <TableContainer

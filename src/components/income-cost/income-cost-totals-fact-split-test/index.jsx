@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import LayoutCollapsedTableBdr from '../../layouts-table/layout-collapsed-table-bdr';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+
 import data from '../../../json/income-cost-general-fact.json';
 
 import { getBudgetFact } from '../../../utils/api-requests';
+import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table-detailed';
+import IncomeCostTotalsPlan from '../income-cost-totals-plan';
 
-function IncomeCostTotalsFactSplit() {
+function IncomeCostTotalsFactSplit2() {
   const [factSplitData, setFactSplitData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  console.log({ factSplitData });
 
   useEffect(() => {
     getBudgetFact()
@@ -25,7 +25,12 @@ function IncomeCostTotalsFactSplit() {
 
   if (factSplitData.length === 0) return;
 
-  return <LayoutCollapsedTableBdr isLoading={isLoading} data={factSplitData} />;
+  return (
+    <>
+      <IncomeCostTotalsPlan />
+      <LayoutFinanceTableDetailed isLoading={isLoading} data={factSplitData} />
+    </>
+  );
 }
 
-export default IncomeCostTotalsFactSplit;
+export default IncomeCostTotalsFactSplit2;
