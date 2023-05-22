@@ -29,7 +29,12 @@ function IncomeCostTotalsPlanSplit2() {
   return (
     <>
       <IncomeCostTotalsPlan />
-      <LayoutFinanceTableDetailed isLoading={isLoading} data={planSplitData} />
+      {planSplitData && (
+        <LayoutFinanceTableDetailed
+          isLoading={isLoading}
+          data={planSplitData}
+        />
+      )}
     </>
   );
 }

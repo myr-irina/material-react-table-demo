@@ -17,6 +17,7 @@ import { numberWithSpaces, MONTHS, HEADER_MONTHS } from '../../../utils/utils';
 
 function LayoutCollapsedTableProject({ data, title, isLoading, columns }) {
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
+  console.log({ TABLE_DATA });
 
   return (
     <MaterialReactTable

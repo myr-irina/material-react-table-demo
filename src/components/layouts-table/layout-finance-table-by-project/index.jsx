@@ -18,31 +18,26 @@ import { numberWithSpaces, MONTHS, HEADER_MONTHS } from '../../../utils/utils';
 import CustomSelect from '../../custom-select';
 
 function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
-  const categories = Object.keys(data);
-  console.log({ categories });
+  const arrArrs = Object.keys(data);
 
-  let customArr = () => {
-    let massiv = [];
-    for (let i = 0; i < categories.length; i++) {
-      let customObject = {
-        values: categories[i][0],
-      };
+  const length = arrArrs.length;
+  const arrKeys = Array(length).fill(['value', 'label']);
 
-      massiv.push(customObject);
-    }
-    return massiv;
+  const getData = (arrKeys, arrArrs) => {
+    return arrArrs.map((val) => ({
+      [arrKeys[0][0]]: val.toString(),
+      [arrKeys[0][1]]: val.toString(),
+    }));
   };
 
-  console.log({ customArr });
+  const categories = getData(arrKeys, arrArrs);
 
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
-  const [category, setCategory] = React.useState('TEH');
+  const [category, setCategory] = React.useState(categories[0].label);
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
   };
-
-  // console.log({ TABLE_DATA });
 
   return (
     <>
@@ -63,8 +58,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
       </Box>
 
       {TABLE_DATA.filter((value) => {
-        // console.log({ value });
-        return value?.[0]?.[0]?.projectType === category;
+        return value[0]?.[0]?.projectType === category;
       }).map((rowEntry) => (
         <TableContainer
           sx={{

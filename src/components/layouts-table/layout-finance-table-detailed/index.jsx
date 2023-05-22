@@ -47,6 +47,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function LayoutFinanceTableDetailed(data) {
   const TABLE_DATA = useMemo(() => parseTableData3(data.data), [data]);
 
+  console.log({ TABLE_DATA });
+
   const [category, setCategory] = React.useState('incomes');
 
   const handleCategoryChange = (event) => {
@@ -72,7 +74,7 @@ export default function LayoutFinanceTableDetailed(data) {
       </Box>
 
       {TABLE_DATA.filter((value) => {
-        return value[0][0].projectName === category;
+        return value[0][0].projectType === category;
       }).map((rowEntry) => (
         <Paper elevation={2}>
           <TableContainer
