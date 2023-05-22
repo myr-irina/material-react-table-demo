@@ -7,6 +7,8 @@ import { getBudgetPlan } from '../../../utils/api-requests';
 import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table-detailed';
 import IncomeCostTotalsPlan from '../income-cost-totals-plan';
 
+import { categories } from '../../../utils/constants';
+
 function IncomeCostTotalsPlanSplit2() {
   const [planSplitData, setPlanSplitData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,6 +35,7 @@ function IncomeCostTotalsPlanSplit2() {
         <LayoutFinanceTableDetailed
           isLoading={isLoading}
           data={planSplitData}
+          categories={categories}
         />
       )}
     </>

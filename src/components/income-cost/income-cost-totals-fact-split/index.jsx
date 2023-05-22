@@ -8,8 +8,6 @@ function IncomeCostTotalsFactSplit() {
   const [factSplitData, setFactSplitData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log({ factSplitData });
-
   useEffect(() => {
     getBudgetFact()
       .then((data) => {

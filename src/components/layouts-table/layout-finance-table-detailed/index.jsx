@@ -12,14 +12,11 @@ import Paper from '@mui/material/Paper';
 
 import employeesByProjectPlanData from '../../../json/employees-by-project-plan.json';
 import {
-  parseTableData3,
+  parseTableData5,
   getColumnNames2,
   findProjectByName2,
   numberWithSpaces,
 } from '../../../utils/utils';
-
-import { categories } from '../../../utils/constants';
-import { StyledTableRow3 } from '../../../utils/constants';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
@@ -44,10 +41,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function LayoutFinanceTableDetailed(data) {
-  const TABLE_DATA = useMemo(() => parseTableData3(data.data), [data]);
+export default function LayoutFinanceTableDetailed(props) {
+  const { data, categories } = props;
+  console.log(Object.entries(data).length);
 
-  console.log({ TABLE_DATA });
+  const TABLE_DATA = useMemo(() => parseTableData5(data), [data]);
 
   const [category, setCategory] = React.useState('incomes');
 

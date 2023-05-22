@@ -133,6 +133,51 @@ export const parseTableData4 = (data) => {
   return obj;
 };
 
+export const parseTableData5 = (data) => {
+  const obj = Object.entries(data)
+    .filter(([projectType, dataProject]) => {
+      if (Object.keys(dataProject).length !== 0) {
+        return true;
+      }
+      return false;
+    })
+    .map(([projectType, dataProject]) => {
+      const dataAuthorsMutated = Object.entries(dataProject)
+        .sort((a) => {
+          return a[0] === 'amounts' ? 1 : -1;
+        })
+        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
+      const arr = Object.entries(dataAuthorsMutated);
+
+      const value = arr[0][1];
+
+      if (typeof value !== 'object') {
+        const res = arr.map(([key, val]) => {
+          return {
+            month: key,
+            projectName: projectType,
+            projectType: projectType,
+            value: val,
+          };
+        });
+        return [res];
+      }
+
+      return arr.map(([projectName, projects]) => {
+        return Object.entries(projects).map(([month, value]) => ({
+          month,
+          projectName,
+          projectType,
+          value,
+        }));
+      });
+    })
+    .filter(Boolean);
+
+  return obj;
+};
+
 //columnName, rowproject[]
 export const findProjectByName = (projectName, projects) =>
   projects.find((project) => project.projectName === projectName);
@@ -214,7 +259,6 @@ export const MONTHS = [
   'november',
   'december',
   'amount',
-  // 'total',
 ];
 
 export const HEADER_MONTHS = [

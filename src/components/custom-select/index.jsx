@@ -25,7 +25,6 @@ export default function CustomSelect({
           {values.map(({ value, label }) => {
             return (
               <MenuItem key={value} value={value}>
-                {console.log(values)}
                 {label}
               </MenuItem>
             );

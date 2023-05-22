@@ -99,5 +99,5 @@ export const categoriesDDS = [
   { value: 'old_contractors', label: 'Старые подрядчики' },
   { value: 'loans_shareholders', label: 'Займы акционеров' },
   { value: 'interest_on_loans', label: 'Процент по займам' },
-  { value: 'incomes_before_tax', label: 'Прибыль (Убыток) до налогообложения' },
+  { value: 'tax_penalties', label: 'Налоговые отчисления' },
 ];
