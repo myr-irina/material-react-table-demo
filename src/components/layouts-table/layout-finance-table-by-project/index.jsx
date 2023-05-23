@@ -58,7 +58,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
       </Box>
 
       {TABLE_DATA.filter((value) => {
-        return value[0]?.[0]?.projectType === category;
+        return value[3]?.[1]?.projectType === category;
       }).map((rowEntry) => (
         <TableContainer
           sx={{
@@ -101,7 +101,6 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
               </TableRow>
             </TableHead>
             {rowEntry.map((row) => {
-              console.log({ row });
               const amountsRow = row?.find(({ month }) => month === 'Итого');
 
               if (!row) return;
@@ -111,18 +110,6 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                 return <AmountsTable data={row} />;
 
               return (
-                // <Table
-                //   stickyHeader
-                //   size='medium'
-                //   sx={{
-                //     tableLayout: 'fixed',
-                //     width: '100%',
-                //     margin: '0 auto',
-                //     '& .MuiTableCell-root:first-of-type': {
-                //       width: '250px',
-                //     },
-                //   }}
-                // >
                 <>
                   <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
                     <TableRow>
@@ -209,7 +196,6 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                     </TableRow>
                   </TableBody>
                 </>
-                // </Table>
               );
             })}
           </Table>

@@ -22,6 +22,7 @@ export default function LayoutEmployeesByProject(props) {
   const { data } = props;
 
   const TABLE_DATA = parseTableData(data);
+  // console.log({ TABLE_DATA });
 
   const date = new Date();
   const currentMonthIndex = date.getMonth();
@@ -66,7 +67,7 @@ export default function LayoutEmployeesByProject(props) {
       </Box>
 
       {TABLE_DATA.filter((value) => {
-        return value[0][0].month === month;
+        return value[0]?.[0]?.month === month;
       }).map((rowEntry) => (
         <TableContainer
           sx={{

@@ -3,9 +3,11 @@ export const parseTableData = (data) => {
     .map(([month, dataAuthors]) => {
       if (!dataAuthors) return;
 
+      console.log({ dataAuthors });
+
       const dataAuthorsMutated = Object.entries(dataAuthors)
         .sort((a) => {
-          return a[0] === 'common_amounts' ? 1 : -1;
+          return a[0] === 'Итого' ? 1 : -1;
         })
         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 
