@@ -1,7 +1,7 @@
 import { colors } from './constants';
 
 const getCellColor = (value) => {
-  return value < 45
+  return value < 40
     ? colors['paleYellow']
     : value >= 45 && value < 90
     ? colors['darkYellow']

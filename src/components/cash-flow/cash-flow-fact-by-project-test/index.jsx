@@ -3,7 +3,7 @@ import React, { useMemo, useEffect, useState } from 'react';
 import data from '../../../json/dds-by-project-plan.json';
 
 import { getCashFlowByProjectFact } from '../../../utils/api-requests';
-import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
+import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project-dds';
 
 function CashFlowFactByProject2() {
   const [cashFlowFactByProject, setCashFlowFactFactByProject] = useState([]);

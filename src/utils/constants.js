@@ -60,28 +60,31 @@ export const StyledTableRow3 = styled(TableRow)(({ theme }) => ({
 }));
 
 export const months = [
-  { value: 'january', label: 'Январь' },
-  { value: 'february', label: 'Февраль' },
-  { value: 'march', label: 'Март' },
-  { value: 'april', label: 'Апрель' },
-  { value: 'may', label: 'Май' },
-  { value: 'june', label: 'Июнь' },
-  { value: 'july', label: 'Июль' },
-  { value: 'august', label: 'Август' },
-  { value: 'september', label: 'Сентябрь' },
-  { value: 'october', label: 'Октябрь' },
-  { value: 'november', label: 'Ноябрь' },
-  { value: 'december', label: 'Декабрь' },
+  { value: 'Январь', label: 'Январь' },
+  { value: 'Февраль', label: 'Февраль' },
+  { value: 'Март', label: 'Март' },
+  { value: 'Апрель', label: 'Апрель' },
+  { value: 'Май', label: 'Май' },
+  { value: 'Июнь', label: 'Июнь' },
+  { value: 'Июль', label: 'Июль' },
+  { value: 'Август', label: 'Август' },
+  { value: 'Сентябрь', label: 'Сентябрь' },
+  { value: 'Октябрь', label: 'Октябрь' },
+  { value: 'Ноябрь', label: 'Ноябрь' },
+  { value: 'Декабрь', label: 'Декабрь' },
 ];
 
 export const categories = [
-  { value: 'incomes', label: 'Доходы' },
-  { value: 'direct_contractors', label: 'Прямые подрядчики' },
-  { value: 'fot_pp', label: 'Зарплата персонала' },
-  { value: 'fot_aup', label: 'Зарплата руководства' },
-  { value: 'other_expenses', label: 'Прочие расходы' },
-  { value: 'management_company', label: 'Услуги УК' },
-  { value: 'incomes_before_tax', label: 'Прибыль (Убыток) до налогообложения' },
+  { value: 'Доходы', label: 'Доходы' },
+  { value: 'Прямые подрядчики', label: 'Прямые подрядчики' },
+  { value: 'ФОТ ПП', label: 'Зарплата персонала' },
+  { value: 'ФОТ АУП', label: 'Зарплата руководства' },
+  { value: 'Прочие расходы', label: 'Прочие расходы' },
+  { value: 'Управляющая компания', label: 'Услуги УК' },
+  {
+    value: 'Доходы до уплаты налогов',
+    label: 'Прибыль (Убыток) до налогообложения',
+  },
 ];
 
 export const categoriesDDS = [

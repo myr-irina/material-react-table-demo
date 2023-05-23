@@ -8,6 +8,7 @@ import { getBudgetPlan } from '../../../utils/api-requests';
 function IncomeCostTotalsPlan() {
   const [budgetPlan, setBudgetPlan] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  console.log({ budgetPlan });
 
   useEffect(() => {
     getBudgetPlan()

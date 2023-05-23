@@ -43,11 +43,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function LayoutFinanceTableDetailed(props) {
   const { data, categories } = props;
-  console.log(Object.entries(data).length);
 
   const TABLE_DATA = useMemo(() => parseTableData5(data), [data]);
 
-  const [category, setCategory] = React.useState('incomes');
+  const [category, setCategory] = React.useState('Доходы');
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);

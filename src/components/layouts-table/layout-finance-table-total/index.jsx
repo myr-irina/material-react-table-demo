@@ -50,8 +50,8 @@ function LayoutFinanceTableTotal({ data, isLoading }) {
     projectType.filter((item) =>
       Object.values(item).some(
         (item) =>
-          item.projectName === 'amounts' ||
-          item.projectName === 'incomes_before_tax'
+          item.projectName === 'Итого' ||
+          item.projectName === 'Доходы до уплаты налогов'
       )
     )
   );
