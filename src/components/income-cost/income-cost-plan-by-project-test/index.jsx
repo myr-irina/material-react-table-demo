@@ -8,8 +8,6 @@ function IncomeCostPlanByProject2() {
   const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log({ budgetPlanByProject });
-
   useEffect(() => {
     getBudgetByProjectPlan()
       .then((data) => {
