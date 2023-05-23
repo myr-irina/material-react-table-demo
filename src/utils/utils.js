@@ -61,7 +61,6 @@ export const parseTableData3 = (data) => {
       return false;
     })
     .map(([projectType, dataProject]) => {
-      console.log({ projectType, dataProject });
       const dataAuthorsMutated = Object.entries(dataProject)
         .sort((a) => {
           if (a[0] !== 'Итого') return;
@@ -276,5 +275,5 @@ export const HEADER_MONTHS = [
   'Октябрь',
   'Ноябрь',
   'Декабрь',
-  'Итого',
+  'Всего',
 ];

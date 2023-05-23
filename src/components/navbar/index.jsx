@@ -153,9 +153,9 @@ export default function NavBar() {
               Таблица БДР (Факт)
             </MenuItem>
 
-            <MenuItem component={RouterLink} to={'/bdr-plan-by-project'}>
-              Таблица БДР (План по проектам)
-            </MenuItem>
+            // <MenuItem component={RouterLink} to={'/bdr-plan-by-project'}>
+            //   Таблица БДР (План по проектам)
+            // </MenuItem>
 
             <MenuItem component={RouterLink} to={'/bdr-fact-by-project'}>
               Таблица БДР (Факт по проектам)

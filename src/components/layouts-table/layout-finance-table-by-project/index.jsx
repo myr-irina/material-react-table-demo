@@ -101,12 +101,13 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
               </TableRow>
             </TableHead>
             {rowEntry.map((row) => {
-              const amountsRow = row?.find(({ month }) => month === 'amounts');
+              console.log({ row });
+              const amountsRow = row?.find(({ month }) => month === 'Итого');
 
               if (!row) return;
-              if (row[0]?.projectName === 'personal')
+              if (row[0]?.projectName === 'Сотрудники')
                 return <PersonalTable data={row} />;
-              if (row[0]?.projectName === 'amounts')
+              if (row[0]?.projectName === 'Итого')
                 return <AmountsTable data={row} />;
 
               return (
@@ -125,25 +126,6 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                 <>
                   <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
                     <TableRow>
-                      {/* <TableCell></TableCell>
-                      {HEADER_MONTHS.map((month) => (
-                        <TableCell key={month}>
-                          <Typography
-                            sx={{
-                              fontWeight: '700',
-                              fontSize: '18px',
-                              overflowX: 'hidden',
-                              whiteSpace: 'nowrap',
-                              textOverflow: 'ellipsis',
-                              '&:last-child td': { color: 'transparent' },
-                            }}
-                          >
-                            {month}
-                          </Typography>
-                        </TableCell>
-                      ))} */}
-                    </TableRow>
-                    <TableRow>
                       <TableCell key={row[0]?.projectName}>
                         <Typography
                           sx={{
@@ -158,7 +140,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                         </Typography>
                       </TableCell>
 
-                      {MONTHS.map((cell) => (
+                      {HEADER_MONTHS.map((cell) => (
                         <TableCell component='th' key={cell}>
                           <Typography
                             sx={{
@@ -179,7 +161,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
 
                   <TableBody>
                     {row.map((tableRow) => {
-                      if (tableRow.month === 'amounts') return;
+                      if (tableRow.month === 'Итого') return;
                       return (
                         <TableRow>
                           <TableCell
@@ -193,8 +175,9 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                             {tableRow.month}
                           </TableCell>
 
-                          {MONTHS.map((month) => {
+                          {HEADER_MONTHS.map((month) => {
                             const val = tableRow?.value?.[month];
+
                             return (
                               <TableCell key={month}>
                                 {val ? `${numberWithSpaces(val)} р.` : ''}
@@ -207,7 +190,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
 
                     <TableRow>
                       <TableCell></TableCell>
-                      {MONTHS.map((month) => {
+                      {HEADER_MONTHS.map((month) => {
                         const val = amountsRow?.value[month];
 
                         if (!val) return <TableCell></TableCell>;

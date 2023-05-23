@@ -23,13 +23,17 @@ function EmployeesGeneralPlan() {
       .finally(setIsLoading(false));
   }, []);
 
+  if (projectPlanHours.length === 0) return;
+
   return (
-    <LayoutPlainTable
-      data={projectPlanHours}
-      isLoading={isLoading}
-      title='Таблица рабочего времени (общий план)'
-      header='Сотрудники'
-    />
+    projectPlanHours && (
+      <LayoutPlainTable
+        data={projectPlanHours}
+        isLoading={isLoading}
+        title='Таблица рабочего времени (общий план)'
+        header='Сотрудники'
+      />
+    )
   );
 }
 

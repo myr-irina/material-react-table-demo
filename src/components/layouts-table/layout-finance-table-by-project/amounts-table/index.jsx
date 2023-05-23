@@ -69,6 +69,7 @@ const AmountsTable = ({ data }) => {
           <TableCell></TableCell>
           {MONTHS.map((cell) => {
             const val = findProjectByName2(cell, data);
+
             return (
               <TableCell>
                 <Typography sx={{ fontWeight: 'bold', fontSize: '14px' }}>

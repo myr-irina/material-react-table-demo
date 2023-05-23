@@ -28,7 +28,7 @@ export default function LayoutPlainTable(props) {
       {
         header: header,
         id: 'name',
-        accessorKey: 'staff',
+        accessorKey: 'Сотрудники',
         sortDescFirst: false,
         size: 100,
         Cell: ({ cell, row }) => (
@@ -36,7 +36,7 @@ export default function LayoutPlainTable(props) {
             component={Link}
             target='_blank'
             rel='noopener noreferrer'
-            to={row.original.link ?? '#'}
+            to={row.original['Связанные ссылки'] ?? '#'}
             underline='none'
           >
             {cell.getValue()}
@@ -47,8 +47,8 @@ export default function LayoutPlainTable(props) {
         header: 'Январь',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.january !== null
-            ? `${row?.january?.hours}ч. (${row?.january?.percent}%)`
+          row.Январь !== null
+            ? `${row?.Январь?.hours}ч. (${row?.Январь?.percent}%)`
             : '',
 
         Cell: ({ cell }) => {
@@ -71,8 +71,8 @@ export default function LayoutPlainTable(props) {
         header: 'Февраль',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.february !== null
-            ? `${row?.february?.hours}ч. (${row?.february?.percent}%)`
+          row.Февраль !== null
+            ? `${row?.Февраль?.hours}ч. (${row?.Февраль?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -94,8 +94,8 @@ export default function LayoutPlainTable(props) {
         header: 'Март',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.march !== null
-            ? `${row?.march?.hours}ч. (${row?.march?.percent}%)`
+          row.Март !== null
+            ? `${row?.Март?.hours}ч. (${row?.Март?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -117,8 +117,8 @@ export default function LayoutPlainTable(props) {
         header: 'Апрель',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.april !== null
-            ? `${row?.april?.hours}ч. (${row?.april?.percent}%)`
+          row.Апрель !== null
+            ? `${row?.Апрель?.hours}ч. (${row?.Апрель?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -140,8 +140,8 @@ export default function LayoutPlainTable(props) {
         header: 'Май',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.may !== null
-            ? `${row?.may?.hours}ч. (${row?.may?.percent}%)`
+          row.Май !== null
+            ? `${row?.Май?.hours}ч. (${row?.Май?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -163,8 +163,8 @@ export default function LayoutPlainTable(props) {
         header: 'Июнь',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.june !== null
-            ? `${row?.june?.hours}ч. (${row?.june?.percent}%)`
+          row.Июнь !== null
+            ? `${row?.Июнь?.hours}ч. (${row?.Июнь?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -186,8 +186,8 @@ export default function LayoutPlainTable(props) {
         header: 'Июль',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.july !== null
-            ? `${row?.july?.hours}ч. (${row?.july?.percent}%)`
+          row.Июль !== null
+            ? `${row?.Июль?.hours}ч. (${row?.Июль?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -209,8 +209,8 @@ export default function LayoutPlainTable(props) {
         header: 'Август',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.august !== null
-            ? `${row?.august?.hours}ч. (${row?.august?.percent}%)`
+          row.Август !== null
+            ? `${row?.Август?.hours}ч. (${row?.Август?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -232,8 +232,8 @@ export default function LayoutPlainTable(props) {
         header: 'Сентябрь',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.september !== null
-            ? `${row?.september?.hours}ч. (${row?.september?.percent}%)`
+          row.Сентябрь !== null
+            ? `${row?.Сентябрь?.hours}ч. (${row?.Сентябрь?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -255,8 +255,8 @@ export default function LayoutPlainTable(props) {
         header: 'Октябрь',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.october !== null
-            ? `${row?.october?.hours}ч. (${row?.october?.percent}%)`
+          row.Октябрь !== null
+            ? `${row?.Октябрь?.hours}ч. (${row?.Октябрь?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -278,8 +278,8 @@ export default function LayoutPlainTable(props) {
         header: 'Ноябрь',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.november !== null
-            ? `${row?.november?.hours}ч. (${row?.november?.percent}%)`
+          row.Ноябрь !== null
+            ? `${row?.Ноябрь?.hours}ч. (${row?.Ноябрь?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (
@@ -301,8 +301,8 @@ export default function LayoutPlainTable(props) {
         header: 'Декабрь',
         enableColumnActions: false,
         accessorFn: (row) =>
-          row.december !== null
-            ? `${row?.december?.hours}ч. (${row?.december?.percent}%)`
+          row.Декабрь !== null
+            ? `${row?.Декабрь?.hours}ч. (${row?.Декабрь?.percent}%)`
             : '',
         Cell: ({ cell }) => {
           return cell?.getValue() != null && cell?.getValue()?.length > 0 ? (

@@ -85,15 +85,15 @@ const CustomSwitch = styled((props) => (
 const PersonalTable = ({ data }) => {
   const [checked, setChecked] = useState(true);
 
-  const MONTHS_ARRAY = MONTHS.filter((month) => month !== 'amount');
+  // const MONTHS_ARRAY = MONTHS.filter((month) => month !== 'amount');
 
-  const months = [
-    ...Object.keys(data.find((row) => row.month === 'amounts').value),
-  ].filter((key) => key !== 'amount');
+  // const months = [
+  //   ...Object.keys(data.find((row) => row.month === 'Итого').value),
+  // ].filter((key) => key !== 'amount');
 
   const totals = ['amount_hours', 'amount_salary'];
 
-  const amountsRow = data.find(({ month }) => month === 'amounts');
+  const amountsRow = data.find(({ month }) => month === 'Итого');
 
   return (
     // <Table
@@ -164,7 +164,7 @@ const PersonalTable = ({ data }) => {
       </TableHead>
       <TableBody>
         {data.map((row) => {
-          if (row.month === 'amounts') return;
+          if (row.month === 'Итого') return;
           const rowData = Object.entries(row.value);
 
           return (
