@@ -22,9 +22,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
+    fontSize: 12,
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 11,
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
@@ -102,7 +103,7 @@ function LayoutFinanceTableTotal({ data, isLoading }) {
               <Typography
                 sx={{
                   fontWeight: '700',
-                  fontSize: '14px',
+                  fontSize: '12px',
                   overflowX: 'hidden',
                   whiteSpace: 'nowrap',
                   textOverflow: 'ellipsis',
@@ -117,7 +118,7 @@ function LayoutFinanceTableTotal({ data, isLoading }) {
                 <Typography
                   sx={{
                     fontWeight: '700',
-                    fontSize: '14px',
+                    fontSize: '11px',
                     overflowX: 'hidden',
                     whiteSpace: 'nowrap',
                   }}

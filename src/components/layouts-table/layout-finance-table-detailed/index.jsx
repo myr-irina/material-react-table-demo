@@ -20,7 +20,7 @@ import {
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 11,
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
@@ -43,8 +43,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function LayoutFinanceTableDetailed(props) {
   const { data, categories } = props;
+  console.log({ data });
 
   const TABLE_DATA = useMemo(() => parseTableData5(data), [data]);
+
+  console.log({ TABLE_DATA });
 
   const [category, setCategory] = React.useState('Доходы');
 
@@ -101,7 +104,7 @@ export default function LayoutFinanceTableDetailed(props) {
                     <Typography
                       sx={{
                         fontWeight: '700',
-                        fontSize: '14px',
+                        fontSize: '12px',
                         overflowX: 'hidden',
                         whiteSpace: 'nowrap',
                         textOverflow: 'ellipsis',
@@ -116,7 +119,7 @@ export default function LayoutFinanceTableDetailed(props) {
                       <Typography
                         sx={{
                           fontWeight: '700',
-                          fontSize: '14px',
+                          fontSize: '12px',
                           overflowX: 'hidden',
                           whiteSpace: 'nowrap',
                           color: 'black',

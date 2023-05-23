@@ -125,13 +125,13 @@ export default function NavBar() {
               component={RouterLink}
               to={'/employees-project-plan-test'}
             >
-              !!!ТЕСТ Таблица рабочего времени план
+              Таблица рабочего времени план
             </MenuItem>
             <MenuItem
               component={RouterLink}
               to={'/employees-project-fact-test'}
             >
-              !!!ТЕСТ Таблица рабочего времени факт
+              Таблица рабочего времени факт
             </MenuItem>
           </Menu>
 
@@ -162,16 +162,16 @@ export default function NavBar() {
             </MenuItem> */}
 
             <MenuItem component={RouterLink} to={'/bdr-totals-plan-split-test'}>
-              !!!ТЕСТ Таблица БДР (План)
+              Таблица БДР (План)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/bdr-totals-fact-split-test'}>
-              !!!ТЕСТ Таблица БДР (Факт)
+              Таблица БДР (Факт)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/bdr-plan-by-project-test'}>
-              !!!ТЕСТ Таблица БДР (План по проектам)
+              Таблица БДР (План по проектам)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/bdr-fact-by-project-test'}>
-              !!!ТЕСТ Таблица БДР (Факт по проектам)
+              Таблица БДР (Факт по проектам)
             </MenuItem>
           </Menu>
           <Menu
@@ -198,16 +198,16 @@ export default function NavBar() {
             </MenuItem> */}
 
             <MenuItem component={RouterLink} to={'/dds-totals-plan-split-test'}>
-              !!!ТЕСТ Таблица ДДС (План)
+              ТЕСТ Таблица ДДС (План)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/dds-totals-fact-split-test'}>
-              !!!ТЕСТ Таблица ДДС (Факт)
+              ТЕСТ Таблица ДДС (Факт)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/dds-plan-by-project-test'}>
-              !!!ТЕСТ Таблица ДДС (План по проектам)
+              ТЕСТ Таблица ДДС (План по проектам)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/dds-fact-by-project-test'}>
-              !!!ТЕСТ Таблица ДДС (Факт по проектам)
+              ТЕСТ Таблица ДДС (Факт по проектам)
             </MenuItem>
           </Menu>
         </Box>

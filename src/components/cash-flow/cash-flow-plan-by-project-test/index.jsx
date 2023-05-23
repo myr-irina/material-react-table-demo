@@ -3,7 +3,7 @@ import React, { useMemo, useEffect, useState } from 'react';
 import data from '../../../json/dds-by-project-plan.json';
 
 import { getCashFlowByProjectPlan } from '../../../utils/api-requests';
-import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table-detailed';
+import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project-dds';
 
 function CashFlowPlanByProject2() {
   const [cashFlowPlanByProject, setCashFlowPlanByProject] = useState([]);
@@ -37,8 +37,10 @@ function CashFlowPlanByProject2() {
 
   if (cashFlowPlanByProject.length === 0) return;
 
+
+
   return (
-    <LayoutFinanceTableDetailed
+    <LayoutFinanceTableByProject
       isLoading={isLoading}
       columns={columns}
       data={cashFlowPlanByProject}

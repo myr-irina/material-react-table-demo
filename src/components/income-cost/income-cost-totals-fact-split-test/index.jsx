@@ -4,7 +4,7 @@ import data from '../../../json/income-cost-general-fact.json';
 
 import { getBudgetFact } from '../../../utils/api-requests';
 import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table-detailed';
-import IncomeCostTotalsPlan from '../income-cost-totals-plan';
+import IncomeCostTotalsFact from '../income-cost-totals-fact';
 import { categories } from '../../../utils/constants';
 
 function IncomeCostTotalsFactSplit2() {
@@ -28,7 +28,7 @@ function IncomeCostTotalsFactSplit2() {
 
   return (
     <>
-      <IncomeCostTotalsPlan />
+      <IncomeCostTotalsFact />
       <LayoutFinanceTableDetailed
         isLoading={isLoading}
         data={factSplitData}

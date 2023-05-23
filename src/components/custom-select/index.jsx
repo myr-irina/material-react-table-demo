@@ -21,10 +21,11 @@ export default function CustomSelect({
           value={value}
           label={inputLabel}
           onChange={handleChange}
+          sx={{ fontSize: 12 }}
         >
           {values.map(({ value, label }) => {
             return (
-              <MenuItem key={value} value={value}>
+              <MenuItem sx={{ fontSize: 12 }} key={value} value={value}>
                 {label}
               </MenuItem>
             );

@@ -14,7 +14,7 @@ import { parseTableData4 } from '../../../utils/utils';
 
 import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
-import { numberWithSpaces, MONTHS, HEADER_MONTHS } from '../../../utils/utils';
+import { numberWithSpaces, HEADER_MONTHS } from '../../../utils/utils';
 import CustomSelect from '../../custom-select';
 
 function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
@@ -58,7 +58,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
       </Box>
 
       {TABLE_DATA.filter((value) => {
-        return value[3]?.[0]?.projectType === category;
+        return value[0]?.[0]?.projectType === category;
       }).map((rowEntry) => (
         <TableContainer
           sx={{
@@ -101,48 +101,17 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
               </TableRow>
             </TableHead>
             {rowEntry.map((row) => {
-              const amountsRow = row?.find(({ month }) => month === 'amounts');
-
+              const amountsRow = row?.find(({ month }) => month === 'Сумма');
+              console.log({ amountsRow });
               if (!row) return;
-              if (row[0]?.projectName === 'personal')
+              if (row[0]?.projectName === 'Сотрудники')
                 return <PersonalTable data={row} />;
-              if (row[0]?.projectName === 'amounts')
+              if (row[0]?.projectName === 'Итого')
                 return <AmountsTable data={row} />;
 
               return (
-                // <Table
-                //   stickyHeader
-                //   size='medium'
-                //   sx={{
-                //     tableLayout: 'fixed',
-                //     width: '100%',
-                //     margin: '0 auto',
-                //     '& .MuiTableCell-root:first-of-type': {
-                //       width: '250px',
-                //     },
-                //   }}
-                // >
                 <>
                   <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                    <TableRow>
-                      {/* <TableCell></TableCell>
-                      {HEADER_MONTHS.map((month) => (
-                        <TableCell key={month}>
-                          <Typography
-                            sx={{
-                              fontWeight: '700',
-                              fontSize: '18px',
-                              overflowX: 'hidden',
-                              whiteSpace: 'nowrap',
-                              textOverflow: 'ellipsis',
-                              '&:last-child td': { color: 'transparent' },
-                            }}
-                          >
-                            {month}
-                          </Typography>
-                        </TableCell>
-                      ))} */}
-                    </TableRow>
                     <TableRow>
                       <TableCell key={row[0]?.projectName}>
                         <Typography
@@ -158,7 +127,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                         </Typography>
                       </TableCell>
 
-                      {MONTHS.map((cell) => (
+                      {HEADER_MONTHS.map((cell) => (
                         <TableCell component='th' key={cell}>
                           <Typography
                             sx={{
@@ -179,7 +148,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
 
                   <TableBody>
                     {row.map((tableRow) => {
-                      if (tableRow.month === 'amounts') return;
+                      if (tableRow.month === 'Сумма') return;
                       return (
                         <TableRow>
                           <TableCell
@@ -193,8 +162,9 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                             {tableRow.month}
                           </TableCell>
 
-                          {MONTHS.map((month) => {
+                          {HEADER_MONTHS.map((month) => {
                             const val = tableRow?.value?.[month];
+
                             return (
                               <TableCell key={month}>
                                 {val ? `${numberWithSpaces(val)} р.` : ''}
@@ -207,7 +177,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
 
                     <TableRow>
                       <TableCell></TableCell>
-                      {MONTHS.map((month) => {
+                      {HEADER_MONTHS.map((month) => {
                         const val = amountsRow?.value[month];
 
                         if (!val) return <TableCell></TableCell>;
@@ -226,7 +196,6 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                     </TableRow>
                   </TableBody>
                 </>
-                // </Table>
               );
             })}
           </Table>

@@ -3,8 +3,6 @@ export const parseTableData = (data) => {
     .map(([month, dataAuthors]) => {
       if (!dataAuthors) return;
 
-      console.log({ dataAuthors });
-
       const dataAuthorsMutated = Object.entries(dataAuthors)
         .sort((a) => {
           return a[0] === 'Итого' ? 1 : -1;
@@ -144,9 +142,12 @@ export const parseTableData5 = (data) => {
       return false;
     })
     .map(([projectType, dataProject]) => {
+      console.log(Object.entries(dataProject), 'dsfdf');
+
       const dataAuthorsMutated = Object.entries(dataProject)
         .sort((a) => {
-          // if (a[0] !== 'Итого') return;
+          console.log({ a });
+          // if (a[0] === 'Всего') return;
           return a[0] === 'Итого' ? 1 : -1;
         })
         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
