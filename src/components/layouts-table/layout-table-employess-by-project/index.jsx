@@ -18,6 +18,12 @@ import {
 import { months } from '../../../utils/constants';
 import { StyledTableRow3 } from '../../../utils/styles';
 
+import {
+  StyledTableCellTableDetailedHeader,
+  StyledTableCellTableDetailed,
+  StyledBoxWithData,
+} from '../../../utils/styles.js';
+
 export default function LayoutEmployeesByProject(props) {
   const { data, title } = props;
 
@@ -93,32 +99,16 @@ export default function LayoutEmployeesByProject(props) {
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <TableRow>
-                <TableCell component='th' sx={{ width: '250px' }}>
-                  <Typography
-                    sx={{
-                      fontWeight: '700',
-                      fontSize: '16px',
-                      overflowX: 'hidden',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    Сотрудники
-                  </Typography>
-                </TableCell>
+                <StyledTableCellTableDetailedHeader
+                  component='th'
+                  sx={{ width: '250px' }}
+                >
+                  Сотрудники
+                </StyledTableCellTableDetailedHeader>
                 {getColumnNames(rowEntry).map((cell, ind) => (
-                  <TableCell component='th' key={ind}>
-                    <Typography
-                      sx={{
-                        fontWeight: '700',
-                        fontSize: '16px',
-                        overflowX: 'hidden',
-                        whiteSpace: 'nowrap',
-                        color: 'black',
-                      }}
-                    >
-                      {cell}
-                    </Typography>
-                  </TableCell>
+                  <StyledTableCellTableDetailedHeader component='th' key={ind}>
+                    {cell}
+                  </StyledTableCellTableDetailedHeader>
                 ))}
               </TableRow>
             </TableHead>
@@ -127,7 +117,7 @@ export default function LayoutEmployeesByProject(props) {
                 return (
                   <>
                     <StyledTableRow3>
-                      <TableCell
+                      <StyledTableCellTableDetailed
                         key={rowProject}
                         sx={{
                           '&:first-of-type': {
@@ -136,22 +126,29 @@ export default function LayoutEmployeesByProject(props) {
                         }}
                       >
                         {rowProject[0].author}
-                      </TableCell>
+                      </StyledTableCellTableDetailed>
                       {getColumnNames(rowEntry).map((columnName, index) => {
                         const project = findProjectByName(
                           columnName,
                           rowProject
                         );
                         return (
-                          <TableCell key={index}>
-                            {project
-                              ? `${project?.hours}ч. ${
-                                  project?.percent !== null
-                                    ? `(${project?.percent}%)`
-                                    : ''
-                                }`
-                              : ''}
-                          </TableCell>
+                          <StyledTableCellTableDetailed key={index}>
+                            {project ? (
+                              <Typography
+                                sx={{ fontSize: '11px' }}
+                              >{`${project?.hours}ч. `}</Typography>
+                            ) : (
+                              ''
+                            )}
+                            {project && project?.percent !== null ? (
+                              <Typography
+                                sx={{ fontSize: '11px' }}
+                              >{`(${project?.percent}%.)`}</Typography>
+                            ) : (
+                              ''
+                            )}
+                          </StyledTableCellTableDetailed>
                         );
                       })}
                     </StyledTableRow3>

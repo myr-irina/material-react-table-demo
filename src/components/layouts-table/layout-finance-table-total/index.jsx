@@ -18,33 +18,10 @@ import {
   parseTableData3,
 } from '../../../utils/utils';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    fontSize: 12,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 11,
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-  '&:last-child td': {
-    backgroundColor: 'lightGrey',
-    fontWeight: 600,
-  },
-}));
+import {
+  StyledTableCellTotalTable,
+  StyledTableRowTotalTable,
+} from '../../../utils/styles';
 
 function LayoutFinanceTableTotal({ data, isLoading, title }) {
   const filteredData = parseTableData3(data).map((projectType) =>
@@ -103,7 +80,7 @@ function LayoutFinanceTableTotal({ data, isLoading, title }) {
         >
           <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
             <TableRow>
-              <StyledTableCell component='th'>
+              <StyledTableCellTotalTable component='th'>
                 <Typography
                   sx={{
                     fontWeight: '700',
@@ -115,21 +92,12 @@ function LayoutFinanceTableTotal({ data, isLoading, title }) {
                 >
                   Название
                 </Typography>
-              </StyledTableCell>
+              </StyledTableCellTotalTable>
 
               {getColumnNames2(filteredData).map((cell) => (
-                <StyledTableCell component='th'>
-                  <Typography
-                    sx={{
-                      fontWeight: '700',
-                      fontSize: '11px',
-                      overflowX: 'hidden',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {cell}
-                  </Typography>
-                </StyledTableCell>
+                <StyledTableCellTotalTable component='th'>
+                  {cell}
+                </StyledTableCellTotalTable>
               ))}
             </TableRow>
           </TableHead>
@@ -137,8 +105,8 @@ function LayoutFinanceTableTotal({ data, isLoading, title }) {
             {filteredData.map((rowProject) => {
               return (
                 <>
-                  <StyledTableRow hover>
-                    <StyledTableCell
+                  <StyledTableRowTotalTable hover>
+                    <StyledTableCellTotalTable
                       sx={{
                         '&:first-of-type': {
                           textAlign: 'right',
@@ -146,7 +114,7 @@ function LayoutFinanceTableTotal({ data, isLoading, title }) {
                       }}
                     >
                       {rowProject[0][0].projectType}
-                    </StyledTableCell>
+                    </StyledTableCellTotalTable>
                     {getColumnNames2(filteredData).map((columnName) => {
                       const project = findProjectByName2(
                         columnName,
@@ -154,14 +122,14 @@ function LayoutFinanceTableTotal({ data, isLoading, title }) {
                       );
 
                       return (
-                        <StyledTableCell>
+                        <StyledTableCellTotalTable>
                           {project && project.value !== null
                             ? `${numberWithSpaces(project?.value)} р.`
                             : ''}
-                        </StyledTableCell>
+                        </StyledTableCellTotalTable>
                       );
                     })}
-                  </StyledTableRow>
+                  </StyledTableRowTotalTable>
                 </>
               );
             })}

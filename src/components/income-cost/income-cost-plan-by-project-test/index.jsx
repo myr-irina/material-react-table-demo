@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import data from '../../../json/bdr-by-project-plan.json';
+import data2 from '../../../json/response_1684929151130.json';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
 import { getBudgetByProjectPlan } from '../../../utils/api-requests';
 

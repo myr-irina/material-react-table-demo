@@ -85,12 +85,6 @@ const CustomSwitch = styled((props) => (
 const PersonalTable = ({ data }) => {
   const [checked, setChecked] = useState(true);
 
-  // const MONTHS_ARRAY = MONTHS.filter((month) => month !== 'amount');
-
-  // const months = [
-  //   ...Object.keys(data.find((row) => row.month === 'Итого').value),
-  // ].filter((key) => key !== 'amount');
-
   const totals = ['amount_hours', 'amount_salary'];
 
   const amountsRow = data.find(({ month }) => month === 'Итого');
@@ -106,9 +100,7 @@ const PersonalTable = ({ data }) => {
     // >
     <>
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-        <TableRow
-        // sx={{ '&:first-child td, &:first-child th': { width: '250px' } }}
-        >
+        <TableRow>
           <TableCell
             sx={{
               width: '250px',
@@ -159,7 +151,6 @@ const PersonalTable = ({ data }) => {
               </Typography>
             </TableCell>
           ))}
-          {/* <TableCell sx={{ fontWeight: 'bold' }}>Итого</TableCell> */}
         </TableRow>
       </TableHead>
       <TableBody>
@@ -193,20 +184,6 @@ const PersonalTable = ({ data }) => {
                   </TableCell>
                 );
               })}
-              {totals.map((sum) => {
-                const val = rowData.find(([monthKey]) => monthKey === sum);
-
-                if (!val) return;
-                return (
-                  <TableCell>
-                    {val[0] === 'amount_hours' && checked
-                      ? `${val[1]} ч.`
-                      : val[0] === 'amount_salary' && !checked
-                      ? `${numberWithSpaces(Math.trunc(val[1]))} р.`
-                      : ''}
-                  </TableCell>
-                );
-              })}
             </TableRow>
           );
         })}
@@ -236,7 +213,6 @@ const PersonalTable = ({ data }) => {
         </TableRow>
       </TableBody>
     </>
-    // </Table>
   );
 };
 

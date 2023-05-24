@@ -10,19 +10,10 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { ExportToCsv } from 'export-to-csv';
 
 // import data from '../../../json/employees-general-fact.json';
+import { StyledBoxWithData } from '../../../utils/styles';
 
 export default function LayoutPlainTable(props) {
   const { data, title, header, isLoading } = props;
-
-  const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
-    borderRadius: '0.25rem',
-    color: 'black',
-    fontSize: '11px',
-    padding: '0.2rem',
-    fontWeight: 600,
-    display: 'flex',
-    flexDirection: 'column',
-  }));
 
   const columns = useMemo(
     () => [
@@ -368,24 +359,24 @@ export default function LayoutPlainTable(props) {
       enableHiding={false}
       enableDensityToggle={false}
       state={{ isLoading }}
-      renderTopToolbarCustomActions={() => {
-        return (
-          <>
-            <Button
-              color='primary'
-              onClick={handleExportData}
-              startIcon={<FileDownloadIcon />}
-              variant='contained'
-              mt='15px'
-            >
-              Export Data
-            </Button>
-            <Typography variant='h5' mb='25px'>
-              {title}
-            </Typography>
-          </>
-        );
-      }}
+      // renderTopToolbarCustomActions={() => {
+      //   return (
+      //     <>
+      //       <Button
+      //         color='primary'
+      //         onClick={handleExportData}
+      //         startIcon={<FileDownloadIcon />}
+      //         variant='contained'
+      //         mt='15px'
+      //       >
+      //         Export Data
+      //       </Button>
+      //       <Typography variant='h5' mb='25px'>
+      //         {title}
+      //       </Typography>
+      //     </>
+      //   );
+      // }}
     />
   );
 }

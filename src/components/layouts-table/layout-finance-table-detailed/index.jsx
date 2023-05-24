@@ -18,28 +18,10 @@ import {
   numberWithSpaces,
 } from '../../../utils/utils';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 11,
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-  '&:last-child td': {
-    backgroundColor: 'lightGrey',
-    fontWeight: 600,
-  },
-}));
+import {
+  StyledTableCellTableDetailed,
+  StyledTableRowTableDetailed,
+} from '../../../utils/styles';
 
 export default function LayoutFinanceTableDetailed(props) {
   const { data, categories } = props;
@@ -135,8 +117,8 @@ export default function LayoutFinanceTableDetailed(props) {
                 {rowEntry.map((rowProject) => {
                   return (
                     <>
-                      <StyledTableRow>
-                        <StyledTableCell
+                      <StyledTableRowTableDetailed>
+                        <StyledTableCellTableDetailed
                           key={rowProject[0].projectName}
                           sx={{
                             '&:first-of-type': {
@@ -145,7 +127,7 @@ export default function LayoutFinanceTableDetailed(props) {
                           }}
                         >
                           {rowProject[0].projectName}
-                        </StyledTableCell>
+                        </StyledTableCellTableDetailed>
                         {getColumnNames2(rowEntry).map((columnName) => {
                           const project = findProjectByName2(
                             columnName,
@@ -153,14 +135,14 @@ export default function LayoutFinanceTableDetailed(props) {
                           );
 
                           return (
-                            <StyledTableCell key={columnName}>
+                            <StyledTableCellTableDetailed key={columnName}>
                               {project && project.value !== null
                                 ? `${numberWithSpaces(project?.value)} р.`
                                 : ''}
-                            </StyledTableCell>
+                            </StyledTableCellTableDetailed>
                           );
                         })}
-                      </StyledTableRow>
+                      </StyledTableRowTableDetailed>
                     </>
                   );
                 })}

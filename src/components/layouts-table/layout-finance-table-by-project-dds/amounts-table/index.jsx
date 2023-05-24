@@ -13,31 +13,16 @@ import {
   findProjectByName2,
 } from '../../../../utils/utils';
 
+import { StyledTableCellTableDetailedHeader } from '../../../../utils/styles';
+
 const AmountsTable = ({ data }) => {
   return (
-    // <Table
-    //   sx={{
-    //     tableLayout: 'fixed',
-    //     '& .MuiTableCell-root:first-of-type': {
-    //       width: '250px',
-    //     },
-    //   }}
-    // >
     <>
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <TableRow>
-          <TableCell>
-            <Typography
-              sx={{
-                fontWeight: '700',
-                fontSize: '16px',
-                overflowX: 'hidden',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Общая сумма
-            </Typography>
-          </TableCell>
+          <StyledTableCellTableDetailedHeader>
+            Общая сумма
+          </StyledTableCellTableDetailedHeader>
           {MONTHS.map((cell) => (
             <TableCell component='th' key={cell}>
               <Typography
@@ -83,7 +68,6 @@ const AmountsTable = ({ data }) => {
         </TableRow>
       </TableBody>
     </>
-    // </Table>
   );
 };
 
