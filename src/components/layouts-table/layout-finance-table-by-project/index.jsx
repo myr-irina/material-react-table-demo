@@ -56,6 +56,9 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
           inputLabel='Категория'
         />
       </Box>
+      <Typography mb={4} variant='h5' gutterBottom>
+        {title}
+      </Typography>
 
       {TABLE_DATA.filter((value) => {
         return value[3]?.[1]?.projectType === category;

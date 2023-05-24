@@ -23,7 +23,13 @@ function CashFlowTotalsPlan() {
   }, []);
 
   if (totalPalnData.length === 0) return;
-  return <LayoutFinanceTableTotal isLoading={isLoading} data={totalPalnData} />;
+  return (
+    <LayoutFinanceTableTotal
+      isLoading={isLoading}
+      data={totalPalnData}
+      title='Таблица ДДС (план)'
+    />
+  );
 }
 
 export default CashFlowTotalsPlan;

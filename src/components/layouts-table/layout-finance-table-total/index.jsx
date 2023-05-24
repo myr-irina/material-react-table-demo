@@ -46,7 +46,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function LayoutFinanceTableTotal({ data, isLoading }) {
+function LayoutFinanceTableTotal({ data, isLoading, title }) {
   const filteredData = parseTableData3(data).map((projectType) =>
     projectType.filter((item) =>
       Object.values(item).some(
@@ -77,97 +77,102 @@ function LayoutFinanceTableTotal({ data, isLoading }) {
       <CircularProgress size={24} color='inherit' />
     </Box>
   ) : (
-    <TableContainer
-      component={Paper}
-      sx={{
-        width: '100%',
-        margin: '2rem auto',
-        overflowX: 'initial',
-      }}
-    >
-      <Table
-        stickyHeader
+    <>
+      <Typography variant='h5' gutterBottom mb={4}>
+        {title}
+      </Typography>
+      <TableContainer
+        component={Paper}
         sx={{
-          tableLayout: 'fixed',
-          margin: '0 auto',
           width: '100%',
-          '& .MuiTableCell-root:first-of-type': {
-            width: '250px',
-          },
+          margin: '2rem auto',
+          overflowX: 'initial',
         }}
-        size='small'
       >
-        <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-          <TableRow>
-            <StyledTableCell component='th'>
-              <Typography
-                sx={{
-                  fontWeight: '700',
-                  fontSize: '12px',
-                  overflowX: 'hidden',
-                  whiteSpace: 'nowrap',
-                  textOverflow: 'ellipsis',
-                }}
-              >
-                Название
-              </Typography>
-            </StyledTableCell>
-
-            {getColumnNames2(filteredData).map((cell) => (
+        <Table
+          stickyHeader
+          sx={{
+            tableLayout: 'fixed',
+            margin: '0 auto',
+            width: '100%',
+            '& .MuiTableCell-root:first-of-type': {
+              width: '250px',
+            },
+          }}
+          size='small'
+        >
+          <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+            <TableRow>
               <StyledTableCell component='th'>
                 <Typography
                   sx={{
                     fontWeight: '700',
-                    fontSize: '11px',
+                    fontSize: '12px',
                     overflowX: 'hidden',
                     whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
                   }}
                 >
-                  {cell}
+                  Название
                 </Typography>
               </StyledTableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {filteredData.map((rowProject) => {
-            return (
-              <>
-                <StyledTableRow hover>
-                  <StyledTableCell
+
+              {getColumnNames2(filteredData).map((cell) => (
+                <StyledTableCell component='th'>
+                  <Typography
                     sx={{
-                      '&:first-of-type': {
-                        textAlign: 'right',
-                      },
+                      fontWeight: '700',
+                      fontSize: '11px',
+                      overflowX: 'hidden',
+                      whiteSpace: 'nowrap',
                     }}
                   >
-                    {rowProject[0][0].projectType}
-                  </StyledTableCell>
-                  {getColumnNames2(filteredData).map((columnName) => {
-                    const project = findProjectByName2(
-                      columnName,
-                      rowProject[0]
-                    );
+                    {cell}
+                  </Typography>
+                </StyledTableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredData.map((rowProject) => {
+              return (
+                <>
+                  <StyledTableRow hover>
+                    <StyledTableCell
+                      sx={{
+                        '&:first-of-type': {
+                          textAlign: 'right',
+                        },
+                      }}
+                    >
+                      {rowProject[0][0].projectType}
+                    </StyledTableCell>
+                    {getColumnNames2(filteredData).map((columnName) => {
+                      const project = findProjectByName2(
+                        columnName,
+                        rowProject[0]
+                      );
 
-                    return (
-                      <StyledTableCell
-                        sx={{
-                          maxWidth: '60px',
-                        }}
-                      >
-                        {project && project.value !== null
-                          ? `${numberWithSpaces(project?.value)} р.`
-                          : ''}
-                      </StyledTableCell>
-                    );
-                  })}
-                </StyledTableRow>
-              </>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                      return (
+                        <StyledTableCell
+                          sx={{
+                            maxWidth: '60px',
+                          }}
+                        >
+                          {project && project.value !== null
+                            ? `${numberWithSpaces(project?.value)} р.`
+                            : ''}
+                        </StyledTableCell>
+                      );
+                    })}
+                  </StyledTableRow>
+                </>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
 

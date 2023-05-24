@@ -26,7 +26,11 @@ function IncomeCostTotalsFact() {
 
   return (
     budgetFact && (
-      <LayoutFinanceTableTotal isLoading={isLoading} data={budgetFact} />
+      <LayoutFinanceTableTotal
+        isLoading={isLoading}
+        data={budgetFact}
+        title='Таблица БДР (факт)'
+      />
     )
   );
 }

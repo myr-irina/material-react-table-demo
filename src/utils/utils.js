@@ -223,7 +223,7 @@ export const getColumnNames = (data) => {
   });
 
   const headers = [...new Set(result)];
-  const fromIndex = headers.indexOf('amount_values');
+  const fromIndex = headers.indexOf('Всего');
   const item = headers.splice(fromIndex, 1)[0];
   headers.splice(headers.length, 1, item);
   return headers;

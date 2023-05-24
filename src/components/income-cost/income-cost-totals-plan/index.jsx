@@ -24,7 +24,13 @@ function IncomeCostTotalsPlan() {
 
   if (budgetPlan.length === 0) return;
 
-  return <LayoutFinanceTableTotal isLoading={isLoading} data={budgetPlan} />;
+  return (
+    <LayoutFinanceTableTotal
+      isLoading={isLoading}
+      data={budgetPlan}
+      title='Таблица БДР (план)'
+    />
+  );
 }
 
 export default IncomeCostTotalsPlan;

@@ -37,13 +37,12 @@ function CashFlowPlanByProject2() {
 
   if (cashFlowPlanByProject.length === 0) return;
 
-
-
   return (
     <LayoutFinanceTableByProject
       isLoading={isLoading}
       columns={columns}
       data={cashFlowPlanByProject}
+      title='Таблица ДДС (план по проектам)'
     />
   );
 }

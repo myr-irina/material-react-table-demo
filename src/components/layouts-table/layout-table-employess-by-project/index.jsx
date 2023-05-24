@@ -19,7 +19,7 @@ import { months } from '../../../utils/constants';
 import { StyledTableRow3 } from '../../../utils/constants';
 
 export default function LayoutEmployeesByProject(props) {
-  const { data } = props;
+  const { data, title } = props;
 
   const TABLE_DATA = parseTableData(data);
   // console.log({ TABLE_DATA });
@@ -49,6 +49,7 @@ export default function LayoutEmployeesByProject(props) {
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'flex-start',
+          alignItems: 'center',
           width: '100%',
         }}
       >
@@ -65,6 +66,9 @@ export default function LayoutEmployeesByProject(props) {
           inputLabel='Год'
         />
       </Box>
+      <Typography mb={4} variant='h5' gutterBottom>
+        {title}
+      </Typography>
 
       {TABLE_DATA.filter((value) => {
         return value[0]?.[0]?.month === month;

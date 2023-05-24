@@ -28,6 +28,7 @@ function IncomeCostPlanByProject2() {
       <LayoutFinanceTableByProject
         isLoading={isLoading}
         data={budgetPlanByProject}
+        title='Таблица БДР (план по проектам)'
       />
     )
   );

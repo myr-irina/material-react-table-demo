@@ -198,16 +198,16 @@ export default function NavBar() {
             </MenuItem> */}
 
             <MenuItem component={RouterLink} to={'/dds-totals-plan-split-test'}>
-              ТЕСТ Таблица ДДС (План)
+              Таблица ДДС (План)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/dds-totals-fact-split-test'}>
-              ТЕСТ Таблица ДДС (Факт)
+              Таблица ДДС (Факт)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/dds-plan-by-project-test'}>
-              ТЕСТ Таблица ДДС (План по проектам)
+              Таблица ДДС (План по проектам)
             </MenuItem>
             <MenuItem component={RouterLink} to={'/dds-fact-by-project-test'}>
-              ТЕСТ Таблица ДДС (Факт по проектам)
+              Таблица ДДС (Факт по проектам)
             </MenuItem>
           </Menu>
         </Box>

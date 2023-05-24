@@ -42,6 +42,7 @@ function CashFlowFactByProject2() {
       isLoading={isLoading}
       columns={columns}
       data={cashFlowFactByProject}
+      title='Таблица ДДС (факт по проектам)'
     />
   );
 }

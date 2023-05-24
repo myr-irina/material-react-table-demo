@@ -39,6 +39,7 @@ function EmployeesByProjectPlan2() {
     <LayoutTableEmployeesByProject
       isLoading={isLoading}
       data={projectPlanHours}
+      title='Таблица рабочего времени (план по проектам)'
     />
   );
 }

@@ -26,7 +26,11 @@ function CashFlowTotalsFact() {
 
   return (
     totalData && (
-      <LayoutFinanceTableTotal isLoading={isLoading} data={totalData} />
+      <LayoutFinanceTableTotal
+        isLoading={isLoading}
+        data={totalData}
+        title='Таблица ДДС (факт)'
+      />
     )
   );
 }
