@@ -154,11 +154,7 @@ function LayoutFinanceTableTotal({ data, isLoading, title }) {
                       );
 
                       return (
-                        <StyledTableCell
-                          sx={{
-                            maxWidth: '60px',
-                          }}
-                        >
+                        <StyledTableCell>
                           {project && project.value !== null
                             ? `${numberWithSpaces(project?.value)} р.`
                             : ''}

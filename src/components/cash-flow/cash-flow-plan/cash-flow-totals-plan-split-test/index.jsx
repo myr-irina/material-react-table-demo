@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import LayoutCollapsedTableBdr from '../../../layouts-table/layout-collapsed-table-bdr';
+
 import data from './../../../../json/cash-flow-general-plan.json';
 import LayoutFinanceTableDetailed from '../../../layouts-table/layout-finance-table-detailed';
 

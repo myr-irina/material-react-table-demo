@@ -16,7 +16,7 @@ import {
 } from '../../../utils/utils';
 
 import { months } from '../../../utils/constants';
-import { StyledTableRow3 } from '../../../utils/constants';
+import { StyledTableRow3 } from '../../../utils/styles';
 
 export default function LayoutEmployeesByProject(props) {
   const { data, title } = props;

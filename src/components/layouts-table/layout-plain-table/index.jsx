@@ -17,6 +17,7 @@ export default function LayoutPlainTable(props) {
   const StyledBoxWithData = styled(Box)(({ theme, customColor }) => ({
     borderRadius: '0.25rem',
     color: 'black',
+    fontSize: '11px',
     padding: '0.2rem',
     fontWeight: 600,
     display: 'flex',
@@ -38,6 +39,7 @@ export default function LayoutPlainTable(props) {
             rel='noopener noreferrer'
             to={row.original['Связанные ссылки'] ?? '#'}
             underline='none'
+            sx={{ fontSize: '11px' }}
           >
             {cell.getValue()}
           </MuiLink>
