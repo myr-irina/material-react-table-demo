@@ -29,41 +29,47 @@ const PersonalTable = ({ data }) => {
     <>
       <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <TableRow>
-          <StyledTableCellTableDetailedHeader
+          <CustomSwitch
+            sx={{ ml: 2, mt: 2 }}
+            checked={!checked}
+            onChange={() => setChecked(!checked)}
+            inputProps={{ 'aria-label': 'controlled' }}
+          />
+        </TableRow>
+        <TableRow>
+          <TableCell
             sx={{
-              width: '250px',
+              fontWeight: '700',
+              fontSize: '12px',
+              overflowX: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
             }}
-            component='th'
           >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flexStart',
-              }}
-            >
-              <CustomSwitch
-                sx={{ m: 2 }}
-                checked={!checked}
-                onChange={() => setChecked(!checked)}
-                inputProps={{ 'aria-label': 'controlled' }}
-              />
-              Сотрудники
-            </Box>
-          </StyledTableCellTableDetailedHeader>
+            Сотрудники
+          </TableCell>
 
           {MONTHS.map((month) => {
             const val = amountsRow.value[month];
 
             if (!val) return <TableCell></TableCell>;
             return (
-              <StyledTableCellTableDetailedBold key={month}>
+              <TableCell
+                sx={{
+                  fontWeight: '700',
+                  fontSize: '12px',
+                  overflowX: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                }}
+                key={month}
+              >
                 {val && val !== null && checked
                   ? `${val.hours} ч.`
                   : !checked
                   ? `${numberWithSpaces(Math.trunc(val.salary))} р.`
                   : ''}
-              </StyledTableCellTableDetailedBold>
+              </TableCell>
             );
           })}
 
@@ -128,32 +134,9 @@ const PersonalTable = ({ data }) => {
           );
         })}
 
-        <TableRow>
+        {/* <TableRow>
           <TableCell colSpan={14}></TableCell>
-          {/* <TableCell
-            sx={{
-              minWidth: '250px',
-              maxWidth: '250px',
-              width: '250px',
-            }}
-          ></TableCell>
-          {MONTHS.map((month) => {
-            const val = amountsRow.value[month];
-
-            console.log({ val });
-
-            if (!val) return <TableCell></TableCell>;
-            return (
-              <StyledTableCellTableDetailedBold key={month}>
-                {val && val !== null && checked
-                  ? `${val.hours} ч.`
-                  : !checked
-                  ? `${numberWithSpaces(Math.trunc(val.salary))} р.`
-                  : ''}
-              </StyledTableCellTableDetailedBold>
-            );
-          })} */}
-        </TableRow>
+        </TableRow> */}
       </TableBody>
     </>
   );

@@ -23,27 +23,37 @@ const AmountsTable = ({ data }) => {
     <>
       <TableBody sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <TableRow>
-          <Typography
-            sx={{
-              fontWeight: '700',
-              fontSize: '12px',
-              overflowX: 'hidden',
-              whiteSpace: 'nowrap',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            Общая сумма
-          </Typography>
+          <TableCell>
+            <Typography
+              sx={{
+                fontWeight: '700',
+                fontSize: '12px',
+                overflowX: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              Общая сумма
+            </Typography>
+          </TableCell>
 
           {MONTHS.map((cell) => {
             const val = findProjectByName2(cell, data);
 
             return (
-              <StyledTableCellTableDetailedBold>
+              <TableCell
+                sx={{
+                  fontWeight: '700',
+                  fontSize: '12px',
+                  overflowX: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                }}
+              >
                 {val && val.value !== null
                   ? `${numberWithSpaces(val.value)} р.`
                   : ''}
-              </StyledTableCellTableDetailedBold>
+              </TableCell>
             );
           })}
         </TableRow>
