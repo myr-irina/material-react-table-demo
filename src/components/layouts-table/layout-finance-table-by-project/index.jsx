@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/material';
+import Paper from '@mui/material/Paper';
 
 import { parseTableData4 } from '../../../utils/utils';
 // import { categories } from '../../../utils/constants';
@@ -39,7 +40,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
   const categories = getData(arrKeys, arrArrs);
 
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
-  // console.log({ TABLE_DATA });
+
   const [category, setCategory] = React.useState(categories[0].label);
 
   const handleCategoryChange = (event) => {
@@ -48,6 +49,9 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
 
   return (
     <>
+      <Typography mb={4} variant='h5' gutterBottom>
+        {title}
+      </Typography>
       <Box
         sx={{
           display: 'flex',
@@ -63,14 +67,12 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
           inputLabel='Категория'
         />
       </Box>
-      <Typography mb={4} variant='h5' gutterBottom>
-        {title}
-      </Typography>
 
       {TABLE_DATA.filter((value) => {
         return value[3]?.[1]?.projectType === category;
       }).map((rowEntry) => (
         <TableContainer
+          component={Paper}
           sx={{
             width: '100%',
             margin: '0 auto',
@@ -83,7 +85,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
             sx={{
               tableLayout: 'fixed',
               width: '100%',
-              margin: '0 auto',
+              margin: '0 auto 10px',
               '& .MuiTableCell-root:first-of-type': {
                 width: '250px',
               },
@@ -110,46 +112,72 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
 
               return (
                 <>
-                  <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                    <TableRow>
-                      <StyledTableCellTableDetailedHeader
-                        key={row[0]?.projectName}
+                  {/* <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}> */}
+                  <TableRow>
+                    <TableCell>
+                      <Typography
+                        sx={{
+                          fontWeight: '700',
+                          fontSize: '12px',
+                          overflowX: 'hidden',
+                          whiteSpace: 'nowrap',
+                          textOverflow: 'ellipsis',
+                        }}
                       >
                         {row[0]?.projectName}
-                      </StyledTableCellTableDetailedHeader>
+                      </Typography>
+                    </TableCell>
 
-                      {HEADER_MONTHS.map((cell) => (
-                        <TableCell component='th' key={cell}>
+                    {HEADER_MONTHS.map((month) => {
+                      const val = amountsRow?.value[month];
+
+                      if (!val) return <TableCell></TableCell>;
+                      return (
+                        <TableCell key={month}>
                           <Typography
                             sx={{
                               fontWeight: '700',
-                              fontSize: '16px',
+                              fontSize: '12px',
                               overflowX: 'hidden',
                               whiteSpace: 'nowrap',
                               textOverflow: 'ellipsis',
-                              color: 'transparent',
                             }}
                           >
-                            {cell}
+                            {val && val !== null
+                              ? `${numberWithSpaces(Math.trunc(val))} р.`
+                              : ''}
                           </Typography>
                         </TableCell>
-                      ))}
-                    </TableRow>
-                  </TableHead>
+                      );
+                    })}
+
+                    {/* <TableCell colSpan={13}></TableCell> */}
+
+                    {/* {HEADER_MONTHS.map((cell) => (
+                      <TableCell key={cell}>
+                        <Typography
+                          sx={{
+                            fontWeight: '700',
+                            fontSize: '16px',
+                            overflowX: 'hidden',
+                            whiteSpace: 'nowrap',
+                            textOverflow: 'ellipsis',
+                            color: 'transparent',
+                          }}
+                        >
+                          {cell}
+                        </Typography>
+                      </TableCell>
+                    ))} */}
+                  </TableRow>
+                  {/* </TableHead> */}
 
                   <TableBody>
                     {row.map((tableRow) => {
                       if (tableRow.month === 'Итого') return;
                       return (
                         <TableRow>
-                          <StyledTableCellTableDetailed
-                            sx={{
-                              '&:first-of-type': {
-                                textAlign: 'right',
-                              },
-                            }}
-                            key={tableRow.month}
-                          >
+                          <StyledTableCellTableDetailed key={tableRow.month}>
                             {tableRow.month}
                           </StyledTableCellTableDetailed>
 
@@ -166,7 +194,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                       );
                     })}
 
-                    <TableRow>
+                    {/* <TableRow>
                       <TableCell></TableCell>
                       {HEADER_MONTHS.map((month) => {
                         const val = amountsRow?.value[month];
@@ -180,7 +208,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                           </StyledTableCellTableDetailedBold>
                         );
                       })}
-                    </TableRow>
+                    </TableRow> */}
                   </TableBody>
                 </>
               );

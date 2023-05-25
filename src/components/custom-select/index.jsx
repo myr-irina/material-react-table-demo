@@ -12,7 +12,7 @@ export default function CustomSelect({
   inputLabel,
 }) {
   return (
-    <Box sx={{ minWidth: 120 }} mb={8}>
+    <Box sx={{ minWidth: 120 }} mb={4}>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id='select-label'>{inputLabel}</InputLabel>
         <Select

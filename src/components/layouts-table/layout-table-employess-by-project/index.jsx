@@ -50,6 +50,9 @@ export default function LayoutEmployeesByProject(props) {
 
   return (
     <>
+      <Typography mb={4} variant='h5' gutterBottom>
+        {title}
+      </Typography>
       <Box
         sx={{
           display: 'flex',
@@ -72,9 +75,6 @@ export default function LayoutEmployeesByProject(props) {
           inputLabel='Год'
         />
       </Box>
-      <Typography mb={4} variant='h5' gutterBottom>
-        {title}
-      </Typography>
 
       {TABLE_DATA.filter((value) => {
         return value[0]?.[0]?.month === month;
@@ -84,6 +84,7 @@ export default function LayoutEmployeesByProject(props) {
             width: '100%',
             margin: '0 auto',
             overflowX: 'initial',
+            marginBottom: '10px',
           }}
         >
           <Table
@@ -92,17 +93,20 @@ export default function LayoutEmployeesByProject(props) {
               tableLayout: 'fixed',
               margin: '0 auto',
               width: '100%',
+              '& .MuiTableCell-root': {
+                padding: '5px',
+              },
               '& .MuiTableCell-root:first-of-type': {
                 width: '250px',
+              },
+              '& .MuiTableRow-root:last-of-type': {
+                // padding: '7px',
               },
             }}
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
               <TableRow>
-                <StyledTableCellTableDetailedHeader
-                  component='th'
-                  sx={{ width: '250px' }}
-                >
+                <StyledTableCellTableDetailedHeader component='th'>
                   Сотрудники
                 </StyledTableCellTableDetailedHeader>
                 {getColumnNames(rowEntry).map((cell, ind) => (
@@ -117,14 +121,7 @@ export default function LayoutEmployeesByProject(props) {
                 return (
                   <>
                     <StyledTableRow3>
-                      <StyledTableCellTableDetailed
-                        key={rowProject}
-                        sx={{
-                          '&:first-of-type': {
-                            textAlign: 'right',
-                          },
-                        }}
-                      >
+                      <StyledTableCellTableDetailed key={rowProject}>
                         {rowProject[0].author}
                       </StyledTableCellTableDetailed>
                       {getColumnNames(rowEntry).map((columnName, index) => {
@@ -133,10 +130,16 @@ export default function LayoutEmployeesByProject(props) {
                           rowProject
                         );
                         return (
-                          <StyledTableCellTableDetailed key={index}>
+                          <TableCell key={index}>
                             {project ? (
                               <Typography
-                                sx={{ fontSize: '11px' }}
+                                sx={{
+                                  fontSize: '11px',
+                                  '&:last-of-type': {
+                                    fontWeight: 600,
+                                    fontSize: 12,
+                                  },
+                                }}
                               >{`${project?.hours}ч. `}</Typography>
                             ) : (
                               ''
@@ -148,7 +151,7 @@ export default function LayoutEmployeesByProject(props) {
                             ) : (
                               ''
                             )}
-                          </StyledTableCellTableDetailed>
+                          </TableCell>
                         );
                       })}
                     </StyledTableRow3>

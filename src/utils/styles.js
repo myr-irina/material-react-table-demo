@@ -37,7 +37,7 @@ export const StyledTableRow2 = styled(TableRow)(({ theme }) => ({
 }));
 
 export const StyledTableRow3 = styled(TableRow)(({ theme }) => ({
-  '&:last-child td': {
+  '&:last-of-type > td': {
     backgroundColor: theme.palette.action.hover,
     fontWeight: 600,
     fontSize: 12,
@@ -97,6 +97,9 @@ export const StyledTableCellTableDetailed = styled(TableCell)(({ theme }) => ({
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
+    // '&:nth-of-type(odd)': {
+    //   backgroundColor: theme.palette.action.hover,
+    // },
   },
 }));
 

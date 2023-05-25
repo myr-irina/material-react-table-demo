@@ -78,7 +78,6 @@ export default function LayoutFinanceTableDetailed(props) {
                 margin: '0 auto',
                 width: '100%',
               }}
-              // size='small'
             >
               <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
                 <TableRow>

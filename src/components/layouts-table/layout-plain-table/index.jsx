@@ -359,24 +359,24 @@ export default function LayoutPlainTable(props) {
       enableHiding={false}
       enableDensityToggle={false}
       state={{ isLoading }}
-      // renderTopToolbarCustomActions={() => {
-      //   return (
-      //     <>
-      //       <Button
-      //         color='primary'
-      //         onClick={handleExportData}
-      //         startIcon={<FileDownloadIcon />}
-      //         variant='contained'
-      //         mt='15px'
-      //       >
-      //         Export Data
-      //       </Button>
-      //       <Typography variant='h5' mb='25px'>
-      //         {title}
-      //       </Typography>
-      //     </>
-      //   );
-      // }}
+      renderTopToolbarCustomActions={() => {
+        return (
+          <>
+            {/* <Button
+              color='primary'
+              onClick={handleExportData}
+              startIcon={<FileDownloadIcon />}
+              variant='contained'
+              mt='15px'
+            >
+              Export Data
+            </Button> */}
+            <Typography variant='h5' mb='25px'>
+              {title}
+            </Typography>
+          </>
+        );
+      }}
     />
   );
 }

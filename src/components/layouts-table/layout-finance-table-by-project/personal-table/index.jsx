@@ -52,7 +52,22 @@ const PersonalTable = ({ data }) => {
             </Box>
           </StyledTableCellTableDetailedHeader>
 
-          {MONTHS.map((cell, index) => (
+          {MONTHS.map((month) => {
+            const val = amountsRow.value[month];
+
+            if (!val) return <TableCell></TableCell>;
+            return (
+              <StyledTableCellTableDetailedBold key={month}>
+                {val && val !== null && checked
+                  ? `${val.hours} ч.`
+                  : !checked
+                  ? `${numberWithSpaces(Math.trunc(val.salary))} р.`
+                  : ''}
+              </StyledTableCellTableDetailedBold>
+            );
+          })}
+
+          {/* {MONTHS.map((cell, index) => (
             <TableCell component='th' key={cell}>
               <Typography
                 sx={{
@@ -64,10 +79,10 @@ const PersonalTable = ({ data }) => {
                   color: 'transparent',
                 }}
               >
-                {/* {cell} */}
+                {cell}
               </Typography>
             </TableCell>
-          ))}
+          ))} */}
         </TableRow>
       </TableHead>
       <TableBody>
@@ -77,14 +92,7 @@ const PersonalTable = ({ data }) => {
 
           return (
             <TableRow>
-              <StyledTableCellTableDetailed
-                sx={{
-                  '&:first-of-type': {
-                    textAlign: 'right',
-                  },
-                }}
-                key={row.month}
-              >
+              <StyledTableCellTableDetailed key={row.month}>
                 {row.month}
               </StyledTableCellTableDetailed>
               {MONTHS.map((month) => {
@@ -121,7 +129,8 @@ const PersonalTable = ({ data }) => {
         })}
 
         <TableRow>
-          <TableCell
+          <TableCell colSpan={14}></TableCell>
+          {/* <TableCell
             sx={{
               minWidth: '250px',
               maxWidth: '250px',
@@ -143,7 +152,7 @@ const PersonalTable = ({ data }) => {
                   : ''}
               </StyledTableCellTableDetailedBold>
             );
-          })}
+          })} */}
         </TableRow>
       </TableBody>
     </>
