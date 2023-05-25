@@ -103,7 +103,7 @@ const PersonalTable = ({ data }) => {
               </StyledTableCellTableDetailed>
               {MONTHS.map((month) => {
                 const val = rowData.find(([monthKey]) => monthKey === month);
-                console.log({ val }, 'fdsf');
+            
 
                 if (!val) return <TableCell></TableCell>;
 

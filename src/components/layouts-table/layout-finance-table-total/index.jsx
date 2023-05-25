@@ -106,13 +106,7 @@ function LayoutFinanceTableTotal({ data, isLoading, title }) {
               return (
                 <>
                   <StyledTableRowTotalTable hover>
-                    <StyledTableCellTotalTable
-                      sx={{
-                        '&:first-of-type': {
-                          textAlign: 'right',
-                        },
-                      }}
-                    >
+                    <StyledTableCellTotalTable>
                       {rowProject[0][0].projectType}
                     </StyledTableCellTotalTable>
                     {getColumnNames2(filteredData).map((columnName) => {

@@ -25,11 +25,8 @@ import {
 
 export default function LayoutFinanceTableDetailed(props) {
   const { data, categories } = props;
-  console.log({ data });
 
   const TABLE_DATA = useMemo(() => parseTableData5(data), [data]);
-
-  console.log({ TABLE_DATA });
 
   const [category, setCategory] = React.useState('Доходы');
 
@@ -119,11 +116,6 @@ export default function LayoutFinanceTableDetailed(props) {
                       <StyledTableRowTableDetailed>
                         <StyledTableCellTableDetailed
                           key={rowProject[0].projectName}
-                          sx={{
-                            '&:first-of-type': {
-                              textAlign: 'right',
-                            },
-                          }}
                         >
                           {rowProject[0].projectName}
                         </StyledTableCellTableDetailed>

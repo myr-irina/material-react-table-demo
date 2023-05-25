@@ -100,7 +100,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
             </TableHead>
             {rowEntry.map((row) => {
               const amountsRow = row?.find(({ month }) => month === 'Сумма');
-              console.log({ amountsRow });
+
               if (!row) return;
               if (row[0]?.projectName === 'Сотрудники')
                 return <PersonalTable data={row} />;
@@ -141,14 +141,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                       if (tableRow.month === 'Сумма') return;
                       return (
                         <TableRow>
-                          <StyledTableCellTableDetailed
-                            key={tableRow.month}
-                            sx={{
-                              '&:first-of-type': {
-                                textAlign: 'right',
-                              },
-                            }}
-                          >
+                          <StyledTableCellTableDetailed key={tableRow.month}>
                             {tableRow.month}
                           </StyledTableCellTableDetailed>
 

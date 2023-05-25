@@ -142,12 +142,8 @@ export const parseTableData5 = (data) => {
       return false;
     })
     .map(([projectType, dataProject]) => {
-      console.log(Object.entries(dataProject), 'dsfdf');
-
       const dataAuthorsMutated = Object.entries(dataProject)
         .sort((a) => {
-          console.log({ a });
-          // if (a[0] === 'Всего') return;
           return a[0] === 'Итого' ? 1 : -1;
         })
         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
