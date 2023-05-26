@@ -14,6 +14,7 @@ import {
   StyledTableCellTableDetailed,
   StyledTableCellTableDetailedBold,
 } from '../../../utils/styles';
+import Paper from '@mui/material/Paper';
 
 import { parseTableData4 } from '../../../utils/utils';
 // import { categories } from '../../../utils/constants';
@@ -47,6 +48,9 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
 
   return (
     <>
+      <Typography variant='h5' gutterBottom mb={4}>
+        {title}
+      </Typography>
       <Box
         sx={{
           display: 'flex',
@@ -62,14 +66,12 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
           inputLabel='Категория'
         />
       </Box>
-      <Typography variant='h5' gutterBottom mb={4}>
-        {title}
-      </Typography>
 
       {TABLE_DATA.filter((value) => {
         return value[0]?.[0]?.projectType === category;
       }).map((rowEntry) => (
         <TableContainer
+          component={Paper}
           sx={{
             width: '100%',
             margin: '0 auto',
@@ -82,14 +84,17 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
             sx={{
               tableLayout: 'fixed',
               width: '100%',
-              margin: '0 auto',
+              margin: '0 auto 20px',
+              '& .MuiTableCell-root': {
+                padding: '12px',
+              },
               '& .MuiTableCell-root:first-of-type': {
                 width: '250px',
               },
             }}
           >
             <TableHead>
-              <TableRow sx={{ width: '100%' }}>
+              <TableRow>
                 <TableCell></TableCell>
                 {HEADER_MONTHS.map((month) => (
                   <StyledTableCellTableDetailedHeader key={month}>
@@ -108,73 +113,67 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                 return <AmountsTable data={row} />;
 
               return (
-                <>
-                  <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                    <TableRow>
-                      <StyledTableCellTableDetailedHeader
-                        key={row[0]?.projectName}
+                <TableBody>
+                  <TableRow>
+                    <TableCell>
+                      <Typography
+                        sx={{
+                          fontWeight: '700',
+                          fontSize: '12px',
+                          overflowX: 'hidden',
+                          whiteSpace: 'nowrap',
+                          textOverflow: 'ellipsis',
+                        }}
                       >
                         {row[0]?.projectName}
-                      </StyledTableCellTableDetailedHeader>
+                      </Typography>
+                    </TableCell>
 
-                      {HEADER_MONTHS.map((cell) => (
-                        <TableCell component='th' key={cell}>
+                    {HEADER_MONTHS.map((month) => {
+                      const val = amountsRow?.value[month];
+
+                      if (!val) return <TableCell></TableCell>;
+                      return (
+                        <TableCell key={month}>
                           <Typography
                             sx={{
                               fontWeight: '700',
-                              fontSize: '16px',
+                              fontSize: '12px',
                               overflowX: 'hidden',
                               whiteSpace: 'nowrap',
                               textOverflow: 'ellipsis',
-                              color: 'transparent',
                             }}
                           >
-                            {/* {cell} */}
-                          </Typography>
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  </TableHead>
-
-                  <TableBody>
-                    {row.map((tableRow) => {
-                      if (tableRow.month === 'Сумма') return;
-                      return (
-                        <TableRow>
-                          <StyledTableCellTableDetailed key={tableRow.month}>
-                            {tableRow.month}
-                          </StyledTableCellTableDetailed>
-
-                          {HEADER_MONTHS.map((month) => {
-                            const val = tableRow?.value?.[month];
-
-                            return (
-                              <StyledTableCellTableDetailed key={month}>
-                                {val ? `${numberWithSpaces(val)} р.` : ''}
-                              </StyledTableCellTableDetailed>
-                            );
-                          })}
-                        </TableRow>
-                      );
-                    })}
-
-                    <TableRow>
-                      <TableCell></TableCell>
-                      {HEADER_MONTHS.map((month) => {
-                        const val = amountsRow?.value[month];
-
-                        if (!val) return <TableCell></TableCell>;
-                        return (
-                          <StyledTableCellTableDetailedBold key={month}>
                             {val && val !== null
                               ? `${numberWithSpaces(Math.trunc(val))} р.`
                               : ''}
-                          </StyledTableCellTableDetailedBold>
-                        );
-                      })}
-                    </TableRow>
-                  </TableBody>
-                </>
+                          </Typography>
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+
+                  {row.map((tableRow) => {
+                    if (tableRow.month === 'Сумма') return;
+                    return (
+                      <TableRow>
+                        <StyledTableCellTableDetailed key={tableRow.month}>
+                          {tableRow.month}
+                        </StyledTableCellTableDetailed>
+
+                        {HEADER_MONTHS.map((month) => {
+                          const val = tableRow?.value?.[month];
+
+                          return (
+                            <StyledTableCellTableDetailed key={month}>
+                              {val ? `${numberWithSpaces(val)} р.` : ''}
+                            </StyledTableCellTableDetailed>
+                          );
+                        })}
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
               );
             })}
           </Table>

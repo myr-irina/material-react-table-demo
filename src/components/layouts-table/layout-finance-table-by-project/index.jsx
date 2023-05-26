@@ -95,7 +95,7 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
             }}
           >
             <TableHead>
-              <TableRow sx={{ width: '100%' }}>
+              <TableRow>
                 <TableCell></TableCell>
                 {HEADER_MONTHS.map((month) => (
                   <StyledTableCellTableDetailedHeader key={month}>
@@ -129,7 +129,6 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
                         {row[0]?.projectName}
                       </Typography>
                     </TableCell>
-                    {/* <TableCell colSpan={13}></TableCell> */}
 
                     {HEADER_MONTHS.map((month) => {
                       const val = amountsRow?.value[month];
