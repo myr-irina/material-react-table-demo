@@ -28,6 +28,7 @@ export default function LayoutEmployeesByProject(props) {
   const { data, title } = props;
 
   const TABLE_DATA = parseTableData(data);
+  console.log({ TABLE_DATA });
 
   const date = new Date();
   const currentMonthIndex = date.getMonth();
@@ -98,9 +99,6 @@ export default function LayoutEmployeesByProject(props) {
               '& .MuiTableCell-root:first-of-type': {
                 width: '250px',
               },
-              '& .MuiTableRow-root:last-of-type': {
-                // padding: '7px',
-              },
             }}
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
@@ -128,6 +126,7 @@ export default function LayoutEmployeesByProject(props) {
                           columnName,
                           rowProject
                         );
+                        console.log({ project });
                         return (
                           <TableCell key={index}>
                             {project ? (
@@ -143,6 +142,7 @@ export default function LayoutEmployeesByProject(props) {
                             ) : (
                               ''
                             )}
+
                             {project && project?.percent !== null ? (
                               <Typography
                                 sx={{ fontSize: '11px' }}

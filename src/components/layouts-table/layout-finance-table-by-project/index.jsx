@@ -25,6 +25,8 @@ import {
 } from '../../../utils/styles';
 
 function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
+  console.log({ data });
+
   const arrArrs = Object.keys(data);
 
   const length = arrArrs.length;
