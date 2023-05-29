@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link as RouterLink, Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link as RouterLink, Outlet, Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -7,16 +7,21 @@ import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { useNavigate } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 
 export default function NavBar() {
-  const [currentTabIndex, setCurrentTabIndex] = useState(0);
+  const [currentTabIndex, setCurrentTabIndex] = useState(1);
+  let navigate = useNavigate();
 
   const handleTabChange = (e, tabIndex) => {
-    console.log(tabIndex);
     setCurrentTabIndex(tabIndex);
   };
+
+  useEffect(() => {
+    setCurrentTabIndex(currentTabIndex);
+  }, [currentTabIndex, navigate]);
 
   const [anchorElEmployees, setAnchorElEmployees] = React.useState(null);
   const [anchorBDR, setAnchorBDR] = React.useState(null);
@@ -47,6 +52,27 @@ export default function NavBar() {
     setAnchorDDS(null);
   };
 
+  const tabs = [
+    {
+      label: 'Сотрудники',
+      value: 1,
+      route: '/',
+      onClick: handleOpenEmployees,
+    },
+    {
+      label: 'Бюджет доходов и расходов',
+      value: 2,
+      route: '/bdr-totals-plan-split',
+      onClick: handleOpenBDR,
+    },
+    {
+      label: 'Движение денежных средств',
+      value: 3,
+      route: '/dds-totals-plan-split',
+      onClick: handleOpenDDS,
+    },
+  ];
+
   return (
     <>
       <AppBar
@@ -72,44 +98,33 @@ export default function NavBar() {
             textColor='primary'
             indicatorColor='secondary'
             variant='fullWidth'
+            centered
             sx={{
-              '& button': {
-                color: 'white',
-              },
-              '& button:active': {
-                color: 'white',
-              },
-              '& button.Mui-selected': {
-                color: 'white',
-              },
+              width: '90%',
             }}
           >
-            <Tab
-              label='Сотрудники'
-              id='demo-positioned-button1'
-              aria-controls={
-                openEmployees ? 'demo-positioned-menu1' : undefined
-              }
-              aria-haspopup='true'
-              aria-expanded={openEmployees ? 'true' : undefined}
-              onClick={handleOpenEmployees}
-            />
-            <Tab
-              label='Бюджет доходов и расходов'
-              id='demo-positioned-button2'
-              aria-controls={openBDR ? 'demo-positioned-menu2' : undefined}
-              aria-haspopup='true'
-              aria-expanded={openBDR ? 'true' : undefined}
-              onClick={handleOpenBDR}
-            />
-            <Tab
-              label=' Движение денежных средств'
-              id='demo-positioned-button3'
-              aria-controls={openDDS ? 'demo-positioned-menu3' : undefined}
-              aria-haspopup='true'
-              aria-expanded={openDDS ? 'true' : undefined}
-              onClick={handleOpenDDS}
-            />
+            {tabs.map((tab) => {
+              return (
+                <Tab
+                  component={Link}
+                  to={tab.route}
+                  sx={{
+                    color: 'white',
+                    '& button:active': {
+                      color: 'white',
+                    },
+                    '&.Mui-selected': {
+                      color: 'white',
+                    },
+                  }}
+                  key={tab.value}
+                  label={tab.label}
+                  value={tab.value}
+                  icon={tab.icon}
+                  onClick={tab.onClick}
+                />
+              );
+            })}
           </Tabs>
         </Box>
 
@@ -134,10 +149,10 @@ export default function NavBar() {
             Таблица рабочего времени (Общий факт)
           </MenuItem>
 
-          <MenuItem component={RouterLink} to={'/employees-project-plan-test'}>
+          <MenuItem component={RouterLink} to={'/employees-project-plan'}>
             Таблица рабочего времени план
           </MenuItem>
-          <MenuItem component={RouterLink} to={'/employees-project-fact-test'}>
+          <MenuItem component={RouterLink} to={'/employees-project-fact'}>
             Таблица рабочего времени факт
           </MenuItem>
         </Menu>
