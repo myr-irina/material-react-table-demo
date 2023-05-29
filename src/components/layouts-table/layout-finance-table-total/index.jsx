@@ -21,9 +21,10 @@ import {
 import {
   StyledTableCellTotalTable,
   StyledTableRowTotalTable,
+  StyledTableRowTotalTableDDS,
 } from '../../../utils/styles';
 
-function LayoutFinanceTableTotal({ data, isLoading, title }) {
+function LayoutFinanceTableTotal({ data, isLoading, title, tableVariant }) {
   const filteredData = parseTableData3(data).map((projectType) =>
     projectType.filter((item) =>
       Object.values(item).some(
@@ -105,25 +106,47 @@ function LayoutFinanceTableTotal({ data, isLoading, title }) {
             {filteredData.map((rowProject) => {
               return (
                 <>
-                  <StyledTableRowTotalTable hover>
-                    <StyledTableCellTotalTable>
-                      {rowProject[0][0].projectType}
-                    </StyledTableCellTotalTable>
-                    {getColumnNames2(filteredData).map((columnName) => {
-                      const project = findProjectByName2(
-                        columnName,
-                        rowProject[0]
-                      );
+                  {tableVariant === 'dds' ? (
+                    <StyledTableRowTotalTableDDS hover>
+                      <StyledTableCellTotalTable>
+                        {rowProject[0][0].projectType}
+                      </StyledTableCellTotalTable>
+                      {getColumnNames2(filteredData).map((columnName) => {
+                        const project = findProjectByName2(
+                          columnName,
+                          rowProject[0]
+                        );
 
-                      return (
-                        <StyledTableCellTotalTable>
-                          {project && project.value !== null
-                            ? `${numberWithSpaces(project?.value)} р.`
-                            : ''}
-                        </StyledTableCellTotalTable>
-                      );
-                    })}
-                  </StyledTableRowTotalTable>
+                        return (
+                          <StyledTableCellTotalTable>
+                            {project && project.value !== null
+                              ? `${numberWithSpaces(project?.value)} р.`
+                              : ''}
+                          </StyledTableCellTotalTable>
+                        );
+                      })}
+                    </StyledTableRowTotalTableDDS>
+                  ) : (
+                    <StyledTableRowTotalTable hover>
+                      <StyledTableCellTotalTable>
+                        {rowProject[0][0].projectType}
+                      </StyledTableCellTotalTable>
+                      {getColumnNames2(filteredData).map((columnName) => {
+                        const project = findProjectByName2(
+                          columnName,
+                          rowProject[0]
+                        );
+
+                        return (
+                          <StyledTableCellTotalTable>
+                            {project && project.value !== null
+                              ? `${numberWithSpaces(project?.value)} р.`
+                              : ''}
+                          </StyledTableCellTotalTable>
+                        );
+                      })}
+                    </StyledTableRowTotalTable>
+                  )}
                 </>
               );
             })}

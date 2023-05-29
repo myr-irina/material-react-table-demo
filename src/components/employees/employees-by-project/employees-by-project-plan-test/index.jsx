@@ -35,6 +35,8 @@ function EmployeesByProjectPlan2() {
       .finally(setIsLoading(false));
   }, []);
 
+  if (projectPlanHours.length === 0) return;
+
   return (
     <LayoutTableEmployeesByProject
       isLoading={isLoading}

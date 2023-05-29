@@ -28,6 +28,7 @@ function CashFlowTotalsPlan() {
       isLoading={isLoading}
       data={totalPalnData}
       title='Таблица ДДС (план)'
+      tableVariant='dds'
     />
   );
 }

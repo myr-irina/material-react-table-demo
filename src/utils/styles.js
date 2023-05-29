@@ -91,6 +91,16 @@ export const StyledTableRowTotalTable = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+export const StyledTableRowTotalTableDDS = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
 export const StyledTableCellTableDetailed = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: 11,

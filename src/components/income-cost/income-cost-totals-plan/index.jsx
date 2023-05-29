@@ -29,6 +29,7 @@ function IncomeCostTotalsPlan() {
       isLoading={isLoading}
       data={budgetPlan}
       title='Таблица БДР (план)'
+      tableVariant='bdr'
     />
   );
 }
