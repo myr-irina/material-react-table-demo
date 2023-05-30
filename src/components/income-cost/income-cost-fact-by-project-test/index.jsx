@@ -2,14 +2,14 @@ import React, { useState, useEffect, useMemo } from 'react';
 
 import data from '../../../json/bdr-by-project-plan.json';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
-import { getBudgetByProjectPlan } from '../../../utils/api-requests';
+import { getBudgetByProjectFact } from '../../../utils/api-requests';
 
 function IncomeCostFactByProject2() {
   const [budgetFactByProject, setBudgetFactByProject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getBudgetByProjectPlan()
+    getBudgetByProjectFact()
       .then((data) => {
         setBudgetFactByProject(data);
         setIsLoading(false);
