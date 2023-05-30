@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { Link as RouterLink, Outlet } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
-
 import AppBar from '@mui/material/AppBar';
 
 export default function NavBar() {
   const [anchorElEmployees, setAnchorElEmployees] = React.useState(null);
   const [anchorBDR, setAnchorBDR] = React.useState(null);
   const [anchorDDS, setAnchorDDS] = React.useState(null);
+
+  const { pathname } = useLocation();
 
   const openEmployees = Boolean(anchorElEmployees);
   const openBDR = Boolean(anchorBDR);
@@ -58,6 +60,9 @@ export default function NavBar() {
               margin: '10px auto 10px',
               color: 'white',
               fontSize: '1.2rem',
+              // '&:selected': {
+              //   borderBottom: '2px solid white',
+              // },
             }}
             id='demo-positioned-button1'
             aria-controls={openEmployees ? 'demo-positioned-menu1' : undefined}
@@ -109,6 +114,7 @@ export default function NavBar() {
               onClick={handleCloseEmployees}
               component={RouterLink}
               to={'/'}
+              selected={'/' === pathname}
             >
               Таблица рабочего времени (Общий план)
             </MenuItem>

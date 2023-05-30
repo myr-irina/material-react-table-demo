@@ -20,6 +20,7 @@ import CashFlowTotalsPlanSplit2 from './components/cash-flow/cash-flow-plan/cash
 import CashFlowTotalsFactSplit2 from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split-test';
 import CashFlowPlanByProject2 from './components/cash-flow/cash-flow-plan-by-project-test';
 import CashFlowFactByProject2 from './components/cash-flow/cash-flow-fact-by-project-test';
+import SignIn from './pages/login';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <CssBaseline />
       <Container maxWidth='1280px'>
         <Routes>
+          <Route path='/signin' element={<SignIn />} />
           <Route element={<NavBar />}>
             <Route path='/' element={<EmployeesGeneralPlan />} />
             <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
