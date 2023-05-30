@@ -34,47 +34,47 @@ export default function App() {
             <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
 
             <Route
-              path='/employees-project-plan-test'
+              path='/employees-project-plan'
               element={<EmployeesByProjectPlan2 />}
             />
             <Route
-              path='/employees-project-fact-test'
+              path='/employees-project-fact'
               element={<EmployeesByProjectFact2 />}
             />
 
             <Route path='/test' element={<EmployeesByProjectPlanTest />} />
 
             <Route
-              path='/bdr-totals-plan-split-test'
+              path='/bdr-totals-plan-split'
               element={<IncomeCostTotalsPlanSplit2 />}
             />
             <Route
-              path='/bdr-totals-fact-split-test'
+              path='/bdr-totals-fact-split'
               element={<IncomeCostTotalsFactSplit2 />}
             />
             <Route
-              path='/bdr-plan-by-project-test'
+              path='/bdr-plan-by-project'
               element={<IncomeCostPlanByProject2 />}
             />
             <Route
-              path='/bdr-fact-by-project-test'
+              path='/bdr-fact-by-project'
               element={<IncomeCostFactByProject2 />}
             />
 
             <Route
-              path='/dds-totals-plan-split-test'
+              path='/dds-totals-plan-split'
               element={<CashFlowTotalsPlanSplit2 />}
             />
             <Route
-              path='/dds-totals-fact-split-test'
+              path='/dds-totals-fact-split'
               element={<CashFlowTotalsFactSplit2 />}
             />
             <Route
-              path='/dds-plan-by-project-test'
+              path='/dds-plan-by-project'
               element={<CashFlowPlanByProject2 />}
             />
             <Route
-              path='/dds-fact-by-project-test'
+              path='/dds-fact-by-project'
               element={<CashFlowFactByProject2 />}
             />
           </Route>

@@ -30,6 +30,7 @@ function CashFlowTotalsFact() {
         isLoading={isLoading}
         data={totalData}
         title='Таблица ДДС (факт)'
+        tableVariant='dds'
       />
     )
   );
