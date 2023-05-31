@@ -2,17 +2,17 @@ import React, { useMemo, useEffect, useState } from 'react';
 
 import data from '../../../json/dds-by-project-plan.json';
 
-import { getCashFlowByProjectPlan } from '../../../utils/api-requests';
+import { getCashFlowByProjectFact } from '../../../utils/api-requests';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project-dds';
 
-function CashFlowPlanByProject2() {
-  const [cashFlowPlanByProject, setCashFlowPlanByProject] = useState([]);
+function CashFlowFactByProject() {
+  const [cashFlowFactByProject, setCashFlowFactFactByProject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getCashFlowByProjectPlan()
+    getCashFlowByProjectFact()
       .then((data) => {
-        setCashFlowPlanByProject(data);
+        setCashFlowFactFactByProject(data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -35,16 +35,16 @@ function CashFlowPlanByProject2() {
     []
   );
 
-  if (cashFlowPlanByProject.length === 0) return;
+  if (cashFlowFactByProject.length === 0) return;
 
   return (
     <LayoutFinanceTableByProject
       isLoading={isLoading}
       columns={columns}
-      data={cashFlowPlanByProject}
-      title='Таблица ДДС (план по проектам)'
+      data={cashFlowFactByProject}
+      title='Таблица ДДС (факт по проектам)'
     />
   );
 }
 
-export default CashFlowPlanByProject2;
+export default CashFlowFactByProject;

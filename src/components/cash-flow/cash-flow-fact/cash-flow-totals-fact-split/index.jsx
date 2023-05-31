@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
-import data from './../../../../json/cash-flow-general-plan.json';
+import data from '../../../../json/cash-flow-general-plan.json';
 import LayoutFinanceTableDetailed from '../../../layouts-table/layout-finance-table-detailed';
+import CashFlowTotalsFact from '../cash-flow-totals-fact';
 
-import { getCashFlowPlan } from '../../../../utils/api-requests';
-import CashFlowTotalsPlan from '../cash-flow-totals-plan';
-
+import { getCashFlowFact } from '../../../../utils/api-requests';
 import { categoriesDDS } from '../../../../utils/constants';
 
-function CashFlowTotalsPlanSplit2() {
-  const [planSplitData, setPlanSplitData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+function CashFlowTotalsFactSplit() {
+  const [factSplitData, setFactSplitData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getCashFlowPlan()
+    getCashFlowFact()
       .then((data) => {
-        setPlanSplitData(data);
+        setFactSplitData(data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -25,18 +24,18 @@ function CashFlowTotalsPlanSplit2() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (planSplitData.length === 0) return;
+  if (factSplitData.length === 0) return;
 
   return (
     <>
-      <CashFlowTotalsPlan />
+      <CashFlowTotalsFact />
       <LayoutFinanceTableDetailed
         isLoading={isLoading}
-        data={planSplitData}
+        data={factSplitData}
         categories={categoriesDDS}
       />
     </>
   );
 }
 
-export default CashFlowTotalsPlanSplit2;
+export default CashFlowTotalsFactSplit;
