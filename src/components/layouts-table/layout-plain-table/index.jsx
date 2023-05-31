@@ -316,7 +316,7 @@ export default function LayoutPlainTable(props) {
 
   return (
     <>
-      {error === '500' ? (
+      {error ? (
         <ErrorMessage message={message} />
       ) : (
         <MaterialReactTable

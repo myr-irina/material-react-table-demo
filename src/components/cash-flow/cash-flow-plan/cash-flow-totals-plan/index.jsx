@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import LayoutFinanceTableTotal from '../../../layouts-table/layout-finance-table-total';
 
 import data from '../../../../json/cash-flow-general-plan.json';
-
 import { getCashFlowPlan } from '../../../../utils/api-requests';
+import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 
 function CashFlowTotalsPlan() {
   const [totalPalnData, setTotalPlanData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     getCashFlowPlan()
@@ -17,7 +19,17 @@ function CashFlowTotalsPlan() {
       })
       .catch((error) => {
         console.log(error);
+        if (error === '500') {
+          console.log('Внутренняя ошибка сервера');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setTotalPlanData([]);
+        }
+        console.log(error);
+        setError(true);
         setIsLoading(false);
+        setTotalPlanData([]);
       })
       .finally(setIsLoading(false));
   }, []);
@@ -27,6 +39,8 @@ function CashFlowTotalsPlan() {
     <LayoutFinanceTableTotal
       isLoading={isLoading}
       data={totalPalnData}
+      error={error}
+      message={message}
       title='Таблица ДДС (план)'
       tableVariant='dds'
     />

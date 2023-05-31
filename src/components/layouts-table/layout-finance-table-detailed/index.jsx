@@ -9,6 +9,7 @@ import CustomSelect from '../../custom-select';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import employeesByProjectPlanData from '../../../json/employees-by-project-plan.json';
 import {
@@ -17,14 +18,14 @@ import {
   findProjectByName2,
   numberWithSpaces,
 } from '../../../utils/utils';
-
 import {
   StyledTableCellTableDetailed,
   StyledTableRowTableDetailed,
 } from '../../../utils/styles';
+import ErrorMessage from '../../error';
 
 export default function LayoutFinanceTableDetailed(props) {
-  const { data, categories } = props;
+  const { data, categories, message, error, isLoading } = props;
 
   const TABLE_DATA = useMemo(() => parseTableData5(data), [data]);
 
@@ -51,6 +52,21 @@ export default function LayoutFinanceTableDetailed(props) {
           inputLabel='Категория'
         />
       </Box>
+
+      {isLoading ? (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress size={50} color='inherit' />
+        </Box>
+      ) : null}
+
+      {error ? <ErrorMessage message={message} /> : null}
 
       {TABLE_DATA.filter((value) => {
         return value[0][0].projectType === category;

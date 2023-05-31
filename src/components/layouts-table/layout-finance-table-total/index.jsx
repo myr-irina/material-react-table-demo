@@ -17,14 +17,21 @@ import {
   findProjectByName2,
   parseTableData3,
 } from '../../../utils/utils';
-
 import {
   StyledTableCellTotalTable,
   StyledTableRowTotalTable,
   StyledTableRowTotalTableDDS,
 } from '../../../utils/styles';
+import ErrorMessage from '../../error';
 
-function LayoutFinanceTableTotal({ data, isLoading, title, tableVariant }) {
+function LayoutFinanceTableTotal({
+  data,
+  isLoading,
+  title,
+  tableVariant,
+  error,
+  message,
+}) {
   const filteredData = parseTableData3(data).map((projectType) =>
     projectType.filter((item) =>
       Object.values(item).some(
@@ -50,15 +57,27 @@ function LayoutFinanceTableTotal({ data, isLoading, title, tableVariant }) {
     return headers;
   };
 
-  return isLoading ? (
-    <Box sx={{ display: 'flex' }}>
-      <CircularProgress size={24} color='inherit' />
-    </Box>
-  ) : (
+  return (
     <>
       <Typography variant='h5' gutterBottom mb={4}>
         {title}
       </Typography>
+
+      {isLoading ? (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress size={50} color='inherit' />
+        </Box>
+      ) : null}
+
+      {error ? <ErrorMessage message={message} /> : null}
+
       <TableContainer
         component={Paper}
         sx={{

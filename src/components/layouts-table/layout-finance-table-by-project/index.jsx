@@ -9,24 +9,27 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/material';
 import Paper from '@mui/material/Paper';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { parseTableData4 } from '../../../utils/utils';
-// import { categories } from '../../../utils/constants';
-
 import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
 import { numberWithSpaces } from '../../../utils/utils';
-
 import { HEADER_MONTHS } from '../../../utils/constants';
 import CustomSelect from '../../custom-select';
-
 import {
   StyledTableCellTableDetailedHeader,
   StyledTableCellTableDetailed,
-  StyledTableCellTableDetailedBold,
 } from '../../../utils/styles';
+import ErrorMessage from '../../error';
 
-function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
+function LayoutFinanceTableByProject({
+  data,
+  title,
+  isLoading,
+  error,
+  message,
+}) {
   const arrArrs = Object.keys(data);
 
   const length = arrArrs.length;
@@ -69,6 +72,21 @@ function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {
           inputLabel='Категория'
         />
       </Box>
+
+      {isLoading ? (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress size={50} color='inherit' />
+        </Box>
+      ) : null}
+
+      {error ? <ErrorMessage message={message} /> : null}
 
       {TABLE_DATA.filter((value) => {
         return value[3]?.[1]?.projectType === category;

@@ -87,7 +87,7 @@ export default function LayoutEmployeesByProject(props) {
         </Box>
       ) : null}
 
-      {error === '500' ? <ErrorMessage message={message} /> : null}
+      {error ? <ErrorMessage message={message} /> : null}
 
       {TABLE_DATA.filter((value) => {
         return value[0]?.[0]?.month === month;
