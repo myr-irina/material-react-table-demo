@@ -1,14 +1,12 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 
 import data from '../../../json/income-cost-general-plan.json';
-
 import { getBudgetPlan } from '../../../utils/api-requests';
 import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table-detailed';
 import IncomeCostTotalsPlan from '../income-cost-totals-plan';
-
 import { categories } from '../../../utils/constants';
 
-function IncomeCostTotalsPlanSplit2() {
+function IncomeCostTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,4 +39,4 @@ function IncomeCostTotalsPlanSplit2() {
   );
 }
 
-export default IncomeCostTotalsPlanSplit2;
+export default IncomeCostTotalsPlanSplit;

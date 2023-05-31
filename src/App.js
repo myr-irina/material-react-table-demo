@@ -11,12 +11,10 @@ import EmployeesGeneralFact from './components/employees/employees-general/emplo
 import EmployeesByProjectPlan from './components/employees/employees-by-project/employees-by-project-plan-test';
 import EmployeesByProjectFact from './components/employees/employees-by-project/employees-by-project-fact-test';
 
-import IncomeCostTotalsPlanSplit2 from './components/income-cost/income-cost-totals-plan-split-test';
-import IncomeCostTotalsFactSplit2 from './components/income-cost/income-cost-totals-fact-split-test';
-import IncomeCostPlanByProject2 from './components/income-cost/income-cost-plan-by-project-test';
-import IncomeCostFactByProject2 from './components/income-cost/income-cost-fact-by-project-test';
-
-import EmployeesByProjectPlanTest from './components/employees/employees-by-project/employees-by-project-plan-test-copy';
+import IncomeCostTotalsPlanSplit from './components/income-cost/income-cost-totals-plan-split';
+import IncomeCostTotalsFactSplit from './components/income-cost/income-cost-totals-fact-split';
+import IncomeCostPlanByProject from './components/income-cost/income-cost-plan-by-project';
+import IncomeCostFactByProject from './components/income-cost/income-cost-fact-by-project';
 
 import CashFlowTotalsPlanSplit2 from './components/cash-flow/cash-flow-plan/cash-flow-totals-plan-split-test';
 import CashFlowTotalsFactSplit2 from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split-test';
@@ -46,19 +44,19 @@ export default function App() {
 
             <Route
               path='/bdr-totals-plan-split'
-              element={<IncomeCostTotalsPlanSplit2 />}
+              element={<IncomeCostTotalsPlanSplit />}
             />
             <Route
               path='/bdr-totals-fact-split'
-              element={<IncomeCostTotalsFactSplit2 />}
+              element={<IncomeCostTotalsFactSplit />}
             />
             <Route
               path='/bdr-plan-by-project'
-              element={<IncomeCostPlanByProject2 />}
+              element={<IncomeCostPlanByProject />}
             />
             <Route
               path='/bdr-fact-by-project'
-              element={<IncomeCostFactByProject2 />}
+              element={<IncomeCostFactByProject />}
             />
 
             <Route

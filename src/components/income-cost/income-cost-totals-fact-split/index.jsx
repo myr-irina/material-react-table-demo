@@ -7,7 +7,7 @@ import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table
 import IncomeCostTotalsFact from '../income-cost-totals-fact';
 import { categories } from '../../../utils/constants';
 
-function IncomeCostTotalsFactSplit2() {
+function IncomeCostTotalsFactSplit() {
   const [factSplitData, setFactSplitData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,4 +38,4 @@ function IncomeCostTotalsFactSplit2() {
   );
 }
 
-export default IncomeCostTotalsFactSplit2;
+export default IncomeCostTotalsFactSplit;

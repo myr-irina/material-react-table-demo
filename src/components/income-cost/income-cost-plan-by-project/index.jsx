@@ -5,7 +5,7 @@ import data from '../../../json/bdr-by-project-plan.json';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
 import { getBudgetByProjectPlan } from '../../../utils/api-requests';
 
-function IncomeCostPlanByProject2() {
+function IncomeCostPlanByProject() {
   const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,4 +35,4 @@ function IncomeCostPlanByProject2() {
   );
 }
 
-export default IncomeCostPlanByProject2;
+export default IncomeCostPlanByProject;

@@ -87,7 +87,7 @@ export default function LayoutEmployeesByProject(props) {
         </Box>
       ) : null}
 
-      {error && <ServerError />}
+      {error === '500' ? <ServerError /> : null}
 
       {TABLE_DATA.filter((value) => {
         return value[0]?.[0]?.month === month;
