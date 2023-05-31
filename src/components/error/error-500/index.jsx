@@ -11,7 +11,7 @@ function ServerError() {
         justifyContent: 'center',
       }}
     >
-      <Typography variant='h3' mb={4} gutterBottom>
+      <Typography variant='h5' mt={10} gutterBottom>
         Внутренняя ошибка сервера
       </Typography>
       <Typography variant='body1' gutterBottom>

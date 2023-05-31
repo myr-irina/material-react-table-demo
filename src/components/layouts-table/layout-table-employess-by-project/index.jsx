@@ -6,26 +6,25 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import CustomSelect from '../../custom-select';
+import CircularProgress from '@mui/material/CircularProgress';
 
+import CustomSelect from '../../custom-select';
 import employeesByProjectPlanData from '../../../json/employees-by-project-plan.json';
 import {
   parseTableData,
   getColumnNames,
   findProjectByName,
 } from '../../../utils/utils';
-
 import { months } from '../../../utils/constants';
 import { StyledTableRow3 } from '../../../utils/styles';
-
 import {
   StyledTableCellTableDetailedHeader,
   StyledTableCellTableDetailed,
-  StyledBoxWithData,
 } from '../../../utils/styles.js';
+import ServerError from '../../error/error-500';
 
 export default function LayoutEmployeesByProject(props) {
-  const { data, title } = props;
+  const { data, title, error, isLoading } = props;
 
   const TABLE_DATA = parseTableData(data);
 
@@ -75,6 +74,21 @@ export default function LayoutEmployeesByProject(props) {
         />
       </Box>
 
+      {isLoading ? (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress size={50} color='inherit' />
+        </Box>
+      ) : null}
+
+      {error && <ServerError />}
+
       {TABLE_DATA.filter((value) => {
         return value[0]?.[0]?.month === month;
       }).map((rowEntry) => (
@@ -116,7 +130,7 @@ export default function LayoutEmployeesByProject(props) {
               {rowEntry.map((rowProject) => {
                 return (
                   <>
-                    <StyledTableRow3>
+                    <StyledTableRow3 key={rowProject}>
                       <StyledTableCellTableDetailed key={rowProject}>
                         {rowProject[0].author}
                       </StyledTableCellTableDetailed>

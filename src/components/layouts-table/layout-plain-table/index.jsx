@@ -12,8 +12,6 @@ import { StyledBoxWithData } from '../../../utils/styles';
 export default function LayoutPlainTable(props) {
   const { data, title, header, isLoading, error } = props;
 
-  console.log({ isLoading });
-
   const columns = useMemo(
     () => [
       {

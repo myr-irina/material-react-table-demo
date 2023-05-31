@@ -1,33 +1,44 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { getProjectFactHours } from '../../../../utils/api-requests';
 import LayoutTableEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
 
-function EmployeesByProjectFact2() {
-  const [projectPlanHours, setProjectPlanHours] = useState([]);
+function EmployeesByProjectFact() {
+  const [projectFactHours, setProjectfactHours] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getProjectFactHours()
       .then((data) => {
-        setProjectPlanHours(data);
+        setProjectfactHours(data);
         setIsLoading(false);
       })
       .catch((error) => {
+        if (error === '500') {
+          console.log('Внутренняя ошибка сервера');
+          setError(true);
+          setIsLoading(false);
+          setProjectfactHours([]);
+        }
         console.log(error);
+        setError(true);
         setIsLoading(false);
+        setProjectfactHours([]);
       })
       .finally(setIsLoading(false));
   }, []);
 
   return (
-    projectPlanHours && (
+    projectFactHours && (
       <LayoutTableEmployeesByProject
         isLoading={isLoading}
-        data={projectPlanHours}
+        data={projectFactHours}
+        error={error}
         title='Таблица рабочего времени (факт по проектам)'
       />
     )
   );
 }
 
-export default EmployeesByProjectFact2;
+export default EmployeesByProjectFact;

@@ -1,26 +1,13 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
-import MaterialReactTable from 'material-react-table';
-import { Box, Typography } from '@mui/material';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import { styled } from '@mui/material/styles';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import MuiTableCell from '@mui/material/TableCell';
+import React, { useState, useEffect } from 'react';
 
 import { getProjectPlanHours } from '../../../../utils/api-requests';
-
-// import LayoutCollapsedTableEmployees from '../../../layouts-table/layout-collapsed-table-employees';
 import employeesByProjectPlanData from '../../../../json/employees-by-project-plan.json';
-
-// import LayoutEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
 import LayoutTableEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
 
-function EmployeesByProjectPlan2() {
+function EmployeesByProjectPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getProjectPlanHours()
@@ -29,21 +16,32 @@ function EmployeesByProjectPlan2() {
         setIsLoading(false);
       })
       .catch((error) => {
+        if (error === '500') {
+          console.log('Внутренняя ошибка сервера');
+          setError(true);
+          setIsLoading(false);
+          setProjectPlanHours([]);
+        }
         console.log(error);
+        setError(true);
         setIsLoading(false);
+        setProjectPlanHours([]);
       })
       .finally(setIsLoading(false));
   }, []);
 
-  if (projectPlanHours.length === 0) return;
+  // if (projectPlanHours.length === 0) return;
 
   return (
-    <LayoutTableEmployeesByProject
-      isLoading={isLoading}
-      data={projectPlanHours}
-      title='Таблица рабочего времени (план по проектам)'
-    />
+    projectPlanHours && (
+      <LayoutTableEmployeesByProject
+        isLoading={isLoading}
+        data={projectPlanHours}
+        error={error}
+        title='Таблица рабочего времени (план по проектам)'
+      />
+    )
   );
 }
 
-export default EmployeesByProjectPlan2;
+export default EmployeesByProjectPlan;

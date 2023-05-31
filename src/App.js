@@ -8,8 +8,8 @@ import NavBar from './components/navbar';
 import EmployeesGeneralPlan from './components/employees/employees-general/employees-general-plan';
 import EmployeesGeneralFact from './components/employees/employees-general/employees-general-fact';
 
-import EmployeesByProjectPlan2 from './components/employees/employees-by-project/employees-by-project-plan-test';
-import EmployeesByProjectFact2 from './components/employees/employees-by-project/employees-by-project-fact-test';
+import EmployeesByProjectPlan from './components/employees/employees-by-project/employees-by-project-plan-test';
+import EmployeesByProjectFact from './components/employees/employees-by-project/employees-by-project-fact-test';
 
 import IncomeCostTotalsPlanSplit2 from './components/income-cost/income-cost-totals-plan-split-test';
 import IncomeCostTotalsFactSplit2 from './components/income-cost/income-cost-totals-fact-split-test';
@@ -37,14 +37,12 @@ export default function App() {
 
             <Route
               path='/employees-project-plan'
-              element={<EmployeesByProjectPlan2 />}
+              element={<EmployeesByProjectPlan />}
             />
             <Route
               path='/employees-project-fact'
-              element={<EmployeesByProjectFact2 />}
+              element={<EmployeesByProjectFact />}
             />
-
-            <Route path='/test' element={<EmployeesByProjectPlanTest />} />
 
             <Route
               path='/bdr-totals-plan-split'

@@ -60,9 +60,6 @@ export default function NavBar() {
               margin: '10px auto 10px',
               color: 'white',
               fontSize: '1.2rem',
-              // '&:selected': {
-              //   borderBottom: '2px solid white',
-              // },
             }}
             id='demo-positioned-button1'
             aria-controls={openEmployees ? 'demo-positioned-menu1' : undefined}

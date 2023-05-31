@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import LayoutPlainTable from '../../../layouts-table/layout-plain-table';
 
+import LayoutPlainTable from '../../../layouts-table/layout-plain-table';
 import { getWorkingHoursPlan } from '../../../../utils/api-requests';
 
 function EmployeesGeneralPlan() {
