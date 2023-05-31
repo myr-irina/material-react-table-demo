@@ -28,7 +28,6 @@ export default function LayoutEmployeesByProject(props) {
   const { data, title } = props;
 
   const TABLE_DATA = parseTableData(data);
-  console.log({ TABLE_DATA });
 
   const date = new Date();
   const currentMonthIndex = date.getMonth();
@@ -126,7 +125,7 @@ export default function LayoutEmployeesByProject(props) {
                           columnName,
                           rowProject
                         );
-                        console.log({ project });
+
                         return (
                           <TableCell key={index}>
                             {project ? (

@@ -1,7 +1,11 @@
 export const BASE_URL = 'http://10.10.10.83:8000';
 
 export const checkResponse = (res) => {
-  return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
+  // return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`${res.status}`);
 };
 
 async function requestUrl(url, options) {

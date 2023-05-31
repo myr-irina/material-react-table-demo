@@ -1,19 +1,18 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import MaterialReactTable from 'material-react-table';
-import { Box, Typography, Button } from '@mui/material';
-import { styled } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 import { getCellColor } from '../../../utils/getCellColor';
 import { Link as MuiLink } from '@mui/material';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
-
-import { ExportToCsv } from 'export-to-csv';
+import ServerError from '../../error/error-500';
 
 // import data from '../../../json/employees-general-fact.json';
 import { StyledBoxWithData } from '../../../utils/styles';
 
 export default function LayoutPlainTable(props) {
-  const { data, title, header, isLoading } = props;
+  const { data, title, header, isLoading, error } = props;
+
+  console.log({ isLoading });
 
   const columns = useMemo(
     () => [
@@ -317,66 +316,47 @@ export default function LayoutPlainTable(props) {
     []
   );
 
-  const csvOptions = {
-    fieldSeparator: ',',
-    quoteStrings: '"',
-    decimalSeparator: '.',
-    showLabels: true,
-    useBom: true,
-    useKeysAsHeaders: false,
-    headers: columns.map((c) => c.header),
-  };
-
-  const csvExporter = new ExportToCsv(csvOptions);
-
-  const handleExportData = () => {
-    csvExporter.generateCsv(data);
-  };
-
   return (
-    <MaterialReactTable
-      columns={columns}
-      data={data}
-      defaultColumn={{
-        size: 50,
-      }}
-      enableStickyHeader
-      initialState={{
-        density: 'compact',
-        sorting: [{ id: 'name', desc: false }],
-        pagination: { pageSize: 25, pageIndex: 0 },
-      }}
-      muiTablePaginationProps={{
-        rowsPerPageOptions: [5, 10, 20, 25],
-        labelRowsPerPage: 'Количество видимых строк',
-      }}
-      muiTableProps={{
-        sx: {
-          tableLayout: 'fixed',
-        },
-      }}
-      enableColumnFilters={false}
-      enableHiding={false}
-      enableDensityToggle={false}
-      state={{ isLoading }}
-      renderTopToolbarCustomActions={() => {
-        return (
-          <>
-            {/* <Button
-              color='primary'
-              onClick={handleExportData}
-              startIcon={<FileDownloadIcon />}
-              variant='contained'
-              mt='15px'
-            >
-              Export Data
-            </Button> */}
-            <Typography variant='h5' mb='25px'>
-              {title}
-            </Typography>
-          </>
-        );
-      }}
-    />
+    <>
+      {error ? (
+        <ServerError />
+      ) : (
+        <MaterialReactTable
+          columns={columns}
+          data={data}
+          defaultColumn={{
+            size: 50,
+          }}
+          enableStickyHeader
+          initialState={{
+            density: 'compact',
+            sorting: [{ id: 'name', desc: false }],
+            pagination: { pageSize: 25, pageIndex: 0 },
+          }}
+          muiTablePaginationProps={{
+            rowsPerPageOptions: [5, 10, 20, 25],
+            labelRowsPerPage: 'Количество видимых строк',
+          }}
+          muiTableProps={{
+            sx: {
+              tableLayout: 'fixed',
+            },
+          }}
+          enableColumnFilters={false}
+          enableHiding={false}
+          enableDensityToggle={false}
+          state={{ isLoading }}
+          renderTopToolbarCustomActions={() => {
+            return (
+              <>
+                <Typography variant='h5' mb='25px'>
+                  {title}
+                </Typography>
+              </>
+            );
+          }}
+        />
+      )}
+    </>
   );
 }

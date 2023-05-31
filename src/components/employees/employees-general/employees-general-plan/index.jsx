@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import LayoutPlainTable from '../../../layouts-table/layout-plain-table';
-import data from '../../../../json/employees-general-plan.json';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import { ExportToCsv } from 'export-to-csv';
 
 import { getWorkingHoursPlan } from '../../../../utils/api-requests';
 
 function EmployeesGeneralPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getWorkingHoursPlan()
@@ -17,19 +15,26 @@ function EmployeesGeneralPlan() {
         setIsLoading(false);
       })
       .catch((error) => {
+        if (error === '500') {
+          console.log('Внутренняя ошибка сервера');
+          setError(true);
+          setIsLoading(false);
+          setProjectPlanHours([]);
+        }
         console.log(error);
+        setError(true);
         setIsLoading(false);
+        setProjectPlanHours([]);
       })
       .finally(setIsLoading(false));
   }, []);
-
-  if (projectPlanHours.length === 0) return;
 
   return (
     projectPlanHours && (
       <LayoutPlainTable
         data={projectPlanHours}
         isLoading={isLoading}
+        error={error}
         title='Таблица рабочего времени (общий план)'
         header='Сотрудники'
       />

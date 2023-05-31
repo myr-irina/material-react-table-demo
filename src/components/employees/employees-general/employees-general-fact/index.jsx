@@ -6,9 +6,10 @@ import { getWorkingHoursFact } from '../../../../utils/api-requests';
 
 function EmployeesGeneralFact() {
   const [projectFactHours, setProjectFactHours] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getWorkingHoursFact()
       .then((data) => {
         setProjectFactHours(data);
