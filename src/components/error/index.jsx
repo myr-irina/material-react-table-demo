@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 
-function ServerError() {
+function ErrorMessage(message) {
   return (
     <Box
       sx={{
@@ -12,13 +12,10 @@ function ServerError() {
       }}
     >
       <Typography variant='h5' mt={10} gutterBottom>
-        Внутренняя ошибка сервера
-      </Typography>
-      <Typography variant='body1' gutterBottom>
-        Сайт сервиса Яндекс.Трекер временно недоступен.
+        {message}
       </Typography>
     </Box>
   );
 }
 
-export default ServerError;
+export default ErrorMessage;

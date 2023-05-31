@@ -130,3 +130,35 @@ export const categoriesDDS = [
   { value: 'Займы акционеров', label: 'Займы акционеров' },
   { value: 'Процент по займам', label: 'Процент по займам' },
 ];
+
+export const MONTHS = [
+  'january',
+  'february',
+  'march',
+  'april',
+  'may',
+  'june',
+  'july',
+  'august',
+  'september',
+  'october',
+  'november',
+  'december',
+  'amount',
+];
+
+export const HEADER_MONTHS = [
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
+  'Всего',
+];

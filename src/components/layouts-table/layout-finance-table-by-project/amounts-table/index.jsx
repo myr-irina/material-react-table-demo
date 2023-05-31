@@ -3,11 +3,9 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
 
-import {
-  numberWithSpaces,
-  MONTHS,
-  findProjectByName2,
-} from '../../../../utils/utils';
+import { numberWithSpaces, findProjectByName2 } from '../../../../utils/utils';
+
+import { MONTHS } from '../../../../utils/constants';
 
 const AmountsTable = ({ data }) => {
   return (

@@ -8,7 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/material';
 
-import { numberWithSpaces, MONTHS } from '../../../../utils/utils';
+import { numberWithSpaces } from '../../../../utils/utils';
+import { MONTHS } from '../../../../utils/constants';
 
 import { totals } from '../../../../utils/constants';
 

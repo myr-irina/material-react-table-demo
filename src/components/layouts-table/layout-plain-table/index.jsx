@@ -4,13 +4,13 @@ import MaterialReactTable from 'material-react-table';
 import { Typography, Button } from '@mui/material';
 import { getCellColor } from '../../../utils/getCellColor';
 import { Link as MuiLink } from '@mui/material';
-import ServerError from '../../error/error-500';
+import ErrorMessage from '../../error';
 
 // import data from '../../../json/employees-general-fact.json';
 import { StyledBoxWithData } from '../../../utils/styles';
 
 export default function LayoutPlainTable(props) {
-  const { data, title, header, isLoading, error } = props;
+  const { data, title, header, isLoading, error, message } = props;
 
   const columns = useMemo(
     () => [
@@ -317,7 +317,7 @@ export default function LayoutPlainTable(props) {
   return (
     <>
       {error === '500' ? (
-        <ServerError />
+        <ErrorMessage message={message} />
       ) : (
         <MaterialReactTable
           columns={columns}

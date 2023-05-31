@@ -21,7 +21,8 @@ import { parseTableData4 } from '../../../utils/utils';
 
 import AmountsTable from './amounts-table';
 import PersonalTable from './personal-table';
-import { numberWithSpaces, HEADER_MONTHS } from '../../../utils/utils';
+import { numberWithSpaces } from '../../../utils/utils';
+import { HEADER_MONTHS } from '../../../utils/constants';
 import CustomSelect from '../../custom-select';
 
 function LayoutFinanceTableByProject({ data, title, isLoading, columns }) {

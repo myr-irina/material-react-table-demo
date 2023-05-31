@@ -21,10 +21,10 @@ import {
   StyledTableCellTableDetailedHeader,
   StyledTableCellTableDetailed,
 } from '../../../utils/styles.js';
-import ServerError from '../../error/error-500';
+import ErrorMessage from '../../error';
 
 export default function LayoutEmployeesByProject(props) {
-  const { data, title, error, isLoading } = props;
+  const { data, title, error, isLoading, message } = props;
 
   const TABLE_DATA = parseTableData(data);
 
@@ -87,7 +87,7 @@ export default function LayoutEmployeesByProject(props) {
         </Box>
       ) : null}
 
-      {error === '500' ? <ServerError /> : null}
+      {error === '500' ? <ErrorMessage message={message} /> : null}
 
       {TABLE_DATA.filter((value) => {
         return value[0]?.[0]?.month === month;

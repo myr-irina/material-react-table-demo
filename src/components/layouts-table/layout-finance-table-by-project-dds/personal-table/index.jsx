@@ -10,7 +10,8 @@ import { Box } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 
-import { numberWithSpaces, MONTHS } from '../../../../utils/utils';
+import { numberWithSpaces } from '../../../../utils/utils';
+import { MONTHS } from '../../../../utils/constants';
 import RoubleIcon from '../../../../images/ruble-currency-sign.png';
 import RoubleIcon2 from '../../../../images/Ruble_sign.svg';
 import RoubleIcon3 from '../../../../images/ruble-svgrepo-com.svg';
