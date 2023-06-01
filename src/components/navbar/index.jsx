@@ -65,126 +65,118 @@ export default function NavBar() {
         position='static'
         sx={{ backgroundColor: 'grey', margin: '0.5rem auto 1rem' }}
       >
-        <Grid
-          container
-          sx={{
-            display: 'flex',
-            flexDirection: 'center',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 0,
-            padding: 0,
-          }}
-        >
-          <Grid item xs={11} sx={{ padding: 0 }}>
-            <Button
-              sx={{
-                margin: '10px 10px 10px',
-                color: 'white',
-                fontSize: '1.2rem',
-                border: 'none',
-                outline: 'none',
-                '&.MuiToggleButton-root.Mui-selected': {
-                  backgroundColor: 'transparent',
+        <Toolbar>
+          <Grid container>
+            <Grid item xs={11} sx={{ padding: 0 }}>
+              <Button
+                sx={{
+                  margin: '10px 10px 10px',
                   color: 'white',
-                  borderBottom: '2px solid white',
-                },
-              }}
-              id='demo-positioned-button1'
-              aria-controls={
-                openEmployees ? 'demo-positioned-menu1' : undefined
-              }
-              aria-haspopup='true'
-              aria-expanded={openEmployees ? 'true' : undefined}
-              onClick={handleOpenEmployees}
-              value='left'
-              aria-label='left aligned'
-            >
-              Сотрудники
-            </Button>
-            <Button
-              sx={{
-                margin: '10px 10px 10px',
-                color: 'white',
-                fontSize: '1.2rem',
-                border: 'none',
-                outline: 'none',
-                '&.MuiToggleButton-root.Mui-selected': {
-                  backgroundColor: 'transparent',
+                  fontSize: '1.2rem',
+                  border: 'none',
+                  outline: 'none',
+                  '&.MuiToggleButton-root.Mui-selected': {
+                    backgroundColor: 'transparent',
+                    color: 'white',
+                    borderBottom: '2px solid white',
+                  },
+                }}
+                id='demo-positioned-button1'
+                aria-controls={
+                  openEmployees ? 'demo-positioned-menu1' : undefined
+                }
+                aria-haspopup='true'
+                aria-expanded={openEmployees ? 'true' : undefined}
+                onClick={handleOpenEmployees}
+                value='left'
+                aria-label='left aligned'
+              >
+                Сотрудники
+              </Button>
+              <Button
+                sx={{
+                  margin: '10px 10px 10px',
                   color: 'white',
-                  borderBottom: '2px solid white',
-                },
-              }}
-              id='demo-positioned-button2'
-              aria-controls={openBDR ? 'demo-positioned-menu2' : undefined}
-              aria-haspopup='true'
-              aria-expanded={openBDR ? 'true' : undefined}
-              onClick={handleOpenBDR}
-              value='center'
-              aria-label='centered'
-            >
-              Бюджет доходов и расходов
-            </Button>
-            <Button
-              sx={{
-                margin: '10px 10px 10px',
-                color: 'white',
-                fontSize: '1.2rem',
-                border: 'none',
-                outline: 'none',
-                '&.MuiToggleButton-root.Mui-selected': {
-                  backgroundColor: 'transparent',
+                  fontSize: '1.2rem',
+                  border: 'none',
+                  outline: 'none',
+                  '&.MuiToggleButton-root.Mui-selected': {
+                    backgroundColor: 'transparent',
+                    color: 'white',
+                    borderBottom: '2px solid white',
+                  },
+                }}
+                id='demo-positioned-button2'
+                aria-controls={openBDR ? 'demo-positioned-menu2' : undefined}
+                aria-haspopup='true'
+                aria-expanded={openBDR ? 'true' : undefined}
+                onClick={handleOpenBDR}
+                value='center'
+                aria-label='centered'
+              >
+                Бюджет доходов и расходов
+              </Button>
+              <Button
+                sx={{
+                  margin: '10px 10px 10px',
                   color: 'white',
-                  borderBottom: '2px solid white',
-                },
-              }}
-              id='demo-positioned-button3'
-              aria-controls={openDDS ? 'demo-positioned-menu3' : undefined}
-              aria-haspopup='true'
-              aria-expanded={openDDS ? 'true' : undefined}
-              onClick={handleOpenDDS}
-              value='right'
-              aria-label='right aligned'
+                  fontSize: '1.2rem',
+                  border: 'none',
+                  outline: 'none',
+                  '&.MuiToggleButton-root.Mui-selected': {
+                    backgroundColor: 'transparent',
+                    color: 'white',
+                    borderBottom: '2px solid white',
+                  },
+                }}
+                id='demo-positioned-button3'
+                aria-controls={openDDS ? 'demo-positioned-menu3' : undefined}
+                aria-haspopup='true'
+                aria-expanded={openDDS ? 'true' : undefined}
+                onClick={handleOpenDDS}
+                value='right'
+                aria-label='right aligned'
+              >
+                Движение денежных средств
+              </Button>
+            </Grid>
+            <Grid
+              item
+              xs={1}
+              sx={{ padding: 0, display: 'flex', justifyContent: 'center' }}
             >
-              Движение денежных средств
-            </Button>
+              <IconButton
+                size='large'
+                aria-label='account of current user'
+                aria-controls='menu-appbar'
+                aria-haspopup='true'
+                onClick={handleAccountMenu}
+                color='inherit'
+                edge='end'
+              >
+                <AccountCircle sx={{ fontSize: 35 }} />
+              </IconButton>
+              <Menu
+                sx={{ mt: '50px' }}
+                id='menu-appbar'
+                anchorEl={anchorElAccount}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElAccount)}
+                onClose={handleAccountClose}
+              >
+                <MenuItem onClick={handleAccountClose}>Logout</MenuItem>
+              </Menu>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={1}
-            sx={{ padding: 0, display: 'flex', justifyContent: 'center' }}
-          >
-            <IconButton
-              size='large'
-              aria-label='account of current user'
-              aria-controls='menu-appbar'
-              aria-haspopup='true'
-              onClick={handleAccountMenu}
-              color='inherit'
-              edge='end'
-            >
-              <AccountCircle sx={{ fontSize: 35 }} />
-            </IconButton>
-            <Menu
-              sx={{ mt: '30px' }}
-              id='menu-appbar'
-              anchorEl={anchorElAccount}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElAccount)}
-              onClose={handleAccountClose}
-            >
-              <MenuItem onClick={handleAccountClose}>Logout</MenuItem>
-            </Menu>
-          </Grid>
-        </Grid>
+        </Toolbar>
 
         <Menu
           id='demo-positioned-menu1'

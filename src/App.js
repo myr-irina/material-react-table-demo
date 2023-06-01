@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppBar, Container } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
@@ -20,65 +20,79 @@ import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-
 import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
 import CashFlowPlanByProject from './components/cash-flow/cash-flow-plan-by-project';
 import CashFlowFactByProject from './components/cash-flow/cash-flow-fact-by-project';
+import { UserContext } from './services';
 
 import SignIn from './pages/signin';
 
 export default function App() {
+  const [currentUser, setCurrentUser] = useState({
+    userName: '',
+    password: '',
+  });
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  
+
   return (
     <>
-      <CssBaseline />
-      <Container maxWidth='1280px'>
-        <Routes>
-          <Route path='/signin' element={<SignIn />} />
-          <Route element={<NavBar />}>
-            <Route path='/' element={<EmployeesGeneralPlan />} />
-            <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
+      <UserContext.Provider value={currentUser}>
+        <CssBaseline />
+        <Container maxWidth='1280px'>
+          <Routes>
+            <Route path='/signin' element={<SignIn />} />
+            <Route element={<NavBar />}>
+              <Route path='/' element={<EmployeesGeneralPlan />} />
+              <Route
+                path='/employees-fact'
+                element={<EmployeesGeneralFact />}
+              />
 
-            <Route
-              path='/employees-project-plan'
-              element={<EmployeesByProjectPlan />}
-            />
-            <Route
-              path='/employees-project-fact'
-              element={<EmployeesByProjectFact />}
-            />
+              <Route
+                path='/employees-project-plan'
+                element={<EmployeesByProjectPlan />}
+              />
+              <Route
+                path='/employees-project-fact'
+                element={<EmployeesByProjectFact />}
+              />
 
-            <Route
-              path='/bdr-totals-plan-split'
-              element={<IncomeCostTotalsPlanSplit />}
-            />
-            <Route
-              path='/bdr-totals-fact-split'
-              element={<IncomeCostTotalsFactSplit />}
-            />
-            <Route
-              path='/bdr-plan-by-project'
-              element={<IncomeCostPlanByProject />}
-            />
-            <Route
-              path='/bdr-fact-by-project'
-              element={<IncomeCostFactByProject />}
-            />
+              <Route
+                path='/bdr-totals-plan-split'
+                element={<IncomeCostTotalsPlanSplit />}
+              />
+              <Route
+                path='/bdr-totals-fact-split'
+                element={<IncomeCostTotalsFactSplit />}
+              />
+              <Route
+                path='/bdr-plan-by-project'
+                element={<IncomeCostPlanByProject />}
+              />
+              <Route
+                path='/bdr-fact-by-project'
+                element={<IncomeCostFactByProject />}
+              />
 
-            <Route
-              path='/dds-totals-plan-split'
-              element={<CashFlowTotalsPlanSplit />}
-            />
-            <Route
-              path='/dds-totals-fact-split'
-              element={<CashFlowTotalsFactSplit />}
-            />
-            <Route
-              path='/dds-plan-by-project'
-              element={<CashFlowPlanByProject />}
-            />
-            <Route
-              path='/dds-fact-by-project'
-              element={<CashFlowFactByProject />}
-            />
-          </Route>
-        </Routes>
-      </Container>
+              <Route
+                path='/dds-totals-plan-split'
+                element={<CashFlowTotalsPlanSplit />}
+              />
+              <Route
+                path='/dds-totals-fact-split'
+                element={<CashFlowTotalsFactSplit />}
+              />
+              <Route
+                path='/dds-plan-by-project'
+                element={<CashFlowPlanByProject />}
+              />
+              <Route
+                path='/dds-fact-by-project'
+                element={<CashFlowFactByProject />}
+              />
+            </Route>
+          </Routes>
+        </Container>
+      </UserContext.Provider>
     </>
   );
 }

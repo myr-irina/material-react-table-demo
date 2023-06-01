@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,17 +12,26 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { signin } from '../../utils/auth';
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const [user, setUser] = useState(null);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
-    console.log({
+    const newData = {
       username: data.get('username'),
       password: data.get('password'),
+    };
+
+    console.log({
+      newData,
+    });
+    signin(newData).then((data) => {
+      console.log({ data });
     });
   };
 
@@ -54,9 +63,9 @@ export default function SignIn() {
               margin='normal'
               required
               fullWidth
-              id='email'
+              id='username'
               label='Email Address'
-              name='email'
+              name='username'
               autoComplete='email'
               autoFocus
             />

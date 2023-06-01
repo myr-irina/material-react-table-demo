@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://10.10.10.83:8000';
+import { BASE_URL } from './constants';
 
 export const checkResponse = (res) => {
   // return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
@@ -133,3 +133,5 @@ export const getCashFlowByProjectFact = () => {
     },
   });
 };
+
+export const login = () => {};
