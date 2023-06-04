@@ -1,18 +1,16 @@
-import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
-import Preloader from '../Preloader/Preloader';
+import React, { useContext } from 'react';
+import { Route, Navigate, useLocation, Outlet } from 'react-router-dom';
 
-export default function ProtectedRoute({
-  component: Component,
-  isUserDataLoading,
-  ...props
-}) {
-  if (isUserDataLoading) {
-    return <Preloader />;
-  }
-  return (
-    <Route>
-      {() => (props.loggedIn ? <Component {...props} /> : <Navigate to='/' />)}
-    </Route>
+import { UserContext, UserProvider } from '../../services';
+
+export default function ProtectedRoute() {
+  const { token } = useContext(UserContext);
+  console.log({ token });
+  const location = useLocation();
+
+  return token ? (
+    <Outlet />
+  ) : (
+    <Navigate to='/signin' state={{ from: location }} replace />
   );
 }

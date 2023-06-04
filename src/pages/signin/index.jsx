@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,11 +13,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { signin } from '../../utils/auth';
+import { UserContext } from '../../services';
 
 const theme = createTheme();
 
 export default function SignIn() {
-  const [user, setUser] = useState(null);
+  const [, setToken] = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,12 +28,13 @@ export default function SignIn() {
       password: data.get('password'),
     };
 
-    console.log({
-      newData,
+    const { username, password } = newData;
+
+    signin({ username, password }).then((data) => {
+      setToken(data.access_token);
+      localStorage.setItem('access_token', JSON.stringify(data.access_token));
     });
-    signin(newData).then((data) => {
-      console.log({ data });
-    });
+    
   };
 
   return (

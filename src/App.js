@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppBar, Container } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
@@ -20,22 +20,16 @@ import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-
 import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
 import CashFlowPlanByProject from './components/cash-flow/cash-flow-plan-by-project';
 import CashFlowFactByProject from './components/cash-flow/cash-flow-fact-by-project';
-import { UserContext } from './services';
+import { UserContext, UserProvider } from './services';
+import ProtectedRoute from './components/protected-route';
 
 import SignIn from './pages/signin';
+import { getUser } from './utils/auth';
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState({
-    userName: '',
-    password: '',
-  });
-  const [loggedIn, setLoggedIn] = React.useState(false);
-
-  
-
   return (
     <>
-      <UserContext.Provider value={currentUser}>
+      <UserProvider>
         <CssBaseline />
         <Container maxWidth='1280px'>
           <Routes>
@@ -58,7 +52,11 @@ export default function App() {
 
               <Route
                 path='/bdr-totals-plan-split'
-                element={<IncomeCostTotalsPlanSplit />}
+                element={
+                  <ProtectedRoute>
+                    <IncomeCostTotalsPlanSplit />
+                  </ProtectedRoute>
+                }
               />
               <Route
                 path='/bdr-totals-fact-split'
@@ -92,7 +90,7 @@ export default function App() {
             </Route>
           </Routes>
         </Container>
-      </UserContext.Provider>
+      </UserProvider>
     </>
   );
 }

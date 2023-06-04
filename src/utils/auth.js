@@ -7,39 +7,30 @@ function checkResponse(res) {
   return Promise.reject(`Ошибка: ${res.status}`);
 }
 
-export const signin = (userData) => {
+export const signin = ({ username, password }) => {
   return fetch(`${BASE_URL}/api/v1/token`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: JSON.stringify({
-      username: userData.username,
-      password: userData.password,
-    }),
+    body: JSON.stringify(
+      `grant_type=&username=${username}&password=${password}&client_id=&client_secret=`
+    ),
   }).then((res) => {
-    console.log(res);
     return checkResponse(res);
   });
 };
 
-export const checkToken = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    //credentials: 'include',
+export const getUser = (token) => {
+
+  return fetch(`${BASE_URL}/api/v1/test`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Token ${token}`,
+      Authorization: 'Bearer ' + token,
     },
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        console.log(`Ошибка: ${res.status}`);
-      }
-    })
-    .then((data) => data);
+  }).then((res) => {
+    return checkResponse(res);
+  });
 };
