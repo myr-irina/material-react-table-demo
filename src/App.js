@@ -29,7 +29,7 @@ import { getUser } from './utils/auth';
 export default function App() {
   return (
     <>
-      <UserProvider>
+      {/* <UserProvider> */}
         <CssBaseline />
         <Container maxWidth='1280px'>
           <Routes>
@@ -90,7 +90,7 @@ export default function App() {
             </Route>
           </Routes>
         </Container>
-      </UserProvider>
+      {/* </UserProvider> */}
     </>
   );
 }

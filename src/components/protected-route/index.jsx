@@ -1,11 +1,8 @@
 import React, { useContext } from 'react';
 import { Route, Navigate, useLocation, Outlet } from 'react-router-dom';
 
-import { UserContext, UserProvider } from '../../services';
-
 export default function ProtectedRoute() {
-  const { token } = useContext(UserContext);
-  console.log({ token });
+  const token = JSON.parse(localStorage.getItem('access_token'));
   const location = useLocation();
 
   return token ? (

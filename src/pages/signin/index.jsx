@@ -14,11 +14,12 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { signin } from '../../utils/auth';
 import { UserContext } from '../../services';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
 export default function SignIn() {
-  const [, setToken] = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,11 +31,19 @@ export default function SignIn() {
 
     const { username, password } = newData;
 
-    signin({ username, password }).then((data) => {
-      setToken(data.access_token);
-      localStorage.setItem('access_token', JSON.stringify(data.access_token));
-    });
-    
+    try {
+      signin({ username, password }).then((data) => {
+        localStorage.setItem('access_token', JSON.stringify(data.access_token));
+      });
+      navigate('/'); // Omit optional second argument
+    } catch (error) {
+      navigate('/signin', { state: { message: 'Failed to submit form' } }); // Pass optional second argument
+    }
+
+    // signin({ username, password }).then((data) => {
+    //   localStorage.setItem('access_token', JSON.stringify(data.access_token));
+    //   navigate('/');
+    // });
   };
 
   return (
