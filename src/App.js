@@ -20,77 +20,76 @@ import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-
 import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
 import CashFlowPlanByProject from './components/cash-flow/cash-flow-plan-by-project';
 import CashFlowFactByProject from './components/cash-flow/cash-flow-fact-by-project';
-import { UserContext, UserProvider } from './services';
+import AuthProvider from './services';
 import ProtectedRoute from './components/protected-route';
-
+import { UserContext } from './services';
 import SignIn from './pages/signin';
 import { getUser } from './utils/auth';
 
+import { useAuth } from './services';
+
 export default function App() {
+
+
   return (
     <>
-      {/* <UserProvider> */}
-        <CssBaseline />
-        <Container maxWidth='1280px'>
-          <Routes>
-            <Route path='/signin' element={<SignIn />} />
-            <Route element={<NavBar />}>
-              <Route path='/' element={<EmployeesGeneralPlan />} />
-              <Route
-                path='/employees-fact'
-                element={<EmployeesGeneralFact />}
-              />
+      <CssBaseline />
+      <Container maxWidth='1280px'>
+        <Routes>
+          <Route path='/signin' element={<SignIn />} />
+          <Route element={<NavBar />}>
+            <Route path='/' element={<EmployeesGeneralPlan />} />
+            <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
 
-              <Route
-                path='/employees-project-plan'
-                element={<EmployeesByProjectPlan />}
-              />
-              <Route
-                path='/employees-project-fact'
-                element={<EmployeesByProjectFact />}
-              />
+            <Route
+              path='/employees-project-plan'
+              element={<EmployeesByProjectPlan />}
+            />
+            <Route
+              path='/employees-project-fact'
+              element={<EmployeesByProjectFact />}
+            />
 
-              <Route
-                path='/bdr-totals-plan-split'
-                element={
-                  <ProtectedRoute>
-                    <IncomeCostTotalsPlanSplit />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path='/bdr-totals-fact-split'
-                element={<IncomeCostTotalsFactSplit />}
-              />
-              <Route
-                path='/bdr-plan-by-project'
-                element={<IncomeCostPlanByProject />}
-              />
-              <Route
-                path='/bdr-fact-by-project'
-                element={<IncomeCostFactByProject />}
-              />
+            <Route
+              path='/bdr-totals-plan-split'
+              element={
+                <ProtectedRoute>
+                  <IncomeCostTotalsPlanSplit />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/bdr-totals-fact-split'
+              element={<IncomeCostTotalsFactSplit />}
+            />
+            <Route
+              path='/bdr-plan-by-project'
+              element={<IncomeCostPlanByProject />}
+            />
+            <Route
+              path='/bdr-fact-by-project'
+              element={<IncomeCostFactByProject />}
+            />
 
-              <Route
-                path='/dds-totals-plan-split'
-                element={<CashFlowTotalsPlanSplit />}
-              />
-              <Route
-                path='/dds-totals-fact-split'
-                element={<CashFlowTotalsFactSplit />}
-              />
-              <Route
-                path='/dds-plan-by-project'
-                element={<CashFlowPlanByProject />}
-              />
-              <Route
-                path='/dds-fact-by-project'
-                element={<CashFlowFactByProject />}
-              />
-            </Route>
-          </Routes>
-        </Container>
-      {/* </UserProvider> */}
+            <Route
+              path='/dds-totals-plan-split'
+              element={<CashFlowTotalsPlanSplit />}
+            />
+            <Route
+              path='/dds-totals-fact-split'
+              element={<CashFlowTotalsFactSplit />}
+            />
+            <Route
+              path='/dds-plan-by-project'
+              element={<CashFlowPlanByProject />}
+            />
+            <Route
+              path='/dds-fact-by-project'
+              element={<CashFlowFactByProject />}
+            />
+          </Route>
+        </Routes>
+      </Container>
     </>
   );
 }

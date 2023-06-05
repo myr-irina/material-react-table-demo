@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,36 +15,79 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { signin } from '../../utils/auth';
 import { UserContext } from '../../services';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../services';
+import { BASE_URL } from '../../utils/constants';
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const { token, login, logout } = useAuth();
+
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   const newData = {
+  //     username: data.get('username'),
+  //     password: data.get('password'),
+  //   };
+
+  //   const { username, password } = newData;
+
+  //   try {
+  //     signin({ username, password }).then((res) => {
+  //       if (res.access_token) {
+  //         localStorage.setItem(
+  //           'access_token',
+  //           JSON.stringify(res.access_token)
+  //         );
+  //         const token = res.access_token;
+  //         console.log({ token });
+  //         setAuth(token);
+  //       }
+  //     });
+  //   } catch (error) {
+  //     navigate('/signin', {
+  //       state: { message: 'Failed to submit form' },
+  //     });
+  //   }
+  // };
+
+  const submitLogin = async ({ username, password }) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: JSON.stringify(
+        `grant_type=&username=${username}&password=${password}&client_id=&client_secret=`
+      ),
+    };
+
+    const response = await fetch(`${BASE_URL}/api/v1/token`, requestOptions);
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.log('err');
+    } else {
+      const { access_token, token_type } = data;
+      localStorage.setItem('access_token', access_token);
+      login(access_token);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+
     const newData = {
       username: data.get('username'),
       password: data.get('password'),
     };
 
     const { username, password } = newData;
-
-    try {
-      signin({ username, password }).then((data) => {
-        localStorage.setItem('access_token', JSON.stringify(data.access_token));
-      });
-      navigate('/'); // Omit optional second argument
-    } catch (error) {
-      navigate('/signin', { state: { message: 'Failed to submit form' } }); // Pass optional second argument
-    }
-
-    // signin({ username, password }).then((data) => {
-    //   localStorage.setItem('access_token', JSON.stringify(data.access_token));
-    //   navigate('/');
-    // });
+    submitLogin({ username, password });
+    navigate('/bdr-totals-plan-split');
   };
 
   return (

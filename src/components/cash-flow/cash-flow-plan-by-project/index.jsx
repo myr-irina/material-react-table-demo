@@ -5,6 +5,7 @@ import data from '../../../json/dds-by-project-plan.json';
 import { getCashFlowByProjectPlan } from '../../../utils/api-requests';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project-dds';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
+import { useAuth } from '../../../services';
 
 function CashFlowPlanByProject() {
   const [cashFlowPlanByProject, setCashFlowPlanByProject] = useState([]);
@@ -12,8 +13,10 @@ function CashFlowPlanByProject() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getCashFlowByProjectPlan()
+    getCashFlowByProjectPlan(token)
       .then((data) => {
         setCashFlowPlanByProject(data);
         setIsLoading(false);

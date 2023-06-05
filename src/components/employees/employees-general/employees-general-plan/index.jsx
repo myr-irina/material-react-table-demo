@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import LayoutPlainTable from '../../../layouts-table/layout-plain-table';
 import { getWorkingHoursPlan } from '../../../../utils/api-requests';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
+import { useAuth } from '../../../../services';
 
 function EmployeesGeneralPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
@@ -10,8 +11,10 @@ function EmployeesGeneralPlan() {
   const [error, setError] = useState(false);
   const [message, setMessage] = React.useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getWorkingHoursPlan()
+    getWorkingHoursPlan(token)
       .then((data) => {
         setProjectPlanHours(data);
         setIsLoading(false);

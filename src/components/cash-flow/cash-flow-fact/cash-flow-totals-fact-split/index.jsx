@@ -6,6 +6,7 @@ import CashFlowTotalsFact from '../cash-flow-totals-fact';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { getCashFlowFact } from '../../../../utils/api-requests';
 import { categoriesDDS } from '../../../../utils/constants';
+import { useAuth } from '../../../../services';
 
 function CashFlowTotalsFactSplit() {
   const [factSplitData, setFactSplitData] = useState([]);
@@ -13,8 +14,10 @@ function CashFlowTotalsFactSplit() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getCashFlowFact()
+    getCashFlowFact(token)
       .then((data) => {
         setFactSplitData(data);
         setIsLoading(false);

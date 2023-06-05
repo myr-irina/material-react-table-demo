@@ -5,14 +5,18 @@ import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-tabl
 import { getBudgetByProjectFact } from '../../../utils/api-requests';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 
+import { useAuth } from '../../../services';
+
 function IncomeCostFactByProject() {
   const [budgetFactByProject, setBudgetFactByProject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [message, setMessage] = React.useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getBudgetByProjectFact()
+    getBudgetByProjectFact(token)
       .then((data) => {
         setBudgetFactByProject(data);
         setIsLoading(false);

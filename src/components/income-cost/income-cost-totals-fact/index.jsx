@@ -4,6 +4,7 @@ import data from '../../../json/income-cost-general-fact.json';
 import LayoutFinanceTableTotal from '../../layouts-table/layout-finance-table-total';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import { getBudgetFact } from '../../../utils/api-requests';
+import { useAuth } from '../../../services';
 
 function IncomeCostTotalsFact() {
   const [budgetFact, setBudgetFact] = useState([]);
@@ -11,8 +12,10 @@ function IncomeCostTotalsFact() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getBudgetFact()
+    getBudgetFact(token)
       .then((data) => {
         setBudgetFact(data);
         setIsLoading(false);

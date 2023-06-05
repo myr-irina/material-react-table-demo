@@ -4,15 +4,17 @@ import data from '../../../json/bdr-by-project-plan.json';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
 import { getBudgetByProjectPlan } from '../../../utils/api-requests';
+import { useAuth } from '../../../services';
 
 function IncomeCostPlanByProject() {
   const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
+  const { token } = useAuth();
 
   useEffect(() => {
-    getBudgetByProjectPlan()
+    getBudgetByProjectPlan(token)
       .then((data) => {
         setBudgetPlanByProject(data);
         setIsLoading(false);

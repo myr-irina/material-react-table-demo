@@ -23,8 +23,7 @@ export const signin = ({ username, password }) => {
 };
 
 export const getUser = (token) => {
-
-  return fetch(`${BASE_URL}/api/v1/test`, {
+  return fetch(`${BASE_URL}/api/user/me`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',

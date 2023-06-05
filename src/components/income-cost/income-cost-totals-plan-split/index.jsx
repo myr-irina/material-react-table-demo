@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useContext } from 'react';
 
 import data from '../../../json/income-cost-general-plan.json';
 import { getBudgetPlan } from '../../../utils/api-requests';
@@ -6,6 +6,7 @@ import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table
 import IncomeCostTotalsPlan from '../income-cost-totals-plan';
 import { categories } from '../../../utils/constants';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
+import { useAuth } from '../../../services';
 
 function IncomeCostTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);
@@ -13,8 +14,11 @@ function IncomeCostTotalsPlanSplit() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getBudgetPlan()
+    console.log('start');
+    getBudgetPlan(token)
       .then((data) => {
         setPlanSplitData(data);
         setIsLoading(false);
@@ -35,7 +39,7 @@ function IncomeCostTotalsPlanSplit() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (planSplitData.length === 0) return;
+  // if (planSplitData.length === 0) return;
 
   return (
     <>

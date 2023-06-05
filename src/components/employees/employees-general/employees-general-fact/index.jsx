@@ -5,14 +5,18 @@ import data from '../../../../json/employees-general-fact.json';
 import { getWorkingHoursFact } from '../../../../utils/api-requests';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 
+import { useAuth } from '../../../../services';
+
 function EmployeesGeneralFact() {
   const [projectFactHours, setProjectFactHours] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getWorkingHoursFact()
+    getWorkingHoursFact(token)
       .then((data) => {
         setProjectFactHours(data);
         setIsLoading(false);

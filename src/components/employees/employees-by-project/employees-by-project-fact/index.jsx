@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getProjectFactHours } from '../../../../utils/api-requests';
 import LayoutTableEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
+import { useAuth } from '../../../../services';
 
 function EmployeesByProjectFact() {
   const [projectFactHours, setProjectfactHours] = useState([]);
@@ -10,8 +11,10 @@ function EmployeesByProjectFact() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getProjectFactHours()
+    getProjectFactHours(token)
       .then((data) => {
         setProjectfactHours(data);
         setIsLoading(false);

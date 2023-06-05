@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+import { useContext } from 'react';
+import { UserContext } from '../../../../services';
 import { getProjectPlanHours } from '../../../../utils/api-requests';
 import employeesByProjectPlanData from '../../../../json/employees-by-project-plan.json';
 import LayoutTableEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
+import { useAuth } from '../../../../services';
 
 function EmployeesByProjectPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
@@ -11,8 +13,10 @@ function EmployeesByProjectPlan() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getProjectPlanHours()
+    getProjectPlanHours(token)
       .then((data) => {
         setProjectPlanHours(data);
         setIsLoading(false);

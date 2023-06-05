@@ -4,15 +4,17 @@ import data from '../../../json/income-cost-general-plan.json';
 import LayoutFinanceTableTotal from '../../layouts-table/layout-finance-table-total';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import { getBudgetPlan } from '../../../utils/api-requests';
+import { useAuth } from '../../../services';
 
 function IncomeCostTotalsPlan() {
   const [budgetPlan, setBudgetPlan] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
+  const { token } = useAuth();
 
   useEffect(() => {
-    getBudgetPlan()
+    getBudgetPlan(token)
       .then((data) => {
         setBudgetPlan(data);
         setIsLoading(false);

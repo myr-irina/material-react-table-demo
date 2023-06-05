@@ -7,6 +7,7 @@ import { getCashFlowPlan } from '../../../../utils/api-requests';
 import CashFlowTotalsPlan from '../cash-flow-totals-plan';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { categoriesDDS } from '../../../../utils/constants';
+import { useAuth } from '../../../../services';
 
 function CashFlowTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);
@@ -14,8 +15,10 @@ function CashFlowTotalsPlanSplit() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const { token } = useAuth();
+
   useEffect(() => {
-    getCashFlowPlan()
+    getCashFlowPlan(token)
       .then((data) => {
         setPlanSplitData(data);
         setIsLoading(false);
@@ -47,7 +50,7 @@ function CashFlowTotalsPlanSplit() {
         data={planSplitData}
         categories={categoriesDDS}
         error={error}
-        message={message} 
+        message={message}
       />
     </>
   );

@@ -4,15 +4,17 @@ import LayoutFinanceTableTotal from '../../../layouts-table/layout-finance-table
 import data from '../../../../json/cash-flow-general-fact.json';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { getCashFlowFact } from '../../../../utils/api-requests';
+import { useAuth } from '../../../../services';
 
 function CashFlowTotalsFact() {
   const [totalData, setTotalData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
+  const { token } = useAuth();
 
   useEffect(() => {
-    getCashFlowFact()
+    getCashFlowFact(token)
       .then((data) => {
         setTotalData(data);
         setIsLoading(false);
