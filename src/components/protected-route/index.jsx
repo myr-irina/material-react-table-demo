@@ -3,9 +3,7 @@ import { Route, Navigate, useLocation, Outlet } from 'react-router-dom';
 import { useAuth } from '../../services';
 import { UserContext } from '../../services';
 
-export default function ProtectedRoute() {
-  const { token } = useAuth();
-
+export default function ProtectedRoute({ token }) {
   const location = useLocation();
 
   return token ? (

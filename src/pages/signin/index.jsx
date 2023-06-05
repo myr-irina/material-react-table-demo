@@ -87,7 +87,7 @@ export default function SignIn() {
 
     const { username, password } = newData;
     submitLogin({ username, password });
-    navigate('/bdr-totals-plan-split');
+    navigate('/');
   };
 
   return (

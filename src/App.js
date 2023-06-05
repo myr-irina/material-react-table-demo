@@ -29,6 +29,7 @@ import { getUser } from './utils/auth';
 import { useAuth } from './services';
 
 export default function App() {
+  const { token } = useAuth();
 
 
   return (
@@ -38,54 +39,104 @@ export default function App() {
         <Routes>
           <Route path='/signin' element={<SignIn />} />
           <Route element={<NavBar />}>
-            <Route path='/' element={<EmployeesGeneralPlan />} />
-            <Route path='/employees-fact' element={<EmployeesGeneralFact />} />
+            <Route
+              path='/'
+              element={
+                <ProtectedRoute token={token}>
+                  <EmployeesGeneralPlan />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/employees-fact'
+              element={
+                <ProtectedRoute token={token}>
+                  <EmployeesGeneralFact />
+                </ProtectedRoute>
+              }
+            />
 
             <Route
               path='/employees-project-plan'
-              element={<EmployeesByProjectPlan />}
+              element={
+                <ProtectedRoute token={token}>
+                  <EmployeesByProjectPlan />
+                </ProtectedRoute>
+              }
             />
             <Route
               path='/employees-project-fact'
-              element={<EmployeesByProjectFact />}
+              element={
+                <ProtectedRoute token={token}>
+                  <EmployeesByProjectFact />
+                </ProtectedRoute>
+              }
             />
 
             <Route
               path='/bdr-totals-plan-split'
               element={
-                <ProtectedRoute>
+                <ProtectedRoute token={token}>
                   <IncomeCostTotalsPlanSplit />
                 </ProtectedRoute>
               }
             />
             <Route
               path='/bdr-totals-fact-split'
-              element={<IncomeCostTotalsFactSplit />}
+              element={
+                <ProtectedRoute token={token}>
+                  <IncomeCostTotalsFactSplit />
+                </ProtectedRoute>
+              }
             />
             <Route
               path='/bdr-plan-by-project'
-              element={<IncomeCostPlanByProject />}
+              element={
+                <ProtectedRoute token={token}>
+                  <IncomeCostPlanByProject />
+                </ProtectedRoute>
+              }
             />
             <Route
               path='/bdr-fact-by-project'
-              element={<IncomeCostFactByProject />}
+              element={
+                <ProtectedRoute token={token}>
+                  <IncomeCostFactByProject />
+                </ProtectedRoute>
+              }
             />
 
             <Route
               path='/dds-totals-plan-split'
-              element={<CashFlowTotalsPlanSplit />}
+              element={
+                <ProtectedRoute token={token}>
+                  <CashFlowTotalsPlanSplit />
+                </ProtectedRoute>
+              }
             />
             <Route
               path='/dds-totals-fact-split'
-              element={<CashFlowTotalsFactSplit />}
+              element={
+                <ProtectedRoute token={token}>
+                  <CashFlowTotalsFactSplit />
+                </ProtectedRoute>
+              }
             />
             <Route
               path='/dds-plan-by-project'
-              element={<CashFlowPlanByProject />}
+              element={
+                <ProtectedRoute token={token}>
+                  <CashFlowPlanByProject />
+                </ProtectedRoute>
+              }
             />
             <Route
               path='/dds-fact-by-project'
-              element={<CashFlowFactByProject />}
+              element={
+                <ProtectedRoute token={token}>
+                  <CashFlowFactByProject />
+                </ProtectedRoute>
+              }
             />
           </Route>
         </Routes>

@@ -13,6 +13,8 @@ function EmployeesGeneralPlan() {
 
   const { token } = useAuth();
 
+
+
   useEffect(() => {
     getWorkingHoursPlan(token)
       .then((data) => {

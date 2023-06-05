@@ -15,9 +15,9 @@ function IncomeCostTotalsPlanSplit() {
   const [message, setMessage] = useState(null);
 
   const { token } = useAuth();
+  console.log({ data });
 
   useEffect(() => {
-    console.log('start');
     getBudgetPlan(token)
       .then((data) => {
         setPlanSplitData(data);
