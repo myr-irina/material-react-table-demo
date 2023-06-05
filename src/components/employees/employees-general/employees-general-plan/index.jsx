@@ -13,29 +13,25 @@ function EmployeesGeneralPlan() {
 
   const { token } = useAuth();
 
-
+  console.log({ projectPlanHours });
 
   useEffect(() => {
     getWorkingHoursPlan(token)
       .then((data) => {
         setProjectPlanHours(data);
-        setIsLoading(false);
       })
       .catch((error) => {
         if (error === '500') {
           console.log('Внутренняя ошибка сервера');
-
           setError(true);
-          setIsLoading(false);
           setProjectPlanHours([]);
           setMessage(SERVER_ERROR_MESSAGE);
         }
         console.log(error);
         setError(true);
-        setIsLoading(false);
         setProjectPlanHours([]);
       })
-      .finally(setIsLoading(false));
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (

@@ -24,6 +24,8 @@ const theme = createTheme();
 export default function SignIn() {
   const { token, login, logout } = useAuth();
 
+  console.log({ token, login, logout });
+
   const navigate = useNavigate();
 
   // const handleSubmit = (event) => {
@@ -64,16 +66,27 @@ export default function SignIn() {
       ),
     };
 
-    const response = await fetch(`${BASE_URL}/api/v1/token`, requestOptions);
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.log('err');
-    } else {
+    try {
+      const response = await fetch(`${BASE_URL}/api/v1/token`, requestOptions);
+      const data = await response.json();
       const { access_token, token_type } = data;
       localStorage.setItem('access_token', access_token);
-      login(access_token);
+
+      navigate('/');
+    } catch (err) {
+      console.log('err');
     }
+
+    // if (!response.ok) {
+    //   console.log('err');
+    // } else {
+    //   const { access_token, token_type } = data;
+    //   localStorage.setItem('access_token', access_token);
+
+    //   navigate('/');
+
+    //   // login(access_token);
+    // }
   };
 
   const handleSubmit = (e) => {
@@ -87,7 +100,6 @@ export default function SignIn() {
 
     const { username, password } = newData;
     submitLogin({ username, password });
-    navigate('/');
   };
 
   return (

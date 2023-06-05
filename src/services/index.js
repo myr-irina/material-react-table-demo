@@ -6,6 +6,7 @@ export const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('access_token'));
+  const isLoggedIn = Boolean(token);
 
   useEffect(() => {
     setToken(localStorage.getItem('access_token'));

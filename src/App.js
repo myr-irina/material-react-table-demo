@@ -31,7 +31,6 @@ import { useAuth } from './services';
 export default function App() {
   const { token } = useAuth();
 
-
   return (
     <>
       <CssBaseline />
