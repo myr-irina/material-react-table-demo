@@ -6,7 +6,6 @@ import { getCellColor } from '../../../utils/getCellColor';
 import { Link as MuiLink } from '@mui/material';
 import ErrorMessage from '../../error';
 
-// import data from '../../../json/employees-general-fact.json';
 import { StyledBoxWithData } from '../../../utils/styles';
 
 export default function LayoutPlainTable(props) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -18,8 +19,14 @@ const theme = createTheme();
 
 export default function SignIn() {
   const { login } = useAuth();
-
   const navigate = useNavigate();
+
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      username: '',
+      password: '',
+    },
+  });
 
   const submitLogin = async ({ username, password }) => {
     const requestOptions = {
@@ -41,18 +48,23 @@ export default function SignIn() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-
-    const newData = {
-      username: data.get('username'),
-      password: data.get('password'),
-    };
-
-    const { username, password } = newData;
+  const onSubmit = (data) => {
+    const { username, password } = data;
     submitLogin({ username, password });
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const data = new FormData(e.currentTarget);
+
+  //   const newData = {
+  //     username: data.get('username'),
+  //     password: data.get('password'),
+  //   };
+
+  //   const { username, password } = newData;
+  //   submitLogin({ username, password });
+  // };
 
   return (
     <ThemeProvider theme={theme}>
@@ -74,11 +86,30 @@ export default function SignIn() {
           </Typography>
           <Box
             component='form'
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             noValidate
             sx={{ mt: 1 }}
           >
-            <TextField
+            <Controller
+              name='username'
+              control={control}
+              render={({ field }) => (
+                <TextField fullWidth margin='normal' {...field} />
+              )}
+            />
+            <Controller
+              name='password'
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  fullWidth
+                  margin='normal'
+                  type='password'
+                  {...field}
+                />
+              )}
+            />
+            {/* <TextField
               margin='normal'
               required
               fullWidth
@@ -97,7 +128,7 @@ export default function SignIn() {
               type='password'
               id='password'
               autoComplete='current-password'
-            />
+            /> */}
 
             <Button
               type='submit'

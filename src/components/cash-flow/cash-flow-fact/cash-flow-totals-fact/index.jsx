@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LayoutFinanceTableTotal from '../../../layouts-table/layout-finance-table-total';
 
-import data from '../../../../json/cash-flow-general-fact.json';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { getCashFlowFact } from '../../../../utils/api-requests';
 import { useAuth } from '../../../../contexts/auth-provider';

@@ -1,7 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 
-import data from '../../../json/income-cost-general-fact.json';
-
 import { getBudgetFact } from '../../../utils/api-requests';
 import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table-detailed';
 import IncomeCostTotalsFact from '../income-cost-totals-fact';

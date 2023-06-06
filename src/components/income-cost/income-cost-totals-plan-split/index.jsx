@@ -1,6 +1,5 @@
-import React, { useState, useMemo, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import data from '../../../json/income-cost-general-plan.json';
 import { getBudgetPlan } from '../../../utils/api-requests';
 import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table-detailed';
 import IncomeCostTotalsPlan from '../income-cost-totals-plan';

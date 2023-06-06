@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import data from '../../../json/income-cost-general-plan.json';
 import LayoutFinanceTableTotal from '../../layouts-table/layout-finance-table-total';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import { getBudgetPlan } from '../../../utils/api-requests';

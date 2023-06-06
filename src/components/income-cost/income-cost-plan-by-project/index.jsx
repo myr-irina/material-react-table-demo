@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import data from '../../../json/bdr-by-project-plan.json';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
 import { getBudgetByProjectPlan } from '../../../utils/api-requests';

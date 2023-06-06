@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import data from '../../../../json/cash-flow-general-plan.json';
 import LayoutFinanceTableDetailed from '../../../layouts-table/layout-finance-table-detailed';
 import CashFlowTotalsFact from '../cash-flow-totals-fact';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import LayoutPlainTable from '../../../layouts-table/layout-plain-table';
-import data from '../../../../json/employees-general-fact.json';
 import { getWorkingHoursFact } from '../../../../utils/api-requests';
 import { useAuth } from '../../../../contexts/auth-provider';
 
