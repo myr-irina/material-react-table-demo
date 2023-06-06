@@ -35,7 +35,7 @@ function EmployeesByProjectPlan() {
       .finally(setIsLoading(false));
   }, []);
 
-  // if (projectPlanHours.length === 0) return;
+
 
   return (
     projectPlanHours && (

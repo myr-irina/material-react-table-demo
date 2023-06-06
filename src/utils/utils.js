@@ -10,10 +10,25 @@ export const parseTableData = (data) => {
         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 
       return Object.entries(dataAuthorsMutated).map(([author, projects]) => {
-        return Object.entries(projects).map(([projectName, time]) => ({
+        const linkFiltered = Object.keys(projects)
+          .filter((key) => key !== 'link')
+          .reduce((obj, key) => {
+            obj[key] = projects[key];
+            return obj;
+          }, {});
+
+        const link = Object.keys(projects)
+          .filter((key) => key === 'link')
+          .reduce((obj, key) => {
+            obj[key] = projects[key];
+            return obj;
+          }, {});
+
+        return Object.entries(linkFiltered).map(([projectName, time]) => ({
           projectName,
           author,
           month,
+          ...link,
           ...(typeof time === 'number' ? { hours: time, percent: null } : time),
         }));
       });

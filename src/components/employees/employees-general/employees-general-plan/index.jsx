@@ -15,12 +15,9 @@ function EmployeesGeneralPlan() {
 
   const { token } = useAuth();
 
-  console.log({ projectPlanHours });
-
   useEffect(() => {
     getWorkingHoursPlan(token)
       .then((data) => {
-        console.log({ data });
         if (data) {
           setProjectPlanHours(data);
         }

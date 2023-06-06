@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { Typography, Box } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,9 +9,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Link as MuiLink } from '@mui/material';
 
 import CustomSelect from '../../custom-select';
-import employeesByProjectPlanData from '../../../json/employees-by-project-plan.json';
+
 import {
   parseTableData,
   getColumnNames,
@@ -27,6 +30,7 @@ export default function LayoutEmployeesByProject(props) {
   const { data, title, error, isLoading, message } = props;
 
   const TABLE_DATA = parseTableData(data);
+  console.log({ TABLE_DATA });
 
   const date = new Date();
   const currentMonthIndex = date.getMonth();
@@ -132,7 +136,15 @@ export default function LayoutEmployeesByProject(props) {
                   <>
                     <StyledTableRow3 key={rowProject}>
                       <StyledTableCellTableDetailed key={rowProject}>
-                        {rowProject[0].author}
+                        <MuiLink
+                          component={Link}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          to={rowProject[0]?.link}
+                          underline='none'
+                        >
+                          {rowProject[0].author}
+                        </MuiLink>
                       </StyledTableCellTableDetailed>
                       {getColumnNames(rowEntry).map((columnName, index) => {
                         const project = findProjectByName(
