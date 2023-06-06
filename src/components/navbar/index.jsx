@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import {
   Link as RouterLink,
   Outlet,
   NavLink as CustomNavLink,
 } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -20,11 +20,15 @@ import Grid from '@mui/material/Grid';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
+import { useAuth } from '../../services';
+
 export default function NavBar() {
   const [anchorElEmployees, setAnchorElEmployees] = React.useState(null);
   const [anchorBDR, setAnchorBDR] = React.useState(null);
   const [anchorDDS, setAnchorDDS] = React.useState(null);
   const [anchorElAccount, setAnchorElAccount] = React.useState(null);
+  const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const openEmployees = Boolean(anchorElEmployees);
   const openBDR = Boolean(anchorBDR);
@@ -57,6 +61,12 @@ export default function NavBar() {
 
   const handleAccountClose = () => {
     setAnchorElAccount(null);
+  };
+
+  const handleAccountLogout = () => {
+    setAnchorElAccount(null);
+    logout();
+    navigate('/signin');
   };
 
   return (
@@ -172,7 +182,7 @@ export default function NavBar() {
                 open={Boolean(anchorElAccount)}
                 onClose={handleAccountClose}
               >
-                <MenuItem onClick={handleAccountClose}>Logout</MenuItem>
+                <MenuItem onClick={handleAccountLogout}>Logout</MenuItem>
               </Menu>
             </Grid>
           </Grid>

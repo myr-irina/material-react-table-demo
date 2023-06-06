@@ -22,9 +22,7 @@ import { BASE_URL } from '../../utils/constants';
 const theme = createTheme();
 
 export default function SignIn() {
-  const { token, login, logout } = useAuth();
-
-  console.log({ token, login, logout });
+  const { login } = useAuth();
 
   const navigate = useNavigate();
 
@@ -70,8 +68,8 @@ export default function SignIn() {
       const response = await fetch(`${BASE_URL}/api/v1/token`, requestOptions);
       const data = await response.json();
       const { access_token, token_type } = data;
-      localStorage.setItem('access_token', access_token);
-
+      // localStorage.setItem('access_token', access_token);
+      login(access_token);
       navigate('/');
     } catch (err) {
       console.log('err');
