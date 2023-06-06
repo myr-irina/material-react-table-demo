@@ -7,7 +7,7 @@ import { getCashFlowPlan } from '../../../../utils/api-requests';
 import CashFlowTotalsPlan from '../cash-flow-totals-plan';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { categoriesDDS } from '../../../../utils/constants';
-import { useAuth } from '../../../../services';
+import { useAuth } from '../../../../contexts/auth-provider';
 
 function CashFlowTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);

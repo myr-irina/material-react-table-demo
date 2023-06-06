@@ -6,7 +6,7 @@ import CashFlowTotalsFact from '../cash-flow-totals-fact';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { getCashFlowFact } from '../../../../utils/api-requests';
 import { categoriesDDS } from '../../../../utils/constants';
-import { useAuth } from '../../../../services';
+import { useAuth } from '../../../../contexts/auth-provider';
 
 function CashFlowTotalsFactSplit() {
   const [factSplitData, setFactSplitData] = useState([]);

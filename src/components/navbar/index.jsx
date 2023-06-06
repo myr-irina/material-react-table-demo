@@ -1,26 +1,17 @@
 import React from 'react';
-import {
-  Link as RouterLink,
-  Outlet,
-  NavLink as CustomNavLink,
-} from 'react-router-dom';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, NavLink as CustomNavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
-import { styled } from '@mui/system';
 import { Toolbar } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-import { useAuth } from '../../services';
+import { useAuth } from '../../contexts/auth-provider';
 
 export default function NavBar() {
   const [anchorElEmployees, setAnchorElEmployees] = React.useState(null);

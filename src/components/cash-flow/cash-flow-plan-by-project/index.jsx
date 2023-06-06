@@ -5,7 +5,7 @@ import data from '../../../json/dds-by-project-plan.json';
 import { getCashFlowByProjectPlan } from '../../../utils/api-requests';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project-dds';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
-import { useAuth } from '../../../services';
+import { useAuth } from '../../../contexts/auth-provider';
 
 function CashFlowPlanByProject() {
   const [cashFlowPlanByProject, setCashFlowPlanByProject] = useState([]);

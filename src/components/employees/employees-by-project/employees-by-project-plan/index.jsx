@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useContext } from 'react';
-import { UserContext } from '../../../../services';
 import { getProjectPlanHours } from '../../../../utils/api-requests';
 import employeesByProjectPlanData from '../../../../json/employees-by-project-plan.json';
 import LayoutTableEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
-import { useAuth } from '../../../../services';
+import { useAuth } from '../../../../contexts/auth-provider';
 
 function EmployeesByProjectPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);

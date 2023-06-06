@@ -4,7 +4,7 @@ import data from '../../../json/bdr-by-project-plan.json';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
 import { getBudgetByProjectPlan } from '../../../utils/api-requests';
-import { useAuth } from '../../../services';
+import { useAuth } from '../../../contexts/auth-provider';
 
 function IncomeCostPlanByProject() {
   const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);

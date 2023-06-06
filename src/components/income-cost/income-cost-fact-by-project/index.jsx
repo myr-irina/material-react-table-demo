@@ -5,7 +5,7 @@ import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-tabl
 import { getBudgetByProjectFact } from '../../../utils/api-requests';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 
-import { useAuth } from '../../../services';
+import { useAuth } from '../../../contexts/auth-provider';
 
 function IncomeCostFactByProject() {
   const [budgetFactByProject, setBudgetFactByProject] = useState([]);

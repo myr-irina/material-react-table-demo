@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import LayoutPlainTable from '../../../layouts-table/layout-plain-table';
 import { getWorkingHoursPlan } from '../../../../utils/api-requests';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
-import { useAuth } from '../../../../services';
+import { Typography } from '@mui/material';
+
+import { useAuth } from '../../../../contexts/auth-provider';
 
 function EmployeesGeneralPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
@@ -18,7 +20,10 @@ function EmployeesGeneralPlan() {
   useEffect(() => {
     getWorkingHoursPlan(token)
       .then((data) => {
-        setProjectPlanHours(data);
+        console.log({ data });
+        if (data) {
+          setProjectPlanHours(data);
+        }
       })
       .catch((error) => {
         if (error === '500') {
@@ -33,6 +38,11 @@ function EmployeesGeneralPlan() {
       })
       .finally(() => setIsLoading(false));
   }, []);
+
+  if (!projectPlanHours)
+    return (
+      <Typography>Идет загруза. Обновите, пожалуйста, страницу</Typography>
+    );
 
   return (
     projectPlanHours && (

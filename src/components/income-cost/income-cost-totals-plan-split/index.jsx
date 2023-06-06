@@ -6,7 +6,7 @@ import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table
 import IncomeCostTotalsPlan from '../income-cost-totals-plan';
 import { categories } from '../../../utils/constants';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
-import { useAuth } from '../../../services';
+import { useAuth } from '../../../contexts/auth-provider';
 
 function IncomeCostTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);
@@ -15,7 +15,6 @@ function IncomeCostTotalsPlanSplit() {
   const [message, setMessage] = useState(null);
 
   const { token } = useAuth();
-  console.log({ data });
 
   useEffect(() => {
     getBudgetPlan(token)

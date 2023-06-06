@@ -4,7 +4,7 @@ import LayoutFinanceTableTotal from '../../../layouts-table/layout-finance-table
 import data from '../../../../json/cash-flow-general-fact.json';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { getCashFlowFact } from '../../../../utils/api-requests';
-import { useAuth } from '../../../../services';
+import { useAuth } from '../../../../contexts/auth-provider';
 
 function CashFlowTotalsFact() {
   const [totalData, setTotalData] = useState([]);

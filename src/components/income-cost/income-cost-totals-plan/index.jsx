@@ -4,7 +4,7 @@ import data from '../../../json/income-cost-general-plan.json';
 import LayoutFinanceTableTotal from '../../layouts-table/layout-finance-table-total';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import { getBudgetPlan } from '../../../utils/api-requests';
-import { useAuth } from '../../../services';
+import { useAuth } from '../../../contexts/auth-provider';
 
 function IncomeCostTotalsPlan() {
   const [budgetPlan, setBudgetPlan] = useState([]);

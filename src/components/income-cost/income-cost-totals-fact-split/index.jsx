@@ -7,7 +7,7 @@ import LayoutFinanceTableDetailed from '../../layouts-table/layout-finance-table
 import IncomeCostTotalsFact from '../income-cost-totals-fact';
 import { categories } from '../../../utils/constants';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
-import { useAuth } from '../../../services';
+import { useAuth } from '../../../contexts/auth-provider';
 
 function IncomeCostTotalsFactSplit() {
   const [factSplitData, setFactSplitData] = useState([]);

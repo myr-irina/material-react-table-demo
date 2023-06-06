@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
-import { Route, Navigate, useLocation, Outlet } from 'react-router-dom';
-import { useAuth } from '../../services';
-import { UserContext } from '../../services';
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 
-export default function ProtectedRoute({ token, children }) {
+export default function ProtectedRoute({ token, children, isLoggedIn }) {
   const location = useLocation();
 
   return token ? (
