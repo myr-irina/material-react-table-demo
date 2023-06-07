@@ -16,8 +16,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useAuth } from '../../contexts/auth-provider';
 import { BASE_URL } from '../../utils/constants';
+import { signin } from '../../utils/auth';
+import { userSignin } from '../../utils/auth';
 
-const regexEmail = /^user@example\.com$/;
+const regexEmail = /^u@e\.com$/;
+const regexPsw = /1/;
 const validationSchema = yup
   .object({
     username: yup
@@ -28,8 +31,7 @@ const validationSchema = yup
       .required('Пожалуйста, заполните поле Email'),
     password: yup
       .string()
-      .trim()
-      .matches(/1/, 'Неверный пароль')
+      .matches(regexPsw, 'Неверный пароль')
       .required('Пожалуйста, заполните поле Пароль'),
   })
   .required();
@@ -56,16 +58,8 @@ export default function SignIn() {
   });
 
   const submitLogin = async ({ username, password }) => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: JSON.stringify(
-        `grant_type=&username=${username}&password=${password}&client_id=&client_secret=`
-      ),
-    };
-
     try {
-      const response = await fetch(`${BASE_URL}/api/v1/token`, requestOptions);
+      const response = await userSignin({ username, password });
       const data = await response.json();
       const { access_token } = data;
       login(access_token);
@@ -131,6 +125,7 @@ export default function SignIn() {
               render={({ field, fieldState: { invalid, error } }) => (
                 <TextField
                   label='Пароль'
+                  name='password'
                   fullWidth
                   margin='normal'
                   type='password'

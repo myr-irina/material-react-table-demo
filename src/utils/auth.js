@@ -33,3 +33,15 @@ export const getUser = (token) => {
     return checkResponse(res);
   });
 };
+
+export const userSignin = async ({ username, password }) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: JSON.stringify(
+      `grant_type=&username=${username}&password=${password}&client_id=&client_secret=`
+    ),
+  };
+
+  await fetch(`${BASE_URL}/api/v1/token`, requestOptions);
+};
