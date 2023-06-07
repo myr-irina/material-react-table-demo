@@ -2,6 +2,7 @@ import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 
 export const BASE_URL = 'http://10.10.10.156:8000';
+// localhost - 83:3001
 
 export const colors = {
   darkRed: '#F27A83',

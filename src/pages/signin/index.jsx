@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -15,17 +17,42 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAuth } from '../../contexts/auth-provider';
 import { BASE_URL } from '../../utils/constants';
 
+const regexEmail = /^user@example\.com$/;
+const validationSchema = yup
+  .object({
+    username: yup
+      .string()
+      .trim()
+      .email()
+      .matches(regexEmail, 'Неверный email')
+      .required('Пожалуйста, заполните поле Email'),
+    password: yup
+      .string()
+      .trim()
+      .matches(/1/, 'Неверный пароль')
+      .required('Пожалуйста, заполните поле Пароль'),
+  })
+  .required();
+
 const theme = createTheme();
 
 export default function SignIn() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const { control, handleSubmit } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid, errors },
+    reset,
+  } = useForm({
     defaultValues: {
       username: '',
       password: '',
     },
+    shouldUnregister: true,
+    resolver: yupResolver(validationSchema),
+    mode: 'onBlur',
   });
 
   const submitLogin = async ({ username, password }) => {
@@ -49,22 +76,12 @@ export default function SignIn() {
   };
 
   const onSubmit = (data) => {
+    console.log(JSON.stringify(data, null, 2));
+
     const { username, password } = data;
     submitLogin({ username, password });
+    reset();
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const data = new FormData(e.currentTarget);
-
-  //   const newData = {
-  //     username: data.get('username'),
-  //     password: data.get('password'),
-  //   };
-
-  //   const { username, password } = newData;
-  //   submitLogin({ username, password });
-  // };
 
   return (
     <ThemeProvider theme={theme}>
@@ -93,48 +110,44 @@ export default function SignIn() {
             <Controller
               name='username'
               control={control}
-              render={({ field }) => (
-                <TextField fullWidth margin='normal' {...field} />
-              )}
-            />
-            <Controller
-              name='password'
-              control={control}
-              render={({ field }) => (
+              render={({ field, fieldState: { invalid, error } }) => (
                 <TextField
+                  label='Email'
+                  name='username'
+                  autoComplete='off'
+                  autoFocus
                   fullWidth
                   margin='normal'
-                  type='password'
+                  error={!!errors?.username}
+                  helperText={invalid ? error.message : ''}
                   {...field}
                 />
               )}
             />
-            {/* <TextField
-              margin='normal'
-              required
-              fullWidth
-              id='username'
-              label='Email Address'
-              name='username'
-              autoComplete='email'
-              autoFocus
-            />
-            <TextField
-              margin='normal'
-              required
-              fullWidth
+
+            <Controller
               name='password'
-              label='Password'
-              type='password'
-              id='password'
-              autoComplete='current-password'
-            /> */}
+              control={control}
+              render={({ field, fieldState: { invalid, error } }) => (
+                <TextField
+                  label='Пароль'
+                  fullWidth
+                  margin='normal'
+                  type='password'
+                  autoComplete='off'
+                  error={!!errors?.password}
+                  helperText={invalid ? error.message : ''}
+                  {...field}
+                />
+              )}
+            />
 
             <Button
               type='submit'
               fullWidth
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
+              disabled={!isValid}
             >
               Sign In
             </Button>
