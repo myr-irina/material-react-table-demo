@@ -26,13 +26,9 @@ const validationSchema = yup
     username: yup
       .string()
       .trim()
-      .email()
-      .matches(regexEmail, 'Неверный email')
+      .email('Введите верный формат email')
       .required('Пожалуйста, заполните поле Email'),
-    password: yup
-      .string()
-      .matches(regexPsw, 'Неверный пароль')
-      .required('Пожалуйста, заполните поле Пароль'),
+    password: yup.string().trim().required('Пожалуйста, заполните поле Пароль'),
   })
   .required();
 

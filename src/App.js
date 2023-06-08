@@ -20,6 +20,7 @@ import CashFlowTotalsPlanSplit from './components/cash-flow/cash-flow-plan/cash-
 import CashFlowTotalsFactSplit from './components/cash-flow/cash-flow-fact/cash-flow-totals-fact-split';
 import CashFlowPlanByProject from './components/cash-flow/cash-flow-plan-by-project';
 import CashFlowFactByProject from './components/cash-flow/cash-flow-fact-by-project';
+import NotFound from './pages/not-found';
 import ProtectedRoute from './components/protected-route';
 import SignIn from './pages/signin';
 import { useAuth } from './contexts/auth-provider';
@@ -134,6 +135,7 @@ export default function App() {
               }
             />
           </Route>
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Container>
     </>
