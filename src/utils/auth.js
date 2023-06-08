@@ -34,7 +34,7 @@ export const getUser = (token) => {
   });
 };
 
-export const userSignin = async ({ username, password }) => {
+export const userSignin = ({ username, password }) => {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -43,5 +43,5 @@ export const userSignin = async ({ username, password }) => {
     ),
   };
 
-  await fetch(`${BASE_URL}/api/v1/token`, requestOptions);
+  return fetch(`${BASE_URL}/api/v1/token`, requestOptions);
 };
