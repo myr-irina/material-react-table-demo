@@ -192,7 +192,7 @@ export default function NavBar() {
           <MenuItem
             onClick={handleCloseEmployees}
             component={CustomNavLink}
-            to={'/'}
+            to={'/employees-plan'}
             sx={{
               '&.active': {
                 backgroundColor: '#f5f5f5',

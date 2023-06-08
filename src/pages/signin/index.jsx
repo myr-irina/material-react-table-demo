@@ -66,8 +66,6 @@ export default function SignIn() {
   };
 
   const onSubmit = (data) => {
-    console.log(JSON.stringify(data, null, 2));
-
     const { username, password } = data;
     submitLogin({ username, password });
     reset();

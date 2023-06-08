@@ -34,9 +34,15 @@ export default function App() {
       <Container maxWidth='1280px'>
         <Routes>
           <Route path='/signin' element={<SignIn />} />
-          <Route element={<NavBar />}>
+          <Route
+            element={
+              <ProtectedRoute token={token}>
+                <NavBar />
+              </ProtectedRoute>
+            }
+          >
             <Route
-              path='/'
+              path='/employees-plan'
               element={
                 <ProtectedRoute token={token}>
                   <EmployeesGeneralPlan />
