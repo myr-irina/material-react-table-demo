@@ -37,8 +37,6 @@ function IncomeCostTotalsPlanSplit() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  // if (planSplitData.length === 0) return;
-
   return (
     <>
       <IncomeCostTotalsPlan />

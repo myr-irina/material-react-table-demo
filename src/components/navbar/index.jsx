@@ -1,7 +1,6 @@
 import React from 'react';
 import { Outlet, NavLink as CustomNavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -57,7 +56,7 @@ export default function NavBar() {
   const handleAccountLogout = () => {
     setAnchorElAccount(null);
     logout();
-    navigate('/signin');
+    navigate('/signin', { replace: true });
   };
 
   return (

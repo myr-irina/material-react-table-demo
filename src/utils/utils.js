@@ -1,7 +1,7 @@
 export const parseTableData = (data) => {
   const obj = Object.entries(data)
     .map(([month, dataAuthors]) => {
-      if (!dataAuthors) return;
+      if (!dataAuthors) return null;
 
       const dataAuthorsMutated = Object.entries(dataAuthors)
         .sort((a) => {
@@ -42,7 +42,7 @@ export const parseTableData2 = (data) => {
   const obj = Object.entries(data)
     .map(([projectType, dataProject]) => {
       if (dataProject === 'null' || dataProject === 'undefined') {
-        return;
+        return null;
       }
 
       const dataAuthorsMutated = Object.entries(dataProject)
@@ -78,7 +78,7 @@ export const parseTableData3 = (data) => {
     .map(([projectType, dataProject]) => {
       const dataAuthorsMutated = Object.entries(dataProject)
         .sort((a) => {
-          if (a[0] !== 'Итого') return;
+          if (a[0] !== 'Итого') return null;
           return a[0] === 'Итого' ? 1 : -1;
         })
         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
@@ -113,27 +113,11 @@ export const parseTableData3 = (data) => {
   return obj;
 };
 
-function clearEmpties(o) {
-  for (let k in o) {
-    if (!o[k] || typeof o[k] !== 'object') {
-      continue; // If null or not an object, skip to the next iteration
-    }
-    // The property is an object
-    clearEmpties(o[k]); // <-- Make a recursive call on the nested object
-    if (Object.keys(o[k]).length === 0) {
-      delete o[k]; // The object had no properties, so delete that property
-    }
-  }
-  return o;
-}
-
 export const parseTableData4 = (data) => {
-  // const clearedObj = clearEmpties(data);
-
   const obj = Object.entries(data)
     .map(([projectType, dataProject]) => {
       return Object.entries(dataProject).map(([projectName, projects]) => {
-        if (projects === null || projects === undefined) return;
+        if (projects === null || projects === undefined) return null;
 
         return Object.entries(projects).map(([month, value]) => ({
           month,
@@ -193,23 +177,11 @@ export const parseTableData5 = (data) => {
   return obj;
 };
 
-//columnName, rowproject[]
 export const findProjectByName = (projectName, projects) =>
   projects.find((project) => project.projectName === projectName);
 
 export const findProjectByName2 = (month, projects) =>
   projects.find((project) => project.month === month);
-
-// {месяц
-//
-// Проект/Сотрудник
-//   [
-// Проекты/Сотрудники
-//     [[][][]]
-//     [[][][]]
-//   ]
-// ]
-//}
 
 export const showProps = (obj) => {
   let result = '';
@@ -255,7 +227,6 @@ export const getColumnNames2 = (data) => {
   return headers;
 };
 
-//разбить число на разряды
 export const numberWithSpaces = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 };

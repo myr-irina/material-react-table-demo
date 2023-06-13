@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -13,14 +13,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import { useAuth } from '../../contexts/auth-provider';
-import { BASE_URL } from '../../utils/constants';
-import { signin } from '../../utils/auth';
 import { userSignin } from '../../utils/auth';
 
-const regexEmail = /^u@e\.com$/;
-const regexPsw = /1/;
 const validationSchema = yup
   .object({
     username: yup
@@ -41,35 +38,36 @@ export default function SignIn() {
   const {
     control,
     handleSubmit,
-    formState: { isValid, errors },
+    formState: { isValid, errors, isSubmitSuccessful, isSubmitting },
     reset,
+    clearErrors,
   } = useForm({
     defaultValues: {
       username: '',
       password: '',
     },
-    shouldUnregister: true,
     resolver: yupResolver(validationSchema),
     mode: 'onBlur',
   });
 
-  const submitLogin = async ({ username, password }) => {
+  const onSubmit = async (data) => {
+    const { username, password } = data;
     try {
       const response = await userSignin({ username, password });
       const data = await response.json();
       const { access_token } = data;
       login(access_token);
-      navigate('/');
+      navigate('/employees-plan');
     } catch (err) {
       console.log('login error');
     }
   };
 
-  const onSubmit = (data) => {
-    const { username, password } = data;
-    submitLogin({ username, password });
-    reset();
-  };
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -98,7 +96,10 @@ export default function SignIn() {
             <Controller
               name='username'
               control={control}
-              render={({ field, fieldState: { invalid, error } }) => (
+              render={({
+                field: { ...field },
+                fieldState: { invalid, error },
+              }) => (
                 <TextField
                   label='Email'
                   name='username'
@@ -108,6 +109,7 @@ export default function SignIn() {
                   margin='normal'
                   error={!!errors?.username}
                   helperText={invalid ? error.message : ''}
+                  value={field.value}
                   {...field}
                 />
               )}
@@ -126,20 +128,32 @@ export default function SignIn() {
                   autoComplete='off'
                   error={!!errors?.password}
                   helperText={invalid ? error.message : ''}
+                  value={field.value}
                   {...field}
                 />
               )}
             />
-
-            <Button
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-              disabled={!isValid}
-            >
-              Sign In
-            </Button>
+            {isSubmitting ? (
+              <LoadingButton
+                loading={isSubmitting}
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}
+                disabled={!isValid}
+              >
+                Sign In
+              </LoadingButton>
+            ) : (
+              <Button
+                type='submit'
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}
+                disabled={!isValid}
+              >
+                Sign In
+              </Button>
+            )}
           </Box>
         </Box>
       </Container>

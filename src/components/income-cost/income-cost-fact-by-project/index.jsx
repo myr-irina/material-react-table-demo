@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
 import { getBudgetByProjectFact } from '../../../utils/api-requests';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
-
 import { useAuth } from '../../../contexts/auth-provider';
 
 function IncomeCostFactByProject() {

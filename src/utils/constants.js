@@ -1,7 +1,7 @@
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 
-export const BASE_URL = 'http://10.10.10.156:8000';
+export const BASE_URL = 'http://10.10.10.156';
 // localhost - 83:3001
 
 export const colors = {
@@ -62,8 +62,7 @@ export const CustomSwitch = styled((props) => (
   '& .MuiSwitch-thumb': {
     boxSizing: 'border-box',
     width: 22,
-    height: 22,
-    // backgroundImage: `url(${RoubleIcon3})`,
+    height: 22, 
     '&:before': {
       content: "''",
       position: 'absolute',
@@ -72,8 +71,7 @@ export const CustomSwitch = styled((props) => (
       left: 0,
       top: 0,
       backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      // backgroundImage: `url(${RoubleIcon3})`,
+      backgroundPosition: 'center', 
     },
   },
   '& .MuiSwitch-track': {

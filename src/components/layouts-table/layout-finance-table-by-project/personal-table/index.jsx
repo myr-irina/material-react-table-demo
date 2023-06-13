@@ -1,24 +1,13 @@
 import React, { useState } from 'react';
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Typography } from '@mui/material';
-import { Box } from '@mui/material';
 
+import { StyledTableCellTableDetailed } from '../../../../utils/styles';
 import { numberWithSpaces } from '../../../../utils/utils';
 import { MONTHS } from '../../../../utils/constants';
-
 import { totals } from '../../../../utils/constants';
-
-import {
-  StyledTableCellTableDetailedHeader,
-  StyledTableCellTableDetailed,
-  StyledTableCellTableDetailedBold,
-} from '../../../../utils/styles';
-
 import { CustomSwitch } from '../../../../utils/constants';
 
 const PersonalTable = ({ data }) => {
@@ -73,28 +62,11 @@ const PersonalTable = ({ data }) => {
               </TableCell>
             );
           })}
-
-          {/* {MONTHS.map((cell, index) => (
-            <TableCell component='th' key={cell}>
-              <Typography
-                sx={{
-                  fontWeight: '700',
-                  fontSize: '16px',
-                  overflowX: 'hidden',
-                  whiteSpace: 'nowrap',
-                  textOverflow: 'ellipsis',
-                  color: 'transparent',
-                }}
-              >
-                {cell}
-              </Typography>
-            </TableCell>
-          ))} */}
         </TableRow>
       </TableHead>
       <TableBody>
         {data.map((row) => {
-          if (row.month === 'Итого') return;
+          if (row.month === 'Итого') return null;
           const rowData = Object.entries(row.value);
 
           return (
@@ -104,7 +76,6 @@ const PersonalTable = ({ data }) => {
               </StyledTableCellTableDetailed>
               {MONTHS.map((month) => {
                 const val = rowData.find(([monthKey]) => monthKey === month);
-            
 
                 if (!val) return <TableCell></TableCell>;
 
@@ -119,7 +90,7 @@ const PersonalTable = ({ data }) => {
               {totals.map((sum) => {
                 const val = rowData.find(([monthKey]) => monthKey === sum);
 
-                if (!val) return;
+                if (!val) return null;
 
                 return (
                   <TableCell>
@@ -134,10 +105,6 @@ const PersonalTable = ({ data }) => {
             </TableRow>
           );
         })}
-
-        {/* <TableRow>
-          <TableCell colSpan={14}></TableCell>
-        </TableRow> */}
       </TableBody>
     </>
   );

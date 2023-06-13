@@ -59,7 +59,6 @@ export const getProjectFactHours = (token) => {
 
 //by income & cost budget
 export const getBudgetPlan = (token) => {
-  // const token = localStorage.getitem('access_token');
   return requestUrl(`${BASE_URL}/api/v1/tables/bdr/common/plan`, {
     method: 'GET',
     headers: {

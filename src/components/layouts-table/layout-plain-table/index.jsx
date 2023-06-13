@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import MaterialReactTable from 'material-react-table';
-import { Typography, Button } from '@mui/material';
-import { getCellColor } from '../../../utils/getCellColor';
+import { Typography } from '@mui/material';
 import { Link as MuiLink } from '@mui/material';
-import ErrorMessage from '../../error';
 
+import ErrorMessage from '../../error';
+import { getCellColor } from '../../../utils/getCellColor';
 import { StyledBoxWithData } from '../../../utils/styles';
 
 export default function LayoutPlainTable(props) {

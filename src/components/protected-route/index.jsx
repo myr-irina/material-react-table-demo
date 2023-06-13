@@ -2,11 +2,11 @@ import { Typography } from '@mui/material';
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-export default function ProtectedRoute({ token, children, isLoggedIn }) {
+export default function ProtectedRoute({ token, children }) {
   const location = useLocation();
 
   if (!token) {
-    <p>Идет загрузка...</p>;
+    <Typography>Идет загрузка...</Typography>;
   }
 
   return token ? (

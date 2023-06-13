@@ -107,9 +107,6 @@ export const StyledTableCellTableDetailed = styled(TableCell)(({ theme }) => ({
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    // '&:nth-of-type(odd)': {
-    //   backgroundColor: theme.palette.action.hover,
-    // },
   },
 }));
 

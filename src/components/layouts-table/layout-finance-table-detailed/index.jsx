@@ -5,12 +5,12 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import CustomSelect from '../../custom-select';
 import TableCell from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
+import { v4 as uuidv4 } from 'uuid';
 
-
+import CustomSelect from '../../custom-select';
 import {
   parseTableData5,
   getColumnNames2,
@@ -82,6 +82,7 @@ export default function LayoutFinanceTableDetailed(props) {
                 width: '250px',
               },
             }}
+            key={uuidv4()}
           >
             <Table
               stickyHeader
@@ -92,7 +93,7 @@ export default function LayoutFinanceTableDetailed(props) {
               }}
             >
               <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                <TableRow>
+                <TableRow key={uuidv4()}>
                   <TableCell component='th'>
                     <Typography
                       sx={{
@@ -108,7 +109,7 @@ export default function LayoutFinanceTableDetailed(props) {
                   </TableCell>
 
                   {getColumnNames2(rowEntry).map((cell) => (
-                    <TableCell component='th' key={cell}>
+                    <TableCell component='th' key={uuidv4()}>
                       <Typography
                         sx={{
                           fontWeight: '700',
@@ -128,7 +129,7 @@ export default function LayoutFinanceTableDetailed(props) {
                 {rowEntry.map((rowProject) => {
                   return (
                     <>
-                      <StyledTableRowTableDetailed>
+                      <StyledTableRowTableDetailed key={uuidv4()}>
                         <StyledTableCellTableDetailed
                           key={rowProject[0].projectName}
                         >
@@ -141,10 +142,10 @@ export default function LayoutFinanceTableDetailed(props) {
                           );
 
                           return (
-                            <StyledTableCellTableDetailed key={columnName}>
+                            <StyledTableCellTableDetailed key={uuidv4()}>
                               {project && project.value !== null
                                 ? `${numberWithSpaces(project?.value)} р.`
-                                : ''}
+                                : null}
                             </StyledTableCellTableDetailed>
                           );
                         })}

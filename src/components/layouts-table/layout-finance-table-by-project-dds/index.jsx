@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
-import MaterialReactTable from 'material-react-table';
-import { Tab, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,11 +8,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   StyledTableCellTableDetailedHeader,
   StyledTableCellTableDetailed,
-  StyledTableCellTableDetailedBold,
 } from '../../../utils/styles';
 import Paper from '@mui/material/Paper';
 
@@ -98,6 +97,7 @@ function LayoutFinanceTableByProject({
             margin: '0 auto',
             overflowX: 'initial',
           }}
+          key={uuidv4()}
         >
           <Table
             stickyHeader
@@ -115,10 +115,10 @@ function LayoutFinanceTableByProject({
             }}
           >
             <TableHead>
-              <TableRow>
+              <TableRow key={uuidv4()}>
                 <TableCell></TableCell>
                 {HEADER_MONTHS.map((month) => (
-                  <StyledTableCellTableDetailedHeader key={month}>
+                  <StyledTableCellTableDetailedHeader key={uuidv4()}>
                     {month}
                   </StyledTableCellTableDetailedHeader>
                 ))}
@@ -127,11 +127,11 @@ function LayoutFinanceTableByProject({
             {rowEntry.map((row) => {
               const amountsRow = row?.find(({ month }) => month === 'Сумма');
 
-              if (!row) return;
+              if (!row) return null;
               if (row[0]?.projectName === 'Сотрудники')
-                return <PersonalTable data={row} />;
+                return <PersonalTable key={uuidv4()} data={row} />;
               if (row[0]?.projectName === 'Итого')
-                return <AmountsTable data={row} />;
+                return <AmountsTable key={uuidv4()} data={row} />;
 
               return (
                 <TableBody>
@@ -155,7 +155,7 @@ function LayoutFinanceTableByProject({
 
                       if (!val) return <TableCell></TableCell>;
                       return (
-                        <TableCell key={month}>
+                        <TableCell key={uuidv4()}>
                           <Typography
                             sx={{
                               fontWeight: '700',
@@ -175,10 +175,10 @@ function LayoutFinanceTableByProject({
                   </TableRow>
 
                   {row.map((tableRow) => {
-                    if (tableRow.month === 'Сумма') return;
+                    if (tableRow.month === 'Сумма') return null;
                     return (
                       <TableRow>
-                        <StyledTableCellTableDetailed key={tableRow.month}>
+                        <StyledTableCellTableDetailed key={uuidv4()}>
                           {tableRow.month}
                         </StyledTableCellTableDetailed>
 
@@ -186,7 +186,7 @@ function LayoutFinanceTableByProject({
                           const val = tableRow?.value?.[month];
 
                           return (
-                            <StyledTableCellTableDetailed key={month}>
+                            <StyledTableCellTableDetailed key={uuidv4()}>
                               {val ? `${numberWithSpaces(val)} р.` : ''}
                             </StyledTableCellTableDetailed>
                           );

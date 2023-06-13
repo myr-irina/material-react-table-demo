@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
-import MaterialReactTable from 'material-react-table';
-import { Tab, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -127,7 +126,7 @@ function LayoutFinanceTableByProject({
             {rowEntry.map((row) => {
               const amountsRow = row?.find(({ month }) => month === 'Итого');
 
-              if (!row) return;
+              if (!row) return null;
               if (row[0]?.projectName === 'Сотрудники')
                 return <PersonalTable data={row} />;
               if (row[0]?.projectName === 'Итого')
@@ -167,7 +166,7 @@ function LayoutFinanceTableByProject({
                           >
                             {val && val !== null
                               ? `${numberWithSpaces(Math.trunc(val))} р.`
-                              : ''}
+                              : null}
                           </Typography>
                         </TableCell>
                       );
@@ -175,7 +174,7 @@ function LayoutFinanceTableByProject({
                   </TableRow>
 
                   {row.map((tableRow) => {
-                    if (tableRow.month === 'Итого') return;
+                    if (tableRow.month === 'Итого') return null;
                     return (
                       <TableRow>
                         <StyledTableCellTableDetailed key={tableRow.month}>

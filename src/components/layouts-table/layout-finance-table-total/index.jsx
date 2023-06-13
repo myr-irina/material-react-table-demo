@@ -1,16 +1,14 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { styled } from '@mui/material/styles';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { TableContainer } from '@mui/material';
 import { Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
-import LinearProgress from '@mui/material/LinearProgress';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   numberWithSpaces,
@@ -115,7 +113,7 @@ function LayoutFinanceTableTotal({
               </StyledTableCellTotalTable>
 
               {getColumnNames2(filteredData).map((cell) => (
-                <StyledTableCellTotalTable component='th'>
+                <StyledTableCellTotalTable component='th' key={uuidv4()}>
                   {cell}
                 </StyledTableCellTotalTable>
               ))}
@@ -126,8 +124,8 @@ function LayoutFinanceTableTotal({
               return (
                 <>
                   {tableVariant === 'dds' ? (
-                    <StyledTableRowTotalTableDDS hover>
-                      <StyledTableCellTotalTable>
+                    <StyledTableRowTotalTableDDS hover key={uuidv4()}>
+                      <StyledTableCellTotalTable key={uuidv4()}>
                         {rowProject[0][0].projectType}
                       </StyledTableCellTotalTable>
                       {getColumnNames2(filteredData).map((columnName) => {
@@ -137,7 +135,7 @@ function LayoutFinanceTableTotal({
                         );
 
                         return (
-                          <StyledTableCellTotalTable>
+                          <StyledTableCellTotalTable key={uuidv4()}>
                             {project && project.value !== null
                               ? `${numberWithSpaces(project?.value)} р.`
                               : ''}
@@ -146,8 +144,8 @@ function LayoutFinanceTableTotal({
                       })}
                     </StyledTableRowTotalTableDDS>
                   ) : (
-                    <StyledTableRowTotalTable hover>
-                      <StyledTableCellTotalTable>
+                    <StyledTableRowTotalTable hover key={uuidv4()}>
+                      <StyledTableCellTotalTable key={uuidv4()}>
                         {rowProject[0][0].projectType}
                       </StyledTableCellTotalTable>
                       {getColumnNames2(filteredData).map((columnName) => {
@@ -157,7 +155,7 @@ function LayoutFinanceTableTotal({
                         );
 
                         return (
-                          <StyledTableCellTotalTable>
+                          <StyledTableCellTotalTable key={uuidv4()}>
                             {project && project.value !== null
                               ? `${numberWithSpaces(project?.value)} р.`
                               : ''}

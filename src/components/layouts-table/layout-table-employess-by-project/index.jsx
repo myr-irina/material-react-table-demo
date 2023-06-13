@@ -10,9 +10,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Link as MuiLink } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 
 import CustomSelect from '../../custom-select';
-
 import {
   parseTableData,
   getColumnNames,
@@ -101,8 +101,10 @@ export default function LayoutEmployeesByProject(props) {
             overflowX: 'initial',
             marginBottom: '10px',
           }}
+          key={uuidv4()}
         >
           <Table
+            key={uuidv4()}
             stickyHeader
             sx={{
               tableLayout: 'fixed',
@@ -117,12 +119,15 @@ export default function LayoutEmployeesByProject(props) {
             }}
           >
             <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-              <TableRow>
+              <TableRow key={uuidv4()}>
                 <StyledTableCellTableDetailedHeader component='th'>
                   Сотрудники
                 </StyledTableCellTableDetailedHeader>
-                {getColumnNames(rowEntry).map((cell, ind) => (
-                  <StyledTableCellTableDetailedHeader component='th' key={ind}>
+                {getColumnNames(rowEntry).map((cell) => (
+                  <StyledTableCellTableDetailedHeader
+                    component='th'
+                    key={uuidv4()}
+                  >
                     {cell}
                   </StyledTableCellTableDetailedHeader>
                 ))}
@@ -132,8 +137,8 @@ export default function LayoutEmployeesByProject(props) {
               {rowEntry.map((rowProject) => {
                 return (
                   <>
-                    <StyledTableRow3 key={rowProject}>
-                      <StyledTableCellTableDetailed key={rowProject}>
+                    <StyledTableRow3 key={uuidv4()}>
+                      <StyledTableCellTableDetailed key={uuidv4()}>
                         <MuiLink
                           component={Link}
                           target='_blank'
@@ -144,14 +149,14 @@ export default function LayoutEmployeesByProject(props) {
                           {rowProject[0].author}
                         </MuiLink>
                       </StyledTableCellTableDetailed>
-                      {getColumnNames(rowEntry).map((columnName, index) => {
+                      {getColumnNames(rowEntry).map((columnName) => {
                         const project = findProjectByName(
                           columnName,
                           rowProject
                         );
 
                         return (
-                          <TableCell key={index}>
+                          <TableCell key={uuidv4()}>
                             {project ? (
                               <Typography
                                 sx={{

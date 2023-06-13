@@ -4,7 +4,6 @@ import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
 
 import { numberWithSpaces, findProjectByName2 } from '../../../../utils/utils';
-
 import { MONTHS } from '../../../../utils/constants';
 
 const AmountsTable = ({ data }) => {
