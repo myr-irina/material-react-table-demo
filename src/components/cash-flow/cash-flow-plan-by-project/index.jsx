@@ -57,6 +57,8 @@ function CashFlowPlanByProject() {
     [],
   );
 
+  if (cashFlowPlanByProject.length === 0) return;
+
   return (
     <LayoutFinanceTableByProject
       isLoading={isLoading}

@@ -46,7 +46,7 @@ function LayoutFinanceTableByProject({
   const categories = getData(arrKeys, arrArrs);
 
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
-  const [category, setCategory] = React.useState(categories[0]?.label);
+  const [category, setCategory] = React.useState(categories[0].label);
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);

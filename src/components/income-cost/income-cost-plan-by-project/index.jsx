@@ -44,6 +44,8 @@ function IncomeCostPlanByProject() {
       .finally(setIsLoading(false));
   }, []);
 
+  if (budgetPlanByProject.length === 0) return;
+
   return (
     <LayoutFinanceTableByProject
       isLoading={isLoading}
