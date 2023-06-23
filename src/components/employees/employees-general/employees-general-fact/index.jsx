@@ -45,8 +45,6 @@ function EmployeesGeneralFact() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (!projectFactHours.length) return;
-
   return (
     <LayoutPlainTable
       data={projectFactHours}

@@ -44,8 +44,6 @@ function IncomeCostTotalsPlan() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (!budgetPlan.length) return;
-
   return (
     <LayoutFinanceTableTotal
       isLoading={isLoading}

@@ -47,8 +47,6 @@ function IncomeCostTotalsFactSplit() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (!factSplitData.length) return;
-
   return (
     <>
       <IncomeCostTotalsFact />

@@ -48,7 +48,7 @@ function IncomeCostTotalsPlanSplit() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (!planSplitData.length) return;
+  // if (planSplitData.length === 0) return;
 
   return (
     <>

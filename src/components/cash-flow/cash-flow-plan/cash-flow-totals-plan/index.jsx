@@ -21,7 +21,6 @@ function CashFlowTotalsPlan() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
         if (error === '500') {
           console.log('Внутренняя ошибка сервера');
           setError(true);
@@ -44,8 +43,6 @@ function CashFlowTotalsPlan() {
       })
       .finally(setIsLoading(false));
   }, []);
-
-  if (!totalPalnData.length) return;
 
   return (
     <LayoutFinanceTableTotal

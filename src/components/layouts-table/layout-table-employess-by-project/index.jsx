@@ -50,7 +50,7 @@ export default function LayoutEmployeesByProject(props) {
 
   return (
     <>
-      <Typography mb={4} variant='h5' gutterBottom>
+      <Typography mb={4} variant="h5" gutterBottom>
         {title}
       </Typography>
       <Box
@@ -66,13 +66,13 @@ export default function LayoutEmployeesByProject(props) {
           values={months}
           value={month}
           handleChange={handleMonthChange}
-          inputLabel='Месяц'
+          inputLabel="Месяц"
         />
         <CustomSelect
           values={years}
           value={year}
           handleChange={handleYearChange}
-          inputLabel='Год'
+          inputLabel="Год"
         />
       </Box>
 
@@ -85,7 +85,7 @@ export default function LayoutEmployeesByProject(props) {
             justifyContent: 'center',
           }}
         >
-          <CircularProgress size={50} color='inherit' />
+          <CircularProgress size={50} color="inherit" />
         </Box>
       ) : null}
 
@@ -118,14 +118,17 @@ export default function LayoutEmployeesByProject(props) {
               },
             }}
           >
-            <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+            <TableHead
+              key={uuidv4()}
+              sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}
+            >
               <TableRow key={uuidv4()}>
-                <StyledTableCellTableDetailedHeader component='th'>
+                <StyledTableCellTableDetailedHeader component="th">
                   Сотрудники
                 </StyledTableCellTableDetailedHeader>
                 {getColumnNames(rowEntry).map((cell) => (
                   <StyledTableCellTableDetailedHeader
-                    component='th'
+                    component="th"
                     key={uuidv4()}
                   >
                     {cell}
@@ -141,10 +144,10 @@ export default function LayoutEmployeesByProject(props) {
                       <StyledTableCellTableDetailed key={uuidv4()}>
                         <MuiLink
                           component={Link}
-                          target='_blank'
-                          rel='noopener noreferrer'
+                          target="_blank"
+                          rel="noopener noreferrer"
                           to={rowProject[0]?.link}
-                          underline='none'
+                          underline="none"
                         >
                           {rowProject[0].author}
                         </MuiLink>
@@ -152,7 +155,7 @@ export default function LayoutEmployeesByProject(props) {
                       {getColumnNames(rowEntry).map((columnName) => {
                         const project = findProjectByName(
                           columnName,
-                          rowProject
+                          rowProject,
                         );
 
                         return (

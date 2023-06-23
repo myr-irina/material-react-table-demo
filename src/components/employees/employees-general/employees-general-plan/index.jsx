@@ -46,8 +46,6 @@ function EmployeesGeneralPlan() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (!projectPlanHours.length) return;
-
   return (
     projectPlanHours && (
       <LayoutPlainTable

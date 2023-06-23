@@ -45,7 +45,7 @@ function IncomeCostFactByProject() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (!budgetFactByProject.length) return;
+  // if (!budgetFactByProject.length) return;
 
   return (
     budgetFactByProject && (

@@ -45,8 +45,6 @@ function IncomeCostTotalsFact() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (!budgetFact.length) return;
-
   return (
     budgetFact && (
       <LayoutFinanceTableTotal

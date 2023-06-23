@@ -44,8 +44,6 @@ function EmployeesByProjectPlan() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (!projectPlanHours.length) return;
-
   return (
     projectPlanHours && (
       <LayoutTableEmployeesByProject

@@ -35,15 +35,15 @@ function LayoutFinanceTableTotal({
       Object.values(item).some(
         (item) =>
           item.projectName === 'Итого' ||
-          item.projectName === 'Доходы до уплаты налогов'
-      )
-    )
+          item.projectName === 'Доходы до уплаты налогов',
+      ),
+    ),
   );
 
   const getColumnNames2 = (data) => {
     const result = [];
 
-    data[0].forEach((row) => {
+    data[0]?.forEach((row) => {
       const columns = row.reduce((acc, item) => {
         acc.push(item.month);
         return acc;
@@ -57,7 +57,7 @@ function LayoutFinanceTableTotal({
 
   return (
     <>
-      <Typography variant='h5' gutterBottom mb={4}>
+      <Typography variant="h5" gutterBottom mb={4}>
         {title}
       </Typography>
 
@@ -70,7 +70,7 @@ function LayoutFinanceTableTotal({
             justifyContent: 'center',
           }}
         >
-          <CircularProgress size={50} color='inherit' />
+          <CircularProgress size={50} color="inherit" />
         </Box>
       ) : null}
 
@@ -94,11 +94,11 @@ function LayoutFinanceTableTotal({
               width: '250px',
             },
           }}
-          size='small'
+          size="small"
         >
           <TableHead sx={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
             <TableRow>
-              <StyledTableCellTotalTable component='th'>
+              <StyledTableCellTotalTable component="th">
                 <Typography
                   sx={{
                     fontWeight: '700',
@@ -113,7 +113,7 @@ function LayoutFinanceTableTotal({
               </StyledTableCellTotalTable>
 
               {getColumnNames2(filteredData).map((cell) => (
-                <StyledTableCellTotalTable component='th' key={uuidv4()}>
+                <StyledTableCellTotalTable component="th" key={uuidv4()}>
                   {cell}
                 </StyledTableCellTotalTable>
               ))}
@@ -131,7 +131,7 @@ function LayoutFinanceTableTotal({
                       {getColumnNames2(filteredData).map((columnName) => {
                         const project = findProjectByName2(
                           columnName,
-                          rowProject[0]
+                          rowProject[0],
                         );
 
                         return (
@@ -151,7 +151,7 @@ function LayoutFinanceTableTotal({
                       {getColumnNames2(filteredData).map((columnName) => {
                         const project = findProjectByName2(
                           columnName,
-                          rowProject[0]
+                          rowProject[0],
                         );
 
                         return (

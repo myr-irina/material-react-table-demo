@@ -45,8 +45,6 @@ function EmployeesByProjectFact() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (!projectFactHours.length) return;
-
   return (
     projectFactHours && (
       <LayoutTableEmployeesByProject

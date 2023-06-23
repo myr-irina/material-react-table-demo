@@ -44,18 +44,14 @@ function IncomeCostPlanByProject() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (!budgetPlanByProject.length) return;
-
   return (
-    budgetPlanByProject && (
-      <LayoutFinanceTableByProject
-        isLoading={isLoading}
-        data={budgetPlanByProject}
-        error={error}
-        message={message}
-        title="Таблица БДР (план по проектам)"
-      />
-    )
+    <LayoutFinanceTableByProject
+      isLoading={isLoading}
+      data={budgetPlanByProject}
+      error={error}
+      message={message}
+      title="Таблица БДР (план по проектам)"
+    />
   );
 }
 

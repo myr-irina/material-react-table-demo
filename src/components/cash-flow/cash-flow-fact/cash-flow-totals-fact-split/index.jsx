@@ -47,8 +47,6 @@ function CashFlowTotalsFactSplit() {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (!factSplitData.length) return;
-
   return (
     <>
       <CashFlowTotalsFact />

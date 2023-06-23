@@ -24,7 +24,6 @@ function CashFlowTotalsPlanSplit() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
         if (error === '500') {
           console.log('Внутренняя ошибка сервера');
           setError(true);
@@ -47,8 +46,6 @@ function CashFlowTotalsPlanSplit() {
       })
       .finally(() => setIsLoading(false));
   }, []);
-
-  if (!planSplitData.length) return;
 
   return (
     <>

@@ -46,7 +46,7 @@ function LayoutFinanceTableByProject({
   const categories = getData(arrKeys, arrArrs);
 
   const TABLE_DATA = useMemo(() => parseTableData4(data), [data]);
-  const [category, setCategory] = React.useState(categories[0].label);
+  const [category, setCategory] = React.useState(categories[0]?.label);
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
@@ -54,7 +54,7 @@ function LayoutFinanceTableByProject({
 
   return (
     <>
-      <Typography variant='h5' gutterBottom mb={4}>
+      <Typography variant="h5" gutterBottom mb={4}>
         {title}
       </Typography>
       <Box
@@ -69,7 +69,7 @@ function LayoutFinanceTableByProject({
           values={categories}
           value={category}
           handleChange={handleCategoryChange}
-          inputLabel='Категория'
+          inputLabel="Категория"
         />
       </Box>
       {isLoading ? (
@@ -81,7 +81,7 @@ function LayoutFinanceTableByProject({
             justifyContent: 'center',
           }}
         >
-          <CircularProgress size={50} color='inherit' />
+          <CircularProgress size={50} color="inherit" />
         </Box>
       ) : null}
 
@@ -101,7 +101,7 @@ function LayoutFinanceTableByProject({
         >
           <Table
             stickyHeader
-            size='medium'
+            size="medium"
             sx={{
               tableLayout: 'fixed',
               width: '100%',
