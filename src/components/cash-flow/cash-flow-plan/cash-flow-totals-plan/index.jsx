@@ -4,6 +4,7 @@ import LayoutFinanceTableTotal from '../../../layouts-table/layout-finance-table
 import { getCashFlowPlan } from '../../../../utils/api-requests';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { useAuth } from '../../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function CashFlowTotalsPlan() {
   const [totalPalnData, setTotalPlanData] = useState([]);
@@ -11,6 +12,7 @@ function CashFlowTotalsPlan() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
   const { token } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCashFlowPlan(token)
@@ -26,24 +28,33 @@ function CashFlowTotalsPlan() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setTotalPlanData([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setTotalPlanData([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setTotalPlanData([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setTotalPlanData([]);
       })
       .finally(setIsLoading(false));
   }, []);
 
   if (totalPalnData.length === 0) return;
+
   return (
     <LayoutFinanceTableTotal
       isLoading={isLoading}
       data={totalPalnData}
       error={error}
       message={message}
-      title='Таблица ДДС (план)'
-      tableVariant='dds'
+      title="Таблица ДДС (план)"
+      tableVariant="dds"
     />
   );
 }

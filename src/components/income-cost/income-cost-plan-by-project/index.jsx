@@ -4,6 +4,7 @@ import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project';
 import { getBudgetByProjectPlan } from '../../../utils/api-requests';
 import { useAuth } from '../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function IncomeCostPlanByProject() {
   const [budgetPlanByProject, setBudgetPlanByProject] = useState([]);
@@ -11,6 +12,7 @@ function IncomeCostPlanByProject() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
   const { token } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getBudgetByProjectPlan(token)
@@ -25,16 +27,24 @@ function IncomeCostPlanByProject() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setBudgetPlanByProject([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setBudgetPlanByProject([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setBudgetPlanByProject([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setBudgetPlanByProject([]);
       })
       .finally(setIsLoading(false));
   }, []);
 
-  if (budgetPlanByProject.length === 0) return;
+  if (!budgetPlanByProject.length) return;
 
   return (
     budgetPlanByProject && (
@@ -43,7 +53,7 @@ function IncomeCostPlanByProject() {
         data={budgetPlanByProject}
         error={error}
         message={message}
-        title='Таблица БДР (план по проектам)'
+        title="Таблица БДР (план по проектам)"
       />
     )
   );

@@ -6,12 +6,15 @@ import IncomeCostTotalsPlan from '../income-cost-totals-plan';
 import { categories } from '../../../utils/constants';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import { useAuth } from '../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function IncomeCostTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
+
+  const navigate = useNavigate();
 
   const { token } = useAuth();
 
@@ -28,14 +31,24 @@ function IncomeCostTotalsPlanSplit() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setPlanSplitData([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setPlanSplitData([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setPlanSplitData([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setPlanSplitData([]);
       })
       .finally(() => setIsLoading(false));
   }, []);
+
+  if (planSplitData.length === 0) return;
 
   return (
     <>

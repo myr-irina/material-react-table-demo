@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import LayoutPlainTable from '../../../layouts-table/layout-plain-table';
 import { getWorkingHoursFact } from '../../../../utils/api-requests';
 import { useAuth } from '../../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
+import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 
 function EmployeesGeneralFact() {
   const [projectFactHours, setProjectFactHours] = useState([]);
@@ -11,6 +13,7 @@ function EmployeesGeneralFact() {
   const [message, setMessage] = useState(null);
 
   const { token } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getWorkingHoursFact(token)
@@ -25,14 +28,24 @@ function EmployeesGeneralFact() {
           setMessage(message);
           setIsLoading(false);
           setProjectFactHours([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setProjectFactHours([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setProjectFactHours([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setProjectFactHours([]);
       })
       .finally(setIsLoading(false));
   }, []);
+
+  if (projectFactHours.length === 0) return;
 
   return (
     <LayoutPlainTable
@@ -40,8 +53,8 @@ function EmployeesGeneralFact() {
       isLoading={isLoading}
       error={error}
       message={message}
-      title='Таблица рабочего времени (общий факт)'
-      header='Сотрудники'
+      title="Таблица рабочего времени (общий факт)"
+      header="Сотрудники"
     />
   );
 }

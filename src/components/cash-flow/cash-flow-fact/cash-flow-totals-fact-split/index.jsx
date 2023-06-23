@@ -6,6 +6,7 @@ import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { getCashFlowFact } from '../../../../utils/api-requests';
 import { categoriesDDS } from '../../../../utils/constants';
 import { useAuth } from '../../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function CashFlowTotalsFactSplit() {
   const [factSplitData, setFactSplitData] = useState([]);
@@ -14,6 +15,7 @@ function CashFlowTotalsFactSplit() {
   const [message, setMessage] = useState(null);
 
   const { token } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCashFlowFact(token)
@@ -28,11 +30,19 @@ function CashFlowTotalsFactSplit() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setFactSplitData([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setFactSplitData([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setFactSplitData([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setFactSplitData([]);
       })
       .finally(() => setIsLoading(false));
   }, []);

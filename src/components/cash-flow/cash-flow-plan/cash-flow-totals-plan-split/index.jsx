@@ -6,12 +6,14 @@ import CashFlowTotalsPlan from '../cash-flow-totals-plan';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { categoriesDDS } from '../../../../utils/constants';
 import { useAuth } from '../../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function CashFlowTotalsPlanSplit() {
   const [planSplitData, setPlanSplitData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
+  const navigate = useNavigate();
 
   const { token } = useAuth();
 
@@ -29,11 +31,19 @@ function CashFlowTotalsPlanSplit() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setPlanSplitData([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setPlanSplitData([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setPlanSplitData([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setPlanSplitData([]);
       })
       .finally(() => setIsLoading(false));
   }, []);

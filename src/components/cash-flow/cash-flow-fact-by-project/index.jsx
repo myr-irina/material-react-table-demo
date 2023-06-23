@@ -4,13 +4,14 @@ import { getCashFlowByProjectFact } from '../../../utils/api-requests';
 import LayoutFinanceTableByProject from '../../layouts-table/layout-finance-table-by-project-dds';
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import { useAuth } from '../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function CashFlowFactByProject() {
   const [cashFlowFactByProject, setCashFlowFactFactByProject] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
-
+  const navigate = useNavigate();
   const { token } = useAuth();
 
   useEffect(() => {
@@ -26,11 +27,19 @@ function CashFlowFactByProject() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setCashFlowFactFactByProject([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setCashFlowFactFactByProject([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setCashFlowFactFactByProject([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setCashFlowFactFactByProject([]);
       })
       .finally(setIsLoading(false));
   }, []);
@@ -45,7 +54,7 @@ function CashFlowFactByProject() {
         header: 'Проекты',
       },
     ],
-    []
+    [],
   );
 
   if (cashFlowFactByProject.length === 0) return;
@@ -57,7 +66,7 @@ function CashFlowFactByProject() {
       data={cashFlowFactByProject}
       error={error}
       message={message}
-      title='Таблица ДДС (факт по проектам)'
+      title="Таблица ДДС (факт по проектам)"
     />
   );
 }

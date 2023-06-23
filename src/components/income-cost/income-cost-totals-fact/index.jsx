@@ -4,6 +4,7 @@ import LayoutFinanceTableTotal from '../../layouts-table/layout-finance-table-to
 import { SERVER_ERROR_MESSAGE } from '../../../utils/responseMessages';
 import { getBudgetFact } from '../../../utils/api-requests';
 import { useAuth } from '../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function IncomeCostTotalsFact() {
   const [budgetFact, setBudgetFact] = useState([]);
@@ -12,6 +13,7 @@ function IncomeCostTotalsFact() {
   const [message, setMessage] = useState(null);
 
   const { token } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getBudgetFact(token)
@@ -26,16 +28,24 @@ function IncomeCostTotalsFact() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setBudgetFact([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setBudgetFact([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setBudgetFact([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setBudgetFact([]);
       })
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (budgetFact.length === 0) return;
+  if (!budgetFact.length) return;
 
   return (
     budgetFact && (
@@ -44,7 +54,7 @@ function IncomeCostTotalsFact() {
         data={budgetFact}
         error={error}
         message={message}
-        title='Таблица БДР (факт)'
+        title="Таблица БДР (факт)"
       />
     )
   );

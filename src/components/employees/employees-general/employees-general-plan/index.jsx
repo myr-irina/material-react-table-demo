@@ -6,12 +6,14 @@ import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { Typography } from '@mui/material';
 
 import { useAuth } from '../../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function EmployeesGeneralPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [message, setMessage] = React.useState(null);
+  const navigate = useNavigate();
 
   const { token } = useAuth();
 
@@ -28,18 +30,23 @@ function EmployeesGeneralPlan() {
           setError(true);
           setProjectPlanHours([]);
           setMessage(SERVER_ERROR_MESSAGE);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setProjectPlanHours([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setProjectPlanHours([]);
         }
-        console.log(error);
-        setError(true);
-        setProjectPlanHours([]);
       })
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (!projectPlanHours)
-    return (
-      <Typography>Идет загруза. Обновите, пожалуйста, страницу</Typography>
-    );
+  if (projectPlanHours.length === 0) return;
 
   return (
     projectPlanHours && (
@@ -48,8 +55,8 @@ function EmployeesGeneralPlan() {
         isLoading={isLoading}
         error={error}
         message={message}
-        title='Таблица рабочего времени (общий план)'
-        header='Сотрудники'
+        title="Таблица рабочего времени (общий план)"
+        header="Сотрудники"
       />
     )
   );

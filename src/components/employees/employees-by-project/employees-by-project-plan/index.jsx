@@ -3,6 +3,7 @@ import { getProjectPlanHours } from '../../../../utils/api-requests';
 import LayoutTableEmployeesByProject from '../../../layouts-table/layout-table-employess-by-project';
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { useAuth } from '../../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function EmployeesByProjectPlan() {
   const [projectPlanHours, setProjectPlanHours] = useState([]);
@@ -11,6 +12,7 @@ function EmployeesByProjectPlan() {
   const [message, setMessage] = useState(null);
 
   const { token } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProjectPlanHours(token)
@@ -25,14 +27,24 @@ function EmployeesByProjectPlan() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setProjectPlanHours([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setProjectPlanHours([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setProjectPlanHours([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setProjectPlanHours([]);
       })
       .finally(setIsLoading(false));
   }, []);
+
+  if (!projectPlanHours.length) return;
 
   return (
     projectPlanHours && (
@@ -41,7 +53,7 @@ function EmployeesByProjectPlan() {
         data={projectPlanHours}
         error={error}
         message={message}
-        title='Таблица рабочего времени (план по проектам)'
+        title="Таблица рабочего времени (план по проектам)"
       />
     )
   );

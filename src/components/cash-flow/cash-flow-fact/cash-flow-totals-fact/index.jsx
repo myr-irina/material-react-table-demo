@@ -3,6 +3,7 @@ import LayoutFinanceTableTotal from '../../../layouts-table/layout-finance-table
 import { SERVER_ERROR_MESSAGE } from '../../../../utils/responseMessages';
 import { getCashFlowFact } from '../../../../utils/api-requests';
 import { useAuth } from '../../../../contexts/auth-provider';
+import { useNavigate } from 'react-router-dom';
 
 function CashFlowTotalsFact() {
   const [totalData, setTotalData] = useState([]);
@@ -10,6 +11,8 @@ function CashFlowTotalsFact() {
   const [error, setError] = useState(false);
   const [message, setMessage] = useState(null);
   const { token } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCashFlowFact(token)
@@ -24,11 +27,19 @@ function CashFlowTotalsFact() {
           setMessage(SERVER_ERROR_MESSAGE);
           setIsLoading(false);
           setTotalData([]);
+        } else if (error === '401') {
+          localStorage.clear();
+          navigate('/signin');
+          setError(true);
+          setMessage(SERVER_ERROR_MESSAGE);
+          setIsLoading(false);
+          setTotalData([]);
+        } else {
+          console.log(error);
+          setError(true);
+          setIsLoading(false);
+          setTotalData([]);
         }
-        console.log(error);
-        setError(true);
-        setIsLoading(false);
-        setTotalData([]);
       })
       .finally(setIsLoading(false));
   }, []);
@@ -42,8 +53,8 @@ function CashFlowTotalsFact() {
         data={totalData}
         error={error}
         message={message}
-        title='Таблица ДДС (факт)'
-        tableVariant='dds'
+        title="Таблица ДДС (факт)"
+        tableVariant="dds"
       />
     )
   );
