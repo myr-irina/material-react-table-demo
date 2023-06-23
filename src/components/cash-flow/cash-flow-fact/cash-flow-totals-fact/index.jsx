@@ -44,7 +44,7 @@ function CashFlowTotalsFact() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (totalData.length === 0) return;
+  if (!totalData.length) return;
 
   return (
     totalData && (

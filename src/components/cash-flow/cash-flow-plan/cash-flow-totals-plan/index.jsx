@@ -45,7 +45,7 @@ function CashFlowTotalsPlan() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (totalPalnData.length === 0) return;
+  if (!totalPalnData.length) return;
 
   return (
     <LayoutFinanceTableTotal

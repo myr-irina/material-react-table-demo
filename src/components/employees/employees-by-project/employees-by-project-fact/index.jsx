@@ -45,7 +45,7 @@ function EmployeesByProjectFact() {
       .finally(setIsLoading(false));
   }, []);
 
-  if (projectFactHours.length === 0) return;
+  if (!projectFactHours.length) return;
 
   return (
     projectFactHours && (

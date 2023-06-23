@@ -57,7 +57,7 @@ function CashFlowPlanByProject() {
     [],
   );
 
-  if (cashFlowPlanByProject.length === 0) return;
+  if (!cashFlowPlanByProject.length) return;
 
   return (
     <LayoutFinanceTableByProject
