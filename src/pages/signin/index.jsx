@@ -57,7 +57,7 @@ export default function SignIn() {
       const data = await response.json();
       const { access_token } = data;
       login(access_token);
-      navigate('/employees-plan');
+      navigate('/');
     } catch (err) {
       console.log('login error');
     }
@@ -71,7 +71,7 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component='main' maxWidth='xs'>
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -84,29 +84,29 @@ export default function SignIn() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component='h1' variant='h5'>
+          <Typography component="h1" variant="h5">
             Sign in
           </Typography>
           <Box
-            component='form'
+            component="form"
             onSubmit={handleSubmit(onSubmit)}
             noValidate
             sx={{ mt: 1 }}
           >
             <Controller
-              name='username'
+              name="username"
               control={control}
               render={({
                 field: { ...field },
                 fieldState: { invalid, error },
               }) => (
                 <TextField
-                  label='Email'
-                  name='username'
-                  autoComplete='off'
+                  label="Email"
+                  name="username"
+                  autoComplete="off"
                   autoFocus
                   fullWidth
-                  margin='normal'
+                  margin="normal"
                   error={!!errors?.username}
                   helperText={invalid ? error.message : ''}
                   value={field.value}
@@ -116,16 +116,16 @@ export default function SignIn() {
             />
 
             <Controller
-              name='password'
+              name="password"
               control={control}
               render={({ field, fieldState: { invalid, error } }) => (
                 <TextField
-                  label='Пароль'
-                  name='password'
+                  label="Пароль"
+                  name="password"
                   fullWidth
-                  margin='normal'
-                  type='password'
-                  autoComplete='off'
+                  margin="normal"
+                  type="password"
+                  autoComplete="off"
                   error={!!errors?.password}
                   helperText={invalid ? error.message : ''}
                   value={field.value}
@@ -137,7 +137,7 @@ export default function SignIn() {
               <LoadingButton
                 loading={isSubmitting}
                 fullWidth
-                variant='contained'
+                variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 disabled={!isValid}
               >
@@ -145,9 +145,9 @@ export default function SignIn() {
               </LoadingButton>
             ) : (
               <Button
-                type='submit'
+                type="submit"
                 fullWidth
-                variant='contained'
+                variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 disabled={!isValid}
               >

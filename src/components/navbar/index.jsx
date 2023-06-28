@@ -62,7 +62,7 @@ export default function NavBar() {
   return (
     <>
       <AppBar
-        position='static'
+        position="static"
         sx={{ backgroundColor: 'grey', margin: '0.5rem auto 1rem' }}
       >
         <Toolbar>
@@ -81,15 +81,15 @@ export default function NavBar() {
                     borderBottom: '2px solid white',
                   },
                 }}
-                id='demo-positioned-button1'
+                id="demo-positioned-button1"
                 aria-controls={
                   openEmployees ? 'demo-positioned-menu1' : undefined
                 }
-                aria-haspopup='true'
+                aria-haspopup="true"
                 aria-expanded={openEmployees ? 'true' : undefined}
                 onClick={handleOpenEmployees}
-                value='left'
-                aria-label='left aligned'
+                value="left"
+                aria-label="left aligned"
               >
                 Сотрудники
               </Button>
@@ -106,13 +106,13 @@ export default function NavBar() {
                     borderBottom: '2px solid white',
                   },
                 }}
-                id='demo-positioned-button2'
+                id="demo-positioned-button2"
                 aria-controls={openBDR ? 'demo-positioned-menu2' : undefined}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 aria-expanded={openBDR ? 'true' : undefined}
                 onClick={handleOpenBDR}
-                value='center'
-                aria-label='centered'
+                value="center"
+                aria-label="centered"
               >
                 Бюджет доходов и расходов
               </Button>
@@ -129,13 +129,13 @@ export default function NavBar() {
                     borderBottom: '2px solid white',
                   },
                 }}
-                id='demo-positioned-button3'
+                id="demo-positioned-button3"
                 aria-controls={openDDS ? 'demo-positioned-menu3' : undefined}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 aria-expanded={openDDS ? 'true' : undefined}
                 onClick={handleOpenDDS}
-                value='right'
-                aria-label='right aligned'
+                value="right"
+                aria-label="right aligned"
               >
                 Движение денежных средств
               </Button>
@@ -146,19 +146,19 @@ export default function NavBar() {
               sx={{ padding: 0, display: 'flex', justifyContent: 'center' }}
             >
               <IconButton
-                size='large'
-                aria-label='account of current user'
-                aria-controls='menu-appbar'
-                aria-haspopup='true'
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
                 onClick={handleAccountMenu}
-                color='inherit'
-                edge='end'
+                color="inherit"
+                edge="end"
               >
                 <AccountCircle sx={{ fontSize: 35 }} />
               </IconButton>
               <Menu
                 sx={{ mt: '50px' }}
-                id='menu-appbar'
+                id="menu-appbar"
                 anchorEl={anchorElAccount}
                 anchorOrigin={{
                   vertical: 'top',
@@ -179,8 +179,8 @@ export default function NavBar() {
         </Toolbar>
 
         <Menu
-          id='demo-positioned-menu1'
-          aria-labelledby='demo-positioned-button1'
+          id="demo-positioned-menu1"
+          aria-labelledby="demo-positioned-button1"
           anchorEl={anchorElEmployees}
           open={openEmployees}
           onClick={handleCloseEmployees}
@@ -191,7 +191,7 @@ export default function NavBar() {
           <MenuItem
             onClick={handleCloseEmployees}
             component={CustomNavLink}
-            to={'/employees-plan'}
+            to={'/'}
             sx={{
               '&.active': {
                 backgroundColor: '#f5f5f5',
@@ -237,8 +237,8 @@ export default function NavBar() {
         </Menu>
 
         <Menu
-          id='demo-positioned-menu2'
-          aria-labelledby='demo-positioned-button2'
+          id="demo-positioned-menu2"
+          aria-labelledby="demo-positioned-button2"
           anchorEl={anchorBDR}
           open={openBDR}
           onClick={handleCloseBDR}
@@ -292,8 +292,8 @@ export default function NavBar() {
           </MenuItem>
         </Menu>
         <Menu
-          id='demo-positioned-menu3'
-          aria-labelledby='demo-positioned-button3'
+          id="demo-positioned-menu3"
+          aria-labelledby="demo-positioned-button3"
           anchorEl={anchorDDS}
           open={openDDS}
           onClick={handleCloseDDS}
