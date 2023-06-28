@@ -42,7 +42,7 @@ export default function App() {
             }
           >
             <Route
-              path='/employees-plan'
+              path='/'
               element={
                 <ProtectedRoute token={token}>
                   <EmployeesGeneralPlan />
